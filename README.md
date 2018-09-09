@@ -1,2 +1,2 @@
 # botdiril300
-Botdiril Rewritten - community Discord Bot designed for Vandiland.
+Botdiril Rewritten - Community Discord Bot designed for Vandiland.
