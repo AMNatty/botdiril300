@@ -1,0 +1,4583 @@
+{
+    "setName": "League of Legends Skins",
+    "set": "league",
+    "description": "League of Legends Skins Card Set",
+    "idPrefix": "l-",
+    "items": [{
+        "id": "Aatrox",
+        "name": "Aatrox",
+        "skins": [{
+            "name": "Aatrox",
+            "id": "aatrox",
+            "rarity": "BASIC"
+        }, {
+            "name": "Justicar Aatrox",
+            "id": "justicaraatrox",
+            "rarity": "COMMON"
+        }, {
+            "name": "Mecha Aatrox",
+            "id": "mechaaatrox",
+            "rarity": "RARE"
+        }, {
+            "name": "Sea Hunter Aatrox",
+            "id": "seahunteraatrox",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Ahri",
+        "name": "Ahri",
+        "skins": [{
+            "name": "Ahri",
+            "id": "ahri",
+            "rarity": "BASIC"
+        }, {
+            "name": "Dynasty Ahri",
+            "id": "dynastyahri",
+            "rarity": "COMMON"
+        }, {
+            "name": "Midnight Ahri",
+            "id": "midnightahri",
+            "rarity": "COMMON"
+        }, {
+            "name": "Foxfire Ahri",
+            "id": "foxfireahri",
+            "rarity": "COMMON"
+        }, {
+            "name": "Popstar Ahri",
+            "id": "popstarahri",
+            "rarity": "COMMON"
+        }, {
+            "name": "Challenger Ahri",
+            "id": "challengerahri",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Academy Ahri",
+            "id": "academyahri",
+            "rarity": "COMMON"
+        }, {
+            "name": "Arcade Ahri",
+            "id": "arcadeahri",
+            "rarity": "RARE"
+        }, {
+            "name": "Star Guardian Ahri",
+            "id": "starguardianahri",
+            "rarity": "LEGENDARY"
+        }]
+    }, {
+        "id": "Akali",
+        "name": "Akali",
+        "skins": [{
+            "name": "Akali",
+            "id": "akali",
+            "rarity": "BASIC"
+        }, {
+            "name": "Stinger Akali",
+            "id": "stingerakali",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Infernal Akali",
+            "id": "infernalakali",
+            "rarity": "LEGACY"
+        }, {
+            "name": "All-star Akali",
+            "id": "allstarakali",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Nurse Akali",
+            "id": "nurseakali",
+            "rarity": "COMMON"
+        }, {
+            "name": "Blood Moon Akali",
+            "id": "bloodmoonakali",
+            "rarity": "COMMON"
+        }, {
+            "name": "Silverfang Akali",
+            "id": "silverfangakali",
+            "rarity": "COMMON"
+        }, {
+            "name": "Headhunter Akali",
+            "id": "headhunterakali",
+            "rarity": "RARE"
+        }, {
+            "name": "Sashimi Akali",
+            "id": "sashimiakali",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Alistar",
+        "name": "Alistar",
+        "skins": [{
+            "name": "Alistar",
+            "id": "alistar",
+            "rarity": "BASIC"
+        }, {
+            "name": "Black Alistar",
+            "id": "blackalistar",
+            "rarity": "UNIQUE"
+        }, {
+            "name": "Golden Alistar",
+            "id": "goldenalistar",
+            "rarity": "COMMON"
+        }, {
+            "name": "Matador Alistar",
+            "id": "matadoralistar",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Longhorn Alistar",
+            "id": "longhornalistar",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Unchained Alistar",
+            "id": "unchainedalistar",
+            "rarity": "LIMITED"
+        }, {
+            "name": "Infernal Alistar",
+            "id": "infernalalistar",
+            "rarity": "COMMON"
+        }, {
+            "name": "Sweeper Alistar",
+            "id": "sweeperalistar",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Marauder Alistar",
+            "id": "marauderalistar",
+            "rarity": "COMMON"
+        }, {
+            "name": "SKT T1 Alistar",
+            "id": "sktt1alistar",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Moo Cow Alistar",
+            "id": "moocowalistar",
+            "rarity": "COMMON"
+        }, {
+            "name": "Hextech Alistar",
+            "id": "hextechalistar",
+            "rarity": "MYTHIC"
+        }]
+    }, {
+        "id": "Amumu",
+        "name": "Amumu",
+        "skins": [{
+            "name": "Amumu",
+            "id": "amumu",
+            "rarity": "BASIC"
+        }, {
+            "name": "Pharaoh Amumu",
+            "id": "pharaohamumu",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Vancouver Amumu",
+            "id": "vancouveramumu",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Emumu",
+            "id": "emumu",
+            "rarity": "COMMON"
+        }, {
+            "name": "Re-Gifted Amumu",
+            "id": "regiftedamumu",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Almost-Prom King Amumu",
+            "id": "almostpromkingamumu",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Little Knight Amumu",
+            "id": "littleknightamumu",
+            "rarity": "COMMON"
+        }, {
+            "name": "Sad Robot Amumu",
+            "id": "sadrobotamumu",
+            "rarity": "RARE"
+        }, {
+            "name": "Surprise Party Amumu",
+            "id": "surprisepartyamumu",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Anivia",
+        "name": "Anivia",
+        "skins": [{
+            "name": "Anivia",
+            "id": "anivia",
+            "rarity": "BASIC"
+        }, {
+            "name": "Team Spirit Anivia",
+            "id": "teamspiritanivia",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Bird of Prey Anivia",
+            "id": "birdofpreyanivia",
+            "rarity": "COMMON"
+        }, {
+            "name": "Noxus Hunter Anivia",
+            "id": "noxushunteranivia",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Hextech Anivia",
+            "id": "hextechanivia",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Blackfrost Anivia",
+            "id": "blackfrostanivia",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Prehistoric Anivia",
+            "id": "prehistoricanivia",
+            "rarity": "COMMON"
+        }, {
+            "name": "Festival Queen Anivia",
+            "id": "festivalqueenanivia",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Annie",
+        "name": "Annie",
+        "skins": [{
+            "name": "Annie",
+            "id": "annie",
+            "rarity": "BASIC"
+        }, {
+            "name": "Goth Annie",
+            "id": "gothannie",
+            "rarity": "COMMON"
+        }, {
+            "name": "Red Riding Annie",
+            "id": "redridingannie",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Annie in Wonderland",
+            "id": "annieinwonderland",
+            "rarity": "LEGACY_LEGENDARY"
+        }, {
+            "name": "Prom Queen Annie",
+            "id": "promqueenannie",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Frostfire Annie",
+            "id": "frostfireannie",
+            "rarity": "COMMON"
+        }, {
+            "name": "Reverse Annie",
+            "id": "reverseannie",
+            "rarity": "COMMON"
+        }, {
+            "name": "FrankenTibbers Annie",
+            "id": "frankentibbersannie",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Panda Annie",
+            "id": "pandaannie",
+            "rarity": "COMMON"
+        }, {
+            "name": "Sweetheart Annie",
+            "id": "sweetheartannie",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Hextech Annie",
+            "id": "hextechannie",
+            "rarity": "MYTHIC"
+        }, {
+            "name": "Super Galaxy Annie",
+            "id": "supergalaxyannie",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Ashe",
+        "name": "Ashe",
+        "skins": [{
+            "name": "Ashe",
+            "id": "ashe",
+            "rarity": "BASIC"
+        }, {
+            "name": "Freljord Ashe",
+            "id": "freljordashe",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Sherwood Forest Ashe",
+            "id": "sherwoodforestashe",
+            "rarity": "COMMON"
+        }, {
+            "name": "Woad Ashe",
+            "id": "woadashe",
+            "rarity": "COMMON"
+        }, {
+            "name": "Queen Ashe",
+            "id": "queenashe",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Amethyst Ashe",
+            "id": "amethystashe",
+            "rarity": "COMMON"
+        }, {
+            "name": "Heartseeker Ashe",
+            "id": "heartseekerashe",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Marauder Ashe",
+            "id": "marauderashe",
+            "rarity": "COMMON"
+        }, {
+            "name": "PROJECT: Ashe",
+            "id": "projectashe",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Championship Ashe",
+            "id": "championshipashe",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Cosmic Queen Ashe",
+            "id": "cosmicqueenashe",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "AurelionSol",
+        "name": "Aurelion Sol",
+        "skins": [{
+            "name": "Aurelion Sol",
+            "id": "aurelionsol",
+            "rarity": "BASIC"
+        }, {
+            "name": "Ashen Lord Aurelion Sol",
+            "id": "ashenlordaurelionsol",
+            "rarity": "RARE"
+        }, {
+            "name": "Mecha Aurelion Sol",
+            "id": "mechaaurelionsol",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Azir",
+        "name": "Azir",
+        "skins": [{
+            "name": "Azir",
+            "id": "azir",
+            "rarity": "BASIC"
+        }, {
+            "name": "Galactic Azir",
+            "id": "galacticazir",
+            "rarity": "COMMON"
+        }, {
+            "name": "Gravelord Azir",
+            "id": "gravelordazir",
+            "rarity": "RARE"
+        }, {
+            "name": "SKT T1 Azir",
+            "id": "sktt1azir",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Warring Kingdoms Azir",
+            "id": "warringkingdomsazir",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Bard",
+        "name": "Bard",
+        "skins": [{
+            "name": "Bard",
+            "id": "bard",
+            "rarity": "BASIC"
+        }, {
+            "name": "Elderwood Bard",
+            "id": "elderwoodbard",
+            "rarity": "COMMON"
+        }, {
+            "name": "Snow Day Bard",
+            "id": "snowdaybard",
+            "rarity": "RARE"
+        }, {
+            "name": "Bard Bard",
+            "id": "bardbard",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Blitzcrank",
+        "name": "Blitzcrank",
+        "skins": [{
+            "name": "Blitzcrank",
+            "id": "blitzcrank",
+            "rarity": "BASIC"
+        }, {
+            "name": "Rusty Blitzcrank",
+            "id": "rustyblitzcrank",
+            "rarity": "LIMITED"
+        }, {
+            "name": "Goalkeeper Blitzcrank",
+            "id": "goalkeeperblitzcrank",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Boom Boom Blitzcrank",
+            "id": "boomboomblitzcrank",
+            "rarity": "COMMON"
+        }, {
+            "name": "Piltover Customs Blitzcrank",
+            "id": "piltovercustomsblitzcrank",
+            "rarity": "RARE"
+        }, {
+            "name": "Definitely Not Blitzcrank",
+            "id": "definitelynotblitzcrank",
+            "rarity": "LEGACY"
+        }, {
+            "name": "iBlitzcrank",
+            "id": "iblitzcrank",
+            "rarity": "RARE"
+        }, {
+            "name": "Riot Blitzcrank",
+            "id": "riotblitzcrank",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Battle Boss Blitzcrank",
+            "id": "battlebossblitzcrank",
+            "rarity": "RARE"
+        }, {
+            "name": "Lancer Rogue Blitzcrank",
+            "id": "lancerrogueblitzcrank",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Lancer Paragon Blitzcrank",
+            "id": "lancerparagonblitzcrank",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Brand",
+        "name": "Brand",
+        "skins": [{
+            "name": "Brand",
+            "id": "brand",
+            "rarity": "BASIC"
+        }, {
+            "name": "Apocalyptic Brand",
+            "id": "apocalypticbrand",
+            "rarity": "COMMON"
+        }, {
+            "name": "Vandal Brand",
+            "id": "vandalbrand",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Cryocore Brand",
+            "id": "cryocorebrand",
+            "rarity": "COMMON"
+        }, {
+            "name": "Zombie Brand",
+            "id": "zombiebrand",
+            "rarity": "LEGACY_LEGENDARY"
+        }, {
+            "name": "Spirit Fire Brand",
+            "id": "spiritfirebrand",
+            "rarity": "RARE"
+        }, {
+            "name": "Battle Boss Brand",
+            "id": "battlebossbrand",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Braum",
+        "name": "Braum",
+        "skins": [{
+            "name": "Braum",
+            "id": "braum",
+            "rarity": "BASIC"
+        }, {
+            "name": "Dragonslayer Braum",
+            "id": "dragonslayerbraum",
+            "rarity": "COMMON"
+        }, {
+            "name": "El Tigre Braum",
+            "id": "eltigrebraum",
+            "rarity": "RARE"
+        }, {
+            "name": "Braum Lionheart",
+            "id": "braumlionheart",
+            "rarity": "COMMON"
+        }, {
+            "name": "Santa Braum",
+            "id": "santabraum",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Mafia Braum",
+            "id": "mafiabraum",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Caitlyn",
+        "name": "Caitlyn",
+        "skins": [{
+            "name": "Caitlyn",
+            "id": "caitlyn",
+            "rarity": "BASIC"
+        }, {
+            "name": "Resistance Caitlyn",
+            "id": "resistancecaitlyn",
+            "rarity": "COMMON"
+        }, {
+            "name": "Sheriff Caitlyn",
+            "id": "sheriffcaitlyn",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Safari Caitlyn",
+            "id": "safaricaitlyn",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Arctic Warfare Caitlyn",
+            "id": "arcticwarfarecaitlyn",
+            "rarity": "COMMON"
+        }, {
+            "name": "Officer Caitlyn",
+            "id": "officercaitlyn",
+            "rarity": "COMMON"
+        }, {
+            "name": "Headhunter Caitlyn",
+            "id": "headhuntercaitlyn",
+            "rarity": "COMMON"
+        }, {
+            "name": "Lunar Wraith Caitlyn",
+            "id": "lunarwraithcaitlyn",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Pulsefire Caitlyn",
+            "id": "pulsefirecaitlyn",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Pool Party Caitlyn",
+            "id": "poolpartycaitlyn",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Camille",
+        "name": "Camille",
+        "skins": [{
+            "name": "Camille",
+            "id": "camille",
+            "rarity": "BASIC"
+        }, {
+            "name": "Program Camille",
+            "id": "programcamille",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Cassiopeia",
+        "name": "Cassiopeia",
+        "skins": [{
+            "name": "Cassiopeia",
+            "id": "cassiopeia",
+            "rarity": "BASIC"
+        }, {
+            "name": "Desperada Cassiopeia",
+            "id": "desperadacassiopeia",
+            "rarity": "COMMON"
+        }, {
+            "name": "Siren Cassiopeia",
+            "id": "sirencassiopeia",
+            "rarity": "COMMON"
+        }, {
+            "name": "Mythic Cassiopeia",
+            "id": "mythiccassiopeia",
+            "rarity": "COMMON"
+        }, {
+            "name": "Jade Fang Cassiopeia",
+            "id": "jadefangcassiopeia",
+            "rarity": "COMMON"
+        }, {
+            "name": "Eternum Cassiopeia",
+            "id": "eternumcassiopeia",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Chogath",
+        "name": "Cho'Gath",
+        "skins": [{
+            "name": "Cho'Gath",
+            "id": "chogath",
+            "rarity": "BASIC"
+        }, {
+            "name": "Nightmare Cho'Gath",
+            "id": "nightmarechogath",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Gentleman Cho'Gath",
+            "id": "gentlemanchogath",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Loch Ness Cho'Gath",
+            "id": "lochnesschogath",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Jurassic Cho'Gath",
+            "id": "jurassicchogath",
+            "rarity": "COMMON"
+        }, {
+            "name": "Battlecast Prime Cho'Gath",
+            "id": "battlecastprimechogath",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Prehistoric Cho'Gath",
+            "id": "prehistoricchogath",
+            "rarity": "COMMON"
+        }, {
+            "name": "Dark Star Cho'Gath",
+            "id": "darkstarchogath",
+            "rarity": "MYTHIC"
+        }]
+    }, {
+        "id": "Corki",
+        "name": "Corki",
+        "skins": [{
+            "name": "Corki",
+            "id": "corki",
+            "rarity": "BASIC"
+        }, {
+            "name": "UFO Corki",
+            "id": "ufocorki",
+            "rarity": "UNIQUE"
+        }, {
+            "name": "Ice Toboggan Corki",
+            "id": "icetoboggancorki",
+            "rarity": "LEGACY_LEGENDARY"
+        }, {
+            "name": "Red Baron Corki",
+            "id": "redbaroncorki",
+            "rarity": "LEGACY_LEGENDARY"
+        }, {
+            "name": "Hot Rod Corki",
+            "id": "hotrodcorki",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Urfrider Corki",
+            "id": "urfridercorki",
+            "rarity": "COMMON"
+        }, {
+            "name": "Dragonwing Corki",
+            "id": "dragonwingcorki",
+            "rarity": "COMMON"
+        }, {
+            "name": "Fnatic Corki",
+            "id": "fnaticcorki",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Arcade Corki",
+            "id": "arcadecorki",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Darius",
+        "name": "Darius",
+        "skins": [{
+            "name": "Darius",
+            "id": "darius",
+            "rarity": "BASIC"
+        }, {
+            "name": "Lord Darius",
+            "id": "lorddarius",
+            "rarity": "COMMON"
+        }, {
+            "name": "Bioforge Darius",
+            "id": "bioforgedarius",
+            "rarity": "COMMON"
+        }, {
+            "name": "Woad King Darius",
+            "id": "woadkingdarius",
+            "rarity": "COMMON"
+        }, {
+            "name": "Dunkmaster Darius",
+            "id": "dunkmasterdarius",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Academy Darius",
+            "id": "academydarius",
+            "rarity": "COMMON"
+        }, {
+            "name": "Dreadnova Darius",
+            "id": "dreadnovadarius",
+            "rarity": "MYTHIC"
+        }, {
+            "name": "God-King Darius",
+            "id": "godkingdarius",
+            "rarity": "LEGENDARY"
+        }]
+    }, {
+        "id": "Diana",
+        "name": "Diana",
+        "skins": [{
+            "name": "Diana",
+            "id": "diana",
+            "rarity": "BASIC"
+        }, {
+            "name": "Dark Valkyrie Diana",
+            "id": "darkvalkyriediana",
+            "rarity": "COMMON"
+        }, {
+            "name": "Lunar Goddess Diana",
+            "id": "lunargoddessdiana",
+            "rarity": "COMMON"
+        }, {
+            "name": "Infernal Diana",
+            "id": "infernaldiana",
+            "rarity": "RARE"
+        }, {
+            "name": "Blood Moon Diana",
+            "id": "bloodmoondiana",
+            "rarity": "RARE"
+        }, {
+            "name": "Dark Waters Diana",
+            "id": "darkwatersdiana",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Draven",
+        "name": "Draven",
+        "skins": [{
+            "name": "Draven",
+            "id": "draven",
+            "rarity": "BASIC"
+        }, {
+            "name": "Soul Reaver Draven",
+            "id": "soulreaverdraven",
+            "rarity": "RARE"
+        }, {
+            "name": "Gladiator Draven",
+            "id": "gladiatordraven",
+            "rarity": "COMMON"
+        }, {
+            "name": "Primetime Draven",
+            "id": "primetimedraven",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Pool Party Draven",
+            "id": "poolpartydraven",
+            "rarity": "COMMON"
+        }, {
+            "name": "Beast Hunter Draven",
+            "id": "beasthunterdraven",
+            "rarity": "COMMON"
+        }, {
+            "name": "Draven Draven",
+            "id": "dravendraven",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Santa Draven",
+            "id": "santadraven",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "DrMundo",
+        "name": "Dr. Mundo",
+        "skins": [{
+            "name": "Dr. Mundo",
+            "id": "drmundo",
+            "rarity": "BASIC"
+        }, {
+            "name": "Toxic Dr. Mundo",
+            "id": "toxicdrmundo",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Mr. Mundoverse",
+            "id": "mrmundoverse",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Corporate Mundo",
+            "id": "corporatemundo",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Mundo Mundo",
+            "id": "mundomundo",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Executioner Mundo",
+            "id": "executionermundo",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Rageborn Mundo",
+            "id": "ragebornmundo",
+            "rarity": "COMMON"
+        }, {
+            "name": "TPA Mundo",
+            "id": "tpamundo",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Pool Party Mundo",
+            "id": "poolpartymundo",
+            "rarity": "COMMON"
+        }, {
+            "name": "El Macho Mundo",
+            "id": "elmachomundo",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Ekko",
+        "name": "Ekko",
+        "skins": [{
+            "name": "Ekko",
+            "id": "ekko",
+            "rarity": "BASIC"
+        }, {
+            "name": "Sandstorm Ekko",
+            "id": "sandstormekko",
+            "rarity": "COMMON"
+        }, {
+            "name": "Academy Ekko",
+            "id": "academyekko",
+            "rarity": "COMMON"
+        }, {
+            "name": "PROJECT: Ekko",
+            "id": "projectekko",
+            "rarity": "RARE"
+        }, {
+            "name": "SKT T1 Ekko",
+            "id": "sktt1ekko",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Elise",
+        "name": "Elise",
+        "skins": [{
+            "name": "Elise",
+            "id": "elise",
+            "rarity": "BASIC"
+        }, {
+            "name": "Death Blossom Elise",
+            "id": "deathblossomelise",
+            "rarity": "COMMON"
+        }, {
+            "name": "Victorious Elise",
+            "id": "victoriouselise",
+            "rarity": "LIMITED"
+        }, {
+            "name": "Blood Moon Elise",
+            "id": "bloodmoonelise",
+            "rarity": "COMMON"
+        }, {
+            "name": "SKT T1 Elise",
+            "id": "sktt1elise",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Super Galaxy Elise",
+            "id": "supergalaxyelise",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Evelynn",
+        "name": "Evelynn",
+        "skins": [{
+            "name": "Evelynn",
+            "id": "evelynn",
+            "rarity": "BASIC"
+        }, {
+            "name": "Shadow Evelynn",
+            "id": "shadowevelynn",
+            "rarity": "COMMON"
+        }, {
+            "name": "Masquerade Evelynn",
+            "id": "masqueradeevelynn",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Tango Evelynn",
+            "id": "tangoevelynn",
+            "rarity": "COMMON"
+        }, {
+            "name": "Safecracker Evelynn",
+            "id": "safecrackerevelynn",
+            "rarity": "COMMON"
+        }, {
+            "name": "Blood Moon Evelynn",
+            "id": "bloodmoonevelynn",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Ezreal",
+        "name": "Ezreal",
+        "skins": [{
+            "name": "Ezreal",
+            "id": "ezreal",
+            "rarity": "BASIC"
+        }, {
+            "name": "Nottingham Ezreal",
+            "id": "nottinghamezreal",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Striker Ezreal",
+            "id": "strikerezreal",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Frosted Ezreal",
+            "id": "frostedezreal",
+            "rarity": "COMMON"
+        }, {
+            "name": "Explorer Ezreal",
+            "id": "explorerezreal",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Pulsefire Ezreal",
+            "id": "pulsefireezreal",
+            "rarity": "ULTIMATE"
+        }, {
+            "name": "TPA Ezreal",
+            "id": "tpaezreal",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Debonair Ezreal",
+            "id": "debonairezreal",
+            "rarity": "COMMON"
+        }, {
+            "name": "Ace of Spades Ezreal",
+            "id": "aceofspadesezreal",
+            "rarity": "COMMON"
+        }, {
+            "name": "Arcade Ezreal",
+            "id": "arcadeezreal",
+            "rarity": "RARE"
+        }, {
+            "name": "Star Guardian Ezreal",
+            "id": "starguardianezreal",
+            "rarity": "RARE"
+        }, {
+            "name": "SSG Ezreal",
+            "id": "ssgezreal",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Fiddlesticks",
+        "name": "Fiddlesticks",
+        "skins": [{
+            "name": "Fiddlesticks",
+            "id": "fiddlesticks",
+            "rarity": "BASIC"
+        }, {
+            "name": "Spectral Fiddlesticks",
+            "id": "spectralfiddlesticks",
+            "rarity": "COMMON"
+        }, {
+            "name": "Union Jack Fiddlesticks",
+            "id": "unionjackfiddlesticks",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Bandito Fiddlesticks",
+            "id": "banditofiddlesticks",
+            "rarity": "COMMON"
+        }, {
+            "name": "Pumpkinhead Fiddlesticks",
+            "id": "pumpkinheadfiddlesticks",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Fiddle Me Timbers",
+            "id": "fiddlemetimbers",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Surprise Party Fiddlesticks",
+            "id": "surprisepartyfiddlesticks",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Dark Candy Fiddlesticks",
+            "id": "darkcandyfiddlesticks",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Risen Fiddlesticks",
+            "id": "risenfiddlesticks",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Fiora",
+        "name": "Fiora",
+        "skins": [{
+            "name": "Fiora",
+            "id": "fiora",
+            "rarity": "BASIC"
+        }, {
+            "name": "Royal Guard Fiora",
+            "id": "royalguardfiora",
+            "rarity": "COMMON"
+        }, {
+            "name": "Nightraven Fiora",
+            "id": "nightravenfiora",
+            "rarity": "COMMON"
+        }, {
+            "name": "Headmistress Fiora",
+            "id": "headmistressfiora",
+            "rarity": "LEGACY"
+        }, {
+            "name": "PROJECT: Fiora",
+            "id": "projectfiora",
+            "rarity": "RARE"
+        }, {
+            "name": "Pool Party Fiora",
+            "id": "poolpartyfiora",
+            "rarity": "RARE"
+        }, {
+            "name": "Soaring Sword Fiora",
+            "id": "soaringswordfiora",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Fizz",
+        "name": "Fizz",
+        "skins": [{
+            "name": "Fizz",
+            "id": "fizz",
+            "rarity": "BASIC"
+        }, {
+            "name": "Atlantean Fizz",
+            "id": "atlanteanfizz",
+            "rarity": "COMMON"
+        }, {
+            "name": "Tundra Fizz",
+            "id": "tundrafizz",
+            "rarity": "COMMON"
+        }, {
+            "name": "Fisherman Fizz",
+            "id": "fishermanfizz",
+            "rarity": "COMMON"
+        }, {
+            "name": "Void Fizz",
+            "id": "voidfizz",
+            "rarity": "RARE"
+        }, {
+            "name": "Cottontail Fizz",
+            "id": "cottontailfizz",
+            "rarity": "COMMON"
+        }, {
+            "name": "Super Galaxy Fizz",
+            "id": "supergalaxyfizz",
+            "rarity": "RARE"
+        }, {
+            "name": "Omega Squad Fizz",
+            "id": "omegasquadfizz",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Galio",
+        "name": "Galio",
+        "skins": [{
+            "name": "Galio",
+            "id": "galio",
+            "rarity": "BASIC"
+        }, {
+            "name": "Enchanted Galio",
+            "id": "enchantedgalio",
+            "rarity": "COMMON"
+        }, {
+            "name": "Hextech Galio",
+            "id": "hextechgalio",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Commando Galio",
+            "id": "commandogalio",
+            "rarity": "COMMON"
+        }, {
+            "name": "Gatekeeper Galio",
+            "id": "gatekeepergalio",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Debonair Galio",
+            "id": "debonairgalio",
+            "rarity": "COMMON"
+        }, {
+            "name": "Birdio",
+            "id": "birdio",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Gangplank",
+        "name": "Gangplank",
+        "skins": [{
+            "name": "Gangplank",
+            "id": "gangplank",
+            "rarity": "BASIC"
+        }, {
+            "name": "Spooky Gangplank",
+            "id": "spookygangplank",
+            "rarity": "COMMON"
+        }, {
+            "name": "Minuteman Gangplank",
+            "id": "minutemangangplank",
+            "rarity": "COMMON"
+        }, {
+            "name": "Sailor Gangplank",
+            "id": "sailorgangplank",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Toy Soldier Gangplank",
+            "id": "toysoldiergangplank",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Special Forces Gangplank",
+            "id": "specialforcesgangplank",
+            "rarity": "COMMON"
+        }, {
+            "name": "Sultan Gangplank",
+            "id": "sultangangplank",
+            "rarity": "COMMON"
+        }, {
+            "name": "Captain Gangplank",
+            "id": "captaingangplank",
+            "rarity": "COMMON"
+        }, {
+            "name": "Dreadnova Gangplank",
+            "id": "dreadnovagangplank",
+            "rarity": "RARE"
+        }, {
+            "name": "Pool Party Gangplank",
+            "id": "poolpartygangplank",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Garen",
+        "name": "Garen",
+        "skins": [{
+            "name": "Garen",
+            "id": "garen",
+            "rarity": "BASIC"
+        }, {
+            "name": "Sanguine Garen",
+            "id": "sanguinegaren",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Desert Trooper Garen",
+            "id": "deserttroopergaren",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Commando Garen",
+            "id": "commandogaren",
+            "rarity": "COMMON"
+        }, {
+            "name": "Dreadknight Garen",
+            "id": "dreadknightgaren",
+            "rarity": "COMMON"
+        }, {
+            "name": "Rugged Garen",
+            "id": "ruggedgaren",
+            "rarity": "COMMON"
+        }, {
+            "name": "Steel Legion Garen",
+            "id": "steellegiongaren",
+            "rarity": "RARE"
+        }, {
+            "name": "Rogue Admiral Garen",
+            "id": "rogueadmiralgaren",
+            "rarity": "COMMON"
+        }, {
+            "name": "Warring Kingdoms Garen",
+            "id": "warringkingdomsgaren",
+            "rarity": "LEGACY"
+        }, {
+            "name": "God-King Garen",
+            "id": "godkinggaren",
+            "rarity": "LEGENDARY"
+        }]
+    }, {
+        "id": "Gnar",
+        "name": "Gnar",
+        "skins": [{
+            "name": "Gnar",
+            "id": "gnar",
+            "rarity": "BASIC"
+        }, {
+            "name": "Dino Gnar",
+            "id": "dinognar",
+            "rarity": "COMMON"
+        }, {
+            "name": "Gentleman Gnar",
+            "id": "gentlemangnar",
+            "rarity": "COMMON"
+        }, {
+            "name": "Snow Day Gnar",
+            "id": "snowdaygnar",
+            "rarity": "LEGACY"
+        }, {
+            "name": "El Le\u00f3n Gnar",
+            "id": "ellengnar",
+            "rarity": "COMMON"
+        }, {
+            "name": "Super Galaxy Gnar",
+            "id": "supergalaxygnar",
+            "rarity": "RARE"
+        }, {
+            "name": "SSG Gnar",
+            "id": "ssggnar",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Gragas",
+        "name": "Gragas",
+        "skins": [{
+            "name": "Gragas",
+            "id": "gragas",
+            "rarity": "BASIC"
+        }, {
+            "name": "Scuba Gragas",
+            "id": "scubagragas",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Hillbilly Gragas",
+            "id": "hillbillygragas",
+            "rarity": "COMMON"
+        }, {
+            "name": "Santa Gragas",
+            "id": "santagragas",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Gragas, Esq.",
+            "id": "gragasesq",
+            "rarity": "COMMON"
+        }, {
+            "name": "Vandal Gragas",
+            "id": "vandalgragas",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Oktoberfest Gragas",
+            "id": "oktoberfestgragas",
+            "rarity": "COMMON"
+        }, {
+            "name": "Superfan Gragas",
+            "id": "superfangragas",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Fnatic Gragas",
+            "id": "fnaticgragas",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Gragas Caskbreaker",
+            "id": "gragascaskbreaker",
+            "rarity": "COMMON"
+        }, {
+            "name": "Arctic Ops Gragas",
+            "id": "arcticopsgragas",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Graves",
+        "name": "Graves",
+        "skins": [{
+            "name": "Graves",
+            "id": "graves",
+            "rarity": "BASIC"
+        }, {
+            "name": "Hired Gun Graves",
+            "id": "hiredgungraves",
+            "rarity": "COMMON"
+        }, {
+            "name": "Jailbreak Graves",
+            "id": "jailbreakgraves",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Mafia Graves",
+            "id": "mafiagraves",
+            "rarity": "COMMON"
+        }, {
+            "name": "Riot Graves",
+            "id": "riotgraves",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Pool Party Graves",
+            "id": "poolpartygraves",
+            "rarity": "RARE"
+        }, {
+            "name": "Cutthroat Graves",
+            "id": "cutthroatgraves",
+            "rarity": "COMMON"
+        }, {
+            "name": "Snow Day Graves",
+            "id": "snowdaygraves",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Victorious Graves",
+            "id": "victoriousgraves",
+            "rarity": "LIMITED"
+        }]
+    }, {
+        "id": "Hecarim",
+        "name": "Hecarim",
+        "skins": [{
+            "name": "Hecarim",
+            "id": "hecarim",
+            "rarity": "BASIC"
+        }, {
+            "name": "Blood Knight Hecarim",
+            "id": "bloodknighthecarim",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Reaper Hecarim",
+            "id": "reaperhecarim",
+            "rarity": "COMMON"
+        }, {
+            "name": "Headless Hecarim",
+            "id": "headlesshecarim",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Arcade Hecarim",
+            "id": "arcadehecarim",
+            "rarity": "RARE"
+        }, {
+            "name": "Elderwood Hecarim",
+            "id": "elderwoodhecarim",
+            "rarity": "RARE"
+        }, {
+            "name": "Worldbreaker Hecarim",
+            "id": "worldbreakerhecarim",
+            "rarity": "COMMON"
+        }, {
+            "name": "Lancer Zero Hecarim",
+            "id": "lancerzerohecarim",
+            "rarity": "MYTHIC"
+        }]
+    }, {
+        "id": "Heimerdinger",
+        "name": "Heimerdinger",
+        "skins": [{
+            "name": "Heimerdinger",
+            "id": "heimerdinger",
+            "rarity": "BASIC"
+        }, {
+            "name": "Alien Invader Heimerdinger",
+            "id": "alieninvaderheimerdinger",
+            "rarity": "LEGACY_LEGENDARY"
+        }, {
+            "name": "Blast Zone Heimerdinger",
+            "id": "blastzoneheimerdinger",
+            "rarity": "COMMON"
+        }, {
+            "name": "Piltover Customs Heimerdinger",
+            "id": "piltovercustomsheimerdinger",
+            "rarity": "COMMON"
+        }, {
+            "name": "Snowmerdinger",
+            "id": "snowmerdinger",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Hazmat Heimerdinger",
+            "id": "hazmatheimerdinger",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Illaoi",
+        "name": "Illaoi",
+        "skins": [{
+            "name": "Illaoi",
+            "id": "illaoi",
+            "rarity": "BASIC"
+        }, {
+            "name": "Void Bringer Illaoi",
+            "id": "voidbringerillaoi",
+            "rarity": "RARE"
+        }, {
+            "name": "Resistance Illaoi",
+            "id": "resistanceillaoi",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Irelia",
+        "name": "Irelia",
+        "skins": [{
+            "name": "Irelia",
+            "id": "irelia",
+            "rarity": "BASIC"
+        }, {
+            "name": "Nightblade Irelia",
+            "id": "nightbladeirelia",
+            "rarity": "COMMON"
+        }, {
+            "name": "Aviator Irelia",
+            "id": "aviatorirelia",
+            "rarity": "COMMON"
+        }, {
+            "name": "Infiltrator Irelia",
+            "id": "infiltratorirelia",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Frostblade Irelia",
+            "id": "frostbladeirelia",
+            "rarity": "COMMON"
+        }, {
+            "name": "Order of the Lotus Irelia",
+            "id": "orderofthelotusirelia",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Ivern",
+        "name": "Ivern",
+        "skins": [{
+            "name": "Ivern",
+            "id": "ivern",
+            "rarity": "BASIC"
+        }, {
+            "name": "Candy King Ivern",
+            "id": "candykingivern",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Janna",
+        "name": "Janna",
+        "skins": [{
+            "name": "Janna",
+            "id": "janna",
+            "rarity": "BASIC"
+        }, {
+            "name": "Tempest Janna",
+            "id": "tempestjanna",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Hextech Janna",
+            "id": "hextechjanna",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Frost Queen Janna",
+            "id": "frostqueenjanna",
+            "rarity": "COMMON"
+        }, {
+            "name": "Victorious Janna",
+            "id": "victoriousjanna",
+            "rarity": "LIMITED"
+        }, {
+            "name": "Forecast Janna",
+            "id": "forecastjanna",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Fnatic Janna",
+            "id": "fnaticjanna",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Star Guardian Janna",
+            "id": "starguardianjanna",
+            "rarity": "RARE"
+        }, {
+            "name": "Sacred Sword Janna",
+            "id": "sacredswordjanna",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "JarvanIV",
+        "name": "Jarvan IV",
+        "skins": [{
+            "name": "Jarvan IV",
+            "id": "jarvaniv",
+            "rarity": "BASIC"
+        }, {
+            "name": "Commando Jarvan IV",
+            "id": "commandojarvaniv",
+            "rarity": "COMMON"
+        }, {
+            "name": "Dragonslayer Jarvan IV",
+            "id": "dragonslayerjarvaniv",
+            "rarity": "COMMON"
+        }, {
+            "name": "Darkforge Jarvan IV",
+            "id": "darkforgejarvaniv",
+            "rarity": "COMMON"
+        }, {
+            "name": "Victorious Jarvan IV",
+            "id": "victoriousjarvaniv",
+            "rarity": "LIMITED"
+        }, {
+            "name": "Warring Kingdoms Jarvan IV",
+            "id": "warringkingdomsjarvaniv",
+            "rarity": "RARE"
+        }, {
+            "name": "Fnatic Jarvan IV",
+            "id": "fnaticjarvaniv",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Dark Star Jarvan IV",
+            "id": "darkstarjarvaniv",
+            "rarity": "RARE"
+        }, {
+            "name": "SSG Jarvan IV",
+            "id": "ssgjarvaniv",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Jax",
+        "name": "Jax",
+        "skins": [{
+            "name": "Jax",
+            "id": "jax",
+            "rarity": "BASIC"
+        }, {
+            "name": "The Mighty Jax",
+            "id": "themightyjax",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Vandal Jax",
+            "id": "vandaljax",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Angler Jax",
+            "id": "anglerjax",
+            "rarity": "LEGACY"
+        }, {
+            "name": "PAX Jax",
+            "id": "paxjax",
+            "rarity": "UNIQUE"
+        }, {
+            "name": "Jaximus",
+            "id": "jaximus",
+            "rarity": "COMMON"
+        }, {
+            "name": "Temple Jax",
+            "id": "templejax",
+            "rarity": "COMMON"
+        }, {
+            "name": "Nemesis Jax",
+            "id": "nemesisjax",
+            "rarity": "COMMON"
+        }, {
+            "name": "SKT T1 Jax",
+            "id": "sktt1jax",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Warden Jax",
+            "id": "wardenjax",
+            "rarity": "COMMON"
+        }, {
+            "name": "God Staff Jax",
+            "id": "godstaffjax",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Jayce",
+        "name": "Jayce",
+        "skins": [{
+            "name": "Jayce",
+            "id": "jayce",
+            "rarity": "BASIC"
+        }, {
+            "name": "Full Metal Jayce",
+            "id": "fullmetaljayce",
+            "rarity": "RARE"
+        }, {
+            "name": "Debonair Jayce",
+            "id": "debonairjayce",
+            "rarity": "COMMON"
+        }, {
+            "name": "Forsaken Jayce",
+            "id": "forsakenjayce",
+            "rarity": "RARE"
+        }, {
+            "name": "Jayce Brighthammer",
+            "id": "jaycebrighthammer",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Jhin",
+        "name": "Jhin",
+        "skins": [{
+            "name": "Jhin",
+            "id": "jhin",
+            "rarity": "BASIC"
+        }, {
+            "name": "High Noon Jhin",
+            "id": "highnoonjhin",
+            "rarity": "RARE"
+        }, {
+            "name": "Blood Moon Jhin",
+            "id": "bloodmoonjhin",
+            "rarity": "RARE"
+        }, {
+            "name": "SKT T1 Jhin",
+            "id": "sktt1jhin",
+            "rarity": "LEGACY"
+        }, {
+            "name": "PROJECT: Jhin",
+            "id": "projectjhin",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Jinx",
+        "name": "Jinx",
+        "skins": [{
+            "name": "Jinx",
+            "id": "jinx",
+            "rarity": "BASIC"
+        }, {
+            "name": "Mafia Jinx",
+            "id": "mafiajinx",
+            "rarity": "COMMON"
+        }, {
+            "name": "Firecracker Jinx",
+            "id": "firecrackerjinx",
+            "rarity": "RARE"
+        }, {
+            "name": "Slayer Jinx",
+            "id": "slayerjinx",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Star Guardian Jinx",
+            "id": "starguardianjinx",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Ambitious Elf Jinx",
+            "id": "ambitiouselfjinx",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Kaisa",
+        "name": "Kai'Sa",
+        "skins": [{
+            "name": "Kai'Sa",
+            "id": "kaisa",
+            "rarity": "BASIC"
+        }, {
+            "name": "Bullet Angel Kai'Sa",
+            "id": "bulletangelkaisa",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Kalista",
+        "name": "Kalista",
+        "skins": [{
+            "name": "Kalista",
+            "id": "kalista",
+            "rarity": "BASIC"
+        }, {
+            "name": "Blood Moon Kalista",
+            "id": "bloodmoonkalista",
+            "rarity": "COMMON"
+        }, {
+            "name": "Championship Kalista",
+            "id": "championshipkalista",
+            "rarity": "LEGACY"
+        }, {
+            "name": "SKT T1 Kalista",
+            "id": "sktt1kalista",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Karma",
+        "name": "Karma",
+        "skins": [{
+            "name": "Karma",
+            "id": "karma",
+            "rarity": "BASIC"
+        }, {
+            "name": "Sun Goddess Karma",
+            "id": "sungoddesskarma",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Sakura Karma",
+            "id": "sakurakarma",
+            "rarity": "COMMON"
+        }, {
+            "name": "Traditional Karma",
+            "id": "traditionalkarma",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Order of the Lotus Karma",
+            "id": "orderofthelotuskarma",
+            "rarity": "COMMON"
+        }, {
+            "name": "Warden Karma",
+            "id": "wardenkarma",
+            "rarity": "COMMON"
+        }, {
+            "name": "Winter Wonder Karma",
+            "id": "winterwonderkarma",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Conqueror Karma",
+            "id": "conquerorkarma",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Karthus",
+        "name": "Karthus",
+        "skins": [{
+            "name": "Karthus",
+            "id": "karthus",
+            "rarity": "BASIC"
+        }, {
+            "name": "Phantom Karthus",
+            "id": "phantomkarthus",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Statue of Karthus",
+            "id": "statueofkarthus",
+            "rarity": "COMMON"
+        }, {
+            "name": "Grim Reaper Karthus",
+            "id": "grimreaperkarthus",
+            "rarity": "COMMON"
+        }, {
+            "name": "Pentakill Karthus",
+            "id": "pentakillkarthus",
+            "rarity": "COMMON"
+        }, {
+            "name": "Fnatic Karthus",
+            "id": "fnatickarthus",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Karthus Lightsbane",
+            "id": "karthuslightsbane",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Kassadin",
+        "name": "Kassadin",
+        "skins": [{
+            "name": "Kassadin",
+            "id": "kassadin",
+            "rarity": "BASIC"
+        }, {
+            "name": "Festival Kassadin",
+            "id": "festivalkassadin",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Deep One Kassadin",
+            "id": "deeponekassadin",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Pre-Void Kassadin",
+            "id": "prevoidkassadin",
+            "rarity": "COMMON"
+        }, {
+            "name": "Harbinger Kassadin",
+            "id": "harbingerkassadin",
+            "rarity": "COMMON"
+        }, {
+            "name": "Cosmic Reaver Kassadin",
+            "id": "cosmicreaverkassadin",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Katarina",
+        "name": "Katarina",
+        "skins": [{
+            "name": "Katarina",
+            "id": "katarina",
+            "rarity": "BASIC"
+        }, {
+            "name": "Mercenary Katarina",
+            "id": "mercenarykatarina",
+            "rarity": "COMMON"
+        }, {
+            "name": "Red Card Katarina",
+            "id": "redcardkatarina",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Bilgewater Katarina",
+            "id": "bilgewaterkatarina",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Kitty Cat Katarina",
+            "id": "kittycatkatarina",
+            "rarity": "LEGACY"
+        }, {
+            "name": "High Command Katarina",
+            "id": "highcommandkatarina",
+            "rarity": "COMMON"
+        }, {
+            "name": "Sandstorm Katarina",
+            "id": "sandstormkatarina",
+            "rarity": "COMMON"
+        }, {
+            "name": "Slay Belle Katarina",
+            "id": "slaybellekatarina",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Warring Kingdoms Katarina",
+            "id": "warringkingdomskatarina",
+            "rarity": "COMMON"
+        }, {
+            "name": "PROJECT: Katarina",
+            "id": "projectkatarina",
+            "rarity": "RARE"
+        }, {
+            "name": "Death Sworn Katarina",
+            "id": "deathswornkatarina",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Kayle",
+        "name": "Kayle",
+        "skins": [{
+            "name": "Kayle",
+            "id": "kayle",
+            "rarity": "BASIC"
+        }, {
+            "name": "Silver Kayle",
+            "id": "silverkayle",
+            "rarity": "UNIQUE"
+        }, {
+            "name": "Viridian Kayle",
+            "id": "viridiankayle",
+            "rarity": "COMMON"
+        }, {
+            "name": "Unmasked Kayle",
+            "id": "unmaskedkayle",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Battleborn Kayle",
+            "id": "battlebornkayle",
+            "rarity": "COMMON"
+        }, {
+            "name": "Judgment Kayle",
+            "id": "judgmentkayle",
+            "rarity": "LIMITED"
+        }, {
+            "name": "Aether Wing Kayle",
+            "id": "aetherwingkayle",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Riot Kayle",
+            "id": "riotkayle",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Iron Inquisitor Kayle",
+            "id": "ironinquisitorkayle",
+            "rarity": "COMMON"
+        }, {
+            "name": "Pentakill Kayle",
+            "id": "pentakillkayle",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Kayn",
+        "name": "Kayn",
+        "skins": [{
+            "name": "Kayn",
+            "id": "kayn",
+            "rarity": "BASIC"
+        }, {
+            "name": "Soulhunter Kayn",
+            "id": "soulhunterkayn",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Kennen",
+        "name": "Kennen",
+        "skins": [{
+            "name": "Kennen",
+            "id": "kennen",
+            "rarity": "BASIC"
+        }, {
+            "name": "Deadly Kennen",
+            "id": "deadlykennen",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Swamp Master Kennen",
+            "id": "swampmasterkennen",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Karate Kennen",
+            "id": "karatekennen",
+            "rarity": "COMMON"
+        }, {
+            "name": "Kennen M.D.",
+            "id": "kennenmd",
+            "rarity": "COMMON"
+        }, {
+            "name": "Arctic Ops Kennen",
+            "id": "arcticopskennen",
+            "rarity": "COMMON"
+        }, {
+            "name": "Blood Moon Kennen",
+            "id": "bloodmoonkennen",
+            "rarity": "COMMON"
+        }, {
+            "name": "Super Kennen",
+            "id": "superkennen",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Khazix",
+        "name": "Kha'Zix",
+        "skins": [{
+            "name": "Kha'Zix",
+            "id": "khazix",
+            "rarity": "BASIC"
+        }, {
+            "name": "Mecha Kha'Zix",
+            "id": "mechakhazix",
+            "rarity": "RARE"
+        }, {
+            "name": "Guardian of the Sands Kha'Zix",
+            "id": "guardianofthesandskhazix",
+            "rarity": "COMMON"
+        }, {
+            "name": "Death Blossom Kha'Zix",
+            "id": "deathblossomkhazix",
+            "rarity": "COMMON"
+        }, {
+            "name": "Dark Star Kha'Zix",
+            "id": "darkstarkhazix",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Kindred",
+        "name": "Kindred",
+        "skins": [{
+            "name": "Kindred",
+            "id": "kindred",
+            "rarity": "BASIC"
+        }, {
+            "name": "Shadowfire Kindred",
+            "id": "shadowfirekindred",
+            "rarity": "RARE"
+        }, {
+            "name": "Super Galaxy Kindred",
+            "id": "supergalaxykindred",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Kled",
+        "name": "Kled",
+        "skins": [{
+            "name": "Kled",
+            "id": "kled",
+            "rarity": "BASIC"
+        }, {
+            "name": "Sir Kled",
+            "id": "sirkled",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "KogMaw",
+        "name": "Kog'Maw",
+        "skins": [{
+            "name": "Kog'Maw",
+            "id": "kogmaw",
+            "rarity": "BASIC"
+        }, {
+            "name": "Caterpillar Kog'Maw",
+            "id": "caterpillarkogmaw",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Sonoran Kog'Maw",
+            "id": "sonorankogmaw",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Monarch Kog'Maw",
+            "id": "monarchkogmaw",
+            "rarity": "COMMON"
+        }, {
+            "name": "Reindeer Kog'Maw",
+            "id": "reindeerkogmaw",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Lion Dance Kog'Maw",
+            "id": "liondancekogmaw",
+            "rarity": "RARE"
+        }, {
+            "name": "Deep Sea Kog'Maw",
+            "id": "deepseakogmaw",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Jurassic Kog'Maw",
+            "id": "jurassickogmaw",
+            "rarity": "COMMON"
+        }, {
+            "name": "Battlecast Kog'Maw",
+            "id": "battlecastkogmaw",
+            "rarity": "RARE"
+        }, {
+            "name": "Pug'Maw",
+            "id": "pugmaw",
+            "rarity": "COMMON"
+        }, {
+            "name": "Hextech Kog'Maw",
+            "id": "hextechkogmaw",
+            "rarity": "MYTHIC"
+        }]
+    }, {
+        "id": "Leblanc",
+        "name": "LeBlanc",
+        "skins": [{
+            "name": "LeBlanc",
+            "id": "leblanc",
+            "rarity": "BASIC"
+        }, {
+            "name": "Wicked LeBlanc",
+            "id": "wickedleblanc",
+            "rarity": "COMMON"
+        }, {
+            "name": "Prestigious LeBlanc",
+            "id": "prestigiousleblanc",
+            "rarity": "COMMON"
+        }, {
+            "name": "Mistletoe LeBlanc",
+            "id": "mistletoeleblanc",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Ravenborn LeBlanc",
+            "id": "ravenbornleblanc",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Elderwood LeBlanc",
+            "id": "elderwoodleblanc",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "LeeSin",
+        "name": "Lee Sin",
+        "skins": [{
+            "name": "Lee Sin",
+            "id": "leesin",
+            "rarity": "BASIC"
+        }, {
+            "name": "Traditional Lee Sin",
+            "id": "traditionalleesin",
+            "rarity": "COMMON"
+        }, {
+            "name": "Acolyte Lee Sin",
+            "id": "acolyteleesin",
+            "rarity": "COMMON"
+        }, {
+            "name": "Dragon Fist Lee Sin",
+            "id": "dragonfistleesin",
+            "rarity": "COMMON"
+        }, {
+            "name": "Muay Thai Lee Sin",
+            "id": "muaythaileesin",
+            "rarity": "COMMON"
+        }, {
+            "name": "Pool Party Lee Sin",
+            "id": "poolpartyleesin",
+            "rarity": "COMMON"
+        }, {
+            "name": "SKT T1 Lee Sin",
+            "id": "sktt1leesin",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Knockout Lee Sin",
+            "id": "knockoutleesin",
+            "rarity": "RARE"
+        }, {
+            "name": "God Fist Lee Sin",
+            "id": "godfistleesin",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Playmaker Lee Sin",
+            "id": "playmakerleesin",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Leona",
+        "name": "Leona",
+        "skins": [{
+            "name": "Leona",
+            "id": "leona",
+            "rarity": "BASIC"
+        }, {
+            "name": "Valkyrie Leona",
+            "id": "valkyrieleona",
+            "rarity": "COMMON"
+        }, {
+            "name": "Defender Leona",
+            "id": "defenderleona",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Iron Solari Leona",
+            "id": "ironsolarileona",
+            "rarity": "COMMON"
+        }, {
+            "name": "Pool Party Leona",
+            "id": "poolpartyleona",
+            "rarity": "COMMON"
+        }, {
+            "name": "PROJECT: Leona",
+            "id": "projectleona",
+            "rarity": "RARE"
+        }, {
+            "name": "Barbecue Leona",
+            "id": "barbecueleona",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Lissandra",
+        "name": "Lissandra",
+        "skins": [{
+            "name": "Lissandra",
+            "id": "lissandra",
+            "rarity": "BASIC"
+        }, {
+            "name": "Bloodstone Lissandra",
+            "id": "bloodstonelissandra",
+            "rarity": "COMMON"
+        }, {
+            "name": "Blade Queen Lissandra",
+            "id": "bladequeenlissandra",
+            "rarity": "RARE"
+        }, {
+            "name": "Program Lissandra",
+            "id": "programlissandra",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Lucian",
+        "name": "Lucian",
+        "skins": [{
+            "name": "Lucian",
+            "id": "lucian",
+            "rarity": "BASIC"
+        }, {
+            "name": "Hired Gun Lucian",
+            "id": "hiredgunlucian",
+            "rarity": "COMMON"
+        }, {
+            "name": "Striker Lucian",
+            "id": "strikerlucian",
+            "rarity": "LEGACY"
+        }, {
+            "name": "PROJECT: Lucian",
+            "id": "projectlucian",
+            "rarity": "RARE"
+        }, {
+            "name": "Heartseeker Lucian",
+            "id": "heartseekerlucian",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Lulu",
+        "name": "Lulu",
+        "skins": [{
+            "name": "Lulu",
+            "id": "lulu",
+            "rarity": "BASIC"
+        }, {
+            "name": "Bittersweet Lulu",
+            "id": "bittersweetlulu",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Wicked Lulu",
+            "id": "wickedlulu",
+            "rarity": "COMMON"
+        }, {
+            "name": "Dragon Trainer Lulu",
+            "id": "dragontrainerlulu",
+            "rarity": "RARE"
+        }, {
+            "name": "Winter Wonder Lulu",
+            "id": "winterwonderlulu",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Pool Party Lulu",
+            "id": "poolpartylulu",
+            "rarity": "RARE"
+        }, {
+            "name": "Star Guardian Lulu",
+            "id": "starguardianlulu",
+            "rarity": "RARE"
+        }, {
+            "name": "Cosmic Enchantress Lulu",
+            "id": "cosmicenchantresslulu",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Lux",
+        "name": "Lux",
+        "skins": [{
+            "name": "Lux",
+            "id": "lux",
+            "rarity": "BASIC"
+        }, {
+            "name": "Sorceress Lux",
+            "id": "sorceresslux",
+            "rarity": "COMMON"
+        }, {
+            "name": "Spellthief Lux",
+            "id": "spellthieflux",
+            "rarity": "COMMON"
+        }, {
+            "name": "Commando Lux",
+            "id": "commandolux",
+            "rarity": "COMMON"
+        }, {
+            "name": "Imperial Lux",
+            "id": "imperiallux",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Steel Legion Lux",
+            "id": "steellegionlux",
+            "rarity": "COMMON"
+        }, {
+            "name": "Star Guardian Lux",
+            "id": "starguardianlux",
+            "rarity": "RARE"
+        }, {
+            "name": "Elementalist Lux",
+            "id": "elementalistlux",
+            "rarity": "ULTIMATE"
+        }, {
+            "name": "Lunar Empress Lux",
+            "id": "lunarempresslux",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Malphite",
+        "name": "Malphite",
+        "skins": [{
+            "name": "Malphite",
+            "id": "malphite",
+            "rarity": "BASIC"
+        }, {
+            "name": "Shamrock Malphite",
+            "id": "shamrockmalphite",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Coral Reef Malphite",
+            "id": "coralreefmalphite",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Marble Malphite",
+            "id": "marblemalphite",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Obsidian Malphite",
+            "id": "obsidianmalphite",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Glacial Malphite",
+            "id": "glacialmalphite",
+            "rarity": "RARE"
+        }, {
+            "name": "Mecha Malphite",
+            "id": "mechamalphite",
+            "rarity": "RARE"
+        }, {
+            "name": "Ironside Malphite",
+            "id": "ironsidemalphite",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Malzahar",
+        "name": "Malzahar",
+        "skins": [{
+            "name": "Malzahar",
+            "id": "malzahar",
+            "rarity": "BASIC"
+        }, {
+            "name": "Vizier Malzahar",
+            "id": "viziermalzahar",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Shadow Prince Malzahar",
+            "id": "shadowprincemalzahar",
+            "rarity": "COMMON"
+        }, {
+            "name": "Djinn Malzahar",
+            "id": "djinnmalzahar",
+            "rarity": "COMMON"
+        }, {
+            "name": "Overlord Malzahar",
+            "id": "overlordmalzahar",
+            "rarity": "COMMON"
+        }, {
+            "name": "Snow Day Malzahar",
+            "id": "snowdaymalzahar",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Battle Boss Malzahar",
+            "id": "battlebossmalzahar",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Maokai",
+        "name": "Maokai",
+        "skins": [{
+            "name": "Maokai",
+            "id": "maokai",
+            "rarity": "BASIC"
+        }, {
+            "name": "Charred Maokai",
+            "id": "charredmaokai",
+            "rarity": "COMMON"
+        }, {
+            "name": "Totemic Maokai",
+            "id": "totemicmaokai",
+            "rarity": "COMMON"
+        }, {
+            "name": "Festive Maokai",
+            "id": "festivemaokai",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Haunted Maokai",
+            "id": "hauntedmaokai",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Goalkeeper Maokai",
+            "id": "goalkeepermaokai",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Meowkai",
+            "id": "meowkai",
+            "rarity": "RARE"
+        }, {
+            "name": "Victorious Maokai",
+            "id": "victoriousmaokai",
+            "rarity": "LIMITED"
+        }]
+    }, {
+        "id": "MasterYi",
+        "name": "Master Yi",
+        "skins": [{
+            "name": "Master Yi",
+            "id": "masteryi",
+            "rarity": "BASIC"
+        }, {
+            "name": "Assassin Master Yi",
+            "id": "assassinmasteryi",
+            "rarity": "COMMON"
+        }, {
+            "name": "Chosen Master Yi",
+            "id": "chosenmasteryi",
+            "rarity": "COMMON"
+        }, {
+            "name": "Ionia Master Yi",
+            "id": "ioniamasteryi",
+            "rarity": "COMMON"
+        }, {
+            "name": "Samurai Yi",
+            "id": "samuraiyi",
+            "rarity": "COMMON"
+        }, {
+            "name": "Headhunter Master Yi",
+            "id": "headhuntermasteryi",
+            "rarity": "COMMON"
+        }, {
+            "name": "PROJECT: Yi",
+            "id": "projectyi",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Cosmic Blade Master Yi",
+            "id": "cosmicblademasteryi",
+            "rarity": "RARE"
+        }, {
+            "name": "Eternal Sword Yi",
+            "id": "eternalswordyi",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "MissFortune",
+        "name": "Miss Fortune",
+        "skins": [{
+            "name": "Miss Fortune",
+            "id": "missfortune",
+            "rarity": "BASIC"
+        }, {
+            "name": "Cowgirl Miss Fortune",
+            "id": "cowgirlmissfortune",
+            "rarity": "COMMON"
+        }, {
+            "name": "Waterloo Miss Fortune",
+            "id": "waterloomissfortune",
+            "rarity": "COMMON"
+        }, {
+            "name": "Secret Agent Miss Fortune",
+            "id": "secretagentmissfortune",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Candy Cane Miss Fortune",
+            "id": "candycanemissfortune",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Road Warrior Miss Fortune",
+            "id": "roadwarriormissfortune",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Mafia Miss Fortune",
+            "id": "mafiamissfortune",
+            "rarity": "COMMON"
+        }, {
+            "name": "Arcade Miss Fortune",
+            "id": "arcademissfortune",
+            "rarity": "RARE"
+        }, {
+            "name": "Captain Fortune",
+            "id": "captainfortune",
+            "rarity": "COMMON"
+        }, {
+            "name": "Pool Party Miss Fortune",
+            "id": "poolpartymissfortune",
+            "rarity": "RARE"
+        }, {
+            "name": "Star Guardian Miss Fortune",
+            "id": "starguardianmissfortune",
+            "rarity": "RARE"
+        }, {
+            "name": "Gun Goddess Miss Fortune",
+            "id": "gungoddessmissfortune",
+            "rarity": "ULTIMATE"
+        }]
+    }, {
+        "id": "MonkeyKing",
+        "name": "Wukong",
+        "skins": [{
+            "name": "Wukong",
+            "id": "wukong",
+            "rarity": "BASIC"
+        }, {
+            "name": "Volcanic Wukong",
+            "id": "volcanicwukong",
+            "rarity": "COMMON"
+        }, {
+            "name": "General Wukong",
+            "id": "generalwukong",
+            "rarity": "COMMON"
+        }, {
+            "name": "Jade Dragon Wukong",
+            "id": "jadedragonwukong",
+            "rarity": "COMMON"
+        }, {
+            "name": "Underworld Wukong",
+            "id": "underworldwukong",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Radiant Wukong",
+            "id": "radiantwukong",
+            "rarity": "RARE"
+        }, {
+            "name": "Lancer Stratus Wukong",
+            "id": "lancerstratuswukong",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Mordekaiser",
+        "name": "Mordekaiser",
+        "skins": [{
+            "name": "Mordekaiser",
+            "id": "mordekaiser",
+            "rarity": "BASIC"
+        }, {
+            "name": "Dragon Knight Mordekaiser",
+            "id": "dragonknightmordekaiser",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Infernal Mordekaiser",
+            "id": "infernalmordekaiser",
+            "rarity": "COMMON"
+        }, {
+            "name": "Pentakill Mordekaiser",
+            "id": "pentakillmordekaiser",
+            "rarity": "COMMON"
+        }, {
+            "name": "Lord Mordekaiser",
+            "id": "lordmordekaiser",
+            "rarity": "COMMON"
+        }, {
+            "name": "King of Clubs Mordekaiser",
+            "id": "kingofclubsmordekaiser",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Morgana",
+        "name": "Morgana",
+        "skins": [{
+            "name": "Morgana",
+            "id": "morgana",
+            "rarity": "BASIC"
+        }, {
+            "name": "Exiled Morgana",
+            "id": "exiledmorgana",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Sinful Succulence Morgana",
+            "id": "sinfulsucculencemorgana",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Blade Mistress Morgana",
+            "id": "blademistressmorgana",
+            "rarity": "COMMON"
+        }, {
+            "name": "Blackthorn Morgana",
+            "id": "blackthornmorgana",
+            "rarity": "RARE"
+        }, {
+            "name": "Ghost Bride Morgana",
+            "id": "ghostbridemorgana",
+            "rarity": "COMMON"
+        }, {
+            "name": "Victorious Morgana",
+            "id": "victoriousmorgana",
+            "rarity": "LIMITED"
+        }, {
+            "name": "Lunar Wraith Morgana",
+            "id": "lunarwraithmorgana",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Bewitching Morgana",
+            "id": "bewitchingmorgana",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Nami",
+        "name": "Nami",
+        "skins": [{
+            "name": "Nami",
+            "id": "nami",
+            "rarity": "BASIC"
+        }, {
+            "name": "Koi Nami",
+            "id": "koinami",
+            "rarity": "COMMON"
+        }, {
+            "name": "River Spirit Nami",
+            "id": "riverspiritnami",
+            "rarity": "COMMON"
+        }, {
+            "name": "Urf the Nami-tee",
+            "id": "urfthenamitee",
+            "rarity": "COMMON"
+        }, {
+            "name": "Deep Sea Nami",
+            "id": "deepseanami",
+            "rarity": "RARE"
+        }, {
+            "name": "SKT T1 Nami",
+            "id": "sktt1nami",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Nasus",
+        "name": "Nasus",
+        "skins": [{
+            "name": "Nasus",
+            "id": "nasus",
+            "rarity": "BASIC"
+        }, {
+            "name": "Galactic Nasus",
+            "id": "galacticnasus",
+            "rarity": "COMMON"
+        }, {
+            "name": "Pharaoh Nasus",
+            "id": "pharaohnasus",
+            "rarity": "COMMON"
+        }, {
+            "name": "Dreadknight Nasus",
+            "id": "dreadknightnasus",
+            "rarity": "COMMON"
+        }, {
+            "name": "Riot K-9 Nasus",
+            "id": "riotk9nasus",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Infernal Nasus",
+            "id": "infernalnasus",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Archduke Nasus",
+            "id": "archdukenasus",
+            "rarity": "COMMON"
+        }, {
+            "name": "Worldbreaker Nasus",
+            "id": "worldbreakernasus",
+            "rarity": "COMMON"
+        }, {
+            "name": "Lunar Guardian Nasus",
+            "id": "lunarguardiannasus",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Nautilus",
+        "name": "Nautilus",
+        "skins": [{
+            "name": "Nautilus",
+            "id": "nautilus",
+            "rarity": "BASIC"
+        }, {
+            "name": "Abyssal Nautilus",
+            "id": "abyssalnautilus",
+            "rarity": "COMMON"
+        }, {
+            "name": "Subterranean Nautilus",
+            "id": "subterraneannautilus",
+            "rarity": "COMMON"
+        }, {
+            "name": "AstroNautilus",
+            "id": "astronautilus",
+            "rarity": "RARE"
+        }, {
+            "name": "Warden Nautilus",
+            "id": "wardennautilus",
+            "rarity": "COMMON"
+        }, {
+            "name": "Worldbreaker Nautilus",
+            "id": "worldbreakernautilus",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Nidalee",
+        "name": "Nidalee",
+        "skins": [{
+            "name": "Nidalee",
+            "id": "nidalee",
+            "rarity": "BASIC"
+        }, {
+            "name": "Snow Bunny Nidalee",
+            "id": "snowbunnynidalee",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Leopard Nidalee",
+            "id": "leopardnidalee",
+            "rarity": "LEGACY"
+        }, {
+            "name": "French Maid Nidalee",
+            "id": "frenchmaidnidalee",
+            "rarity": "COMMON"
+        }, {
+            "name": "Pharaoh Nidalee",
+            "id": "pharaohnidalee",
+            "rarity": "COMMON"
+        }, {
+            "name": "Bewitching Nidalee",
+            "id": "bewitchingnidalee",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Headhunter Nidalee",
+            "id": "headhunternidalee",
+            "rarity": "COMMON"
+        }, {
+            "name": "Warring Kingdoms Nidalee",
+            "id": "warringkingdomsnidalee",
+            "rarity": "COMMON"
+        }, {
+            "name": "Challenger Nidalee",
+            "id": "challengernidalee",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Super Galaxy Nidalee",
+            "id": "supergalaxynidalee",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Nocturne",
+        "name": "Nocturne",
+        "skins": [{
+            "name": "Nocturne",
+            "id": "nocturne",
+            "rarity": "BASIC"
+        }, {
+            "name": "Frozen Terror Nocturne",
+            "id": "frozenterrornocturne",
+            "rarity": "COMMON"
+        }, {
+            "name": "Void Nocturne",
+            "id": "voidnocturne",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Ravager Nocturne",
+            "id": "ravagernocturne",
+            "rarity": "COMMON"
+        }, {
+            "name": "Haunting Nocturne",
+            "id": "hauntingnocturne",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Eternum Nocturne",
+            "id": "eternumnocturne",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Cursed Revenant Nocturne",
+            "id": "cursedrevenantnocturne",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Nunu",
+        "name": "Nunu",
+        "skins": [{
+            "name": "Nunu",
+            "id": "nunu",
+            "rarity": "BASIC"
+        }, {
+            "name": "Sasquatch Nunu",
+            "id": "sasquatchnunu",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Workshop Nunu",
+            "id": "workshopnunu",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Grungy Nunu",
+            "id": "grungynunu",
+            "rarity": "COMMON"
+        }, {
+            "name": "Nunu Bot",
+            "id": "nunubot",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Demolisher Nunu",
+            "id": "demolishernunu",
+            "rarity": "COMMON"
+        }, {
+            "name": "TPA Nunu",
+            "id": "tpanunu",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Zombie Nunu",
+            "id": "zombienunu",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Olaf",
+        "name": "Olaf",
+        "skins": [{
+            "name": "Olaf",
+            "id": "olaf",
+            "rarity": "BASIC"
+        }, {
+            "name": "Forsaken Olaf",
+            "id": "forsakenolaf",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Glacial Olaf",
+            "id": "glacialolaf",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Brolaf",
+            "id": "brolaf",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Pentakill Olaf",
+            "id": "pentakillolaf",
+            "rarity": "COMMON"
+        }, {
+            "name": "Marauder Olaf",
+            "id": "marauderolaf",
+            "rarity": "COMMON"
+        }, {
+            "name": "Butcher Olaf",
+            "id": "butcherolaf",
+            "rarity": "COMMON"
+        }, {
+            "name": "SKT T1 Olaf",
+            "id": "sktt1olaf",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Orianna",
+        "name": "Orianna",
+        "skins": [{
+            "name": "Orianna",
+            "id": "orianna",
+            "rarity": "BASIC"
+        }, {
+            "name": "Gothic Orianna",
+            "id": "gothicorianna",
+            "rarity": "COMMON"
+        }, {
+            "name": "Sewn Chaos Orianna",
+            "id": "sewnchaosorianna",
+            "rarity": "COMMON"
+        }, {
+            "name": "Bladecraft Orianna",
+            "id": "bladecraftorianna",
+            "rarity": "COMMON"
+        }, {
+            "name": "TPA Orianna",
+            "id": "tpaorianna",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Winter Wonder Orianna",
+            "id": "winterwonderorianna",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Heartseeker Orianna",
+            "id": "heartseekerorianna",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Dark Star Orianna",
+            "id": "darkstarorianna",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Ornn",
+        "name": "Ornn",
+        "skins": [{
+            "name": "Ornn",
+            "id": "ornn",
+            "rarity": "BASIC"
+        }, {
+            "name": "Thunder Lord Ornn",
+            "id": "thunderlordornn",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Pantheon",
+        "name": "Pantheon",
+        "skins": [{
+            "name": "Pantheon",
+            "id": "pantheon",
+            "rarity": "BASIC"
+        }, {
+            "name": "Myrmidon Pantheon",
+            "id": "myrmidonpantheon",
+            "rarity": "COMMON"
+        }, {
+            "name": "Ruthless Pantheon",
+            "id": "ruthlesspantheon",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Perseus Pantheon",
+            "id": "perseuspantheon",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Full Metal Pantheon",
+            "id": "fullmetalpantheon",
+            "rarity": "COMMON"
+        }, {
+            "name": "Glaive Warrior Pantheon",
+            "id": "glaivewarriorpantheon",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Dragonslayer Pantheon",
+            "id": "dragonslayerpantheon",
+            "rarity": "RARE"
+        }, {
+            "name": "Slayer Pantheon",
+            "id": "slayerpantheon",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Baker Pantheon",
+            "id": "bakerpantheon",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Poppy",
+        "name": "Poppy",
+        "skins": [{
+            "name": "Poppy",
+            "id": "poppy",
+            "rarity": "BASIC"
+        }, {
+            "name": "Noxus Poppy",
+            "id": "noxuspoppy",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Lollipoppy",
+            "id": "lollipoppy",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Blacksmith Poppy",
+            "id": "blacksmithpoppy",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Ragdoll Poppy",
+            "id": "ragdollpoppy",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Battle Regalia Poppy",
+            "id": "battleregaliapoppy",
+            "rarity": "COMMON"
+        }, {
+            "name": "Scarlet Hammer Poppy",
+            "id": "scarlethammerpoppy",
+            "rarity": "COMMON"
+        }, {
+            "name": "Star Guardian Poppy",
+            "id": "starguardianpoppy",
+            "rarity": "RARE"
+        }, {
+            "name": "Snow Fawn Poppy",
+            "id": "snowfawnpoppy",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Hextech Poppy",
+            "id": "hextechpoppy",
+            "rarity": "MYTHIC"
+        }]
+    }, {
+        "id": "Pyke",
+        "name": "Pyke",
+        "skins": [{
+            "name": "Pyke",
+            "id": "pyke",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Sand Wraith Pyke",
+            "id": "sandwraithpyke",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Quinn",
+        "name": "Quinn",
+        "skins": [{
+            "name": "Quinn",
+            "id": "quinn",
+            "rarity": "BASIC"
+        }, {
+            "name": "Phoenix Quinn",
+            "id": "phoenixquinn",
+            "rarity": "COMMON"
+        }, {
+            "name": "Woad Scout Quinn",
+            "id": "woadscoutquinn",
+            "rarity": "COMMON"
+        }, {
+            "name": "Corsair Quinn",
+            "id": "corsairquinn",
+            "rarity": "COMMON"
+        }, {
+            "name": "Heartseeker Quinn",
+            "id": "heartseekerquinn",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Rakan",
+        "name": "Rakan",
+        "skins": [{
+            "name": "Rakan",
+            "id": "rakan",
+            "rarity": "BASIC"
+        }, {
+            "name": "Cosmic Dawn Rakan",
+            "id": "cosmicdawnrakan",
+            "rarity": "RARE"
+        }, {
+            "name": "Sweetheart Rakan",
+            "id": "sweetheartrakan",
+            "rarity": "LEGACY"
+        }, {
+            "name": "SSG Rakan",
+            "id": "ssgrakan",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Rammus",
+        "name": "Rammus",
+        "skins": [{
+            "name": "Rammus",
+            "id": "rammus",
+            "rarity": "BASIC"
+        }, {
+            "name": "King Rammus",
+            "id": "kingrammus",
+            "rarity": "UNIQUE"
+        }, {
+            "name": "Chrome Rammus",
+            "id": "chromerammus",
+            "rarity": "COMMON"
+        }, {
+            "name": "Molten Rammus",
+            "id": "moltenrammus",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Freljord Rammus",
+            "id": "freljordrammus",
+            "rarity": "COMMON"
+        }, {
+            "name": "Ninja Rammus",
+            "id": "ninjarammus",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Full Metal Rammus",
+            "id": "fullmetalrammus",
+            "rarity": "COMMON"
+        }, {
+            "name": "Guardian of the Sands Rammus",
+            "id": "guardianofthesandsrammus",
+            "rarity": "COMMON"
+        }, {
+            "name": "Sweeper Rammus",
+            "id": "sweeperrammus",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "RekSai",
+        "name": "Rek'Sai",
+        "skins": [{
+            "name": "Rek'Sai",
+            "id": "reksai",
+            "rarity": "BASIC"
+        }, {
+            "name": "Eternum Rek'Sai",
+            "id": "eternumreksai",
+            "rarity": "RARE"
+        }, {
+            "name": "Pool Party Rek'Sai",
+            "id": "poolpartyreksai",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Renekton",
+        "name": "Renekton",
+        "skins": [{
+            "name": "Renekton",
+            "id": "renekton",
+            "rarity": "BASIC"
+        }, {
+            "name": "Galactic Renekton",
+            "id": "galacticrenekton",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Outback Renekton",
+            "id": "outbackrenekton",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Bloodfury Renekton",
+            "id": "bloodfuryrenekton",
+            "rarity": "COMMON"
+        }, {
+            "name": "Rune Wars Renekton",
+            "id": "runewarsrenekton",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Scorched Earth Renekton",
+            "id": "scorchedearthrenekton",
+            "rarity": "COMMON"
+        }, {
+            "name": "Pool Party Renekton",
+            "id": "poolpartyrenekton",
+            "rarity": "COMMON"
+        }, {
+            "name": "Prehistoric Renekton",
+            "id": "prehistoricrenekton",
+            "rarity": "COMMON"
+        }, {
+            "name": "SKT T1 Renekton",
+            "id": "sktt1renekton",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Renektoy",
+            "id": "renektoy",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Rengar",
+        "name": "Rengar",
+        "skins": [{
+            "name": "Rengar",
+            "id": "rengar",
+            "rarity": "BASIC"
+        }, {
+            "name": "Headhunter Rengar",
+            "id": "headhunterrengar",
+            "rarity": "COMMON"
+        }, {
+            "name": "Night Hunter Rengar",
+            "id": "nighthunterrengar",
+            "rarity": "COMMON"
+        }, {
+            "name": "SSW Rengar",
+            "id": "sswrengar",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Mecha Rengar",
+            "id": "mecharengar",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Riven",
+        "name": "Riven",
+        "skins": [{
+            "name": "Riven",
+            "id": "riven",
+            "rarity": "BASIC"
+        }, {
+            "name": "Redeemed Riven",
+            "id": "redeemedriven",
+            "rarity": "COMMON"
+        }, {
+            "name": "Crimson Elite Riven",
+            "id": "crimsoneliteriven",
+            "rarity": "COMMON"
+        }, {
+            "name": "Battle Bunny Riven",
+            "id": "battlebunnyriven",
+            "rarity": "COMMON"
+        }, {
+            "name": "Championship Riven",
+            "id": "championshipriven",
+            "rarity": "UNIQUE"
+        }, {
+            "name": "Dragonblade Riven",
+            "id": "dragonbladeriven",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Arcade Riven",
+            "id": "arcaderiven",
+            "rarity": "RARE"
+        }, {
+            "name": "Championship Riven 2016",
+            "id": "championshipriven2016",
+            "rarity": "LIMITED"
+        }, {
+            "name": "Dawnbringer Riven",
+            "id": "dawnbringerriven",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Pulsefire Riven",
+            "id": "pulsefireriven",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Rumble",
+        "name": "Rumble",
+        "skins": [{
+            "name": "Rumble",
+            "id": "rumble",
+            "rarity": "BASIC"
+        }, {
+            "name": "Rumble in the Jungle",
+            "id": "rumbleinthejungle",
+            "rarity": "COMMON"
+        }, {
+            "name": "Bilgerat Rumble",
+            "id": "bilgeratrumble",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Super Galaxy Rumble",
+            "id": "supergalaxyrumble",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Badlands Baron Rumble",
+            "id": "badlandsbaronrumble",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Ryze",
+        "name": "Ryze",
+        "skins": [{
+            "name": "Ryze",
+            "id": "ryze",
+            "rarity": "BASIC"
+        }, {
+            "name": "Young Ryze",
+            "id": "youngryze",
+            "rarity": "UNIQUE"
+        }, {
+            "name": "Tribal Ryze",
+            "id": "tribalryze",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Uncle Ryze",
+            "id": "uncleryze",
+            "rarity": "COMMON"
+        }, {
+            "name": "Triumphant Ryze",
+            "id": "triumphantryze",
+            "rarity": "LIMITED"
+        }, {
+            "name": "Professor Ryze",
+            "id": "professorryze",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Zombie Ryze",
+            "id": "zombieryze",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Dark Crystal Ryze",
+            "id": "darkcrystalryze",
+            "rarity": "COMMON"
+        }, {
+            "name": "Pirate Ryze",
+            "id": "pirateryze",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Ryze Whitebeard",
+            "id": "ryzewhitebeard",
+            "rarity": "COMMON"
+        }, {
+            "name": "SKT T1 Ryze",
+            "id": "sktt1ryze",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Sejuani",
+        "name": "Sejuani",
+        "skins": [{
+            "name": "Sejuani",
+            "id": "sejuani",
+            "rarity": "BASIC"
+        }, {
+            "name": "Sabretusk Sejuani",
+            "id": "sabretusksejuani",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Darkrider Sejuani",
+            "id": "darkridersejuani",
+            "rarity": "COMMON"
+        }, {
+            "name": "Traditional Sejuani",
+            "id": "traditionalsejuani",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Bear Cavalry Sejuani",
+            "id": "bearcavalrysejuani",
+            "rarity": "RARE"
+        }, {
+            "name": "Poro Rider Sejuani",
+            "id": "pororidersejuani",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Beast Hunter Sejuani",
+            "id": "beasthuntersejuani",
+            "rarity": "COMMON"
+        }, {
+            "name": "Sejuani Dawnchaser",
+            "id": "sejuanidawnchaser",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Shaco",
+        "name": "Shaco",
+        "skins": [{
+            "name": "Shaco",
+            "id": "shaco",
+            "rarity": "BASIC"
+        }, {
+            "name": "Mad Hatter Shaco",
+            "id": "madhattershaco",
+            "rarity": "COMMON"
+        }, {
+            "name": "Royal Shaco",
+            "id": "royalshaco",
+            "rarity": "COMMON"
+        }, {
+            "name": "Nutcracko",
+            "id": "nutcracko",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Workshop Shaco",
+            "id": "workshopshaco",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Asylum Shaco",
+            "id": "asylumshaco",
+            "rarity": "COMMON"
+        }, {
+            "name": "Masked Shaco",
+            "id": "maskedshaco",
+            "rarity": "COMMON"
+        }, {
+            "name": "Wild Card Shaco",
+            "id": "wildcardshaco",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Shen",
+        "name": "Shen",
+        "skins": [{
+            "name": "Shen",
+            "id": "shen",
+            "rarity": "BASIC"
+        }, {
+            "name": "Frozen Shen",
+            "id": "frozenshen",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Yellow Jacket Shen",
+            "id": "yellowjacketshen",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Surgeon Shen",
+            "id": "surgeonshen",
+            "rarity": "COMMON"
+        }, {
+            "name": "Blood Moon Shen",
+            "id": "bloodmoonshen",
+            "rarity": "COMMON"
+        }, {
+            "name": "Warlord Shen",
+            "id": "warlordshen",
+            "rarity": "COMMON"
+        }, {
+            "name": "TPA Shen",
+            "id": "tpashen",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Pulsefire Shen",
+            "id": "pulsefireshen",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Shyvana",
+        "name": "Shyvana",
+        "skins": [{
+            "name": "Shyvana",
+            "id": "shyvana",
+            "rarity": "BASIC"
+        }, {
+            "name": "Ironscale Shyvana",
+            "id": "ironscaleshyvana",
+            "rarity": "COMMON"
+        }, {
+            "name": "Boneclaw Shyvana",
+            "id": "boneclawshyvana",
+            "rarity": "COMMON"
+        }, {
+            "name": "Darkflame Shyvana",
+            "id": "darkflameshyvana",
+            "rarity": "COMMON"
+        }, {
+            "name": "Ice Drake Shyvana",
+            "id": "icedrakeshyvana",
+            "rarity": "COMMON"
+        }, {
+            "name": "Championship Shyvana",
+            "id": "championshipshyvana",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Super Galaxy Shyvana",
+            "id": "supergalaxyshyvana",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Singed",
+        "name": "Singed",
+        "skins": [{
+            "name": "Singed",
+            "id": "singed",
+            "rarity": "BASIC"
+        }, {
+            "name": "Riot Squad Singed",
+            "id": "riotsquadsinged",
+            "rarity": "UNIQUE"
+        }, {
+            "name": "Hextech Singed",
+            "id": "hextechsinged",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Surfer Singed",
+            "id": "surfersinged",
+            "rarity": "COMMON"
+        }, {
+            "name": "Mad Scientist Singed",
+            "id": "madscientistsinged",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Augmented Singed",
+            "id": "augmentedsinged",
+            "rarity": "COMMON"
+        }, {
+            "name": "Snow Day Singed",
+            "id": "snowdaysinged",
+            "rarity": "LEGACY"
+        }, {
+            "name": "SSW Singed",
+            "id": "sswsinged",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Black Scourge Singed",
+            "id": "blackscourgesinged",
+            "rarity": "COMMON"
+        }, {
+            "name": "Beekeeper Singed",
+            "id": "beekeepersinged",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Sion",
+        "name": "Sion",
+        "skins": [{
+            "name": "Sion",
+            "id": "sion",
+            "rarity": "BASIC"
+        }, {
+            "name": "Hextech Sion",
+            "id": "hextechsion",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Barbarian Sion",
+            "id": "barbariansion",
+            "rarity": "COMMON"
+        }, {
+            "name": "Lumberjack Sion",
+            "id": "lumberjacksion",
+            "rarity": "COMMON"
+        }, {
+            "name": "Warmonger Sion",
+            "id": "warmongersion",
+            "rarity": "COMMON"
+        }, {
+            "name": "Mecha Zero Sion",
+            "id": "mechazerosion",
+            "rarity": "LEGENDARY"
+        }]
+    }, {
+        "id": "Sivir",
+        "name": "Sivir",
+        "skins": [{
+            "name": "Sivir",
+            "id": "sivir",
+            "rarity": "BASIC"
+        }, {
+            "name": "Warrior Princess Sivir",
+            "id": "warriorprincesssivir",
+            "rarity": "COMMON"
+        }, {
+            "name": "Spectacular Sivir",
+            "id": "spectacularsivir",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Huntress Sivir",
+            "id": "huntresssivir",
+            "rarity": "COMMON"
+        }, {
+            "name": "Bandit Sivir",
+            "id": "banditsivir",
+            "rarity": "COMMON"
+        }, {
+            "name": "PAX Sivir",
+            "id": "paxsivir",
+            "rarity": "UNIQUE"
+        }, {
+            "name": "Snowstorm Sivir",
+            "id": "snowstormsivir",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Warden Sivir",
+            "id": "wardensivir",
+            "rarity": "COMMON"
+        }, {
+            "name": "Victorious Sivir",
+            "id": "victorioussivir",
+            "rarity": "LIMITED"
+        }, {
+            "name": "Neo PAX Sivir",
+            "id": "neopaxsivir",
+            "rarity": "MYTHIC"
+        }, {
+            "name": "Pizza Delivery Sivir",
+            "id": "pizzadeliverysivir",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Skarner",
+        "name": "Skarner",
+        "skins": [{
+            "name": "Skarner",
+            "id": "skarner",
+            "rarity": "BASIC"
+        }, {
+            "name": "Sandscourge Skarner",
+            "id": "sandscourgeskarner",
+            "rarity": "COMMON"
+        }, {
+            "name": "Earthrune Skarner",
+            "id": "earthruneskarner",
+            "rarity": "COMMON"
+        }, {
+            "name": "Battlecast Alpha Skarner",
+            "id": "battlecastalphaskarner",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Guardian of the Sands Skarner",
+            "id": "guardianofthesandsskarner",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Sona",
+        "name": "Sona",
+        "skins": [{
+            "name": "Sona",
+            "id": "sona",
+            "rarity": "BASIC"
+        }, {
+            "name": "Muse Sona",
+            "id": "musesona",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Pentakill Sona",
+            "id": "pentakillsona",
+            "rarity": "COMMON"
+        }, {
+            "name": "Silent Night Sona",
+            "id": "silentnightsona",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Guqin Sona",
+            "id": "guqinsona",
+            "rarity": "COMMON"
+        }, {
+            "name": "Arcade Sona",
+            "id": "arcadesona",
+            "rarity": "RARE"
+        }, {
+            "name": "DJ Sona",
+            "id": "djsona",
+            "rarity": "ULTIMATE"
+        }, {
+            "name": "Sweetheart Sona",
+            "id": "sweetheartsona",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Soraka",
+        "name": "Soraka",
+        "skins": [{
+            "name": "Soraka",
+            "id": "soraka",
+            "rarity": "BASIC"
+        }, {
+            "name": "Dryad Soraka",
+            "id": "dryadsoraka",
+            "rarity": "COMMON"
+        }, {
+            "name": "Divine Soraka",
+            "id": "divinesoraka",
+            "rarity": "COMMON"
+        }, {
+            "name": "Celestine Soraka",
+            "id": "celestinesoraka",
+            "rarity": "COMMON"
+        }, {
+            "name": "Reaper Soraka",
+            "id": "reapersoraka",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Order of the Banana Soraka",
+            "id": "orderofthebananasoraka",
+            "rarity": "COMMON"
+        }, {
+            "name": "Program Soraka",
+            "id": "programsoraka",
+            "rarity": "RARE"
+        }, {
+            "name": "Star Guardian Soraka",
+            "id": "starguardiansoraka",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Swain",
+        "name": "Swain",
+        "skins": [{
+            "name": "Swain",
+            "id": "swain",
+            "rarity": "BASIC"
+        }, {
+            "name": "Northern Front Swain",
+            "id": "northernfrontswain",
+            "rarity": "COMMON"
+        }, {
+            "name": "Bilgewater Swain",
+            "id": "bilgewaterswain",
+            "rarity": "COMMON"
+        }, {
+            "name": "Tyrant Swain",
+            "id": "tyrantswain",
+            "rarity": "RARE"
+        }, {
+            "name": "Dragon Master Swain",
+            "id": "dragonmasterswain",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Syndra",
+        "name": "Syndra",
+        "skins": [{
+            "name": "Syndra",
+            "id": "syndra",
+            "rarity": "BASIC"
+        }, {
+            "name": "Justicar Syndra",
+            "id": "justicarsyndra",
+            "rarity": "COMMON"
+        }, {
+            "name": "Atlantean Syndra",
+            "id": "atlanteansyndra",
+            "rarity": "COMMON"
+        }, {
+            "name": "Queen of Diamonds Syndra",
+            "id": "queenofdiamondssyndra",
+            "rarity": "COMMON"
+        }, {
+            "name": "Snow Day Syndra",
+            "id": "snowdaysyndra",
+            "rarity": "LEGACY"
+        }, {
+            "name": "SKT T1 Syndra",
+            "id": "sktt1syndra",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Star Guardian Syndra",
+            "id": "starguardiansyndra",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "TahmKench",
+        "name": "Tahm Kench",
+        "skins": [{
+            "name": "Tahm Kench",
+            "id": "tahmkench",
+            "rarity": "BASIC"
+        }, {
+            "name": "Master Chef Tahm Kench",
+            "id": "mastercheftahmkench",
+            "rarity": "COMMON"
+        }, {
+            "name": "Urf Kench",
+            "id": "urfkench",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Taliyah",
+        "name": "Taliyah",
+        "skins": [{
+            "name": "Taliyah",
+            "id": "taliyah",
+            "rarity": "BASIC"
+        }, {
+            "name": "Freljord Taliyah",
+            "id": "freljordtaliyah",
+            "rarity": "RARE"
+        }, {
+            "name": "SSG Taliyah",
+            "id": "ssgtaliyah",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Talon",
+        "name": "Talon",
+        "skins": [{
+            "name": "Talon",
+            "id": "talon",
+            "rarity": "BASIC"
+        }, {
+            "name": "Renegade Talon",
+            "id": "renegadetalon",
+            "rarity": "COMMON"
+        }, {
+            "name": "Crimson Elite Talon",
+            "id": "crimsonelitetalon",
+            "rarity": "COMMON"
+        }, {
+            "name": "Dragonblade Talon",
+            "id": "dragonbladetalon",
+            "rarity": "COMMON"
+        }, {
+            "name": "SSW Talon",
+            "id": "sswtalon",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Blood Moon Talon",
+            "id": "bloodmoontalon",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Taric",
+        "name": "Taric",
+        "skins": [{
+            "name": "Taric",
+            "id": "taric",
+            "rarity": "BASIC"
+        }, {
+            "name": "Emerald Taric",
+            "id": "emeraldtaric",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Armor of the Fifth Age Taric",
+            "id": "armorofthefifthagetaric",
+            "rarity": "COMMON"
+        }, {
+            "name": "Bloodstone Taric",
+            "id": "bloodstonetaric",
+            "rarity": "COMMON"
+        }, {
+            "name": "Pool Party Taric",
+            "id": "poolpartytaric",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Teemo",
+        "name": "Teemo",
+        "skins": [{
+            "name": "Teemo",
+            "id": "teemo",
+            "rarity": "BASIC"
+        }, {
+            "name": "Happy Elf Teemo",
+            "id": "happyelfteemo",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Recon Teemo",
+            "id": "reconteemo",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Badger Teemo",
+            "id": "badgerteemo",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Astronaut Teemo",
+            "id": "astronautteemo",
+            "rarity": "RARE"
+        }, {
+            "name": "Cottontail Teemo",
+            "id": "cottontailteemo",
+            "rarity": "COMMON"
+        }, {
+            "name": "Super Teemo",
+            "id": "superteemo",
+            "rarity": "COMMON"
+        }, {
+            "name": "Panda Teemo",
+            "id": "pandateemo",
+            "rarity": "COMMON"
+        }, {
+            "name": "Omega Squad Teemo",
+            "id": "omegasquadteemo",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Little Devil Teemo",
+            "id": "littledevilteemo",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Beemo",
+            "id": "beemo",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Thresh",
+        "name": "Thresh",
+        "skins": [{
+            "name": "Thresh",
+            "id": "thresh",
+            "rarity": "BASIC"
+        }, {
+            "name": "Deep Terror Thresh",
+            "id": "deepterrorthresh",
+            "rarity": "COMMON"
+        }, {
+            "name": "Championship Thresh",
+            "id": "championshipthresh",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Blood Moon Thresh",
+            "id": "bloodmoonthresh",
+            "rarity": "COMMON"
+        }, {
+            "name": "SSW Thresh",
+            "id": "sswthresh",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Dark Star Thresh",
+            "id": "darkstarthresh",
+            "rarity": "LEGENDARY"
+        }]
+    }, {
+        "id": "Tristana",
+        "name": "Tristana",
+        "skins": [{
+            "name": "Tristana",
+            "id": "tristana",
+            "rarity": "BASIC"
+        }, {
+            "name": "Riot Girl Tristana",
+            "id": "riotgirltristana",
+            "rarity": "LIMITED"
+        }, {
+            "name": "Earnest Elf Tristana",
+            "id": "earnestelftristana",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Firefighter Tristana",
+            "id": "firefightertristana",
+            "rarity": "LEGACY_LEGENDARY"
+        }, {
+            "name": "Guerilla Tristana",
+            "id": "guerillatristana",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Buccaneer Tristana",
+            "id": "buccaneertristana",
+            "rarity": "COMMON"
+        }, {
+            "name": "Rocket Girl Tristana",
+            "id": "rocketgirltristana",
+            "rarity": "COMMON"
+        }, {
+            "name": "Dragon Trainer Tristana",
+            "id": "dragontrainertristana",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Bewitching Tristana",
+            "id": "bewitchingtristana",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Omega Squad Tristana",
+            "id": "omegasquadtristana",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Trundle",
+        "name": "Trundle",
+        "skins": [{
+            "name": "Trundle",
+            "id": "trundle",
+            "rarity": "BASIC"
+        }, {
+            "name": "Lil' Slugger Trundle",
+            "id": "lilsluggertrundle",
+            "rarity": "COMMON"
+        }, {
+            "name": "Junkyard Trundle",
+            "id": "junkyardtrundle",
+            "rarity": "COMMON"
+        }, {
+            "name": "Traditional Trundle",
+            "id": "traditionaltrundle",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Constable Trundle",
+            "id": "constabletrundle",
+            "rarity": "COMMON"
+        }, {
+            "name": "Worldbreaker Trundle",
+            "id": "worldbreakertrundle",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Tryndamere",
+        "name": "Tryndamere",
+        "skins": [{
+            "name": "Tryndamere",
+            "id": "tryndamere",
+            "rarity": "BASIC"
+        }, {
+            "name": "Highland Tryndamere",
+            "id": "highlandtryndamere",
+            "rarity": "LEGACY"
+        }, {
+            "name": "King Tryndamere",
+            "id": "kingtryndamere",
+            "rarity": "COMMON"
+        }, {
+            "name": "Viking Tryndamere",
+            "id": "vikingtryndamere",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Demonblade Tryndamere",
+            "id": "demonbladetryndamere",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Sultan Tryndamere",
+            "id": "sultantryndamere",
+            "rarity": "COMMON"
+        }, {
+            "name": "Warring Kingdoms Tryndamere",
+            "id": "warringkingdomstryndamere",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Nightmare Tryndamere",
+            "id": "nightmaretryndamere",
+            "rarity": "COMMON"
+        }, {
+            "name": "Beast Hunter Tryndamere",
+            "id": "beasthuntertryndamere",
+            "rarity": "COMMON"
+        }, {
+            "name": "Chemtech Tryndamere",
+            "id": "chemtechtryndamere",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "TwistedFate",
+        "name": "Twisted Fate",
+        "skins": [{
+            "name": "Twisted Fate",
+            "id": "twistedfate",
+            "rarity": "BASIC"
+        }, {
+            "name": "PAX Twisted Fate",
+            "id": "paxtwistedfate",
+            "rarity": "UNIQUE"
+        }, {
+            "name": "Jack of Hearts Twisted Fate",
+            "id": "jackofheartstwistedfate",
+            "rarity": "COMMON"
+        }, {
+            "name": "The Magnificent Twisted Fate",
+            "id": "themagnificenttwistedfate",
+            "rarity": "LEGACY_LEGENDARY"
+        }, {
+            "name": "Tango Twisted Fate",
+            "id": "tangotwistedfate",
+            "rarity": "COMMON"
+        }, {
+            "name": "High Noon Twisted Fate",
+            "id": "highnoontwistedfate",
+            "rarity": "COMMON"
+        }, {
+            "name": "Musketeer Twisted Fate",
+            "id": "musketeertwistedfate",
+            "rarity": "COMMON"
+        }, {
+            "name": "Underworld Twisted Fate",
+            "id": "underworldtwistedfate",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Red Card Twisted Fate",
+            "id": "redcardtwistedfate",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Cutpurse Twisted Fate",
+            "id": "cutpursetwistedfate",
+            "rarity": "COMMON"
+        }, {
+            "name": "Blood Moon Twisted Fate",
+            "id": "bloodmoontwistedfate",
+            "rarity": "RARE"
+        }, {
+            "name": "Pulsefire Twisted Fate",
+            "id": "pulsefiretwistedfate",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Twitch",
+        "name": "Twitch",
+        "skins": [{
+            "name": "Twitch",
+            "id": "twitch",
+            "rarity": "BASIC"
+        }, {
+            "name": "Kingpin Twitch",
+            "id": "kingpintwitch",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Whistler Village Twitch",
+            "id": "whistlervillagetwitch",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Medieval Twitch",
+            "id": "medievaltwitch",
+            "rarity": "LIMITED"
+        }, {
+            "name": "Gangster Twitch",
+            "id": "gangstertwitch",
+            "rarity": "COMMON"
+        }, {
+            "name": "Vandal Twitch",
+            "id": "vandaltwitch",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Pickpocket Twitch",
+            "id": "pickpockettwitch",
+            "rarity": "COMMON"
+        }, {
+            "name": "SSW Twitch",
+            "id": "sswtwitch",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Omega Squad Twitch",
+            "id": "omegasquadtwitch",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Udyr",
+        "name": "Udyr",
+        "skins": [{
+            "name": "Udyr",
+            "id": "udyr",
+            "rarity": "BASIC"
+        }, {
+            "name": "Black Belt Udyr",
+            "id": "blackbeltudyr",
+            "rarity": "COMMON"
+        }, {
+            "name": "Primal Udyr",
+            "id": "primaludyr",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Spirit Guard Udyr",
+            "id": "spiritguardudyr",
+            "rarity": "ULTIMATE"
+        }, {
+            "name": "Definitely Not Udyr",
+            "id": "definitelynotudyr",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Urgot",
+        "name": "Urgot",
+        "skins": [{
+            "name": "Urgot",
+            "id": "urgot",
+            "rarity": "BASIC"
+        }, {
+            "name": "Giant Enemy Crabgot",
+            "id": "giantenemycrabgot",
+            "rarity": "COMMON"
+        }, {
+            "name": "Butcher Urgot",
+            "id": "butcherurgot",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Battlecast Urgot",
+            "id": "battlecasturgot",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Varus",
+        "name": "Varus",
+        "skins": [{
+            "name": "Varus",
+            "id": "varus",
+            "rarity": "BASIC"
+        }, {
+            "name": "Blight Crystal Varus",
+            "id": "blightcrystalvarus",
+            "rarity": "COMMON"
+        }, {
+            "name": "Arclight Varus",
+            "id": "arclightvarus",
+            "rarity": "COMMON"
+        }, {
+            "name": "Arctic Ops Varus",
+            "id": "arcticopsvarus",
+            "rarity": "RARE"
+        }, {
+            "name": "Heartseeker Varus",
+            "id": "heartseekervarus",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Varus Swiftbolt",
+            "id": "varusswiftbolt",
+            "rarity": "COMMON"
+        }, {
+            "name": "Dark Star Varus",
+            "id": "darkstarvarus",
+            "rarity": "RARE"
+        }, {
+            "name": "Conqueror Varus",
+            "id": "conquerorvarus",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Vayne",
+        "name": "Vayne",
+        "skins": [{
+            "name": "Vayne",
+            "id": "vayne",
+            "rarity": "BASIC"
+        }, {
+            "name": "Vindicator Vayne",
+            "id": "vindicatorvayne",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Aristocrat Vayne",
+            "id": "aristocratvayne",
+            "rarity": "COMMON"
+        }, {
+            "name": "Dragonslayer Vayne",
+            "id": "dragonslayervayne",
+            "rarity": "COMMON"
+        }, {
+            "name": "Heartseeker Vayne",
+            "id": "heartseekervayne",
+            "rarity": "LEGACY"
+        }, {
+            "name": "SKT T1 Vayne",
+            "id": "sktt1vayne",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Arclight Vayne",
+            "id": "arclightvayne",
+            "rarity": "COMMON"
+        }, {
+            "name": "Soulstealer Vayne",
+            "id": "soulstealervayne",
+            "rarity": "MYTHIC"
+        }, {
+            "name": "PROJECT: Vayne",
+            "id": "projectvayne",
+            "rarity": "LEGENDARY"
+        }]
+    }, {
+        "id": "Veigar",
+        "name": "Veigar",
+        "skins": [{
+            "name": "Veigar",
+            "id": "veigar",
+            "rarity": "BASIC"
+        }, {
+            "name": "White Mage Veigar",
+            "id": "whitemageveigar",
+            "rarity": "COMMON"
+        }, {
+            "name": "Curling Veigar",
+            "id": "curlingveigar",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Veigar Greybeard",
+            "id": "veigargreybeard",
+            "rarity": "COMMON"
+        }, {
+            "name": "Leprechaun Veigar",
+            "id": "leprechaunveigar",
+            "rarity": "COMMON"
+        }, {
+            "name": "Baron Von Veigar",
+            "id": "baronvonveigar",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Superb Villain Veigar",
+            "id": "superbvillainveigar",
+            "rarity": "COMMON"
+        }, {
+            "name": "Bad Santa Veigar",
+            "id": "badsantaveigar",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Final Boss Veigar",
+            "id": "finalbossveigar",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Omega Squad Veigar",
+            "id": "omegasquadveigar",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Velkoz",
+        "name": "Vel'Koz",
+        "skins": [{
+            "name": "Vel'Koz",
+            "id": "velkoz",
+            "rarity": "BASIC"
+        }, {
+            "name": "Battlecast Vel'Koz",
+            "id": "battlecastvelkoz",
+            "rarity": "RARE"
+        }, {
+            "name": "Arclight Vel'Koz",
+            "id": "arclightvelkoz",
+            "rarity": "RARE"
+        }, {
+            "name": "Definitely Not Vel'Koz",
+            "id": "definitelynotvelkoz",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Vi",
+        "name": "Vi",
+        "skins": [{
+            "name": "Vi",
+            "id": "vi",
+            "rarity": "BASIC"
+        }, {
+            "name": "Neon Strike Vi",
+            "id": "neonstrikevi",
+            "rarity": "COMMON"
+        }, {
+            "name": "Officer Vi",
+            "id": "officervi",
+            "rarity": "COMMON"
+        }, {
+            "name": "Debonair Vi",
+            "id": "debonairvi",
+            "rarity": "COMMON"
+        }, {
+            "name": "Demon Vi",
+            "id": "demonvi",
+            "rarity": "RARE"
+        }, {
+            "name": "Warring Kingdoms Vi",
+            "id": "warringkingdomsvi",
+            "rarity": "LEGACY"
+        }, {
+            "name": "PROJECT: Vi",
+            "id": "projectvi",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Viktor",
+        "name": "Viktor",
+        "skins": [{
+            "name": "Viktor",
+            "id": "viktor",
+            "rarity": "BASIC"
+        }, {
+            "name": "Full Machine Viktor",
+            "id": "fullmachineviktor",
+            "rarity": "COMMON"
+        }, {
+            "name": "Prototype Viktor",
+            "id": "prototypeviktor",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Creator Viktor",
+            "id": "creatorviktor",
+            "rarity": "RARE"
+        }, {
+            "name": "Death Sworn Viktor",
+            "id": "deathswornviktor",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Vladimir",
+        "name": "Vladimir",
+        "skins": [{
+            "name": "Vladimir",
+            "id": "vladimir",
+            "rarity": "BASIC"
+        }, {
+            "name": "Count Vladimir",
+            "id": "countvladimir",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Marquis Vladimir",
+            "id": "marquisvladimir",
+            "rarity": "COMMON"
+        }, {
+            "name": "Nosferatu Vladimir",
+            "id": "nosferatuvladimir",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Vandal Vladimir",
+            "id": "vandalvladimir",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Blood Lord Vladimir",
+            "id": "bloodlordvladimir",
+            "rarity": "LEGENDARY"
+        }, {
+            "name": "Soulstealer Vladimir",
+            "id": "soulstealervladimir",
+            "rarity": "RARE"
+        }, {
+            "name": "Academy Vladimir",
+            "id": "academyvladimir",
+            "rarity": "COMMON"
+        }, {
+            "name": "Dark Waters Vladimir",
+            "id": "darkwatersvladimir",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Volibear",
+        "name": "Volibear",
+        "skins": [{
+            "name": "Volibear",
+            "id": "volibear",
+            "rarity": "BASIC"
+        }, {
+            "name": "Thunder Lord Volibear",
+            "id": "thunderlordvolibear",
+            "rarity": "COMMON"
+        }, {
+            "name": "Northern Storm Volibear",
+            "id": "northernstormvolibear",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Runeguard Volibear",
+            "id": "runeguardvolibear",
+            "rarity": "COMMON"
+        }, {
+            "name": "Captain Volibear",
+            "id": "captainvolibear",
+            "rarity": "COMMON"
+        }, {
+            "name": "El Rayo Volibear",
+            "id": "elrayovolibear",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Warwick",
+        "name": "Warwick",
+        "skins": [{
+            "name": "Warwick",
+            "id": "warwick",
+            "rarity": "BASIC"
+        }, {
+            "name": "Grey Warwick",
+            "id": "greywarwick",
+            "rarity": "LIMITED"
+        }, {
+            "name": "Urf the Manatee",
+            "id": "urfthemanatee",
+            "rarity": "COMMON"
+        }, {
+            "name": "Big Bad Warwick",
+            "id": "bigbadwarwick",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Tundra Hunter Warwick",
+            "id": "tundrahunterwarwick",
+            "rarity": "COMMON"
+        }, {
+            "name": "Feral Warwick",
+            "id": "feralwarwick",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Firefang Warwick",
+            "id": "firefangwarwick",
+            "rarity": "COMMON"
+        }, {
+            "name": "Hyena Warwick",
+            "id": "hyenawarwick",
+            "rarity": "COMMON"
+        }, {
+            "name": "Marauder Warwick",
+            "id": "marauderwarwick",
+            "rarity": "COMMON"
+        }, {
+            "name": "Urfwick",
+            "id": "urfwick",
+            "rarity": "LIMITED"
+        }, {
+            "name": "Lunar Guardian Warwick",
+            "id": "lunarguardianwarwick",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Xayah",
+        "name": "Xayah",
+        "skins": [{
+            "name": "Xayah",
+            "id": "xayah",
+            "rarity": "BASIC"
+        }, {
+            "name": "Cosmic Dusk Xayah",
+            "id": "cosmicduskxayah",
+            "rarity": "RARE"
+        }, {
+            "name": "Sweetheart Xayah",
+            "id": "sweetheartxayah",
+            "rarity": "LEGACY"
+        }, {
+            "name": "SSG Xayah",
+            "id": "ssgxayah",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Xerath",
+        "name": "Xerath",
+        "skins": [{
+            "name": "Xerath",
+            "id": "xerath",
+            "rarity": "BASIC"
+        }, {
+            "name": "Runeborn Xerath",
+            "id": "runebornxerath",
+            "rarity": "COMMON"
+        }, {
+            "name": "Battlecast Xerath",
+            "id": "battlecastxerath",
+            "rarity": "COMMON"
+        }, {
+            "name": "Scorched Earth Xerath",
+            "id": "scorchedearthxerath",
+            "rarity": "RARE"
+        }, {
+            "name": "Guardian of the Sands Xerath",
+            "id": "guardianofthesandsxerath",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "XinZhao",
+        "name": "Xin Zhao",
+        "skins": [{
+            "name": "Xin Zhao",
+            "id": "xinzhao",
+            "rarity": "BASIC"
+        }, {
+            "name": "Commando Xin Zhao",
+            "id": "commandoxinzhao",
+            "rarity": "COMMON"
+        }, {
+            "name": "Imperial Xin Zhao",
+            "id": "imperialxinzhao",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Viscero Xin Zhao",
+            "id": "visceroxinzhao",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Winged Hussar Xin Zhao",
+            "id": "wingedhussarxinzhao",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Warring Kingdoms Xin Zhao",
+            "id": "warringkingdomsxinzhao",
+            "rarity": "RARE"
+        }, {
+            "name": "Secret Agent Xin Zhao",
+            "id": "secretagentxinzhao",
+            "rarity": "COMMON"
+        }, {
+            "name": "Dragonslayer Xin Zhao",
+            "id": "dragonslayerxinzhao",
+            "rarity": "RARE"
+        }, {
+            "name": "Cosmic Defender Xin Zhao",
+            "id": "cosmicdefenderxinzhao",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Yasuo",
+        "name": "Yasuo",
+        "skins": [{
+            "name": "Yasuo",
+            "id": "yasuo",
+            "rarity": "BASIC"
+        }, {
+            "name": "High Noon Yasuo",
+            "id": "highnoonyasuo",
+            "rarity": "COMMON"
+        }, {
+            "name": "PROJECT: Yasuo",
+            "id": "projectyasuo",
+            "rarity": "RARE"
+        }, {
+            "name": "Blood Moon Yasuo",
+            "id": "bloodmoonyasuo",
+            "rarity": "COMMON"
+        }, {
+            "name": "Nightbringer Yasuo",
+            "id": "nightbringeryasuo",
+            "rarity": "LEGENDARY"
+        }]
+    }, {
+        "id": "Yorick",
+        "name": "Yorick",
+        "skins": [{
+            "name": "Yorick",
+            "id": "yorick",
+            "rarity": "BASIC"
+        }, {
+            "name": "Undertaker Yorick",
+            "id": "undertakeryorick",
+            "rarity": "COMMON"
+        }, {
+            "name": "Pentakill Yorick",
+            "id": "pentakillyorick",
+            "rarity": "COMMON"
+        }, {
+            "name": "Arclight Yorick",
+            "id": "arclightyorick",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Zac",
+        "name": "Zac",
+        "skins": [{
+            "name": "Zac",
+            "id": "zac",
+            "rarity": "BASIC"
+        }, {
+            "name": "Special Weapon Zac",
+            "id": "specialweaponzac",
+            "rarity": "COMMON"
+        }, {
+            "name": "Pool Party Zac",
+            "id": "poolpartyzac",
+            "rarity": "RARE"
+        }, {
+            "name": "SKT T1 Zac",
+            "id": "sktt1zac",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Zed",
+        "name": "Zed",
+        "skins": [{
+            "name": "Zed",
+            "id": "zed",
+            "rarity": "BASIC"
+        }, {
+            "name": "Shockblade Zed",
+            "id": "shockbladezed",
+            "rarity": "COMMON"
+        }, {
+            "name": "SKT T1 Zed",
+            "id": "sktt1zed",
+            "rarity": "LEGACY"
+        }, {
+            "name": "PROJECT: Zed",
+            "id": "projectzed",
+            "rarity": "RARE"
+        }, {
+            "name": "Championship Zed",
+            "id": "championshipzed",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Death Sworn Zed",
+            "id": "deathswornzed",
+            "rarity": "LEGACY"
+        }]
+    }, {
+        "id": "Ziggs",
+        "name": "Ziggs",
+        "skins": [{
+            "name": "Ziggs",
+            "id": "ziggs",
+            "rarity": "BASIC"
+        }, {
+            "name": "Mad Scientist Ziggs",
+            "id": "madscientistziggs",
+            "rarity": "COMMON"
+        }, {
+            "name": "Major Ziggs",
+            "id": "majorziggs",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Pool Party Ziggs",
+            "id": "poolpartyziggs",
+            "rarity": "RARE"
+        }, {
+            "name": "Snow Day Ziggs",
+            "id": "snowdayziggs",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Master Arcanist Ziggs",
+            "id": "masterarcanistziggs",
+            "rarity": "RARE"
+        }, {
+            "name": "Battle Boss Ziggs",
+            "id": "battlebossziggs",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Zilean",
+        "name": "Zilean",
+        "skins": [{
+            "name": "Zilean",
+            "id": "zilean",
+            "rarity": "BASIC"
+        }, {
+            "name": "Old Saint Zilean",
+            "id": "oldsaintzilean",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Groovy Zilean",
+            "id": "groovyzilean",
+            "rarity": "COMMON"
+        }, {
+            "name": "Shurima Desert Zilean",
+            "id": "shurimadesertzilean",
+            "rarity": "COMMON"
+        }, {
+            "name": "Time Machine Zilean",
+            "id": "timemachinezilean",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Blood Moon Zilean",
+            "id": "bloodmoonzilean",
+            "rarity": "COMMON"
+        }]
+    }, {
+        "id": "Zoe",
+        "name": "Zoe",
+        "skins": [{
+            "name": "Zoe",
+            "id": "zoe",
+            "rarity": "BASIC"
+        }, {
+            "name": "Cyber Pop Zoe",
+            "id": "cyberpopzoe",
+            "rarity": "RARE"
+        }, {
+            "name": "Pool Party Zoe",
+            "id": "poolpartyzoe",
+            "rarity": "RARE"
+        }]
+    }, {
+        "id": "Zyra",
+        "name": "Zyra",
+        "skins": [{
+            "name": "Zyra",
+            "id": "zyra",
+            "rarity": "BASIC"
+        }, {
+            "name": "Wildfire Zyra",
+            "id": "wildfirezyra",
+            "rarity": "COMMON"
+        }, {
+            "name": "Haunted Zyra",
+            "id": "hauntedzyra",
+            "rarity": "RARE"
+        }, {
+            "name": "SKT T1 Zyra",
+            "id": "sktt1zyra",
+            "rarity": "LEGACY"
+        }, {
+            "name": "Dragon Sorceress Zyra",
+            "id": "dragonsorceresszyra",
+            "rarity": "RARE"
+        }]
+    }]
+}
