@@ -18,12 +18,12 @@ public class Botdiril
 
     private EventBus eventBus;
 
-    public Botdiril() throws LoginException
+    public Botdiril() throws LoginException, InterruptedException
     {
         var jdaBuilder = new JDABuilder(AccountType.BOT);
         jdaBuilder.addEventListener(eventBus = new EventBus());
         jdaBuilder.setToken(BotMain.config.getApiKey());
-        jdaBuilder.build();
+        jdaBuilder.build().awaitReady().setAutoReconnect(true);
     }
 
     public EventBus getEventBus()

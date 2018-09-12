@@ -226,31 +226,31 @@ public class UserInventory
             {
                 case COINS:
                     this.setCoins(amount);
-                    break;
+                    return;
 
                 case DUST:
                     this.setDust(amount);
-                    break;
+                    return;
 
                 case KEKS:
                     this.setKeks(amount);
-                    break;
+                    return;
 
                 case KEYS:
                     this.setKeys(amount);
-                    break;
+                    return;
 
                 case MEGAKEKS:
                     this.setMegaKeks(BigInteger.valueOf(amount));
-                    break;
+                    return;
 
                 case TOKENS:
                     this.setKekTokens(amount);
-                    break;
+                    return;
 
                 case XP:
                     this.setXP(amount);
-                    break;
+                    return;
             }
         }
 
@@ -282,31 +282,31 @@ public class UserInventory
             {
                 case COINS:
                     this.addCoins(amount);
-                    break;
+                    return;
 
                 case DUST:
                     this.addDust(amount);
-                    break;
+                    return;
 
                 case KEKS:
                     this.addKeks(amount);
-                    break;
+                    return;
 
                 case KEYS:
                     this.addKeys(amount);
-                    break;
+                    return;
 
                 case MEGAKEKS:
                     this.addMegaKeks(BigInteger.valueOf(amount));
-                    break;
+                    return;
 
                 case TOKENS:
                     this.addKekTokens(amount);
-                    break;
+                    return;
 
                 case XP:
                     this.addXP(amount);
-                    break;
+                    return;
             }
         }
 
@@ -698,5 +698,10 @@ public class UserInventory
     public void resetTimer(Timer timer)
     {
         setTimer(timer, 0);
+    }
+
+    public int getFID()
+    {
+        return this.fkid;
     }
 }

@@ -2,8 +2,6 @@ package cz.tefek.botdiril;
 
 import java.util.Locale;
 
-import javax.security.auth.login.LoginException;
-
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
@@ -82,7 +80,7 @@ public class BotMain
             ServerPreferences.load();
             botdiril = new Botdiril();
         }
-        catch (LoginException e)
+        catch (Exception e)
         {
             BotMain.logger.fatal("An error has occured while loading server data or setting up the bot.", e);
             System.exit(3);
