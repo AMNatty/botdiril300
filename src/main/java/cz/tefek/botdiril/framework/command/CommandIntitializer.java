@@ -17,7 +17,7 @@ public class CommandIntitializer
         logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         logger.info("Classloading begin: ");
 
-        var ignoreJars = Boolean.valueOf(System.getProperty("botdiril.cp.ingoreJars"));
+        var ignoreJars = Boolean.valueOf(System.getProperty("botdiril.cp.ignoreJars"));
 
         String classpath = System.getProperty("java.class.path");
         logger.debug("botdiril.cp.ingoreJars = " + ignoreJars);
