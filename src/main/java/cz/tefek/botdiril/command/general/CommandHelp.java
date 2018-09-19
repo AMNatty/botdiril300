@@ -1,8 +1,12 @@
 package cz.tefek.botdiril.command.general;
 
-import java.awt.Color;
 import java.util.Arrays;
 import java.util.stream.Collectors;
+
+import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.MessageEmbed.Field;
+
+import java.awt.Color;
 
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.command.Command;
@@ -14,8 +18,6 @@ import cz.tefek.botdiril.framework.command.invoke.CmdPar;
 import cz.tefek.botdiril.framework.command.invoke.CommandException;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.MessageEmbed.Field;
 
 @Command(value = "help", aliases = {
         "usage" }, category = CommandCategory.GENERAL, description = "General help command.")
@@ -52,11 +54,13 @@ public class CommandHelp
             var sb = new StringBuilder("**Command `" + command.value() + "`**:");
             sb.append("\n**Aliases:** " + Arrays.stream(command.aliases()).collect(Collectors.joining(", ")));
             sb.append("\n**Description:** " + command.description());
+            sb.append("\n**Available from level:** " + command.levelLock());
             sb.append("\n**Usage:**\n");
             sb.append(GenUsage.usage(command));
 
             MR.send(co.textChannel, sb.toString());
-        } catch (CommandException e)
+        }
+        catch (CommandException e)
         {
             var found = CommandAssert.parseCommandGroup(tbp);
 
