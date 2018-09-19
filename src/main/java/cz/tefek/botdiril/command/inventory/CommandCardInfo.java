@@ -16,7 +16,8 @@ import cz.tefek.botdiril.userdata.items.ShopEntries;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed.Field;
 
-@Command(value = "cardinfo", aliases = { "ci" }, category = CommandCategory.ITEMS, description = "Shows important information about a card")
+@Command(value = "cardinfo", aliases = {
+        "ci" }, category = CommandCategory.ITEMS, description = "Shows important information about a card")
 public class CommandCardInfo
 {
     @CmdInvoke
@@ -43,35 +44,29 @@ public class CommandCardInfo
             eb.addField("Collection:", card.getCollectionName(), true);
 
         if (ShopEntries.canBeBought(card))
-            eb.addField(new Field("Buys for:", ShopEntries.getCoinPrice(card) + " " + EnumCurrency.COINS
-                    .getIcon(), true));
+            eb.addField(new Field("Buys for:", ShopEntries.getCoinPrice(card) + " " + EnumCurrency.COINS.getIcon(), true));
 
         if (ShopEntries.canBeSold(card))
-            eb.addField(new Field("Sells for:", ShopEntries.getSellValue(card) + " " + EnumCurrency.COINS
-                    .getIcon(), true));
+            eb.addField(new Field("Sells for:", ShopEntries.getSellValue(card) + " " + EnumCurrency.COINS.getIcon(), true));
 
         if (ShopEntries.canBeBoughtForTokens(card))
-            eb.addField(new Field("Exchanges for:", ShopEntries.getTokenPrice(card) + " " + EnumCurrency.TOKENS
-                    .getIcon(), true));
+            eb.addField(new Field("Exchanges for:", ShopEntries.getTokenPrice(card) + " " + EnumCurrency.TOKENS.getIcon(), true));
 
         var ce = CraftingEntries.search(card);
 
         if (ce != null)
         {
-            var craft = ce.getComponents()
-                    .stream()
-                    .map(ip -> {
-                        return ip.getAmount() + " " + ip.getItem().inlineDescription();
-                    })
-                    .collect(Collectors.joining(", "));
+            var craft = ce.getComponents().stream().map(ip ->
+            {
+                return ip.getAmount() + " " + ip.getItem().inlineDescription();
+            }).collect(Collectors.joining(", "));
 
             if (ShopEntries.canBeDisenchanted(card))
                 eb.addField(new Field("Crafts from:", craft, true));
         }
 
         if (ShopEntries.canBeDisenchanted(card))
-            eb.addField(new Field("Disenchants for:", ShopEntries
-                    .getDustForDisenchanting(card) + " " + EnumCurrency.DUST.getIcon(), true));
+            eb.addField(new Field("Disenchants for:", ShopEntries.getDustForDisenchanting(card) + " " + EnumCurrency.DUST.getIcon(), true));
 
         eb.setFooter(card.getFootnote(co), null);
 

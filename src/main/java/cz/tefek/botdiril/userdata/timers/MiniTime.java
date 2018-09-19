@@ -69,8 +69,7 @@ public class MiniTime
             {
                 // The only time this fail is when the number is too long
                 number = Integer.parseUnsignedInt(nrs[i]);
-            }
-            catch (NumberFormatException nfe)
+            } catch (NumberFormatException nfe)
             {
                 throw new MiniTimeCouldNotBeParsedException();
             }

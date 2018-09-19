@@ -35,7 +35,8 @@ public class ServerConfig
     {
         this.loggingChannel = loggingChannel;
 
-        BotMain.sql.exec("UPDATE " + ServerPreferences.PREF_TABLE + " SET sc_logchannel = ? WHERE sc_guild = ?", stat -> {
+        BotMain.sql.exec("UPDATE " + ServerPreferences.PREF_TABLE + " SET sc_logchannel = ? WHERE sc_guild = ?", stat ->
+        {
             return stat.executeUpdate();
         }, this.loggingChannel, this.guild);
     }
@@ -49,7 +50,8 @@ public class ServerConfig
     {
         this.prefix = prefix;
 
-        BotMain.sql.exec("UPDATE " + ServerPreferences.PREF_TABLE + " SET sc_prefix = ? WHERE sc_guild = ?", stat -> {
+        BotMain.sql.exec("UPDATE " + ServerPreferences.PREF_TABLE + " SET sc_prefix = ? WHERE sc_guild = ?", stat ->
+        {
             return stat.executeUpdate();
         }, this.prefix == null ? new ParamNull(Types.VARCHAR) : this.prefix, this.guild);
     }

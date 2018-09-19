@@ -23,14 +23,16 @@ public class ServerPreferences
 
         if (!tabExists)
         {
-            BotMain.sql.exec("CREATE TABLE " + PREF_TABLE + " ( sc_guild BIGINT PRIMARY KEY , sc_logchannel BIGINT, sc_prefix VARCHAR(16) );", stat -> {
+            BotMain.sql.exec("CREATE TABLE " + PREF_TABLE + " ( sc_guild BIGINT PRIMARY KEY , sc_logchannel BIGINT, sc_prefix VARCHAR(16) );", stat ->
+            {
                 return stat.execute();
             });
 
             return;
         }
 
-        var result = BotMain.sql.exec("SELECT * FROM " + PREF_TABLE, stat -> {
+        var result = BotMain.sql.exec("SELECT * FROM " + PREF_TABLE, stat ->
+        {
             var rs = stat.executeQuery();
 
             while (rs.next())
@@ -78,8 +80,7 @@ public class ServerPreferences
         if (!prem.isEmpty())
         {
             pc = prem.get(0);
-        }
-        else
+        } else
         {
             pc = (TextChannel) gc.createTextChannel("botdiril").complete();
         }
@@ -89,7 +90,8 @@ public class ServerPreferences
 
         cfgs.add(sc);
 
-        BotMain.sql.exec("INSERT INTO " + PREF_TABLE + "(sc_guild, sc_logchannel) VALUES (?, ?)", stat -> {
+        BotMain.sql.exec("INSERT INTO " + PREF_TABLE + "(sc_guild, sc_logchannel) VALUES (?, ?)", stat ->
+        {
             return stat.executeUpdate();
         }, sc.getGuild(), sc.getLoggingChannel());
 

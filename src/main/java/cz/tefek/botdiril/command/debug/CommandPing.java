@@ -7,7 +7,8 @@ import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.util.MR;
 import net.dv8tion.jda.core.EmbedBuilder;
 
-@Command(aliases = { "latency" }, category = CommandCategory.GENERAL, description = "Tells the Discord latency.", value = "ping")
+@Command(aliases = {
+        "latency" }, category = CommandCategory.GENERAL, description = "Tells the Discord latency.", value = "ping")
 public class CommandPing
 {
     @CmdInvoke

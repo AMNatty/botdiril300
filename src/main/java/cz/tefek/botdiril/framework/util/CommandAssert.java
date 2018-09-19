@@ -56,8 +56,7 @@ public class CommandAssert
         try
         {
             return Integer.parseInt(number);
-        }
-        catch (NumberFormatException e)
+        } catch (NumberFormatException e)
         {
             throw new CommandException(errorMessage);
         }
@@ -73,8 +72,7 @@ public class CommandAssert
         try
         {
             return Long.parseLong(number);
-        }
-        catch (NumberFormatException e)
+        } catch (NumberFormatException e)
         {
             throw new CommandException(errorMessage);
         }
@@ -120,8 +118,7 @@ public class CommandAssert
         try
         {
             return Double.parseDouble(number);
-        }
-        catch (NumberFormatException e)
+        } catch (NumberFormatException e)
         {
             throw new CommandException(errorMessage);
         }
@@ -195,8 +192,7 @@ public class CommandAssert
             {
                 throw new CommandException("That's more than you have!");
             }
-        }
-        catch (NumberFormatException e)
+        } catch (NumberFormatException e)
         {
             if (amountString.endsWith("%"))
             {
@@ -207,32 +203,26 @@ public class CommandAssert
                     if (f < 0 || f > 100)
                     {
                         throw new CommandException(errorMessage + "\nThis is not a valid percentage.");
-                    }
-                    else
+                    } else
                     {
                         amount = Math.round((f / 100.0) * base);
                     }
-                }
-                catch (NumberFormatException e1)
+                } catch (NumberFormatException e1)
                 {
                     throw new CommandException(errorMessage + "\nThis is not a valid percentage.");
                 }
-            }
-            else
+            } else
             {
                 if (amountString.equalsIgnoreCase("all") || amountString.equalsIgnoreCase("everything"))
                 {
                     amount = base;
-                }
-                else if (amountString.equalsIgnoreCase("half"))
+                } else if (amountString.equalsIgnoreCase("half"))
                 {
                     amount = base / 2L;
-                }
-                else if (amountString.equalsIgnoreCase("keepone"))
+                } else if (amountString.equalsIgnoreCase("keepone"))
                 {
                     amount = base > 1 ? base - 1 : 0;
-                }
-                else
+                } else
                 {
                     throw new CommandException(errorMessage);
                 }
@@ -262,14 +252,12 @@ public class CommandAssert
                 if (tc != null)
                 {
                     return tc;
-                }
-                else
+                } else
                 {
                     throw new CommandException("Text channel could not be parsed: Could not find a channel with that snowflake ID.");
                 }
             }
-        }
-        catch (NumberFormatException e)
+        } catch (NumberFormatException e)
         {
             throw new CommandException("Text channel could not be parsed: Could not parse the snowflake ID.");
         }
@@ -297,14 +285,12 @@ public class CommandAssert
                 if (member != null)
                 {
                     return member;
-                }
-                else
+                } else
                 {
                     throw new CommandException("Member could not be parsed: Could not find a member with that ID.");
                 }
             }
-        }
-        catch (NumberFormatException e)
+        } catch (NumberFormatException e)
         {
             throw new CommandException("Member could not be parsed: Could not parse the snowflake ID / mention.");
         }
@@ -332,14 +318,12 @@ public class CommandAssert
                 if (user != null)
                 {
                     return user;
-                }
-                else
+                } else
                 {
                     throw new CommandException("User could not be parsed: Could not find a user with that ID.");
                 }
             }
-        }
-        catch (NumberFormatException e)
+        } catch (NumberFormatException e)
         {
             throw new CommandException("User could not be parsed: Could not parse the snowflake ID / mention.");
         }
@@ -413,8 +397,7 @@ public class CommandAssert
                 throw new CommandException(errorMessage + "\nA negative number was entered, they are not supported here.");
 
             return amount;
-        }
-        catch (NumberFormatException | ArithmeticException e)
+        } catch (NumberFormatException | ArithmeticException e)
         {
             if (amountString.endsWith("%"))
             {
@@ -425,32 +408,26 @@ public class CommandAssert
                     if (f < 0 || f > 100)
                     {
                         throw new CommandException(errorMessage + "\nThis is not a valid percentage.");
-                    }
-                    else
+                    } else
                     {
                         return base.divide(oneHundred).multiply(BigInteger.valueOf(f));
                     }
-                }
-                catch (NumberFormatException e1)
+                } catch (NumberFormatException e1)
                 {
                     throw new CommandException(errorMessage + "\nThis is not a valid percentage.");
                 }
-            }
-            else
+            } else
             {
                 if (amountString.equalsIgnoreCase("all") || amountString.equalsIgnoreCase("everything"))
                 {
                     return base;
-                }
-                else if (amountString.equalsIgnoreCase("half"))
+                } else if (amountString.equalsIgnoreCase("half"))
                 {
                     return base.divide(BigInteger.TWO);
-                }
-                else if (amountString.equalsIgnoreCase("keepone"))
+                } else if (amountString.equalsIgnoreCase("keepone"))
                 {
                     return base.equals(BigInteger.ZERO) ? BigInteger.ZERO : base.subtract(BigInteger.ONE);
-                }
-                else
+                } else
                 {
                     throw new CommandException(errorMessage);
                 }
@@ -463,8 +440,7 @@ public class CommandAssert
         try
         {
             return new BigInteger(number);
-        }
-        catch (NumberFormatException e)
+        } catch (NumberFormatException e)
         {
             throw new CommandException(errorMessage);
         }
@@ -482,8 +458,7 @@ public class CommandAssert
         if (tm == -1)
         {
             return;
-        }
-        else
+        } else
         {
             throw new CommandException(errorMessage.replaceAll("\\$", MiniTime.formatDiff(tm)));
         }

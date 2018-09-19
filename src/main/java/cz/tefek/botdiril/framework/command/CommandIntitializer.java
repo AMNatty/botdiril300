@@ -51,8 +51,7 @@ public class CommandIntitializer
                             CommandStorage.register(annotation, modClass);
                         }
                     }
-                }
-                else
+                } else
                 {
                     if (ignoreJars)
                     {
@@ -93,8 +92,7 @@ public class CommandIntitializer
 
                     jarFile.close();
                 }
-            }
-            catch (Exception e)
+            } catch (Exception e)
             {
                 e.printStackTrace();
                 System.exit(5);

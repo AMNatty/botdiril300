@@ -17,7 +17,8 @@ import cz.tefek.botdiril.framework.util.MR;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed.Field;
 
-@Command(value = "help", aliases = { "usage" }, category = CommandCategory.GENERAL, description = "General help command.")
+@Command(value = "help", aliases = {
+        "usage" }, category = CommandCategory.GENERAL, description = "General help command.")
 public class CommandHelp
 {
     @CmdInvoke
@@ -27,7 +28,8 @@ public class CommandHelp
         eb.setColor(Color.CYAN.getRGB());
         eb.setTitle("Stuck? Here is your help:");
 
-        Arrays.stream(CommandCategory.values()).forEach(cat -> {
+        Arrays.stream(CommandCategory.values()).forEach(cat ->
+        {
             eb.addField(cat.getName() + " [" + CommandStorage.commandCountInCategory(cat) + "]", "Type ``" + co.sc.getPrefix() + "help " + cat.toString().toLowerCase() + "``", false);
         });
 
@@ -54,8 +56,7 @@ public class CommandHelp
             sb.append(GenUsage.usage(command));
 
             MR.send(co.textChannel, sb.toString());
-        }
-        catch (CommandException e)
+        } catch (CommandException e)
         {
             var found = CommandAssert.parseCommandGroup(tbp);
 
@@ -63,7 +64,8 @@ public class CommandHelp
             eb.setColor(Color.CYAN.getRGB());
             eb.setTitle("Help for the " + found.getName());
 
-            CommandStorage.getCommandsByCategory(found).forEach(comm -> {
+            CommandStorage.getCommandsByCategory(found).forEach(comm ->
+            {
                 eb.addField(new Field(comm.value(), comm.description(), false));
             });
 

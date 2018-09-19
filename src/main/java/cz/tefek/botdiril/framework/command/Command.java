@@ -10,8 +10,7 @@ import cz.tefek.botdiril.framework.permission.PermissionLevel;
 
 @Retention(RUNTIME)
 @Target(TYPE)
-public @interface Command
-{
+public @interface Command {
     public String value();
 
     public String[] aliases();

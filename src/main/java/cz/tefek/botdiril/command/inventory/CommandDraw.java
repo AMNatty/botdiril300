@@ -34,9 +34,7 @@ public class CommandDraw
             lc.add((Card) CardPools.commonToLimited.draw().draw());
         }
 
-        var msg = String.format("You drew %s.", lc.stream()
-                .map(IIdentifiable::inlineDescription)
-                .collect(Collectors.joining(", ")));
+        var msg = String.format("You drew %s.", lc.stream().map(IIdentifiable::inlineDescription).collect(Collectors.joining(", ")));
 
         lc.stream().forEach(co.ui::addCard);
 

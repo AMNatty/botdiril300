@@ -56,8 +56,7 @@ public class BotdirilConfig
             }
 
             return bc;
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
             BotMain.logger.fatal("ERROR: An exception has occured and the initialization cannot continue.", e);
             return null;

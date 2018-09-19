@@ -43,7 +43,8 @@ public class CommandCardList
         eb.setColor(0x008080);
         eb.setDescription(String.format("**Page %d/%d**\nUse `%scardlist <page>` to browse.", page, pages, prefix));
 
-        items.stream().skip(itemsPerPage * (page - 1)).limit(itemsPerPage).forEach(it -> {
+        items.stream().skip(itemsPerPage * (page - 1)).limit(itemsPerPage).forEach(it ->
+        {
             eb.addField(it.inlineDescription(), "**ID: **" + it.getName(), true);
         });
 
@@ -77,7 +78,8 @@ public class CommandCardList
 
         Comparator<? super Card> itemcp = Comparator.comparing((Card it) -> fc.fuzzyScore(it.getName(), search)).reversed();
 
-        items.stream().sorted(itemcp).skip(itemsPerPage * (page - 1)).limit(itemsPerPage).forEach(it -> {
+        items.stream().sorted(itemcp).skip(itemsPerPage * (page - 1)).limit(itemsPerPage).forEach(it ->
+        {
             eb.addField(it.inlineDescription(), "**ID: **" + it.getName(), true);
         });
 

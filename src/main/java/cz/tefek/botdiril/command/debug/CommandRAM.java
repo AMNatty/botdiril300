@@ -8,7 +8,7 @@ import cz.tefek.botdiril.framework.util.MR;
 import net.dv8tion.jda.core.EmbedBuilder;
 
 @Command(aliases = { "heap",
-                     "ram" }, category = CommandCategory.SUPERUSER, description = "Shows some memory information.", value = "memory")
+        "ram" }, category = CommandCategory.SUPERUSER, description = "Shows some memory information.", value = "memory")
 public class CommandRAM
 {
     @CmdInvoke

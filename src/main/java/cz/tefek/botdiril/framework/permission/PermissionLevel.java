@@ -3,7 +3,10 @@ package cz.tefek.botdiril.framework.permission;
 public enum PermissionLevel
 {
     // NEVER EVER EVER USE 1 << 31 (signed comparison)
-    EVERYONE(0), ELEVATED(28), SUPERUSER(29), SUPERUSER_OVERRIDE(30);
+    EVERYONE(0),
+    ELEVATED(28),
+    SUPERUSER(29),
+    SUPERUSER_OVERRIDE(30);
 
     private int permBit;
 

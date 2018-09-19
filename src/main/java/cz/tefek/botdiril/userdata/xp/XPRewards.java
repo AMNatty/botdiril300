@@ -26,7 +26,8 @@ public class XPRewards
             var jtok = new JSONTokener(reader);
             var jar = new JSONArray(jtok);
 
-            jar.forEach(obj -> {
+            jar.forEach(obj ->
+            {
                 var jobj = (JSONObject) obj;
 
                 var lvl = jobj.getInt("level");
@@ -42,17 +43,13 @@ public class XPRewards
                 var drawCount = jobj.getInt("draw_potency");
                 var loot = jobj.getJSONObject("loot");
 
-                var lootStr = loot.keySet()
-                        .stream()
-                        .map(key -> String.valueOf(loot.getLong(key)) + "*" + key)
-                        .collect(Collectors.joining(","));
+                var lootStr = loot.keySet().stream().map(key -> String.valueOf(loot.getLong(key)) + "*" + key).collect(Collectors.joining(","));
 
                 levels.put(lvl, new LevelData(xp, cumulativeXP, dailyMin, dailyMax, gambleFalloff, lootStr, drawCount));
             });
 
             reader.close();
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
             BotMain.logger.fatal("Level data loading failed, terminating!", e);
 

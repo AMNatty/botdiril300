@@ -105,21 +105,22 @@ public class Items
 
             leagueItems = new ArrayList<>(jarr.length());
 
-            jarr.forEach(jo -> {
+            jarr.forEach(jo ->
+            {
                 var jobj = (JSONObject) jo;
 
                 var loli = new Item(jobj.getString("id"), Icons.ITEM_LOL, jobj.getString("name"));
                 loli.setDescription(jobj.getString("shortdesc"));
                 ShopEntries.addDisenchant(loli, jobj.getInt("sell") * 10);
 
-                var recipe = new CraftingEntries.Recipe(Arrays.asList(new ItemPair[] { new ItemPair(Items.dust, jobj.getInt("buy") * 10) }), 1, loli);
+                var recipe = new CraftingEntries.Recipe(Arrays.asList(new ItemPair[] {
+                        new ItemPair(Items.dust, jobj.getInt("buy") * 10) }), 1, loli);
 
                 CraftingEntries.add(recipe);
 
                 leagueItems.add(loli);
             });
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
             BotMain.logger.fatal("League of Legends item data not found or malformed! Aborting.", e);
             System.exit(8);

@@ -40,7 +40,8 @@ public class CommandParser
         var cmdClass = CommandStorage.getAccordingClass(command);
 
         var methods = cmdClass.getDeclaredMethods();
-        var commandFunc = Arrays.stream(methods).filter(meth -> {
+        var commandFunc = Arrays.stream(methods).filter(meth ->
+        {
             var hasInvoke = meth.getDeclaredAnnotation(CmdInvoke.class) != null;
 
             if (!hasInvoke)
@@ -70,9 +71,7 @@ public class CommandParser
 
         for (var meth : commandFunc)
         {
-            var parameters = Arrays.stream(meth.getParameters())
-                    .filter(param -> param.getDeclaredAnnotation(CmdPar.class) != null)
-                    .collect(Collectors.toList());
+            var parameters = Arrays.stream(meth.getParameters()).filter(param -> param.getDeclaredAnnotation(CmdPar.class) != null).collect(Collectors.toList());
 
             var cuts = parameters.size() - 1;
 
@@ -109,8 +108,7 @@ public class CommandParser
                                 break;
                         }
                     }
-                }
-                else
+                } else
                 {
                     for (pos = 0; pos < input.length(); pos++)
                     {
@@ -165,20 +163,15 @@ public class CommandParser
                         var num = CommandAssert.parseInt(arg, "Error: " + arg + " is not a valid number.");
 
                         argArr[i] = num;
-                    }
-                    else if (clazz == long.class || clazz == Long.class)
+                    } else if (clazz == long.class || clazz == Long.class)
                     {
                         if (type == ParType.AMOUNT_COINS)
                         {
-                            argArr[i] = CommandAssert.parseAmount(arg, co.ui
-                                    .getCoins(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
-                        }
-                        else if (type == ParType.AMOUNT_CLASSIC_KEKS)
+                            argArr[i] = CommandAssert.parseAmount(arg, co.ui.getCoins(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
+                        } else if (type == ParType.AMOUNT_CLASSIC_KEKS)
                         {
-                            argArr[i] = CommandAssert.parseAmount(arg, co.ui
-                                    .getKeks(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
-                        }
-                        else if (type == ParType.AMOUNT_CARD)
+                            argArr[i] = CommandAssert.parseAmount(arg, co.ui.getKeks(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
+                        } else if (type == ParType.AMOUNT_CARD)
                         {
                             if (i == 0)
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM**");
@@ -186,10 +179,8 @@ public class CommandParser
                             if (argArr[i - 1] instanceof Card)
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM_NOT_CARD**");
 
-                            argArr[i] = CommandAssert.parseAmount(arg, co.ui
-                                    .howManyOf((Card) argArr[i - 1]), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
-                        }
-                        else if (type == ParType.AMOUNT_ITEM)
+                            argArr[i] = CommandAssert.parseAmount(arg, co.ui.howManyOf((Card) argArr[i - 1]), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
+                        } else if (type == ParType.AMOUNT_ITEM)
                         {
                             if (i == 0)
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM**");
@@ -197,39 +188,28 @@ public class CommandParser
                             if (argArr[i - 1] instanceof Item)
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM_NOT_ITEM**");
 
-                            argArr[i] = CommandAssert.parseAmount(arg, co.ui
-                                    .howManyOf((Item) argArr[i - 1]), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
-                        }
-                        else if (type == ParType.AMOUNT_KEK_TOKENS)
+                            argArr[i] = CommandAssert.parseAmount(arg, co.ui.howManyOf((Item) argArr[i - 1]), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
+                        } else if (type == ParType.AMOUNT_KEK_TOKENS)
                         {
-                            argArr[i] = CommandAssert.parseAmount(arg, co.ui
-                                    .getKekTokens(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
-                        }
-                        else if (type == ParType.AMOUNT_KEYS)
+                            argArr[i] = CommandAssert.parseAmount(arg, co.ui.getKekTokens(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
+                        } else if (type == ParType.AMOUNT_KEYS)
                         {
-                            argArr[i] = CommandAssert.parseAmount(arg, co.ui
-                                    .getKeys(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
-                        }
-                        else if (type == ParType.AMOUNT_DUST)
+                            argArr[i] = CommandAssert.parseAmount(arg, co.ui.getKeys(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
+                        } else if (type == ParType.AMOUNT_DUST)
                         {
-                            argArr[i] = CommandAssert.parseAmount(arg, co.ui
-                                    .getDust(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
-                        }
-                        else
+                            argArr[i] = CommandAssert.parseAmount(arg, co.ui.getDust(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
+                        } else
                         {
                             var num = CommandAssert.parseInt(arg, "Error: " + arg + " is not a valid number.");
 
                             argArr[i] = num;
                         }
-                    }
-                    else if (clazz == BigInteger.class)
+                    } else if (clazz == BigInteger.class)
                     {
                         if (type == ParType.AMOUNT_MEGA_KEKS)
                         {
-                            argArr[i] = CommandAssert.parseBigAmount(arg, co.ui
-                                    .getMegaKeks(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%), scientific notation (5e+59) or everything/half.");
-                        }
-                        else
+                            argArr[i] = CommandAssert.parseBigAmount(arg, co.ui.getMegaKeks(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%), scientific notation (5e+59) or everything/half.");
+                        } else
                         {
                             BigInteger amount;
 
@@ -253,64 +233,46 @@ public class CommandParser
                                     throw new CommandException(arg + "\nA negative number was entered, they are not supported here.");
 
                                 argArr[i] = amount;
-                            }
-                            catch (NumberFormatException | ArithmeticException e)
+                            } catch (NumberFormatException | ArithmeticException e)
                             {
                                 throw new CommandException("Number could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...) or scientific notation (5e+59).\n*Please note that it must be a positive integer!*");
                             }
                         }
-                    }
-                    else if (clazz == Item.class)
+                    } else if (clazz == Item.class)
                     {
                         argArr[i] = CommandAssert.parseItem(arg);
-                    }
-                    else if (clazz == Card.class)
+                    } else if (clazz == Card.class)
                     {
                         argArr[i] = CommandAssert.parseCard(arg);
-                    }
-                    else if (clazz == Achievement.class)
+                    } else if (clazz == Achievement.class)
                     {
 
-                    }
-                    else if (clazz == Command.class)
+                    } else if (clazz == Command.class)
                     {
                         argArr[i] = CommandAssert.parseCommand(arg);
-                    }
-                    else if (clazz == CommandCategory.class)
+                    } else if (clazz == CommandCategory.class)
                     {
                         argArr[i] = CommandAssert.parseCommandGroup(arg);
-                    }
-                    else if (clazz == User.class)
+                    } else if (clazz == User.class)
                     {
                         argArr[i] = CommandAssert.parseUser(co.jda, arg);
-                    }
-                    else if (clazz == Member.class)
+                    } else if (clazz == Member.class)
                     {
                         argArr[i] = CommandAssert.parseMember(co.guild, arg);
-                    }
-                    else if (clazz == TextChannel.class)
+                    } else if (clazz == TextChannel.class)
                     {
                         argArr[i] = CommandAssert.parseTextChannel(co.guild, arg);
-                    }
-                    else if (clazz == String.class)
+                    } else if (clazz == String.class)
                     {
                         argArr[i] = arg;
-                    }
-                    else if (clazz.isEnum() && type == ParType.ENUM)
+                    } else if (clazz.isEnum() && type == ParType.ENUM)
                     {
                         var ec = clazz.getEnumConstants();
                         final var farg = arg;
-                        var val = Arrays.stream(ec)
-                                .filter(c -> c.toString().equalsIgnoreCase(farg))
-                                .findFirst()
-                                .orElse(null);
+                        var val = Arrays.stream(ec).filter(c -> c.toString().equalsIgnoreCase(farg)).findFirst().orElse(null);
 
                         if (val == null)
-                            throw new CommandException(arg + " is not valid here. Try one of these: `" + Arrays
-                                    .stream(ec)
-                                    .map(Object::toString)
-                                    .map(String::toLowerCase)
-                                    .collect(Collectors.joining(", ")) + "`");
+                            throw new CommandException(arg + " is not valid here. Try one of these: `" + Arrays.stream(ec).map(Object::toString).map(String::toLowerCase).collect(Collectors.joining(", ")) + "`");
 
                         argArr[i] = val;
                     }
@@ -319,29 +281,24 @@ public class CommandParser
                 try
                 {
                     meth.invoke(null, argArr);
-                }
-                catch (IllegalAccessException e)
+                } catch (IllegalAccessException e)
                 {
                     BotMain.logger.fatal("An exception has occured while invoking a command.", e);
-                }
-                catch (IllegalArgumentException e)
+                } catch (IllegalArgumentException e)
                 {
                     BotMain.logger.fatal("An exception has occured while invoking a command.", e);
-                }
-                catch (InvocationTargetException e)
+                } catch (InvocationTargetException e)
                 {
                     if (e.getCause() instanceof CommandException)
                     {
                         MR.send(co.textChannel, e.getCause().getMessage());
-                    }
-                    else
+                    } else
                     {
                         MR.send(co.textChannel, "**An error has occured:**\n" + e.getCause().toString());
                         BotMain.logger.fatal("An exception has occured while invoking a command.", e.getCause());
                     }
                 }
-            }
-            catch (CommandException e)
+            } catch (CommandException e)
             {
                 MR.send(co.textChannel, e.getMessage());
             }

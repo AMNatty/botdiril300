@@ -34,8 +34,7 @@ public class CommandDiceRoll
             var reward = keks * 5;
             co.ui.addKeks(reward);
             MR.send(co.textChannel, String.format(":game_die: You rolled a **%d**! Here are your %d %s.", rolled, reward, Icons.KEK));
-        }
-        else
+        } else
         {
             co.ui.addKeks(-keks);
             MR.send(co.textChannel, String.format(":game_die: You rolled a **%d**! You lost your %d %s.", rolled, keks, Icons.KEK));

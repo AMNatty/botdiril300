@@ -31,12 +31,15 @@ public class CommandCoinFlip
         if (rolled == side)
         {
             co.ui.addKeks(keks);
-            MR.send(co.textChannel, String.format("%s! Here are your %d %s.", rolled == EnumCoinSides.HEADS ? ":large_orange_diamond: Heads" : ":large_blue_diamond: Tails", keks, Icons.KEK));
-        }
-        else
+            MR.send(co.textChannel, String.format("%s! Here are your %d %s.", rolled == EnumCoinSides.HEADS
+                    ? ":large_orange_diamond: Heads"
+                    : ":large_blue_diamond: Tails", keks, Icons.KEK));
+        } else
         {
             co.ui.addKeks(-keks);
-            MR.send(co.textChannel, String.format("%s! You lost your %d %s.", rolled == EnumCoinSides.HEADS ? ":large_orange_diamond: Heads" : ":large_blue_diamond: Tails", keks, Icons.KEK));
+            MR.send(co.textChannel, String.format("%s! You lost your %d %s.", rolled == EnumCoinSides.HEADS
+                    ? ":large_orange_diamond: Heads"
+                    : ":large_blue_diamond: Tails", keks, Icons.KEK));
         }
     }
 }

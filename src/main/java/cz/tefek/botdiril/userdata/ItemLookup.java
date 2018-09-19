@@ -7,8 +7,8 @@ import cz.tefek.botdiril.BotMain;
 import cz.tefek.botdiril.framework.sql.SqlFoundation;
 
 /**
- * Don't get confused by the name, it's for legacy reasons.
- * This class can map any {@link IIdentifiable}.
+ * Don't get confused by the name, it's for legacy reasons. This class can map
+ * any {@link IIdentifiable}.
  */
 public class ItemLookup
 {
@@ -26,13 +26,14 @@ public class ItemLookup
 
         if (!tabExistsIL)
         {
-            BotMain.sql.exec("CREATE TABLE " + TABLE_ITEMLOOKUP + " ( il_id INT UNIQUE NOT NULL, il_itemname VARCHAR(64) NOT NULL);", stat -> {
+            BotMain.sql.exec("CREATE TABLE " + TABLE_ITEMLOOKUP + " ( il_id INT UNIQUE NOT NULL, il_itemname VARCHAR(64) NOT NULL);", stat ->
+            {
                 return stat.execute();
             });
-        }
-        else
+        } else
         {
-            BotMain.sql.exec("SELECT * FROM " + TABLE_ITEMLOOKUP, stat -> {
+            BotMain.sql.exec("SELECT * FROM " + TABLE_ITEMLOOKUP, stat ->
+            {
                 var rs = stat.executeQuery();
 
                 while (rs.next())
@@ -75,7 +76,8 @@ public class ItemLookup
                 iarr[i] = name;
                 mappings.put(name, i);
 
-                BotMain.sql.exec("INSERT INTO " + TABLE_ITEMLOOKUP + " (il_id, il_itemname) VALUES (?, ?)", stat -> {
+                BotMain.sql.exec("INSERT INTO " + TABLE_ITEMLOOKUP + " (il_id, il_itemname) VALUES (?, ?)", stat ->
+                {
                     return stat.executeUpdate();
                 }, i, name);
 
@@ -99,8 +101,7 @@ public class ItemLookup
         try
         {
             return mappings.get("name");
-        }
-        catch (NullPointerException e)
+        } catch (NullPointerException e)
         {
             BotMain.logger.warn("Looks like the item wasn't in the lookup: " + name, e);
             return make(name);

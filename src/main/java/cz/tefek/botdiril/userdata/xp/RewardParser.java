@@ -32,8 +32,7 @@ public class RewardParser
                     }
 
                     list.add(new ItemPair(item, 1));
-                }
-                else if (ps.length == 2)
+                } else if (ps.length == 2)
                 {
                     var amount = Integer.parseInt(ps[0]);
 
@@ -48,8 +47,7 @@ public class RewardParser
                     list.add(new ItemPair(item, amount));
                 }
             }
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
             BotMain.logger.error("Broker reward string: " + data, e);
         }

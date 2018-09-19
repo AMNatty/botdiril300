@@ -19,7 +19,7 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
 
 @Command(value = "inventory", aliases = { "inv",
-                                          "i" }, category = CommandCategory.ITEMS, description = "Shows your/someone's inventory.")
+        "i" }, category = CommandCategory.ITEMS, description = "Shows your/someone's inventory.")
 public class CommandInventory
 {
     private static final int ITEMS_PER_PAGE = 21;
@@ -37,22 +37,22 @@ public class CommandInventory
 
         var ips = new ArrayList<ItemPair>();
 
-        BotMain.sql
-                .exec("SELECT * FROM " + UserInventory.TABLE_INVENTORY + " WHERE fk_us_id=? AND it_amount>0", stat -> {
-                    var eq = stat.executeQuery();
+        BotMain.sql.exec("SELECT * FROM " + UserInventory.TABLE_INVENTORY + " WHERE fk_us_id=? AND it_amount>0", stat ->
+        {
+            var eq = stat.executeQuery();
 
-                    while (eq.next())
-                    {
-                        var item = Item.getItemByID(eq.getInt("fk_il_id"));
+            while (eq.next())
+            {
+                var item = Item.getItemByID(eq.getInt("fk_il_id"));
 
-                        if (item instanceof ItemCurrency)
-                            continue;
+                if (item instanceof ItemCurrency)
+                    continue;
 
-                        ips.add(new ItemPair(item, eq.getLong("it_amount")));
-                    }
+                ips.add(new ItemPair(item, eq.getLong("it_amount")));
+            }
 
-                    return true;
-                }, ui.getFID());
+            return true;
+        }, ui.getFID());
 
         if (ips.isEmpty())
         {
@@ -73,7 +73,8 @@ public class CommandInventory
         eb.appendDescription("\nPage 1/" + pages);
 
         // Sort by value
-        isc.sorted((i1, i2) -> {
+        isc.sorted((i1, i2) ->
+        {
             if (!ShopEntries.canBeBought(i2.getItem()) && !ShopEntries.canBeBought(i1.getItem()))
                 return Integer.MIN_VALUE;
 
@@ -84,12 +85,12 @@ public class CommandInventory
                 return Integer.MAX_VALUE;
 
             return Long.compare(ShopEntries.getCoinPrice(i2.getItem()), ShopEntries.getCoinPrice(i1.getItem()));
-        }).limit(ITEMS_PER_PAGE).forEach(ip -> {
+        }).limit(ITEMS_PER_PAGE).forEach(ip ->
+        {
             eb.addField(ip.getItem().inlineDescription(), "You have: " + ip.getAmount(), true);
         });
 
-        eb.setFooter("Use `" + co.sc.getPrefix() + "i " + user.getUser()
-                .getIdLong() + " <page>` to go to another page.", null);
+        eb.setFooter("Use `" + co.sc.getPrefix() + "i " + user.getUser().getIdLong() + " <page>` to go to another page.", null);
 
         MR.send(co.textChannel, eb.build());
     }
@@ -103,22 +104,22 @@ public class CommandInventory
 
         var ips = new ArrayList<ItemPair>();
 
-        BotMain.sql
-                .exec("SELECT * FROM " + UserInventory.TABLE_INVENTORY + " WHERE fk_us_id=? AND it_amount>0", stat -> {
-                    var eq = stat.executeQuery();
+        BotMain.sql.exec("SELECT * FROM " + UserInventory.TABLE_INVENTORY + " WHERE fk_us_id=? AND it_amount>0", stat ->
+        {
+            var eq = stat.executeQuery();
 
-                    while (eq.next())
-                    {
-                        var item = Item.getItemByID(eq.getInt("fk_il_id"));
+            while (eq.next())
+            {
+                var item = Item.getItemByID(eq.getInt("fk_il_id"));
 
-                        if (item instanceof ItemCurrency)
-                            continue;
+                if (item instanceof ItemCurrency)
+                    continue;
 
-                        ips.add(new ItemPair(item, eq.getLong("it_amount")));
-                    }
+                ips.add(new ItemPair(item, eq.getLong("it_amount")));
+            }
 
-                    return true;
-                }, ui.getFID());
+            return true;
+        }, ui.getFID());
 
         if (ips.isEmpty())
         {
@@ -142,7 +143,8 @@ public class CommandInventory
 
         eb.appendDescription(String.format("\nPage %d/%d", page, pageCount));
 
-        isc.sorted((i1, i2) -> {
+        isc.sorted((i1, i2) ->
+        {
             if (!ShopEntries.canBeBought(i2.getItem()) && !ShopEntries.canBeBought(i1.getItem()))
                 return Integer.MIN_VALUE;
 
@@ -153,12 +155,12 @@ public class CommandInventory
                 return Integer.MAX_VALUE;
 
             return Long.compare(ShopEntries.getCoinPrice(i2.getItem()), ShopEntries.getCoinPrice(i1.getItem()));
-        }).skip((page - 1) * ITEMS_PER_PAGE).limit(ITEMS_PER_PAGE).forEach(ip -> {
+        }).skip((page - 1) * ITEMS_PER_PAGE).limit(ITEMS_PER_PAGE).forEach(ip ->
+        {
             eb.addField(ip.getItem().inlineDescription(), String.format("You have: **%d**", ip.getAmount()), true);
         });
 
-        eb.setFooter("Use `" + co.sc.getPrefix() + "i " + user.getUser()
-                .getIdLong() + " <page>` to go to another page.", null);
+        eb.setFooter("Use `" + co.sc.getPrefix() + "i " + user.getUser().getIdLong() + " <page>` to go to another page.", null);
 
         MR.send(co.textChannel, eb.build());
     }

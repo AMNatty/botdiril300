@@ -25,8 +25,7 @@ public class BigNumbers
             var lines = Files.readAllLines(new File("assets/bignumbers.txt").toPath());
 
             lines.forEach(BigNumbers::procLine);
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
             BotMain.logger.fatal("Error retrieving big number lookup data.", e);
             System.exit(7);

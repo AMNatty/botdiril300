@@ -25,13 +25,15 @@ public class Cards
             CardSet.league = new CardSet(jobj.getString("set"), jobj.getString("setName"), jobj.getString("idPrefix"));
             CardSet.league.setDescription(jobj.getString("description"));
 
-            jobj.getJSONArray("items").forEach(ch -> {
+            jobj.getJSONArray("items").forEach(ch ->
+            {
                 var jch = (JSONObject) ch;
 
                 var collID = jch.getString("id");
                 var collName = jch.getString("name");
 
-                jch.getJSONArray("skins").forEach(chi -> {
+                jch.getJSONArray("skins").forEach(chi ->
+                {
                     var jchi = (JSONObject) chi;
 
                     var rarity = jchi.getEnum(EnumCardRarity.class, "rarity");
@@ -43,8 +45,7 @@ public class Cards
                     cc.setCollectionName(collName);
                 });
             });
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
             BotMain.logger.fatal("League of Legends skin data not found or malformed! Aborting.", e);
             System.exit(9);
@@ -57,7 +58,8 @@ public class Cards
             CardSet.csgo = new CardSet(jobj.getString("set"), jobj.getString("setName"), jobj.getString("idPrefix"));
             CardSet.csgo.setDescription(jobj.getString("description"));
 
-            jobj.getJSONArray("items").forEach(ch -> {
+            jobj.getJSONArray("items").forEach(ch ->
+            {
                 var jch = (JSONObject) ch;
 
                 var rarity = jch.getEnum(EnumCardRarity.class, "rarity");
@@ -67,8 +69,7 @@ public class Cards
                 CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(Items.dust, rarity.getBasePrice() * 3 * 100)), 1, cc));
                 cc.setCustomImage(jch.getString("iconurl"));
             });
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
             BotMain.logger.fatal("CS:GO skin data not found or malformed! Aborting.", e);
             System.exit(10);

@@ -56,7 +56,8 @@ public class EventBus extends ListenerAdapter
     {
         event.getJDA().getPresence().setGame(Game.listening(PLAYING));
 
-        event.getJDA().getGuilds().forEach(g -> {
+        event.getJDA().getGuilds().forEach(g ->
+        {
             var sc = ServerPreferences.getConfigByGuild(g.getIdLong());
             if (sc == null)
             {

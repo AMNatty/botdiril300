@@ -18,7 +18,8 @@ import cz.tefek.botdiril.userdata.xp.RewardParser;
 import cz.tefek.botdiril.userdata.xp.XPRewards;
 import net.dv8tion.jda.core.entities.User;
 
-@Command(aliases = { "rob" }, category = CommandCategory.CURRENCY, description = "Hehe. Time to rob someone.", value = "steal", levelLock = 10)
+@Command(aliases = {
+        "rob" }, category = CommandCategory.CURRENCY, description = "Hehe. Time to rob someone.", value = "steal", levelLock = 10)
 public class CommandSteal
 {
     @CmdInvoke

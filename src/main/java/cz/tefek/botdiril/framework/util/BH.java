@@ -22,8 +22,7 @@ public class BH
     public static boolean findPrefix(Guild g, CallObj obj)
     {
         var prefix = obj.sc.getPrefix();
-        var defaultPrefix = obj.contents.toLowerCase()
-                .startsWith(BotdirilConfig.UNIVERSAL_PREFIX.toLowerCase());
+        var defaultPrefix = obj.contents.toLowerCase().startsWith(BotdirilConfig.UNIVERSAL_PREFIX.toLowerCase());
 
         if (prefix != null)
             if (prefix.isEmpty() && defaultPrefix)

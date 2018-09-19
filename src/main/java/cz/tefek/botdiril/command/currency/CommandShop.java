@@ -13,7 +13,7 @@ import cz.tefek.botdiril.userdata.items.ShopEntries;
 import net.dv8tion.jda.core.EmbedBuilder;
 
 @Command(value = "shop", aliases = { "store",
-                                     "market" }, category = CommandCategory.CURRENCY, description = "Opens the shops.")
+        "market" }, category = CommandCategory.CURRENCY, description = "Opens the shops.")
 public class CommandShop
 {
     @CmdInvoke
@@ -55,8 +55,7 @@ public class CommandShop
             sub.append("**Sells back for:** ");
             sub.append(ShopEntries.getSellValue(item));
             sub.append(Icons.COIN);
-        }
-        else
+        } else
         {
             sub.append("*Cannot be sold.*");
         }

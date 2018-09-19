@@ -32,8 +32,7 @@ public class SqlFoundation
                     BotMain.sql = new SqlCon();
                 }
             }
-        }
-        catch (SQLException | ClassNotFoundException | PropertyVetoException e)
+        } catch (SQLException | ClassNotFoundException | PropertyVetoException e)
         {
             BotMain.logger.error("An error has occured while preparing the database structure.", e);
         }
@@ -41,7 +40,8 @@ public class SqlFoundation
 
     public static boolean checkTableExists(SqlCon con, String name)
     {
-        return con.exec("SHOW TABLES LIKE ?", stat -> {
+        return con.exec("SHOW TABLES LIKE ?", stat ->
+        {
             return stat.executeQuery().next();
         }, name);
     }

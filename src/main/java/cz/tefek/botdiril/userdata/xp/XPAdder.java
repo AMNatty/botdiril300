@@ -23,7 +23,8 @@ public class XPAdder
 
         while (xpSum < caxp)
         {
-            RewardParser.parse(XPRewards.getRewardsForLvl(i)).forEach(ip -> {
+            RewardParser.parse(XPRewards.getRewardsForLvl(i)).forEach(ip ->
+            {
                 var pair = rewards.stream().filter(rev -> rev.getItem().equals(ip.getItem())).findAny();
 
                 if (pair.isPresent())
@@ -49,8 +50,7 @@ public class XPAdder
         if (i == XPRewards.getMaxLevel())
         {
             co.ui.setXP(0);
-        }
-        else
+        } else
         {
             co.ui.setXP(caxp - (xpSum - XPRewards.getXPAtLevel(i)));
         }
@@ -59,9 +59,7 @@ public class XPAdder
         {
             co.ui.setLevel(i);
 
-            var rw = rewards.stream()
-                    .map(ip -> ip.getAmount() + "x " + ip.getItem().inlineDescription())
-                    .collect(Collectors.joining("\n"));
+            var rw = rewards.stream().map(ip -> ip.getAmount() + "x " + ip.getItem().inlineDescription()).collect(Collectors.joining("\n"));
 
             MR.send(co.textChannel, String.format("***You advanced to level %d!***\n**Rewards:**\n%s", i, rw));
         }

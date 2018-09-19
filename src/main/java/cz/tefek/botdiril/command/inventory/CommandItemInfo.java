@@ -14,7 +14,8 @@ import cz.tefek.botdiril.userdata.items.ShopEntries;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed.Field;
 
-@Command(value = "iteminfo", aliases = { "ii" }, category = CommandCategory.ITEMS, description = "Shows important information about an item")
+@Command(value = "iteminfo", aliases = {
+        "ii" }, category = CommandCategory.ITEMS, description = "Shows important information about an item")
 public class CommandItemInfo
 {
     @CmdInvoke

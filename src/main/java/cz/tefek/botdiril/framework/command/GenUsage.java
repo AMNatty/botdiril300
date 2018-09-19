@@ -15,7 +15,8 @@ public class GenUsage
         var sb = new StringBuilder();
         var cmdClass = CommandStorage.getAccordingClass(cmd);
         var methods = cmdClass.getDeclaredMethods();
-        var commandFunc = Arrays.stream(methods).filter(meth -> {
+        var commandFunc = Arrays.stream(methods).filter(meth ->
+        {
             var hasInvoke = meth.getDeclaredAnnotation(CmdInvoke.class) != null;
 
             if (!hasInvoke)
