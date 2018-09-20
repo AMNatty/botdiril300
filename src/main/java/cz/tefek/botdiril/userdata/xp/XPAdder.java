@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import cz.tefek.botdiril.framework.command.CallObj;
+import cz.tefek.botdiril.framework.command.CommandStorage;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.items.ItemPair;
 
@@ -61,7 +62,15 @@ public class XPAdder
 
             var rw = rewards.stream().map(ip -> ip.getAmount() + "x " + ip.getItem().inlineDescription()).collect(Collectors.joining("\n"));
 
-            MR.send(co.textChannel, String.format("***You advanced to level %d!***\n**Rewards:**\n%s", i, rw));
+            var cmds = CommandStorage.commandsInLevelRange(lvl, i);
+
+            if (cmds.size() > 0)
+            {
+                MR.send(co.textChannel, String.format("***You advanced to level %d!***\n**Rewards:**\n%s\n**You unlocked the following commands:**\n%s", i, rw, cmds.stream().map(cmd -> '`' + cmd.value() + '`').collect(Collectors.joining("\n"))));
+            } else
+            {
+                MR.send(co.textChannel, String.format("***You advanced to level %d!***\n**Rewards:**\n%s", i, rw));
+            }
         }
     }
 }

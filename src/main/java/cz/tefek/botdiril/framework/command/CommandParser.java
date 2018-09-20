@@ -1,14 +1,19 @@
 package cz.tefek.botdiril.framework.command;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
+import net.dv8tion.jda.core.entities.Member;
+import net.dv8tion.jda.core.entities.TextChannel;
+import net.dv8tion.jda.core.entities.User;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 import cz.tefek.botdiril.BotMain;
 import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
@@ -21,12 +26,22 @@ import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.achievement.Achievement;
 import cz.tefek.botdiril.userdata.card.Card;
 import cz.tefek.botdiril.userdata.items.Item;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.TextChannel;
-import net.dv8tion.jda.core.entities.User;
 
 public class CommandParser
 {
+    private static String cutOffAt(String input, int pos)
+    {
+        return input.substring(pos);
+    }
+
+    private static String cutOffTillNextWhitespace(String input)
+    {
+        if (!Pattern.compile("\\s+").matcher(input).find())
+            return "";
+
+        return input.replaceFirst("^.+?\\s+", "");
+    }
+
     public static void parse(CallObj co)
     {
         var params = co.contents.split("\\s+");
@@ -36,6 +51,13 @@ public class CommandParser
 
         if (command == null)
             return;
+
+        if (co.ui.getLevel() < command.levelLock())
+        {
+            MR.send(co.textChannel, String.format("You need at least level %d to do this.", command.levelLock()));
+
+            return;
+        }
 
         var cmdClass = CommandStorage.getAccordingClass(command);
 
@@ -233,7 +255,8 @@ public class CommandParser
                                     throw new CommandException(arg + "\nA negative number was entered, they are not supported here.");
 
                                 argArr[i] = amount;
-                            } catch (NumberFormatException | ArithmeticException e)
+                            }
+                            catch (NumberFormatException | ArithmeticException e)
                             {
                                 throw new CommandException("Number could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...) or scientific notation (5e+59).\n*Please note that it must be a positive integer!*");
                             }
@@ -281,13 +304,16 @@ public class CommandParser
                 try
                 {
                     meth.invoke(null, argArr);
-                } catch (IllegalAccessException e)
+                }
+                catch (IllegalAccessException e)
                 {
                     BotMain.logger.fatal("An exception has occured while invoking a command.", e);
-                } catch (IllegalArgumentException e)
+                }
+                catch (IllegalArgumentException e)
                 {
                     BotMain.logger.fatal("An exception has occured while invoking a command.", e);
-                } catch (InvocationTargetException e)
+                }
+                catch (InvocationTargetException e)
                 {
                     if (e.getCause() instanceof CommandException)
                     {
@@ -298,7 +324,8 @@ public class CommandParser
                         BotMain.logger.fatal("An exception has occured while invoking a command.", e.getCause());
                     }
                 }
-            } catch (CommandException e)
+            }
+            catch (CommandException e)
             {
                 MR.send(co.textChannel, e.getMessage());
             }
@@ -312,18 +339,5 @@ public class CommandParser
         error.append(GenUsage.usage(command));
 
         MR.send(co.textChannel, error.toString());
-    }
-
-    private static String cutOffTillNextWhitespace(String input)
-    {
-        if (!Pattern.compile("\\s+").matcher(input).find())
-            return "";
-
-        return input.replaceFirst("^.+?\\s+", "");
-    }
-
-    private static String cutOffAt(String input, int pos)
-    {
-        return input.substring(pos);
     }
 }

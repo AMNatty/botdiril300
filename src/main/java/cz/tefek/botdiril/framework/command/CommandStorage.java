@@ -52,4 +52,9 @@ public class CommandStorage
     {
         return (int) aliasMap.values().stream().distinct().filter(cmd -> cmd.category().equals(cat)).count();
     }
+    
+    public static List<Command> commandsInLevelRange(int previousLevel, int newLevel)
+    {
+        return aliasMap.values().stream().filter(cmd -> cmd.levelLock() > previousLevel && cmd.levelLock() <= newLevel).collect(Collectors.toList());
+    }
 }
