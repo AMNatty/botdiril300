@@ -19,6 +19,8 @@ public class ItemCardPackBasic extends ItemCardPack
         var fm = String.format("You open %d %s and get the following cards:", amount, this.getIcon());
         var sb = new StringBuilder(fm);
 
+        // TODO        
+
         MR.send(co.textChannel, sb.toString());
     }
 
