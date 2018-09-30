@@ -11,12 +11,12 @@ public abstract class ItemCardPack extends Item implements IOpenable
         super(name, icon, localizedName);
     }
 
-    public abstract void open(CallObj co, int amount);
+    @Override
+    public abstract void open(CallObj co, long amount);
 
     @Override
     public String getFootnote(CallObj co)
     {
-        return "Open using `" + co.sc.getPrefix() + "open " + this
-                .getName() + "`. Is guaranteed to contain at least five cards.";
+        return "Open using `" + co.sc.getPrefix() + "open " + this.getName() + "`. Is guaranteed to contain at least five cards.";
     }
 }

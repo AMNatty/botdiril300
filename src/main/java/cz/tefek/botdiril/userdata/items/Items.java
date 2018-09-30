@@ -1,7 +1,5 @@
 package cz.tefek.botdiril.userdata.items;
 
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,8 +8,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import java.io.FileReader;
+import java.io.IOException;
+
 import cz.tefek.botdiril.BotMain;
 import cz.tefek.botdiril.userdata.EnumCurrency;
+import cz.tefek.botdiril.userdata.items.cardpack.ItemCardPackBasic;
 import cz.tefek.botdiril.userdata.items.crate.ItemCrateBasic;
 import cz.tefek.botdiril.userdata.items.crate.ItemCrateEpic;
 import cz.tefek.botdiril.userdata.items.crate.ItemCrateGlitchy;
@@ -67,7 +69,7 @@ public class Items
         dust = new ItemCurrency(EnumCurrency.DUST);
         keys = new ItemCurrency(EnumCurrency.KEYS);
 
-        cardPackBasic = new Item("basiccardpack", Icons.CARDPACK_BASIC, "Basic Card Pack").setDescription("Contains all the essential cards for your collections.");
+        cardPackBasic = new ItemCardPackBasic();
         cardPackNormal = new Item("cardpack", Icons.CARDPACK_NORMAL, "Normal Card Pack").setDescription("Contains a variety of cards ranging from common to mythical/limited cards.");
         cardPackGood = new Item("goodcardpack", Icons.CARDPACK_GOOD, "Good Card Pack").setDescription("For the true collectors, drops legacy/rare card or better.");
         cardPackVoid = new Item("voidcardpack", Icons.CARDPACK_VOID, "Void Card Pack").setDescription("For a very dangerous place Void is, it contains some *awesome* loot. Open this pack at your own risk. It may turn into a Pandora's box.");
@@ -120,7 +122,8 @@ public class Items
 
                 leagueItems.add(loli);
             });
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
             BotMain.logger.fatal("League of Legends item data not found or malformed! Aborting.", e);
             System.exit(8);
