@@ -1,5 +1,7 @@
 package cz.tefek.botdiril.command.general;
 
+import java.util.stream.Collectors;
+
 import net.dv8tion.jda.core.EmbedBuilder;
 
 import cz.tefek.botdiril.Botdiril;
@@ -16,7 +18,7 @@ public class CommandSomeone
     @CmdInvoke
     public static void choose(CallObj co)
     {
-        var memberList = co.textChannel.getMembers();
+        var memberList = co.textChannel.getMembers().stream().filter(m -> !m.getUser().isBot()).collect(Collectors.toList());
         var member = memberList.get(Botdiril.RANDOM.nextInt(memberList.size()));
 
         var eb = new EmbedBuilder();
