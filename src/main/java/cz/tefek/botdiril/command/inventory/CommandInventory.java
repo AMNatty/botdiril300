@@ -2,6 +2,9 @@ package cz.tefek.botdiril.command.inventory;
 
 import java.util.ArrayList;
 
+import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.Member;
+
 import cz.tefek.botdiril.BotMain;
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.command.Command;
@@ -15,8 +18,6 @@ import cz.tefek.botdiril.userdata.items.Item;
 import cz.tefek.botdiril.userdata.items.ItemCurrency;
 import cz.tefek.botdiril.userdata.items.ItemPair;
 import cz.tefek.botdiril.userdata.items.ShopEntries;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Member;
 
 @Command(value = "inventory", aliases = { "inv",
         "i" }, category = CommandCategory.ITEMS, description = "Shows your/someone's inventory.")
@@ -43,7 +44,14 @@ public class CommandInventory
 
             while (eq.next())
             {
-                var item = Item.getItemByID(eq.getInt("fk_il_id"));
+                var ilID = eq.getInt("fk_il_id");
+                var item = Item.getItemByID(ilID);
+
+                if (item == null)
+                {
+                    BotMain.logger.warn(String.format("User %d has a null item in their inventory! ID: %d", co.caller.getIdLong(), ilID));
+                    continue;
+                }
 
                 if (item instanceof ItemCurrency)
                     continue;
@@ -110,7 +118,14 @@ public class CommandInventory
 
             while (eq.next())
             {
-                var item = Item.getItemByID(eq.getInt("fk_il_id"));
+                var ilID = eq.getInt("fk_il_id");
+                var item = Item.getItemByID(ilID);
+
+                if (item == null)
+                {
+                    BotMain.logger.warn(String.format("User %d has a null item in their inventory! ID: %d", co.caller.getIdLong(), ilID));
+                    continue;
+                }
 
                 if (item instanceof ItemCurrency)
                     continue;

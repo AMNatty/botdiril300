@@ -11,15 +11,34 @@ import cz.tefek.botdiril.userdata.ItemLookup;
 
 public class Item implements IIdentifiable
 {
+    private static final List<Item> items = new ArrayList<Item>();
+
+    public static Item getItemByID(int id)
+    {
+        return items.stream().filter(i -> i.getID() == id).findAny().orElse(null);
+    }
+
+    public static Item getItemByName(String name)
+    {
+        return items.stream().filter(i -> i.getName().equalsIgnoreCase(name)).findAny().orElse(null);
+    }
+
+    public static List<Item> items()
+    {
+        return Collections.unmodifiableList(items);
+    }
+
     private String icon;
+
     private String name;
+
     private String localizedName;
+
     private String description = "";
+
     private int id;
 
     private String inlineDetails = "";
-
-    private static final List<Item> items = new ArrayList<Item>();
 
     public Item(String name, String icon, String localizedName)
     {
@@ -29,58 +48,6 @@ public class Item implements IIdentifiable
 
         this.id = ItemLookup.make(this.name);
         items.add(this);
-    }
-
-    @Override
-    public String getName()
-    {
-        return name;
-    }
-
-    @Override
-    public void setID(int id)
-    {
-        this.id = id;
-    }
-
-    @Override
-    public int getID()
-    {
-        return this.id;
-    }
-
-    @Override
-    public String getIcon()
-    {
-        if (this.icon == null)
-            BotMain.logger.error("Every Item MUST have an icon. " + this.localizedName);
-
-        return this.icon;
-    }
-
-    @Override
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public Item setDescription(String description)
-    {
-        this.description = description;
-
-        return this;
-    }
-
-    @Override
-    public String getLocalizedName()
-    {
-        return this.localizedName;
-    }
-
-    @Override
-    public String inlineDescription()
-    {
-        return this.getIcon() + " " + this.getLocalizedName() + (inlineDetails.isEmpty() ? "" : (" " + inlineDetails));
     }
 
     @Override
@@ -96,23 +63,67 @@ public class Item implements IIdentifiable
         return false;
     }
 
-    public static Item getItemByName(String name)
+    @Override
+    public String getDescription()
     {
-        return items.stream().filter(i -> i.getName().equalsIgnoreCase(name)).findAny().orElse(null);
-    }
-
-    public static Item getItemByID(int id)
-    {
-        return items.stream().filter(i -> i.getID() == id).findAny().orElse(null);
-    }
-
-    public static List<Item> items()
-    {
-        return Collections.unmodifiableList(items);
+        return this.description;
     }
 
     public String getFootnote(CallObj co)
     {
         return "";
+    }
+
+    @Override
+    public String getIcon()
+    {
+        if (this.icon == null)
+            BotMain.logger.error("Every Item MUST have an icon. " + this.localizedName);
+
+        return this.icon;
+    }
+
+    @Override
+    public int getID()
+    {
+        return this.id;
+    }
+
+    @Override
+    public String getLocalizedName()
+    {
+        return this.localizedName;
+    }
+
+    @Override
+    public String getName()
+    {
+        return this.name;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return 31 + this.getID();
+    }
+
+    @Override
+    public String inlineDescription()
+    {
+        return this.getIcon() + " " + this.getLocalizedName() + (this.inlineDetails.isEmpty() ? ""
+                : " " + this.inlineDetails);
+    }
+
+    public Item setDescription(String description)
+    {
+        this.description = description;
+
+        return this;
+    }
+
+    @Override
+    public void setID(int id)
+    {
+        this.id = id;
     }
 }

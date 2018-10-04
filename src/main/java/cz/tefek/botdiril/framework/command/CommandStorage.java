@@ -14,6 +14,31 @@ public class CommandStorage
     private static Map<String, Command> aliasMap = new HashMap<>();
     private static Map<Command, Class<?>> classMap = new HashMap<>();
 
+    public static int commandCount()
+    {
+        return (int) aliasMap.values().stream().distinct().count();
+    }
+
+    public static int commandCountInCategory(CommandCategory cat)
+    {
+        return (int) aliasMap.values().stream().distinct().filter(cmd -> cmd.category().equals(cat)).count();
+    }
+
+    public static List<Command> commandsInLevelRange(int previousLevel, int newLevel)
+    {
+        return classMap.keySet().stream().filter(cmd -> cmd.levelLock() > previousLevel && cmd.levelLock() <= newLevel).collect(Collectors.toList());
+    }
+
+    public static Class<?> getAccordingClass(Command key)
+    {
+        return classMap.get(key);
+    }
+
+    public static List<Command> getCommandsByCategory(CommandCategory cat)
+    {
+        return aliasMap.values().stream().distinct().filter(cmd -> cmd.category().equals(cat)).collect(Collectors.toList());
+    }
+
     static void register(Command command, Class<?> clazz)
     {
         logger.info(command.value() + " of " + clazz);
@@ -31,30 +56,5 @@ public class CommandStorage
     public static Command search(String alias)
     {
         return aliasMap.get(alias.toLowerCase());
-    }
-
-    public static Class<?> getAccordingClass(Command key)
-    {
-        return classMap.get(key);
-    }
-
-    public static List<Command> getCommandsByCategory(CommandCategory cat)
-    {
-        return aliasMap.values().stream().distinct().filter(cmd -> cmd.category().equals(cat)).collect(Collectors.toList());
-    }
-
-    public static int commandCount()
-    {
-        return (int) aliasMap.values().stream().distinct().count();
-    }
-
-    public static int commandCountInCategory(CommandCategory cat)
-    {
-        return (int) aliasMap.values().stream().distinct().filter(cmd -> cmd.category().equals(cat)).count();
-    }
-    
-    public static List<Command> commandsInLevelRange(int previousLevel, int newLevel)
-    {
-        return aliasMap.values().stream().filter(cmd -> cmd.levelLock() > previousLevel && cmd.levelLock() <= newLevel).collect(Collectors.toList());
     }
 }

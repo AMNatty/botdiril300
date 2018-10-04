@@ -12,19 +12,44 @@ import cz.tefek.botdiril.userdata.pools.CardPools;
 
 public class Card implements IIdentifiable
 {
-    private String name;
+    private static final List<Card> cards = new ArrayList<Card>();
+
+    public static List<Card> cards()
+    {
+        return Collections.unmodifiableList(cards);
+    }
+
+    public static List<Card> getByCollection(String collection)
+    {
+        return cards.stream().filter(card -> card.collection.equalsIgnoreCase(collection)).collect(Collectors.toList());
+    }
+
+    public static Card getCardByID(int id)
+    {
+        return cards.stream().filter(i -> i.getID() == id).findAny().orElse(null);
+    }
+
+    public static Card getCardByName(String name)
+    {
+        return cards.stream().filter(i -> i.getName().equalsIgnoreCase(name)).findAny().orElse(null);
+    }
+
+    private String name;;
+
     private String localizedName;
     private String description = "";
+
     private CardSet cardSet;
+
     private EnumCardRarity cardRarity;
-    private String customImage = null;;
+
+    private String customImage = null;
 
     private String collection;
+
     private String collectionName;
 
     private int id;
-
-    private static final List<Card> cards = new ArrayList<Card>();
 
     public Card(CardSet cardCollection, EnumCardRarity cardRarity, String name, String localizedName)
     {
@@ -72,77 +97,6 @@ public class Card implements IIdentifiable
     }
 
     @Override
-    public String getName()
-    {
-        return name;
-    }
-
-    @Override
-    public void setID(int id)
-    {
-        this.id = id;
-    }
-
-    public Card setCustomImage(String customImage)
-    {
-        this.customImage = customImage;
-
-        return this;
-    }
-
-    public String getCustomImage()
-    {
-        return customImage;
-    }
-
-    public boolean hasCustomImage()
-    {
-        return this.customImage != null;
-    }
-
-    @Override
-    public int getID()
-    {
-        return this.id;
-    }
-
-    @Override
-    public String getIcon()
-    {
-        return cardRarity.getCardIcon();
-    }
-
-    public EnumCardRarity getCardRarity()
-    {
-        return cardRarity;
-    }
-
-    @Override
-    public String getDescription()
-    {
-        return this.description;
-    }
-
-    public Card setDescription(String description)
-    {
-        this.description = description;
-
-        return this;
-    }
-
-    @Override
-    public String getLocalizedName()
-    {
-        return this.localizedName;
-    }
-
-    @Override
-    public String inlineDescription()
-    {
-        return this.getIcon() + " " + this.getLocalizedName();
-    }
-
-    @Override
     public boolean equals(Object obj)
     {
         if (obj instanceof Card)
@@ -155,19 +109,35 @@ public class Card implements IIdentifiable
         return false;
     }
 
-    public static Card getCardByName(String name)
+    public EnumCardRarity getCardRarity()
     {
-        return cards.stream().filter(i -> i.getName().equalsIgnoreCase(name)).findAny().orElse(null);
+        return this.cardRarity;
     }
 
-    public static Card getCardByID(int id)
+    public CardSet getCardSet()
     {
-        return cards.stream().filter(i -> i.getID() == id).findAny().orElse(null);
+        return this.cardSet;
     }
 
-    public static List<Card> cards()
+    public String getCollection()
     {
-        return Collections.unmodifiableList(cards);
+        return this.collection;
+    }
+
+    public String getCollectionName()
+    {
+        return this.collectionName;
+    }
+
+    public String getCustomImage()
+    {
+        return this.customImage;
+    }
+
+    @Override
+    public String getDescription()
+    {
+        return this.description;
     }
 
     public String getFootnote(CallObj co)
@@ -175,19 +145,50 @@ public class Card implements IIdentifiable
         return "";
     }
 
-    public CardSet getCardSet()
+    @Override
+    public String getIcon()
     {
-        return cardSet;
+        return this.cardRarity.getCardIcon();
+    }
+
+    @Override
+    public int getID()
+    {
+        return this.id;
+    }
+
+    @Override
+    public String getLocalizedName()
+    {
+        return this.localizedName;
+    }
+
+    @Override
+    public String getName()
+    {
+        return this.name;
     }
 
     public boolean hasCollection()
     {
-        return collection != null;
+        return this.collection != null;
     }
 
-    public String getCollection()
+    public boolean hasCustomImage()
     {
-        return collection;
+        return this.customImage != null;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return 31 + this.getID();
+    }
+
+    @Override
+    public String inlineDescription()
+    {
+        return this.getIcon() + " " + this.getLocalizedName();
     }
 
     public Card setCollection(String collection)
@@ -197,11 +198,6 @@ public class Card implements IIdentifiable
         return this;
     }
 
-    public String getCollectionName()
-    {
-        return collectionName;
-    }
-
     public Card setCollectionName(String collectionName)
     {
         this.collectionName = collectionName;
@@ -209,8 +205,23 @@ public class Card implements IIdentifiable
         return this;
     }
 
-    public static List<Card> getByCollection(String collection)
+    public Card setCustomImage(String customImage)
     {
-        return cards.stream().filter(card -> card.collection.equalsIgnoreCase(collection)).collect(Collectors.toList());
+        this.customImage = customImage;
+
+        return this;
+    }
+
+    public Card setDescription(String description)
+    {
+        this.description = description;
+
+        return this;
+    }
+
+    @Override
+    public void setID(int id)
+    {
+        this.id = id;
     }
 }

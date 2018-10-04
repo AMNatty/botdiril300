@@ -2,23 +2,23 @@ package cz.tefek.botdiril.userdata;
 
 public interface IIdentifiable
 {
-    public String getName();
-
-    /** Never ever ever call this method in stardard code. */
-    public void setID(int id);
-
-    public int getID();
+    public String getDescription();
 
     public String getIcon();
 
-    public String getDescription();
+    public int getID();
 
     public String getLocalizedName();
 
-    public String inlineDescription();
+    public String getName();
 
     public default boolean hasIcon()
     {
         return this.getIcon() != null;
     }
+
+    public String inlineDescription();
+
+    /** Never ever ever call this method in stardard code. */
+    public void setID(int id);
 }
