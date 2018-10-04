@@ -20,10 +20,10 @@ public class PoolDrawer
 
     public LootPool<?> draw()
     {
-        var rd = Botdiril.RDG.nextLong(0, weightSum - 1);
+        var rd = Botdiril.RDG.nextLong(0, this.weightSum);
         var ptr = 0;
 
-        for (var pool : pools)
+        for (var pool : this.pools)
         {
             if (ptr >= rd)
             {
