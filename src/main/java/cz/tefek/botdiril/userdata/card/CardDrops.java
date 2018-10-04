@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import cz.tefek.botdiril.userdata.items.CardPair;
 
@@ -49,5 +50,10 @@ public class CardDrops implements Iterable<CardPair>
     public long totalCount()
     {
         return this.lootMap.values().stream().collect(Collectors.reducing(Long::sum)).orElse(0L);
+    }
+
+    public Stream<CardPair> stream()
+    {
+        return this.lootMap.entrySet().stream().map(entry -> new CardPair(entry.getKey(), entry.getValue()));
     }
 }

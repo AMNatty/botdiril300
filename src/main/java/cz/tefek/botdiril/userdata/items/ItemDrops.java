@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Iterable storage for item loot.
@@ -47,5 +48,10 @@ public class ItemDrops implements Iterable<ItemPair>
     public long totalCount()
     {
         return this.lootMap.values().stream().collect(Collectors.reducing(Long::sum)).orElse(0L);
+    }
+
+    public Stream<ItemPair> stream()
+    {
+        return this.lootMap.entrySet().stream().map(entry -> new ItemPair(entry.getKey(), entry.getValue()));
     }
 }
