@@ -20,17 +20,18 @@ public class PoolDrawer
 
     public LootPool<?> draw()
     {
+        System.out.println("Selecting from a pool of " + pools.size());
         var rd = Botdiril.RDG.nextLong(0, this.weightSum);
         var ptr = 0;
 
         for (var pool : this.pools)
         {
+            ptr += pool.getWeight();
+
             if (ptr >= rd)
             {
                 return pool.getPool();
             }
-
-            ptr += pool.getWeight();
         }
 
         return null;

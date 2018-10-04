@@ -2,6 +2,7 @@ package cz.tefek.botdiril.userdata.items.cardpack;
 
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.util.MR;
+import cz.tefek.botdiril.userdata.card.Card;
 import cz.tefek.botdiril.userdata.card.CardDrops;
 import cz.tefek.botdiril.userdata.items.Icons;
 import cz.tefek.botdiril.userdata.items.ShopEntries;
@@ -29,7 +30,7 @@ public class ItemCardPackBasic extends ItemCardPack
         var cp = new CardDrops();
 
         for (int i = 0; i < CONTENTS * amount; i++)
-            cp.addItem(CardPools.basic.draw(), 1);
+            cp.addItem((Card) CardPools.basicOrCommon.draw().draw(), 1);
 
         var i = 0;
 
@@ -51,7 +52,9 @@ public class ItemCardPackBasic extends ItemCardPack
         if (dc > DISPLAY_LIMIT)
             sb.append(String.format("\nand %d more different cards...", dc - DISPLAY_LIMIT));
 
-        sb.append(String.format("\nTotal %d cards.", cp.totalCount()));
+        var dustVal = cp.stream().mapToLong(cardPair -> ShopEntries.getDustForDisenchanting(cardPair.getCard()) * cardPair.getAmount());
+
+        sb.append(String.format("\nTotal %d cards. Approximate value: %d%s", cp.totalCount(), dustVal, Icons.DUST));
 
         MR.send(co.textChannel, sb.toString());
     }
