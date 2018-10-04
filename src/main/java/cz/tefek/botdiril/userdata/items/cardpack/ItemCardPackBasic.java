@@ -52,7 +52,7 @@ public class ItemCardPackBasic extends ItemCardPack
         if (dc > DISPLAY_LIMIT)
             sb.append(String.format("\nand %d more different cards...", dc - DISPLAY_LIMIT));
 
-        var dustVal = cp.stream().mapToLong(cardPair -> ShopEntries.getDustForDisenchanting(cardPair.getCard()) * cardPair.getAmount());
+        var dustVal = cp.stream().mapToLong(cardPair -> ShopEntries.getDustForDisenchanting(cardPair.getCard()) * cardPair.getAmount()).sum();
 
         sb.append(String.format("\nTotal %d cards. Approximate value: %d%s", cp.totalCount(), dustVal, Icons.DUST));
 
