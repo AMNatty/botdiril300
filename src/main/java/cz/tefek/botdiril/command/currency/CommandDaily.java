@@ -1,12 +1,14 @@
 package cz.tefek.botdiril.command.currency;
 
-import java.math.BigInteger;
 import java.util.Random;
+
+import java.math.BigInteger;
 
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.command.Command;
 import cz.tefek.botdiril.framework.command.CommandCategory;
 import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
+import cz.tefek.botdiril.framework.util.BigNumbers;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.items.Icons;
@@ -41,7 +43,7 @@ public class CommandDaily
         var keys = lvl > 100 ? 5 : 3;
         co.ui.addKeys(keys);
 
-        var str = String.format("**Here are your daily items:**\n%d xp\n%d %s\n%d %s\n%d %s\n%d %s", xp, coins, Icons.COIN, keks, Icons.KEK, megakeks, Icons.MEGAKEK, keys, Icons.KEY);
+        var str = String.format("**Here are your daily items:**\n%d xp\n%d %s\n%d %s\n%s %s\n%d %s", xp, coins, Icons.COIN, keks, Icons.KEK, BigNumbers.stringifyBoth(megakeks), Icons.MEGAKEK, keys, Icons.KEY);
 
         MR.send(co.textChannel, str);
     }
