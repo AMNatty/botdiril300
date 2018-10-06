@@ -14,6 +14,9 @@ import java.io.IOException;
 import cz.tefek.botdiril.BotMain;
 import cz.tefek.botdiril.userdata.EnumCurrency;
 import cz.tefek.botdiril.userdata.items.cardpack.ItemCardPackBasic;
+import cz.tefek.botdiril.userdata.items.cardpack.ItemCardPackGood;
+import cz.tefek.botdiril.userdata.items.cardpack.ItemCardPackNormal;
+import cz.tefek.botdiril.userdata.items.cardpack.ItemCardPackVoid;
 import cz.tefek.botdiril.userdata.items.crate.ItemCrateBasic;
 import cz.tefek.botdiril.userdata.items.crate.ItemCrateEpic;
 import cz.tefek.botdiril.userdata.items.crate.ItemCrateGlitchy;
@@ -37,10 +40,10 @@ public class Items
     public static ItemCurrency dust;
     public static ItemCurrency keys;
 
-    public static Item cardPackBasic;
-    public static Item cardPackNormal;
-    public static Item cardPackGood;
-    public static Item cardPackVoid;
+    public static ItemCardPackBasic cardPackBasic;
+    public static ItemCardPackNormal cardPackNormal;
+    public static ItemCardPackGood cardPackGood;
+    public static ItemCardPackVoid cardPackVoid;
 
     public static Item crateBasic;
     public static Item crateUncommon;
@@ -70,9 +73,9 @@ public class Items
         keys = new ItemCurrency(EnumCurrency.KEYS);
 
         cardPackBasic = new ItemCardPackBasic();
-        cardPackNormal = new Item("cardpack", Icons.CARDPACK_NORMAL, "Normal Card Pack").setDescription("Contains a variety of cards ranging from common to mythical/limited cards.");
-        cardPackGood = new Item("goodcardpack", Icons.CARDPACK_GOOD, "Good Card Pack").setDescription("For the true collectors, drops legacy/rare card or better.");
-        cardPackVoid = new Item("voidcardpack", Icons.CARDPACK_VOID, "Void Card Pack").setDescription("For a very dangerous place Void is, it contains some *awesome* loot. Open this pack at your own risk. It may turn into a Pandora's box.");
+        cardPackNormal = new ItemCardPackNormal();
+        cardPackGood = new ItemCardPackGood();
+        cardPackVoid = new ItemCardPackVoid();
 
         pickaxeI = new Item("pickaxei", Icons.PICKAXE_I, "Pickaxe I").setDescription("Basic Pickaxe.\nUsed for mining.");
         ShopEntries.addCoinBuy(pickaxeI, 2_000);

@@ -31,7 +31,7 @@ public class CommandDraw
 
         for (int i = 0; i < XPRewards.getLevel(co.ui.getLevel()).getDrawPotency() - 1; i++)
         {
-            lc.add((Card) CardPools.commonToLimited.draw().draw());
+            lc.add((Card) CardPools.basicToLimited.draw().draw());
         }
 
         var msg = String.format("You drew %s.", lc.stream().map(IIdentifiable::inlineDescription).collect(Collectors.joining(", ")));
