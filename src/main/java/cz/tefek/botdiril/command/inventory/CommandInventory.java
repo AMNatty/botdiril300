@@ -95,7 +95,7 @@ public class CommandInventory
             return Long.compare(ShopEntries.getCoinPrice(i2.getItem()), ShopEntries.getCoinPrice(i1.getItem()));
         }).limit(ITEMS_PER_PAGE).forEach(ip ->
         {
-            eb.addField(ip.getItem().inlineDescription(), "You have: " + ip.getAmount(), true);
+            eb.addField(ip.getItem().inlineDescription(), String.format("You have: **%d**\nID: **%s**", ip.getAmount(), ip.getItem().getName()), true);
         });
 
         eb.setFooter("Use `" + co.sc.getPrefix() + "i " + user.getUser().getIdLong() + " <page>` to go to another page.", null);
@@ -172,7 +172,7 @@ public class CommandInventory
             return Long.compare(ShopEntries.getCoinPrice(i2.getItem()), ShopEntries.getCoinPrice(i1.getItem()));
         }).skip((page - 1) * ITEMS_PER_PAGE).limit(ITEMS_PER_PAGE).forEach(ip ->
         {
-            eb.addField(ip.getItem().inlineDescription(), String.format("You have: **%d**", ip.getAmount()), true);
+            eb.addField(ip.getItem().inlineDescription(), String.format("You have: **%d**\nID: **%s**", ip.getAmount(), ip.getItem().getName()), true);
         });
 
         eb.setFooter("Use `" + co.sc.getPrefix() + "i " + user.getUser().getIdLong() + " <page>` to go to another page.", null);
