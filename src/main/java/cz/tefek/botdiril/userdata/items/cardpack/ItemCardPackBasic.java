@@ -10,7 +10,7 @@ import cz.tefek.botdiril.userdata.pools.CardPools;
 
 public class ItemCardPackBasic extends ItemCardPack
 {
-    private static final int CONTENTS = 12;
+    private static final int CONTENTS = 10;
 
     private static final int DISPLAY_LIMIT = 15;
 
