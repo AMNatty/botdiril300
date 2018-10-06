@@ -20,7 +20,6 @@ public class PoolDrawer
 
     public LootPool<?> draw()
     {
-        System.out.println("Selecting from a pool of " + pools.size());
         var rd = Botdiril.RDG.nextLong(0, this.weightSum);
         var ptr = 0;
 
