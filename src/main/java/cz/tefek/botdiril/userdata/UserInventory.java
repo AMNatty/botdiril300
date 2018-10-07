@@ -113,7 +113,8 @@ public class UserInventory
                 keys.next();
                 return keys.getInt(1);
             });
-        } else
+        }
+        else
         {
             this.fkid = user;
         }
@@ -171,21 +172,21 @@ public class UserInventory
 
     public long getKekTokens()
     {
-        return BotMain.sql.exec("SELECT us_coins FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
+        return BotMain.sql.exec("SELECT us_tokens FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
         {
             var rs = stat.executeQuery();
             rs.next();
-            return rs.getLong("us_coins");
+            return rs.getLong("us_tokens");
         }, this.fkid);
     }
 
     public long getKeys()
     {
-        return BotMain.sql.exec("SELECT us_coins FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
+        return BotMain.sql.exec("SELECT us_keys FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
         {
             var rs = stat.executeQuery();
             rs.next();
-            return rs.getLong("us_coins");
+            return rs.getLong("us_keys");
         }, this.fkid);
     }
 
@@ -201,11 +202,11 @@ public class UserInventory
 
     public long getCards()
     {
-        return BotMain.sql.exec("SELECT us_dust FROM " + TABLE_CARDS + " WHERE us_userid=(?)", stat ->
+        return BotMain.sql.exec("SELECT SUM(cr_amount) as cardcount FROM " + TABLE_CARDS + " WHERE fk_us_id=(?)", stmt ->
         {
-            var rs = stat.executeQuery();
-            rs.next();
-            return rs.getLong("us_dust");
+            var ress = stmt.executeQuery();
+            ress.next();
+            return ress.getLong("cardcount");
         }, this.fkid);
     }
 
