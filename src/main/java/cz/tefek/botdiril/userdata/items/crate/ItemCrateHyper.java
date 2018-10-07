@@ -16,7 +16,7 @@ public class ItemCrateHyper extends ItemCrate
     }
 
     @Override
-    public void open(CallObj co, int amount)
+    public void open(CallObj co, long amount)
     {
 
     }
