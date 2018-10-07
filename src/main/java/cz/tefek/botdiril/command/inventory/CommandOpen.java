@@ -10,6 +10,7 @@ import cz.tefek.botdiril.framework.command.invoke.CommandException;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.items.IOpenable;
+import cz.tefek.botdiril.userdata.items.Icons;
 import cz.tefek.botdiril.userdata.items.Item;
 
 @Command(value = "open", aliases = {}, category = CommandCategory.ITEMS, description = "Open a card pack/crate/something else.")
@@ -30,7 +31,7 @@ public class CommandOpen
 
         CommandAssert.numberInBoundsInclusiveL(amount, 1, 32, "You can open 32 crates at most and one at least (obviously).");
 
-        new Thread(() ->
+        var t = new Thread(() ->
         {
             try
             {
@@ -39,7 +40,10 @@ public class CommandOpen
                 CommandAssert.numberNotBelowL(co.ui.howManyOf(item), amount, "You don't have " + amount + " " + item.inlineDescription() + "s...");
 
                 if (openable.requiresKey())
-                    CommandAssert.numberNotBelowL(co.ui.getKeys(), amount, "You don't have enough keys for this.");
+                {
+                    var keys = co.ui.getKeys();
+                    CommandAssert.numberNotBelowL(keys, amount, String.format("You don't have enough %s for this.", Icons.KEY));
+                }
 
                 openable.open(co, amount);
                 co.ui.addItem(item, -amount);
@@ -55,6 +59,8 @@ public class CommandOpen
             {
                 BotMain.sql.unlock();
             }
-        }).start();
+        });
+        t.setName("CrateThread" + co.caller.getIdLong() + "_" + System.currentTimeMillis());
+        t.start();
     }
 }
