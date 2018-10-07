@@ -60,7 +60,19 @@ public class Items
     public static Item pickaxeII;
     public static Item pickaxeIII;
 
+    public static Item redGem;
+    public static Item greenGem;
+
+    public static Item blueGem;
+    public static Item purpleGem;
+
+    public static Item rainbowGem;
+    public static Item blackGem;
+
+    public static Item gemdiril;
+
     public static Item toolBox;
+    public static Item trash;
 
     public static void load()
     {
@@ -76,6 +88,18 @@ public class Items
         cardPackNormal = new ItemCardPackNormal();
         cardPackGood = new ItemCardPackGood();
         cardPackVoid = new ItemCardPackVoid();
+
+        redGem = new Item("infernalgem", Icons.GEM_RED, "Infernal Gem").setDescription("Unleash the fury upon your foes.");
+        greenGem = new Item("peacegem", Icons.GEM_GREEN, "Peace Gem").setDescription("Avoid conflicts.");
+
+        blueGem = new Item("equlibriumgem", Icons.GEM_BLUE, "Equlibrium Gem").setDescription("Remove any differences.");
+        purpleGem = new Item("imbalancegem", Icons.GEM_PURPLE, "Imbalance Gem").setDescription("The source of imbalance permeating the universe.");
+
+        rainbowGem = new Item("ordergem", Icons.GEM_RAINBOW, "Order Gem").setDescription("Natural enemy of chaos.");
+        blackGem = new Item("chaosgem", Icons.GEM_BLACK, "Chaos Gem").setDescription("The source of all chaos.");
+
+        gemdiril = new Item("gemdiril", Icons.GEM_GEMDIRIL, "Gemdiril").setDescription("A very rare gem of an unknown value.");
+        trash = new Item("trash", Icons.ITEM_TRASH, "Trash").setDescription("It's just trash, or is it?");
 
         pickaxeI = new Item("pickaxei", Icons.PICKAXE_I, "Pickaxe I").setDescription("Basic Pickaxe.\nUsed for mining.");
         ShopEntries.addCoinBuy(pickaxeI, 2_000);
