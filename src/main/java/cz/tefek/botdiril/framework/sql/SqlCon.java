@@ -1,14 +1,15 @@
 package cz.tefek.botdiril.framework.sql;
 
-import java.beans.PropertyVetoException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.concurrent.locks.ReentrantLock;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.mchange.v2.c3p0.impl.NewProxyPreparedStatement;
 import com.mysql.cj.jdbc.ClientPreparedStatement;
+
+import java.beans.PropertyVetoException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import cz.tefek.botdiril.BotMain;
 
@@ -48,16 +49,19 @@ public class SqlCon
             c = dataSource.getConnection();
             lock.lock();
             return statement.exec(c);
-        } catch (SQLException e)
+        }
+        catch (SQLException e)
         {
             BotMain.logger.error("An error has occured while executing an SQL statement.", e);
             return null;
-        } finally
+        }
+        finally
         {
             try
             {
                 c.close();
-            } catch (SQLException e)
+            }
+            catch (SQLException e)
             {
                 BotMain.logger.error("An error has occured while closing the SQL connection.", e);
             }
@@ -94,16 +98,20 @@ public class SqlCon
                     if (clazz == ParamNull.class)
                     {
                         stat.setNull(i + 1, ((ParamNull) param).getType());
-                    } else if (clazz == Integer.class)
+                    }
+                    else if (clazz == Integer.class)
                     {
                         stat.setInt(i + 1, (Integer) param);
-                    } else if (clazz == Long.class)
+                    }
+                    else if (clazz == Long.class)
                     {
                         stat.setLong(i + 1, (Long) param);
-                    } else if (clazz == String.class)
+                    }
+                    else if (clazz == String.class)
                     {
                         stat.setString(i + 1, (String) param);
-                    } else
+                    }
+                    else
                     {
                         System.err.printf("I don't support that: %d\n", param);
 
@@ -119,17 +127,20 @@ public class SqlCon
 
                 return r;
             }
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
 
             BotMain.logger.error("An error has occured while executing an SQL statement.", e);
             return null;
-        } finally
+        }
+        finally
         {
             try
             {
                 c.close();
-            } catch (SQLException e)
+            }
+            catch (SQLException e)
             {
                 BotMain.logger.error("Error while closing the SQL connection.", e);
             }
@@ -167,16 +178,20 @@ public class SqlCon
                     if (clazz == ParamNull.class)
                     {
                         stat.setNull(i + 1, ((ParamNull) param).getType());
-                    } else if (clazz == Integer.class)
+                    }
+                    else if (clazz == Integer.class)
                     {
                         stat.setInt(i + 1, (Integer) param);
-                    } else if (clazz == Long.class)
+                    }
+                    else if (clazz == Long.class)
                     {
                         stat.setLong(i + 1, (Long) param);
-                    } else if (clazz == String.class)
+                    }
+                    else if (clazz == String.class)
                     {
                         stat.setString(i + 1, (String) param);
-                    } else
+                    }
+                    else
                     {
                         System.err.printf("I don't support that: %d\n", param);
 
@@ -192,16 +207,19 @@ public class SqlCon
                     return (R) rs.getObject(columnName);
                 }
             }
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             BotMain.logger.error("An error has occured while executing an SQL statement.", e);
             return null;
-        } finally
+        }
+        finally
         {
             try
             {
                 c.close();
-            } catch (SQLException e)
+            }
+            catch (SQLException e)
             {
                 BotMain.logger.error("An error has occured while closing the SQL connection.", e);
             }
