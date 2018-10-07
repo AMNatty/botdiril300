@@ -16,4 +16,10 @@ public abstract class ItemCrate extends Item implements IOpenable
     {
         return "Open using `" + co.sc.getPrefix() + "open " + this.getName() + "`. Keep in mind you need a key to do so.";
     }
+
+    @Override
+    public boolean requiresKey()
+    {
+        return true;
+    }
 }
