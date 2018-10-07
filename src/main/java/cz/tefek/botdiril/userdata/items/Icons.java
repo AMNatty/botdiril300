@@ -95,6 +95,8 @@ public class Icons
 
     public static final String ITEM_LOL = "<:lol_item:481152039016202240>";
 
+    public static final String ITEM_TRASH = "<:trash:498464414278615052>";
+
     // ACHIEVEMENT ICONS, FORMERLY KNOWN AS BADGES
 
     public static final String ACHIEVEMENT_BOT = "<:bot:477569305999835140>";
