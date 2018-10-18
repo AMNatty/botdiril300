@@ -15,6 +15,8 @@ public class CratePools
 
     public static final PoolDrawer basicCrate = new PoolDrawer().add(10, terribleRewards).add(50, badRewards).add(60, leagueRewards).add(8, normalRewards).add(1, goodRewards);
 
+    public static final PoolDrawer uncommonCrate = new PoolDrawer().add(5, terribleRewards).add(40, badRewards).add(30, leagueRewards).add(16, normalRewards).add(2, goodRewards).add(1, greatRewards);
+
     static
     {
         terribleRewards.add(Items.trash);
