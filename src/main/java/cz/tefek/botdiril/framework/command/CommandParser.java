@@ -130,7 +130,8 @@ public class CommandParser
                                 break;
                         }
                     }
-                } else
+                }
+                else
                 {
                     for (pos = 0; pos < input.length(); pos++)
                     {
@@ -185,15 +186,18 @@ public class CommandParser
                         var num = CommandAssert.parseInt(arg, "Error: " + arg + " is not a valid number.");
 
                         argArr[i] = num;
-                    } else if (clazz == long.class || clazz == Long.class)
+                    }
+                    else if (clazz == long.class || clazz == Long.class)
                     {
                         if (type == ParType.AMOUNT_COINS)
                         {
                             argArr[i] = CommandAssert.parseAmount(arg, co.ui.getCoins(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
-                        } else if (type == ParType.AMOUNT_CLASSIC_KEKS)
+                        }
+                        else if (type == ParType.AMOUNT_CLASSIC_KEKS)
                         {
                             argArr[i] = CommandAssert.parseAmount(arg, co.ui.getKeks(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
-                        } else if (type == ParType.AMOUNT_CARD)
+                        }
+                        else if (type == ParType.AMOUNT_CARD)
                         {
                             if (i == 0)
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM**");
@@ -202,7 +206,8 @@ public class CommandParser
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM_NOT_CARD**");
 
                             argArr[i] = CommandAssert.parseAmount(arg, co.ui.howManyOf((Card) argArr[i - 1]), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
-                        } else if (type == ParType.AMOUNT_ITEM)
+                        }
+                        else if (type == ParType.AMOUNT_ITEM)
                         {
                             if (i == 0)
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM**");
@@ -211,27 +216,33 @@ public class CommandParser
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM_NOT_ITEM**");
 
                             argArr[i] = CommandAssert.parseAmount(arg, co.ui.howManyOf((Item) argArr[i - 1]), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
-                        } else if (type == ParType.AMOUNT_KEK_TOKENS)
+                        }
+                        else if (type == ParType.AMOUNT_KEK_TOKENS)
                         {
                             argArr[i] = CommandAssert.parseAmount(arg, co.ui.getKekTokens(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
-                        } else if (type == ParType.AMOUNT_KEYS)
+                        }
+                        else if (type == ParType.AMOUNT_KEYS)
                         {
                             argArr[i] = CommandAssert.parseAmount(arg, co.ui.getKeys(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
-                        } else if (type == ParType.AMOUNT_DUST)
+                        }
+                        else if (type == ParType.AMOUNT_DUST)
                         {
                             argArr[i] = CommandAssert.parseAmount(arg, co.ui.getDust(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
-                        } else
+                        }
+                        else
                         {
                             var num = CommandAssert.parseInt(arg, "Error: " + arg + " is not a valid number.");
 
                             argArr[i] = num;
                         }
-                    } else if (clazz == BigInteger.class)
+                    }
+                    else if (clazz == BigInteger.class)
                     {
                         if (type == ParType.AMOUNT_MEGA_KEKS)
                         {
                             argArr[i] = CommandAssert.parseBigAmount(arg, co.ui.getMegaKeks(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%), scientific notation (5e+59) or everything/half.");
-                        } else
+                        }
+                        else
                         {
                             BigInteger amount;
 
@@ -261,34 +272,44 @@ public class CommandParser
                                 throw new CommandException("Number could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...) or scientific notation (5e+59).\n*Please note that it must be a positive integer!*");
                             }
                         }
-                    } else if (clazz == Item.class)
+                    }
+                    else if (clazz == Item.class)
                     {
                         argArr[i] = CommandAssert.parseItem(arg);
-                    } else if (clazz == Card.class)
+                    }
+                    else if (clazz == Card.class)
                     {
                         argArr[i] = CommandAssert.parseCard(arg);
-                    } else if (clazz == Achievement.class)
+                    }
+                    else if (clazz == Achievement.class)
                     {
 
-                    } else if (clazz == Command.class)
+                    }
+                    else if (clazz == Command.class)
                     {
                         argArr[i] = CommandAssert.parseCommand(arg);
-                    } else if (clazz == CommandCategory.class)
+                    }
+                    else if (clazz == CommandCategory.class)
                     {
                         argArr[i] = CommandAssert.parseCommandGroup(arg);
-                    } else if (clazz == User.class)
+                    }
+                    else if (clazz == User.class)
                     {
                         argArr[i] = CommandAssert.parseUser(co.jda, arg);
-                    } else if (clazz == Member.class)
+                    }
+                    else if (clazz == Member.class)
                     {
                         argArr[i] = CommandAssert.parseMember(co.guild, arg);
-                    } else if (clazz == TextChannel.class)
+                    }
+                    else if (clazz == TextChannel.class)
                     {
                         argArr[i] = CommandAssert.parseTextChannel(co.guild, arg);
-                    } else if (clazz == String.class)
+                    }
+                    else if (clazz == String.class)
                     {
                         argArr[i] = arg;
-                    } else if (clazz.isEnum() && type == ParType.ENUM)
+                    }
+                    else if (clazz.isEnum() && type == ParType.ENUM)
                     {
                         var ec = clazz.getEnumConstants();
                         final var farg = arg;
@@ -318,7 +339,8 @@ public class CommandParser
                     if (e.getCause() instanceof CommandException)
                     {
                         MR.send(co.textChannel, e.getCause().getMessage());
-                    } else
+                    }
+                    else
                     {
                         MR.send(co.textChannel, "**An error has occured:**\n" + e.getCause().toString());
                         BotMain.logger.fatal("An exception has occured while invoking a command.", e.getCause());
