@@ -15,10 +15,24 @@ public enum EnumCardRarity
     MYTHIC("Mythic", 9, 80000, 1.525, Icons.CARD_MYTHIC),
     UNIQUE("Unique", 10, 150000, 1.49, Icons.CARD_UNIQUE);
 
+    public static EnumCardRarity getByLevel(int lvl)
+    {
+        var vals = values();
+
+        for (EnumCardRarity val : vals)
+        {
+            if (lvl == val.level)
+                return val;
+        }
+
+        return EnumCardRarity.BASIC;
+    }
+
     private int level;
     private long basePrice;
     private double levelPriceIncrease;
     private String cardIcon;
+
     private String rarityName;
 
     private EnumCardRarity(String rarityName, int level, long basePrice, double levelPriceIncrease, String cardIcon)
@@ -30,41 +44,28 @@ public enum EnumCardRarity
         this.cardIcon = cardIcon;
     }
 
-    public String getRarityName()
+    public long getBasePrice()
     {
-        return rarityName;
+        return this.basePrice;
     }
 
     public String getCardIcon()
     {
-        return cardIcon;
-    }
-
-    public long getBasePrice()
-    {
-        return basePrice;
-    }
-
-    public double getLevelPriceIncrease()
-    {
-        return levelPriceIncrease;
+        return this.cardIcon;
     }
 
     public int getLevel()
     {
-        return level;
+        return this.level;
     }
 
-    public static EnumCardRarity getByLevel(int lvl)
+    public double getLevelPriceIncrease()
     {
-        var vals = values();
+        return this.levelPriceIncrease;
+    }
 
-        for (int i = 0; i < vals.length; i++)
-        {
-            if (lvl == vals[i].level)
-                return vals[i];
-        }
-
-        return EnumCardRarity.BASIC;
+    public String getRarityName()
+    {
+        return this.rarityName;
     }
 }
