@@ -6,6 +6,8 @@ public class CardPair
 {
     private Card card;
     private long amount;
+    private int level;
+    private long xp;
 
     public CardPair(Card item)
     {
@@ -34,8 +36,28 @@ public class CardPair
         return this.card;
     }
 
+    public int getLevel()
+    {
+        return this.level;
+    }
+
+    public long getXP()
+    {
+        return this.xp;
+    }
+
     public void increment()
     {
         this.amount++;
+    }
+
+    public void setLevel(int level)
+    {
+        this.level = level;
+    }
+
+    public void setXP(long xp)
+    {
+        this.xp = xp;
     }
 }
