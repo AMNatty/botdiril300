@@ -1,19 +1,29 @@
 package cz.tefek.botdiril.command.currency;
 
+import net.dv8tion.jda.core.entities.Member;
+
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.command.Command;
 import cz.tefek.botdiril.framework.command.CommandCategory;
 import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.command.invoke.CmdPar;
+import cz.tefek.botdiril.framework.permission.PowerLevel;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.UserInventory;
 import cz.tefek.botdiril.userdata.items.Item;
-import net.dv8tion.jda.core.entities.Member;
 
-@Command(value = "additem", category = CommandCategory.SUPERUSER, aliases = {}, description = "Adds items to the target's inventory (for science of course).")
+@Command(value = "additem", category = CommandCategory.SUPERUSER, aliases = {}, description = "Adds items to the target's inventory (for science of course).", powerLevel = PowerLevel.SUPERUSER_OVERRIDE)
 public class CommandAddItem
 {
+    @CmdInvoke
+    public static void addItem(CallObj co, @CmdPar("item") Item item)
+    {
+        co.ui.addItem(item, 1);
+
+        MR.send(co.textChannel, String.format("Added %d %s!", 1, item.inlineDescription()));
+    }
+
     @CmdInvoke
     public static void addItem(CallObj co, @CmdPar("item") Item item, @CmdPar("how many to add") long howmany)
     {
@@ -22,14 +32,6 @@ public class CommandAddItem
         co.ui.addItem(item, howmany);
 
         MR.send(co.textChannel, String.format("Added %d %s!", howmany, item.inlineDescription()));
-    }
-
-    @CmdInvoke
-    public static void addItem(CallObj co, @CmdPar("item") Item item)
-    {
-        co.ui.addItem(item, 1);
-
-        MR.send(co.textChannel, String.format("Added %d %s!", 1, item.inlineDescription()));
     }
 
     @CmdInvoke

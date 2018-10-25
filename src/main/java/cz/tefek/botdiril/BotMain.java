@@ -10,6 +10,7 @@ import cz.tefek.botdiril.framework.sql.SqlCon;
 import cz.tefek.botdiril.framework.sql.SqlFoundation;
 import cz.tefek.botdiril.framework.util.BigNumbers;
 import cz.tefek.botdiril.internal.BotdirilConfig;
+import cz.tefek.botdiril.serverdata.RolePreferences;
 import cz.tefek.botdiril.serverdata.ServerPreferences;
 import cz.tefek.botdiril.userdata.ItemLookup;
 import cz.tefek.botdiril.userdata.card.Cards;
@@ -78,6 +79,7 @@ public class BotMain
         try
         {
             ServerPreferences.load();
+            RolePreferences.load();
             botdiril = new Botdiril();
         }
         catch (Exception e)

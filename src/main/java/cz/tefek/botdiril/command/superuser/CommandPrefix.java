@@ -6,11 +6,11 @@ import cz.tefek.botdiril.framework.command.Command;
 import cz.tefek.botdiril.framework.command.CommandCategory;
 import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.command.invoke.CmdPar;
-import cz.tefek.botdiril.framework.permission.PermissionLevel;
+import cz.tefek.botdiril.framework.permission.PowerLevel;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 
-@Command(value = "prefix", aliases = {}, category = CommandCategory.SUPERUSER, description = "Sets the prefix for this server.", powerLevel = PermissionLevel.SUPERUSER_OVERRIDE)
+@Command(value = "prefix", aliases = {}, category = CommandCategory.SUPERUSER, description = "Sets the prefix for this server.", powerLevel = PowerLevel.SUPERUSER_OVERRIDE)
 public class CommandPrefix
 {
     @CmdInvoke

@@ -20,6 +20,7 @@ import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.command.invoke.CmdPar;
 import cz.tefek.botdiril.framework.command.invoke.CommandException;
 import cz.tefek.botdiril.framework.command.invoke.ParType;
+import cz.tefek.botdiril.framework.permission.PowerLevel;
 import cz.tefek.botdiril.framework.util.BigNumbers;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
@@ -52,7 +53,14 @@ public class CommandParser
         if (command == null)
             return;
 
-        if (co.ui.getLevel() < command.levelLock())
+        if (!command.powerLevel().check(co.callerMember, co.textChannel))
+        {
+            MR.send(co.textChannel, String.format("You need to have the %s execution level to use this command!.", command.powerLevel().toString()));
+
+            return;
+        }
+
+        if (co.ui.getLevel() < command.levelLock() && !(PowerLevel.SUPERUSER_OVERRIDE.check(co.callerMember, co.textChannel) || PowerLevel.VIP.check(co.callerMember, co.textChannel)))
         {
             MR.send(co.textChannel, String.format("You need at least level %d to do this.", command.levelLock()));
 

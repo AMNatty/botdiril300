@@ -11,7 +11,8 @@ import javax.security.auth.login.LoginException;
 
 public class Botdiril
 {
-    public static final String AUTHOR = "<@263648016982867969>";
+    public static final long AUTHOR_ID = 263648016982867969L;
+    public static final String AUTHOR = "<@" + AUTHOR_ID + ">";
     public static final Random RANDOM = new Random();
     public static final RandomDataGenerator RDG = new RandomDataGenerator();
     public static final String BRANDING = "Botdiril";

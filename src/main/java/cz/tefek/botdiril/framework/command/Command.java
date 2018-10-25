@@ -6,7 +6,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-import cz.tefek.botdiril.framework.permission.PermissionLevel;
+import cz.tefek.botdiril.framework.permission.PowerLevel;
 
 @Retention(RUNTIME)
 @Target(TYPE)
@@ -15,7 +15,7 @@ public @interface Command {
 
     public String[] aliases();
 
-    public PermissionLevel powerLevel() default PermissionLevel.EVERYONE;
+    public PowerLevel powerLevel() default PowerLevel.EVERYONE;
 
     public String description();
 
