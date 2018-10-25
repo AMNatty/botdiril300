@@ -2,12 +2,12 @@ package cz.tefek.botdiril;
 
 import java.util.Random;
 
-import javax.security.auth.login.LoginException;
+import net.dv8tion.jda.core.AccountType;
+import net.dv8tion.jda.core.JDABuilder;
 
 import org.apache.commons.math3.random.RandomDataGenerator;
 
-import net.dv8tion.jda.core.AccountType;
-import net.dv8tion.jda.core.JDABuilder;
+import javax.security.auth.login.LoginException;
 
 public class Botdiril
 {
@@ -21,13 +21,13 @@ public class Botdiril
     public Botdiril() throws LoginException, InterruptedException
     {
         var jdaBuilder = new JDABuilder(AccountType.BOT);
-        jdaBuilder.addEventListener(eventBus = new EventBus());
+        jdaBuilder.addEventListener(this.eventBus = new EventBus());
         jdaBuilder.setToken(BotMain.config.getApiKey());
         jdaBuilder.build().awaitReady().setAutoReconnect(true);
     }
 
     public EventBus getEventBus()
     {
-        return eventBus;
+        return this.eventBus;
     }
 }
