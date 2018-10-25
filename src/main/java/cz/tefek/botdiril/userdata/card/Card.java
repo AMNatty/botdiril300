@@ -34,9 +34,14 @@ public class Card implements IIdentifiable
         return cards.stream().filter(i -> i.getName().equalsIgnoreCase(name)).findAny().orElse(null);
     }
 
-    private String name;;
+    public static long getPrice(Card c, int level)
+    {
+        return Math.round(Math.pow(c.getCardRarity().getLevelPriceIncrease(), level) * c.getCardRarity().getBasePrice());
+    }
 
+    private String name;
     private String localizedName;
+
     private String description = "";
 
     private CardSet cardSet;
