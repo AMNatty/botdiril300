@@ -29,7 +29,7 @@ public class Command8Ball
         eb.setAuthor(co.callerMember.getEffectiveName() + "'s question");
         eb.setDescription(question);
         eb.setColor(0x008080);
-        eb.addField("Answer:", answers[Botdiril.RDG.nextInt(0, answers.length)], false);
+        eb.addField("Answer:", ":8ball:" + answers[Botdiril.RDG.nextInt(0, answers.length)], false);
 
         MR.send(co.textChannel, eb.build());
     }
