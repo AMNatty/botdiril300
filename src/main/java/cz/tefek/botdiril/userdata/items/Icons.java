@@ -23,13 +23,13 @@ public class Icons
     public static final String SKIN_KEKLMAO = "<:skin_keklmao:480438805896232962>";
     public static final String SKIN_KEKOVERDRIVE = "<a:skin_kekoverdrive:480439539597443112>";
     public static final String SKIN_KEKPRIDE = "<:skin_kekpride:480438806068330496>";
-    public static final String SKIN_KEKW1 = "<:skin_kekw1:480438805569077258>";
-    public static final String SKIN_KEKW2 = "<:skin_kekw2:480438807192141833>";
+    public static final String SKIN_KEKW = "<:skin_kekw:480438807192141833>";
+    public static final String SKIN_KEKW2 = "<:skin_kekw2:480438805569077258>";
     public static final String SKIN_KEKOMEGA = "<:skin_omegakek:480661321335963658>";
     public static final String SKIN_KEKHYPER = "<:skin_hyperkek:480780614300205056>";
     public static final String SKIN_KEKMYTHICAL = "<:skin_mythicalkek:480771016121909258>";
 
-    public static final List<String> SKINS = Arrays.asList(SKIN_KEKCOIN, SKIN_KEKGIF, SKIN_KEKHD, SKIN_KEKLMAO, SKIN_KEKOVERDRIVE, SKIN_KEKPRIDE, SKIN_KEKW1, SKIN_KEKW2, SKIN_KEKOMEGA, SKIN_KEKHYPER, SKIN_KEKMYTHICAL);
+    public static final List<String> SKINS = Arrays.asList(SKIN_KEKCOIN, SKIN_KEKGIF, SKIN_KEKHD, SKIN_KEKLMAO, SKIN_KEKOVERDRIVE, SKIN_KEKPRIDE, SKIN_KEKW, SKIN_KEKW2, SKIN_KEKOMEGA, SKIN_KEKHYPER, SKIN_KEKMYTHICAL);
 
     // CARDS
 
@@ -101,4 +101,8 @@ public class Icons
 
     public static final String ACHIEVEMENT_BOT = "<:bot:477569305999835140>";
     public static final String ACHIEVEMENT_BETA = "<:beta:471338452865253386>";
+
+    // OTHER ICONS
+    public static final String OTHER_KEKOVERDRIVE = "<a:kekoverdrive:506028888388796427>";
+    public static final String OTHER_THEFAST = "<:thefast:506032106154098698>";
 }

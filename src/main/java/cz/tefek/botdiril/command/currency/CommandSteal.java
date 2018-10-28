@@ -1,5 +1,7 @@
 package cz.tefek.botdiril.command.currency;
 
+import net.dv8tion.jda.core.entities.User;
+
 import cz.tefek.botdiril.BotMain;
 import cz.tefek.botdiril.Botdiril;
 import cz.tefek.botdiril.framework.command.CallObj;
@@ -15,8 +17,8 @@ import cz.tefek.botdiril.userdata.items.ItemPair;
 import cz.tefek.botdiril.userdata.items.Items;
 import cz.tefek.botdiril.userdata.timers.Timers;
 import cz.tefek.botdiril.userdata.xp.RewardParser;
+import cz.tefek.botdiril.userdata.xp.XPAdder;
 import cz.tefek.botdiril.userdata.xp.XPRewards;
-import net.dv8tion.jda.core.entities.User;
 
 @Command(aliases = {
         "rob" }, category = CommandCategory.CURRENCY, description = "Hehe. Time to rob someone.", value = "steal", levelLock = 10)
@@ -30,6 +32,12 @@ public class CommandSteal
         CommandAssert.assertTimer(co.ui, Timers.steal, "You need to wait $ before using `" + co.sc.getPrefix() + "steal` again.");
 
         CommandAssert.numberNotBelowL(co.ui.getCoins(), 1000, "You need at least 1000 " + Icons.COIN + " to rob someone.");
+
+        if (co.ui.useTimer(Timers.gambleXP) == -1)
+        {
+            var lvl = co.ui.getLevel();
+            XPAdder.addXP(co, Math.round(XPRewards.getXPAtLevel(lvl) * XPRewards.getLevel(lvl).getGambleFalloff() * Botdiril.RDG.nextUniform(0.00001, 0.0001)));
+        }
 
         var other = new UserInventory(user.getIdLong());
 

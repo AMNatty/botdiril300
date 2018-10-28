@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
+import net.dv8tion.jda.core.entities.Role;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
 
@@ -283,6 +284,48 @@ public class CommandAssert
         }
 
         throw new CommandException("Text channel could not be parsed: Could not locate the snowflake ID.");
+    }
+
+    public static Role parseRole(Guild g, String msg)
+    {
+        if (msg.isEmpty())
+        {
+            throw new CommandException("Role could not be parsed: The input string cannot be empty.");
+        }
+
+        try
+        {
+            var rbn = g.getRolesByName(msg.trim(), true);
+
+            if (rbn.size() == 1)
+                return rbn.get(0);
+            else if (rbn.size() > 1)
+                throw new CommandException("There is too many roles with that name, try mentioning the role or using its id.");
+
+            var m = Pattern.compile("[0-9]+").matcher(msg);
+
+            if (m.find())
+            {
+                var id = Long.parseLong(m.group());
+
+                var r = g.getRoleById(id);
+
+                if (r != null)
+                {
+                    return r;
+                }
+                else
+                {
+                    throw new CommandException("Role could not be parsed: Could not find a role with that snowflake ID. The role has to be on **this** server.");
+                }
+            }
+        }
+        catch (NumberFormatException e)
+        {
+            throw new CommandException("Role could not be parsed: Could not parse the snowflake ID.");
+        }
+
+        throw new CommandException("Could not find a role with such ID or name. Try using a mention.");
     }
 
     public static Member parseMember(Guild g, String inputArg)

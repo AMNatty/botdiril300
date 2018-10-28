@@ -19,7 +19,5 @@ public enum ParType
     /** Long.class/long.class only, the previous parameter must be ITEM */
     AMOUNT_ITEM,
     /** Long.class/long.class only, the previous parameter must be CARD */
-    AMOUNT_CARD,
-    /** Finds an enum value by its code in the enum class annotated in the param */
-    ENUM
+    AMOUNT_CARD
 }

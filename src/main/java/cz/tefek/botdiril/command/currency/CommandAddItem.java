@@ -7,13 +7,13 @@ import cz.tefek.botdiril.framework.command.Command;
 import cz.tefek.botdiril.framework.command.CommandCategory;
 import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.command.invoke.CmdPar;
-import cz.tefek.botdiril.framework.permission.PowerLevel;
+import cz.tefek.botdiril.framework.permission.EnumPowerLevel;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.UserInventory;
 import cz.tefek.botdiril.userdata.items.Item;
 
-@Command(value = "additem", category = CommandCategory.SUPERUSER, aliases = {}, description = "Adds items to the target's inventory (for science of course).", powerLevel = PowerLevel.SUPERUSER_OVERRIDE)
+@Command(value = "additem", category = CommandCategory.SUPERUSER, aliases = {}, description = "Adds items to the target's inventory (for science of course).", powerLevel = EnumPowerLevel.SUPERUSER_OVERRIDE)
 public class CommandAddItem
 {
     @CmdInvoke

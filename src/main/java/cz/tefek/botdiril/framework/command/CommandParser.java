@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import net.dv8tion.jda.core.entities.Member;
+import net.dv8tion.jda.core.entities.Role;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
 
@@ -20,7 +21,7 @@ import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.command.invoke.CmdPar;
 import cz.tefek.botdiril.framework.command.invoke.CommandException;
 import cz.tefek.botdiril.framework.command.invoke.ParType;
-import cz.tefek.botdiril.framework.permission.PowerLevel;
+import cz.tefek.botdiril.framework.permission.EnumPowerLevel;
 import cz.tefek.botdiril.framework.util.BigNumbers;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
@@ -55,12 +56,12 @@ public class CommandParser
 
         if (!command.powerLevel().check(co.callerMember, co.textChannel))
         {
-            MR.send(co.textChannel, String.format("You need to have the %s execution level to use this command!.", command.powerLevel().toString()));
+            MR.send(co.textChannel, String.format("You need to have the %s power level to use this command!", command.powerLevel().toString()));
 
             return;
         }
 
-        if (co.ui.getLevel() < command.levelLock() && !(PowerLevel.SUPERUSER_OVERRIDE.check(co.callerMember, co.textChannel) || PowerLevel.VIP.check(co.callerMember, co.textChannel)))
+        if (co.ui.getLevel() < command.levelLock() && !(EnumPowerLevel.SUPERUSER_OVERRIDE.check(co.callerMember, co.textChannel) || EnumPowerLevel.VIP.check(co.callerMember, co.textChannel)))
         {
             MR.send(co.textChannel, String.format("You need at least level %d to do this.", command.levelLock()));
 
@@ -305,6 +306,10 @@ public class CommandParser
                     {
                         argArr[i] = CommandAssert.parseUser(co.jda, arg);
                     }
+                    else if (clazz == Role.class)
+                    {
+                        argArr[i] = CommandAssert.parseRole(co.guild, arg);
+                    }
                     else if (clazz == Member.class)
                     {
                         argArr[i] = CommandAssert.parseMember(co.guild, arg);
@@ -317,7 +322,7 @@ public class CommandParser
                     {
                         argArr[i] = arg;
                     }
-                    else if (clazz.isEnum() && type == ParType.ENUM)
+                    else if (clazz.isEnum())
                     {
                         var ec = clazz.getEnumConstants();
                         final var farg = arg;

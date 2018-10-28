@@ -52,9 +52,12 @@ public class CommandHelp
         {
             var command = CommandAssert.parseCommand(tbp);
             var sb = new StringBuilder("**Command `" + command.value() + "`**:");
-            sb.append("\n**Aliases:** " + Arrays.stream(command.aliases()).collect(Collectors.joining(", ")));
+            if (command.aliases().length != 0)
+                sb.append("\n**Aliases:** " + Arrays.stream(command.aliases()).map(a -> "`" + a + "`").collect(Collectors.joining(", ")));
             sb.append("\n**Description:** " + command.description());
-            sb.append("\n**Available from level:** " + command.levelLock());
+            sb.append("\n**Power level required:** " + command.powerLevel());
+            sb.append("\n**Available from level:** " + (command.levelLock() == 0 ? "Always available"
+                    : command.levelLock()));
             sb.append("\n**Usage:**\n");
             sb.append(GenUsage.usage(command));
 

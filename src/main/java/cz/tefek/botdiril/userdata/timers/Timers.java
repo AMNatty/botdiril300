@@ -9,6 +9,7 @@ public class Timers
     public static Timer draw;
     public static Timer farm;
     public static Timer steal;
+    public static Timer gambleXP;
     public static Timer nicknamechange;
 
     public static void load()
@@ -18,6 +19,7 @@ public class Timers
         draw = new Timer("draw", TimeUnit.MINUTES.toMillis(6));
         farm = new Timer("farm", TimeUnit.MINUTES.toMillis(20));
         steal = new Timer("steal", TimeUnit.HOURS.toMillis(1));
+        gambleXP = new Timer("gamblexp", TimeUnit.SECONDS.toMillis(50));
         nicknamechange = new Timer("nicknamechange", TimeUnit.DAYS.toMillis(30));
     }
 }

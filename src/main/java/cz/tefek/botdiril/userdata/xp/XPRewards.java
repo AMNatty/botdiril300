@@ -1,6 +1,5 @@
 package cz.tefek.botdiril.userdata.xp;
 
-import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -8,6 +7,8 @@ import java.util.stream.Collectors;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+
+import java.io.FileReader;
 
 import cz.tefek.botdiril.BotMain;
 
@@ -49,7 +50,8 @@ public class XPRewards
             });
 
             reader.close();
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             BotMain.logger.fatal("Level data loading failed, terminating!", e);
 
@@ -101,5 +103,10 @@ public class XPRewards
             return Long.MAX_VALUE;
 
         return Math.round(Math.pow(level, 1.2));
+    }
+
+    public static long maxJackpot(int level, long userHas)
+    {
+        return Math.max(Math.min(5000L + level * (5000L + 1000L * level), userHas * 100L), 5000);
     }
 }
