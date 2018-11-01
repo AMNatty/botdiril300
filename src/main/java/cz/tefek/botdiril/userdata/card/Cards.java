@@ -1,10 +1,11 @@
 package cz.tefek.botdiril.userdata.card;
 
-import java.io.FileReader;
 import java.util.Arrays;
 
 import org.json.JSONObject;
 import org.json.JSONTokener;
+
+import java.io.FileReader;
 
 import cz.tefek.botdiril.BotMain;
 import cz.tefek.botdiril.userdata.items.CraftingEntries;
@@ -23,6 +24,7 @@ public class Cards
             var jobj = new JSONObject(new JSONTokener(br));
 
             CardSet.league = new CardSet(jobj.getString("set"), jobj.getString("setName"), jobj.getString("idPrefix"));
+            CardSet.league.setDrops(true);
             CardSet.league.setDescription(jobj.getString("description"));
 
             jobj.getJSONArray("items").forEach(ch ->
@@ -45,7 +47,8 @@ public class Cards
                     cc.setCollectionName(collName);
                 });
             });
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             BotMain.logger.fatal("League of Legends skin data not found or malformed! Aborting.", e);
             System.exit(9);
@@ -69,7 +72,8 @@ public class Cards
                 CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(Items.dust, rarity.getBasePrice() * 3 * 100)), 1, cc));
                 cc.setCustomImage(jch.getString("iconurl"));
             });
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             BotMain.logger.fatal("CS:GO skin data not found or malformed! Aborting.", e);
             System.exit(10);

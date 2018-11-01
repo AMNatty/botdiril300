@@ -5,8 +5,6 @@ import java.util.function.BiFunction;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 
-import com.google.common.util.concurrent.AtomicDouble;
-
 import cz.tefek.botdiril.Botdiril;
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.util.MR;
@@ -52,24 +50,34 @@ public class GambleEngine
             this.calc = calc;
         }
 
-        public double getChance()
+        public BiFunction<Integer, Long, Long> getApplier()
         {
-            return chance;
+            return this.calc;
         }
 
-        public String getText()
+        public double getChance()
         {
-            return text;
+            return this.chance;
         }
 
         public String getShortName()
         {
-            return shortName;
+            return this.shortName;
+        }
+
+        public String getText()
+        {
+            return this.text;
+        }
+
+        public double getThreshold()
+        {
+            return this.threshold;
         }
 
         public double getWeight()
         {
-            return weight;
+            return this.weight;
         }
 
         public void setChance(double chance)
@@ -81,16 +89,6 @@ public class GambleEngine
         {
             this.threshold = threshold;
         }
-
-        public double getThreshold()
-        {
-            return threshold;
-        }
-
-        public BiFunction<Integer, Long, Long> getApplier()
-        {
-            return calc;
-        }
     }
 
     static
@@ -98,22 +96,22 @@ public class GambleEngine
         var scale = 0.0;
         var vals = GambleOutcome.values();
 
-        for (int i = 0; i < vals.length; i++)
+        for (GambleOutcome val : vals)
         {
-            scale += vals[i].getWeight();
+            scale += val.getWeight();
         }
 
         var rescale = 100.0 / scale;
 
         var threshold = 0.0;
 
-        for (int i = 0; i < vals.length; i++)
+        for (GambleOutcome val : vals)
         {
-            var chance = vals[i].getWeight() * rescale;
+            var chance = val.getWeight() * rescale;
 
-            vals[i].setChance(chance);
+            val.setChance(chance);
             threshold += chance;
-            vals[i].setThreshold(threshold);
+            val.setThreshold(threshold);
         }
     }
 
@@ -122,8 +120,8 @@ public class GambleEngine
             GambleOutcome.WIN_QUARTER, GambleOutcome.WIN_HALF, GambleOutcome.WIN_DOUBLE, GambleOutcome.WIN_TRIPLE,
             GambleOutcome.WIN_QUADRUPLE, GambleOutcome.JACKPOT };
 
-    private static final AtomicDouble generosity = new AtomicDouble(100.0);
-    private static final AtomicDouble greediness = new AtomicDouble(0.0);
+    private static final ConcurrentHashMap<Long, Double> generosity = new ConcurrentHashMap<>();
+    private static final ConcurrentHashMap<Long, Double> greediness = new ConcurrentHashMap<>();
     private static final ConcurrentHashMap<Long, Double> badLuckProtection = new ConcurrentHashMap<>();
 
     private static double genLBound(long id)
@@ -133,7 +131,7 @@ public class GambleEngine
 
     private static double genRBound(long id)
     {
-        return 100.0 / (1 + greediness.get() / 1500.0) + (generosity.get() / 200.0);
+        return 100.0 / (1 + greediness.getOrDefault(id, 0.0) / 1500.0) + generosity.getOrDefault(id, 0.0) / 200.0;
     }
 
     public static void printChances(CallObj co)
@@ -143,28 +141,32 @@ public class GambleEngine
         var lbound = genLBound(id);
         var rbound = genRBound(id);
 
-        var boundDiff = rbound - lbound;
-        var mul = 100 / boundDiff;
-
         var eb = new EmbedBuilder();
         eb.setTitle("Your gambling chances");
         eb.setDescription(co.caller.getAsMention() + "'s odds for gambling.");
         eb.setThumbnail(co.caller.getEffectiveAvatarUrl());
         eb.setColor(0x008080);
 
-        for (int i = 0; i < outcomesSorted.length; i++)
+        var total = 0.0;
+
+        for (GambleOutcome go : outcomesSorted)
         {
-            var go = outcomesSorted[i];
-
-            var lvr = Math.min(lbound, go.chance);
-
-            var chance = go.chance - lvr;
-
-            lbound -= lvr;
+            var chance = Math.max(Math.min(go.chance, go.threshold - lbound), 0);
 
             chance = Math.max(Math.min(chance, rbound - go.threshold), 0);
 
-            eb.addField(go.shortName, String.format("%.2f%%", chance * mul), false);
+            total += chance;
+        }
+
+        var mul = 100 / total;
+
+        for (GambleOutcome go : outcomesSorted)
+        {
+            var chance = Math.max(Math.min(go.chance, go.threshold - lbound), 0);
+
+            chance = Math.max(Math.min(chance, rbound - go.threshold), 0);
+
+            eb.addField(go.shortName, String.format("%.3f%%", chance * mul), false);
         }
 
         MR.send(co.textChannel, eb.build());
@@ -179,11 +181,11 @@ public class GambleEngine
 
         var rnd = Botdiril.RDG.nextUniform(lbound, rbound);
 
-        for (int i = 0; i < outcomesSorted.length; i++)
+        for (GambleOutcome element : outcomesSorted)
         {
-            result = outcomesSorted[i];
+            result = element;
 
-            if (outcomesSorted[i].getThreshold() > rnd)
+            if (element.getThreshold() > rnd)
             {
                 break;
             }
@@ -192,49 +194,52 @@ public class GambleEngine
         switch (result)
         {
             case JACKPOT:
-                generosity.set(0);
-                greediness.addAndGet(1000);
+                generosity.put(id, 0.0);
+                badLuckProtection.put(id, 0.0);
+                greediness.put(id, greediness.getOrDefault(id, 0.0) + 1000);
                 break;
             case KEEP_BET:
-                greediness.addAndGet(1);
+                greediness.put(id, greediness.getOrDefault(id, 0.0) + 1);
                 break;
             case LOSE_EVERYTHING:
-                greediness.set(0);
-                generosity.addAndGet(100);
+                greediness.put(id, 0.0);
+                generosity.put(id, generosity.getOrDefault(id, 0.0) + 100);
                 badLuckProtection.put(id, badLuckProtection.getOrDefault(id, 0.0) + 100);
                 break;
             case LOSE_HALF:
-                generosity.addAndGet(20);
-                greediness.set(greediness.get() / 4 * 3);
+                generosity.put(id, generosity.getOrDefault(id, 0.0) + 20);
+                greediness.put(id, greediness.getOrDefault(id, 0.0) / 4 * 3);
                 badLuckProtection.put(id, badLuckProtection.getOrDefault(id, 0.0) + 20);
                 break;
             case LOSE_THREE_QUARTERS:
-                generosity.addAndGet(50);
-                greediness.set(greediness.get() / 2);
+                generosity.put(id, generosity.getOrDefault(id, 0.0) + 50);
+                greediness.put(id, greediness.getOrDefault(id, 0.0) / 2);
                 badLuckProtection.put(id, badLuckProtection.getOrDefault(id, 0.0) + 50);
                 break;
             case WIN_DOUBLE:
-                generosity.set(generosity.get() / 2);
+                generosity.put(id, generosity.getOrDefault(id, 0.0) / 2);
                 badLuckProtection.put(id, badLuckProtection.getOrDefault(id, 0.0) / 8);
-                greediness.addAndGet(50);
+                greediness.put(id, greediness.getOrDefault(id, 0.0) + 50);
                 break;
             case WIN_TRIPLE:
-                generosity.set(generosity.get() / 4);
+                generosity.put(id, generosity.getOrDefault(id, 0.0) / 4);
                 badLuckProtection.put(id, badLuckProtection.getOrDefault(id, 0.0) / 16);
-                greediness.addAndGet(150);
+                greediness.put(id, greediness.getOrDefault(id, 0.0) + 150);
                 break;
             case WIN_QUADRUPLE:
-                generosity.set(generosity.get() / 8);
+                generosity.put(id, generosity.getOrDefault(id, 0.0) / 8);
                 badLuckProtection.put(id, badLuckProtection.getOrDefault(id, 0.0) / 32);
-                greediness.addAndGet(300);
+                greediness.put(id, greediness.getOrDefault(id, 0.0) + 300);
                 break;
             case WIN_HALF:
+                generosity.put(id, generosity.getOrDefault(id, 0.0) / 4 * 3);
                 badLuckProtection.put(id, badLuckProtection.getOrDefault(id, 0.0) / 4);
-                greediness.addAndGet(5);
+                greediness.put(id, greediness.getOrDefault(id, 0.0) + 5);
                 break;
             case WIN_QUARTER:
+                generosity.put(id, generosity.getOrDefault(id, 0.0) / 5 * 4);
                 badLuckProtection.put(id, badLuckProtection.getOrDefault(id, 0.0) / 2);
-                greediness.addAndGet(2);
+                greediness.put(id, greediness.getOrDefault(id, 0.0) + 2);
                 break;
         }
 

@@ -66,38 +66,41 @@ public class Card implements IIdentifiable
         this.id = ItemLookup.make(this.name);
         cards.add(this);
 
-        switch (this.cardRarity)
+        if (cardCollection.canDrop())
         {
-            case BASIC:
-                CardPools.basic.add(this);
-                break;
-            case COMMON:
-                CardPools.common.add(this);
-                break;
-            case RARE:
-                CardPools.rare.add(this);
-                break;
-            case LEGACY:
-                CardPools.legacy.add(this);
-                break;
-            case LEGENDARY:
-                CardPools.legendary.add(this);
-                break;
-            case LEGACY_LEGENDARY:
-                CardPools.legacylegendary.add(this);
-                break;
-            case ULTIMATE:
-                CardPools.ultimate.add(this);
-                break;
-            case LIMITED:
-                CardPools.limited.add(this);
-                break;
-            case MYTHIC:
-                CardPools.mythical.add(this);
-                break;
-            case UNIQUE:
-                CardPools.unique.add(this);
-                break;
+            switch (this.cardRarity)
+            {
+                case BASIC:
+                    CardPools.basic.add(this);
+                    break;
+                case COMMON:
+                    CardPools.common.add(this);
+                    break;
+                case RARE:
+                    CardPools.rare.add(this);
+                    break;
+                case LEGACY:
+                    CardPools.legacy.add(this);
+                    break;
+                case LEGENDARY:
+                    CardPools.legendary.add(this);
+                    break;
+                case LEGACY_LEGENDARY:
+                    CardPools.legacylegendary.add(this);
+                    break;
+                case ULTIMATE:
+                    CardPools.ultimate.add(this);
+                    break;
+                case LIMITED:
+                    CardPools.limited.add(this);
+                    break;
+                case MYTHIC:
+                    CardPools.mythical.add(this);
+                    break;
+                case UNIQUE:
+                    CardPools.unique.add(this);
+                    break;
+            }
         }
     }
 

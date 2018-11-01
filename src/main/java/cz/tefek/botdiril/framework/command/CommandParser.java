@@ -25,9 +25,11 @@ import cz.tefek.botdiril.framework.permission.EnumPowerLevel;
 import cz.tefek.botdiril.framework.util.BigNumbers;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
+import cz.tefek.botdiril.serverdata.ChannelPreferences;
 import cz.tefek.botdiril.userdata.achievement.Achievement;
 import cz.tefek.botdiril.userdata.card.Card;
 import cz.tefek.botdiril.userdata.items.Item;
+import cz.tefek.botdiril.userdata.items.ShopEntries;
 
 public class CommandParser
 {
@@ -48,6 +50,11 @@ public class CommandParser
     {
         var params = co.contents.split("\\s+");
         var cmdStr = params[0];
+
+        if (ChannelPreferences.checkBit(co.textChannel.getIdLong(), ChannelPreferences.BIT_DISABLED) && !EnumPowerLevel.ELEVATED.check(co.callerMember, co.textChannel))
+        {
+            return;
+        }
 
         var command = CommandStorage.search(cmdStr);
 
@@ -211,7 +218,7 @@ public class CommandParser
                             if (i == 0)
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM**");
 
-                            if (argArr[i - 1] instanceof Card)
+                            if (!(argArr[i - 1] instanceof Card))
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM_NOT_CARD**");
 
                             argArr[i] = CommandAssert.parseAmount(arg, co.ui.howManyOf((Card) argArr[i - 1]), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
@@ -221,10 +228,27 @@ public class CommandParser
                             if (i == 0)
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM**");
 
-                            if (argArr[i - 1] instanceof Item)
+                            if (!(argArr[i - 1] instanceof Item))
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM_NOT_ITEM**");
 
                             argArr[i] = CommandAssert.parseAmount(arg, co.ui.howManyOf((Item) argArr[i - 1]), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
+                        }
+                        else if (type == ParType.AMOUNT_ITEM_BUY_COINS)
+                        {
+                            if (i == 0)
+                                throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM**");
+
+                            if (!(argArr[i - 1] instanceof Item))
+                                throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM_NOT_ITEM**");
+
+                            var item = (Item) argArr[i - 1];
+
+                            if (!ShopEntries.canBeBought(item))
+                            {
+                                throw new CommandException("That item cannot be bought.");
+                            }
+
+                            argArr[i] = CommandAssert.parseBuy(arg, ShopEntries.getCoinPrice(item), co.ui.getCoins(), "Could not parse the amount your are trying to buy.");
                         }
                         else if (type == ParType.AMOUNT_KEK_TOKENS)
                         {
