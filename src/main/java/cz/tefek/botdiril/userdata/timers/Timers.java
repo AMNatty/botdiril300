@@ -15,7 +15,7 @@ public class Timers
     public static void load()
     {
         daily = new Timer("daily", TimeUnit.HOURS.toMillis(22));
-        mine = new Timer("mine", TimeUnit.MINUTES.toMillis(8));
+        mine = new Timer("mine", TimeUnit.MINUTES.toMillis(3));
         draw = new Timer("draw", TimeUnit.MINUTES.toMillis(6));
         farm = new Timer("farm", TimeUnit.MINUTES.toMillis(20));
         steal = new Timer("steal", TimeUnit.HOURS.toMillis(1));

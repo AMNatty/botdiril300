@@ -26,6 +26,7 @@ import cz.tefek.botdiril.framework.util.BigNumbers;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.serverdata.ChannelPreferences;
+import cz.tefek.botdiril.userdata.IIdentifiable;
 import cz.tefek.botdiril.userdata.achievement.Achievement;
 import cz.tefek.botdiril.userdata.card.Card;
 import cz.tefek.botdiril.userdata.items.Item;
@@ -213,42 +214,57 @@ public class CommandParser
                         {
                             argArr[i] = CommandAssert.parseAmount(arg, co.ui.getKeks(), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
                         }
-                        else if (type == ParType.AMOUNT_CARD)
+                        else if (type == ParType.AMOUNT_ITEM_OR_CARD)
                         {
                             if (i == 0)
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM**");
 
-                            if (!(argArr[i - 1] instanceof Card))
-                                throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM_NOT_CARD**");
-
-                            argArr[i] = CommandAssert.parseAmount(arg, co.ui.howManyOf((Card) argArr[i - 1]), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
+                            if (argArr[i - 1] instanceof Card)
+                            {
+                                argArr[i] = CommandAssert.parseAmount(arg, co.ui.howManyOf((Card) argArr[i - 1]), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
+                            }
+                            else if (argArr[i - 1] instanceof Item)
+                            {
+                                argArr[i] = CommandAssert.parseAmount(arg, co.ui.howManyOf((Item) argArr[i - 1]), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
+                            }
+                            else
+                            {
+                                throw new CommandException("Internal error. Please contact an administrator. Code: **PREV_PARAM_NEITHER_CARD_OR_ITEM**");
+                            }
                         }
-                        else if (type == ParType.AMOUNT_ITEM)
+                        else if (type == ParType.AMOUNT_ITEM_OR_CARD_BUY_COINS)
                         {
                             if (i == 0)
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM**");
 
-                            if (!(argArr[i - 1] instanceof Item))
+                            if (!(argArr[i - 1] instanceof IIdentifiable))
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM_NOT_ITEM**");
 
-                            argArr[i] = CommandAssert.parseAmount(arg, co.ui.howManyOf((Item) argArr[i - 1]), "Amount could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...), percent (65%) or everything/half");
-                        }
-                        else if (type == ParType.AMOUNT_ITEM_BUY_COINS)
-                        {
-                            if (i == 0)
-                                throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM**");
-
-                            if (!(argArr[i - 1] instanceof Item))
-                                throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM_NOT_ITEM**");
-
-                            var item = (Item) argArr[i - 1];
+                            var item = (IIdentifiable) argArr[i - 1];
 
                             if (!ShopEntries.canBeBought(item))
                             {
-                                throw new CommandException("That item cannot be bought.");
+                                throw new CommandException("That item / card cannot be bought.");
                             }
 
                             argArr[i] = CommandAssert.parseBuy(arg, ShopEntries.getCoinPrice(item), co.ui.getCoins(), "Could not parse the amount your are trying to buy.");
+                        }
+                        else if (type == ParType.AMOUNT_ITEM_OR_CARD_BUY_TOKENS)
+                        {
+                            if (i == 0)
+                                throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM**");
+
+                            if (!(argArr[i - 1] instanceof IIdentifiable))
+                                throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM_NOT_ITEM**");
+
+                            var item = (IIdentifiable) argArr[i - 1];
+
+                            if (!ShopEntries.canBeBoughtForTokens(item))
+                            {
+                                throw new CommandException("That item / card cannot be bought.");
+                            }
+
+                            argArr[i] = CommandAssert.parseBuy(arg, ShopEntries.getTokenPrice(item), co.ui.getKekTokens(), "Could not parse the amount your are trying to buy.");
                         }
                         else if (type == ParType.AMOUNT_KEK_TOKENS)
                         {
@@ -305,6 +321,10 @@ public class CommandParser
                                 throw new CommandException("Number could not be parsed, you can either use absolute numbers (0, 1, 2, 3, ...) or scientific notation (5e+59).\n*Please note that it must be a positive integer!*");
                             }
                         }
+                    }
+                    else if (clazz == IIdentifiable.class && type == ParType.ITEM_OR_CARD)
+                    {
+                        argArr[i] = CommandAssert.parseItemOrCard(arg);
                     }
                     else if (clazz == Item.class)
                     {

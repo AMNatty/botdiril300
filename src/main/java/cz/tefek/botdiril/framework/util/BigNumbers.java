@@ -1,5 +1,10 @@
 package cz.tefek.botdiril.framework.util;
 
+import java.util.Locale;
+
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+
 import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -7,10 +12,6 @@ import java.nio.file.Files;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
-import java.util.Locale;
-
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
 
 import cz.tefek.botdiril.BotMain;
 
@@ -25,7 +26,8 @@ public class BigNumbers
             var lines = Files.readAllLines(new File("assets/bignumbers.txt").toPath());
 
             lines.forEach(BigNumbers::procLine);
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
             BotMain.logger.fatal("Error retrieving big number lookup data.", e);
             System.exit(7);
@@ -97,7 +99,7 @@ public class BigNumbers
         if (bigInteger.equals(BigInteger.ZERO))
             return "0";
 
-        if (bigInteger.compareTo(BigInteger.valueOf(9999)) == -1)
+        if (bigInteger.compareTo(BigInteger.valueOf(9999)) == -1 && bigInteger.compareTo(BigInteger.valueOf(-9999)) == 1)
             return String.format("%d", bigInteger.intValueExact());
 
         NumberFormat formatter = new DecimalFormat("0.##E0", DecimalFormatSymbols.getInstance(Locale.ROOT));

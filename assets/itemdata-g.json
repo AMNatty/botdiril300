@@ -19,7 +19,7 @@
 }, {
     "id": "giantsbelt",
     "name": "Giant's Belt",
-    "buy": 600,
+    "buy": 1000,
     "sell": 700,
     "shortdesc": "Greatly increases Health"
 }, {
@@ -49,7 +49,7 @@
 }, {
     "id": "chainvest",
     "name": "Chain Vest",
-    "buy": 500,
+    "buy": 800,
     "sell": 560,
     "shortdesc": "Greatly increases Armor"
 }, {
@@ -97,7 +97,7 @@
 }, {
     "id": "recurvebow",
     "name": "Recurve Bow",
-    "buy": 400,
+    "buy": 1000,
     "sell": 700,
     "shortdesc": "Greatly increases Attack Speed"
 }, {
@@ -115,7 +115,7 @@
 }, {
     "id": "vampiricscepter",
     "name": "Vampiric Scepter",
-    "buy": 550,
+    "buy": 900,
     "sell": 630,
     "shortdesc": "Basic attacks restore Health"
 }, {
@@ -139,7 +139,7 @@
 }, {
     "id": "negatroncloak",
     "name": "Negatron Cloak",
-    "buy": 270,
+    "buy": 720,
     "sell": 504,
     "shortdesc": "Moderately increases Magic Resist"
 }, {
@@ -148,6 +148,12 @@
     "buy": 1250,
     "sell": 875,
     "shortdesc": "Greatly increases Ability Power"
+}, {
+    "id": "spacevampiricscepter",
+    "name": "Space Vampiric Scepter",
+    "buy": 900,
+    "sell": 630,
+    "shortdesc": "Basic attacks restore Health"
 }, {
     "id": "thedarkseal",
     "name": "The Dark Seal",
@@ -163,25 +169,49 @@
 }, {
     "id": "enchantmentwarrior",
     "name": "Enchantment: Warrior",
-    "buy": 525,
+    "buy": 2625,
     "sell": 1838,
     "shortdesc": "Grants Attack Damage and Cooldown Reduction"
 }, {
     "id": "enchantmentcinderhulk",
     "name": "Enchantment: Cinderhulk",
-    "buy": 600,
+    "buy": 2500,
     "sell": 1750,
     "shortdesc": "Grants Health and Immolate Aura"
 }, {
     "id": "enchantmentrunicechoes",
     "name": "Enchantment: Runic Echoes",
-    "buy": 375,
+    "buy": 2625,
+    "sell": 1838,
+    "shortdesc": "Grants Ability Power and periodically empowers your Spells"
+}, {
+    "id": "enchantmentwarrior",
+    "name": "Enchantment: Warrior",
+    "buy": 2625,
+    "sell": 1838,
+    "shortdesc": "Grants Attack Damage and Cooldown Reduction"
+}, {
+    "id": "enchantmentcinderhulk",
+    "name": "Enchantment: Cinderhulk",
+    "buy": 2500,
+    "sell": 1750,
+    "shortdesc": "Grants Health and Immolate Aura"
+}, {
+    "id": "enchantmentrunicechoes",
+    "name": "Enchantment: Runic Echoes",
+    "buy": 2625,
     "sell": 1838,
     "shortdesc": "Grants Ability Power and periodically empowers your Spells"
 }, {
     "id": "enchantmentbloodrazor",
     "name": "Enchantment: Bloodrazor",
-    "buy": 625,
+    "buy": 2625,
+    "sell": 1838,
+    "shortdesc": "Increases Attack Speed and deals damage based on the target's Health"
+}, {
+    "id": "enchantmentbloodrazor",
+    "name": "Enchantment: Bloodrazor",
+    "buy": 2625,
     "sell": 1838,
     "shortdesc": "Increases Attack Speed and deals damage based on the target's Health"
 }, {
@@ -193,7 +223,7 @@
 }, {
     "id": "kircheisshard",
     "name": "Kircheis Shard",
-    "buy": 500,
+    "buy": 800,
     "sell": 560,
     "shortdesc": "Attack speed and a chargable magic hit"
 }, {
@@ -205,13 +235,13 @@
 }, {
     "id": "hunterspotion",
     "name": "Hunter's Potion",
-    "buy": 250,
+    "buy": 400,
     "sell": 160,
     "shortdesc": "Restores Health and Mana over time - Refills at shop and has increased capacity"
 }, {
     "id": "corruptingpotion",
     "name": "Corrupting Potion",
-    "buy": 350,
+    "buy": 500,
     "sell": 200,
     "shortdesc": "Restores Health and Mana over time and boosts combat power - Refills at Shop"
 }, {
@@ -229,7 +259,7 @@
 }, {
     "id": "raptorcloak",
     "name": "Raptor Cloak",
-    "buy": 450,
+    "buy": 900,
     "sell": 630,
     "shortdesc": "Enhances Movement Speed near turrets"
 }, {
@@ -241,7 +271,7 @@
 }, {
     "id": "shurelyasreverie",
     "name": "Shurelya's Reverie",
-    "buy": 475,
+    "buy": 2250,
     "sell": 1575,
     "shortdesc": "Grants Health, Ability Power, Mana Regeneration, Cooldown Reduction, and Movement Speed. Activate to speed up nearby allies."
 }, {
@@ -277,415 +307,421 @@
 }, {
     "id": "abyssalmask",
     "name": "Abyssal Mask",
-    "buy": 1180,
+    "buy": 3000,
     "sell": 2100,
     "shortdesc": "Nearby enemies take more magic damage"
 }, {
     "id": "archangelsstaff",
     "name": "Archangel's Staff",
-    "buy": 1050,
+    "buy": 3200,
     "sell": 2240,
     "shortdesc": "Increases Ability Power based on maximum Mana"
 }, {
     "id": "manamune",
     "name": "Manamune",
-    "buy": 675,
+    "buy": 2400,
     "sell": 1680,
     "shortdesc": "Increases Attack Damage based on maximum Mana"
 }, {
     "id": "atmasreckoning",
     "name": "Atma's Reckoning",
-    "buy": 925,
+    "buy": 2900,
     "sell": 2030,
     "shortdesc": "Increases Attack Damage based on maximum Health"
 }, {
     "id": "berserkersgreaves",
     "name": "Berserker's Greaves",
-    "buy": 500,
+    "buy": 1100,
     "sell": 770,
     "shortdesc": "Enhances Movement Speed and Attack Speed"
 }, {
     "id": "archangelsstaffquickcharge",
     "name": "Archangel's Staff (Quick Charge)",
-    "buy": 1050,
+    "buy": 3200,
     "sell": 2240,
     "shortdesc": "Increases Ability Power based on maximum Mana"
 }, {
     "id": "manamunequickcharge",
     "name": "Manamune (Quick Charge)",
-    "buy": 675,
+    "buy": 2400,
     "sell": 1680,
     "shortdesc": "Increases Attack Damage based on maximum Mana"
 }, {
     "id": "bootsofswiftness",
     "name": "Boots of Swiftness",
-    "buy": 600,
+    "buy": 900,
     "sell": 630,
     "shortdesc": "Enhances Movement Speed and reduces the effect of slows"
 }, {
     "id": "catalystofaeons",
     "name": "Catalyst of Aeons",
-    "buy": 350,
+    "buy": 1100,
     "sell": 770,
     "shortdesc": "Spend Mana to recover Health"
 }, {
     "id": "sorcerersshoes",
     "name": "Sorcerer's Shoes",
-    "buy": 800,
+    "buy": 1100,
     "sell": 770,
     "shortdesc": "Enhances Movement Speed and magic damage"
 }, {
     "id": "frozenmallet",
     "name": "Frozen Mallet",
-    "buy": 900,
+    "buy": 3100,
     "sell": 2170,
     "shortdesc": "Basic attacks slow enemies"
 }, {
     "id": "glacialshroud",
     "name": "Glacial Shroud",
-    "buy": 250,
+    "buy": 900,
     "sell": 630,
     "shortdesc": "Increases Armor and Cooldown Reduction"
 }, {
     "id": "iceborngauntlet",
     "name": "Iceborn Gauntlet",
-    "buy": 750,
+    "buy": 2700,
     "sell": 1890,
     "shortdesc": "Basic attacks create a slow field after spell cast"
 }, {
     "id": "guardianangel",
     "name": "Guardian Angel",
-    "buy": 100,
+    "buy": 2800,
     "sell": 1120,
     "shortdesc": "Periodically revives champion upon death"
 }, {
     "id": "rodofages",
     "name": "Rod of Ages",
-    "buy": 750,
+    "buy": 2700,
     "sell": 1890,
     "shortdesc": "Greatly increases Health, Mana, and Ability Power"
 }, {
     "id": "chaliceofharmony",
     "name": "Chalice of Harmony",
-    "buy": 100,
+    "buy": 800,
     "sell": 560,
     "shortdesc": "Increases Mana and Health Regeneration"
 }, {
     "id": "rodofagesquickcharge",
     "name": "Rod of Ages (Quick Charge)",
-    "buy": 750,
+    "buy": 2700,
     "sell": 1890,
     "shortdesc": "Greatly increases Health, Mana, and Ability Power"
 }, {
     "id": "hextechglp800",
     "name": "Hextech GLP-800",
-    "buy": 450,
+    "buy": 2800,
     "sell": 1960,
     "shortdesc": "Activate to fire icy bolts to slow enemies"
 }, {
     "id": "infinityedge",
     "name": "Infinity Edge",
-    "buy": 1225,
+    "buy": 3400,
     "sell": 2380,
     "shortdesc": "Massively enhances critical strikes"
 }, {
     "id": "mortalreminder",
     "name": "Mortal Reminder",
-    "buy": 700,
+    "buy": 2800,
     "sell": 1960,
     "shortdesc": "Overcomes enemies with high Health recovery and Armor"
 }, {
     "id": "lastwhisper",
     "name": "Last Whisper",
-    "buy": 950,
+    "buy": 1300,
     "sell": 910,
     "shortdesc": "Overcomes enemies with high Armor"
 }, {
     "id": "lorddominiksregards",
     "name": "Lord Dominik's Regards",
-    "buy": 625,
+    "buy": 2800,
     "sell": 1960,
     "shortdesc": "Overcomes enemies with high health and armor"
 }, {
     "id": "mejaissoulstealer",
     "name": "Mejai's Soulstealer",
-    "buy": 1050,
+    "buy": 1400,
     "sell": 980,
     "shortdesc": "Grants Ability Power for kills and assists"
 }, {
     "id": "phage",
     "name": "Phage",
-    "buy": 500,
+    "buy": 1250,
     "sell": 875,
     "shortdesc": "Attacks and kills give a small burst of speed"
 }, {
     "id": "phantomdancer",
     "name": "Phantom Dancer",
-    "buy": 800,
+    "buy": 2700,
     "sell": 1890,
     "shortdesc": "Move faster near enemies and reduce incoming damage"
 }, {
     "id": "ninjatabi",
     "name": "Ninja Tabi",
-    "buy": 500,
+    "buy": 1100,
     "sell": 770,
     "shortdesc": "Enhances Movement Speed and reduces incoming basic attack damage"
 }, {
     "id": "zekesconvergence",
     "name": "Zeke's Convergence",
-    "buy": 250,
+    "buy": 2250,
     "sell": 1575,
     "shortdesc": "Grants you and your ally bonuses when you cast your ultimate."
 }, {
     "id": "jaurimsfist",
     "name": "Jaurim's Fist",
-    "buy": 450,
+    "buy": 1200,
     "sell": 840,
     "shortdesc": "Attack Damage and stacking Health on Unit Kill"
 }, {
     "id": "steraksgage",
     "name": "Sterak's Gage",
-    "buy": 725,
+    "buy": 3200,
     "sell": 2240,
     "shortdesc": "Shields against large bursts of damage"
 }, {
     "id": "ohmwrecker",
     "name": "Ohmwrecker",
-    "buy": 950,
+    "buy": 2650,
     "sell": 1855,
     "shortdesc": "Temporarily disables enemy turrets"
 }, {
     "id": "sheen",
     "name": "Sheen",
-    "buy": 700,
+    "buy": 1050,
     "sell": 735,
     "shortdesc": "Grants a bonus to next attack after spell cast"
 }, {
     "id": "spiritvisage",
     "name": "Spirit Visage",
-    "buy": 800,
+    "buy": 2800,
     "sell": 1960,
     "shortdesc": "Increases Health and healing effects"
 }, {
     "id": "kindlegem",
     "name": "Kindlegem",
-    "buy": 400,
+    "buy": 800,
     "sell": 560,
     "shortdesc": "Increases Health and Cooldown Reduction"
 }, {
     "id": "sunfirecape",
     "name": "Sunfire Cape",
-    "buy": 800,
+    "buy": 2900,
     "sell": 2030,
     "shortdesc": "Constantly deals damage to nearby enemies"
 }, {
     "id": "remnantoftheascended",
     "name": "Remnant of the Ascended",
-    "buy": 250,
+    "buy": 1500,
     "sell": 600,
     "shortdesc": "Provides Gold, Mana, and Stealth Wards over time"
 }, {
     "id": "tearofthegoddess",
     "name": "Tear of the Goddess",
-    "buy": 375,
+    "buy": 850,
     "sell": 595,
     "shortdesc": "Increases maximum Mana as Mana is spent"
 }, {
     "id": "theblackcleaver",
     "name": "The Black Cleaver",
-    "buy": 950,
+    "buy": 3000,
     "sell": 2100,
     "shortdesc": "Dealing physical damage to enemy champions reduces their Armor"
 }, {
     "id": "thebloodthirster",
     "name": "The Bloodthirster",
-    "buy": 950,
+    "buy": 3500,
     "sell": 2450,
     "shortdesc": "Grants Attack Damage, Life Steal and Life Steal now overheals"
 }, {
     "id": "tearofthegoddessquickcharge",
     "name": "Tear of the Goddess (Quick Charge)",
-    "buy": 375,
+    "buy": 850,
     "sell": 595,
     "shortdesc": "Increases maximum Mana as Mana is spent"
 }, {
     "id": "ravenoushydra",
     "name": "Ravenous Hydra",
-    "buy": 525,
+    "buy": 3500,
     "sell": 2450,
     "shortdesc": "Melee attacks hit nearby enemies, dealing damage and restoring Health"
 }, {
     "id": "thornmail",
     "name": "Thornmail",
-    "buy": 500,
+    "buy": 2900,
     "sell": 2030,
     "shortdesc": "Returns damage taken from basic attacks as magic damage"
 }, {
     "id": "bramblevest",
     "name": "Bramble Vest",
-    "buy": 400,
+    "buy": 1000,
     "sell": 700,
     "shortdesc": "Prevents enemies from using Life Steal against you."
 }, {
     "id": "tiamat",
     "name": "Tiamat",
-    "buy": 350,
+    "buy": 1200,
     "sell": 840,
     "shortdesc": "Melee attacks hit nearby enemies"
 }, {
     "id": "trinityforce",
     "name": "Trinity Force",
-    "buy": 333,
+    "buy": 3733,
     "sell": 2613,
     "shortdesc": "Tons of Damage"
 }, {
+    "id": "spacebloodthirster",
+    "name": "Space Bloodthirster",
+    "buy": 3300,
+    "sell": 2310,
+    "shortdesc": "Grants Attack Damage, Life Steal and Life Steal now overheals"
+}, {
     "id": "wardensmail",
     "name": "Warden's Mail",
-    "buy": 400,
+    "buy": 1000,
     "sell": 700,
     "shortdesc": "Slows Attack Speed of enemy champions when receiving basic attacks"
 }, {
     "id": "warmogsarmor",
     "name": "Warmog's Armor",
-    "buy": 400,
+    "buy": 2850,
     "sell": 1995,
     "shortdesc": "Grants massive Health and Health Regen"
 }, {
     "id": "overlordsbloodmail",
     "name": "Overlord's Bloodmail",
-    "buy": 900,
+    "buy": 2550,
     "sell": 1785,
     "shortdesc": "Restores Health on kill or assist"
 }, {
     "id": "runaanshurricane",
     "name": "Runaan's Hurricane",
-    "buy": 900,
+    "buy": 2800,
     "sell": 1960,
     "shortdesc": "Ranged attacks fire two bolts at nearby enemies"
 }, {
     "id": "zeal",
     "name": "Zeal",
-    "buy": 600,
+    "buy": 1300,
     "sell": 910,
     "shortdesc": "Slight bonuses to Critical Strike Chance, Movement Speed and Attack Speed"
 }, {
     "id": "statikkshiv",
     "name": "Statikk Shiv",
-    "buy": 700,
+    "buy": 2800,
     "sell": 1960,
     "shortdesc": "Movement builds charges that release chain lightning on basic attack"
 }, {
     "id": "rabadonsdeathcap",
     "name": "Rabadon's Deathcap",
-    "buy": 1100,
+    "buy": 3600,
     "sell": 2520,
     "shortdesc": "Massively increases Ability Power"
 }, {
     "id": "woogletswitchcap",
     "name": "Wooglet's Witchcap",
-    "buy": 450,
+    "buy": 3400,
     "sell": 2380,
     "shortdesc": "Massively increases Ability Power and can be activated to enter stasis"
 }, {
     "id": "witsend",
     "name": "Wit's End",
-    "buy": 380,
+    "buy": 2400,
     "sell": 1680,
     "shortdesc": "Deals bonus magic damage on basic attacks"
 }, {
     "id": "remnantofthewatchers",
     "name": "Remnant of the Watchers",
-    "buy": 550,
+    "buy": 1800,
     "sell": 720,
     "shortdesc": "Provides Ability Power and Stealth Wards over time"
 }, {
     "id": "rapidfirecannon",
     "name": "Rapid Firecannon",
-    "buy": 700,
+    "buy": 2800,
     "sell": 1960,
     "shortdesc": "Movement builds charges that release a sieging fire attack on release"
 }, {
     "id": "stormrazor",
     "name": "Stormrazor",
-    "buy": 500,
+    "buy": 2800,
     "sell": 1960,
     "shortdesc": "Start fights with a flurry of critical strikes"
 }, {
     "id": "nomadsmedallion",
     "name": "Nomad's Medallion",
-    "buy": 300,
+    "buy": 850,
     "sell": 340,
     "shortdesc": "Grants gold and mana when nearby minions die that you didn't kill"
 }, {
     "id": "targonsbrace",
     "name": "Targon's Brace",
-    "buy": 300,
+    "buy": 850,
     "sell": 340,
     "shortdesc": "Periodically kill enemy minions to heal and grant gold to a nearby ally"
 }, {
     "id": "frostfang",
     "name": "Frostfang",
-    "buy": 325,
+    "buy": 850,
     "sell": 340,
     "shortdesc": "Grants gold when you damage an enemy"
 }, {
     "id": "lichbane",
     "name": "Lich Bane",
-    "buy": 450,
+    "buy": 3200,
     "sell": 2240,
     "shortdesc": "Grants a bonus to next attack after spell cast"
 }, {
     "id": "stinger",
     "name": "Stinger",
-    "buy": 500,
+    "buy": 1100,
     "sell": 770,
     "shortdesc": "Increased Attack Speed and Cooldown Reduction"
 }, {
     "id": "bansheesveil",
     "name": "Banshee's Veil",
-    "buy": 800,
+    "buy": 3000,
     "sell": 2100,
     "shortdesc": "Periodically blocks enemy abilities"
 }, {
     "id": "lordvandammspillager",
     "name": "Lord Van Damm's Pillager",
-    "buy": 700,
+    "buy": 3000,
     "sell": 2100,
     "shortdesc": "Reduces Armor of nearby enemies"
 }, {
     "id": "aegisofthelegion",
     "name": "Aegis of the Legion",
-    "buy": 350,
+    "buy": 1100,
     "sell": 770,
     "shortdesc": "Grants Armor and Magic Resistance"
 }, {
     "id": "redemption",
     "name": "Redemption",
-    "buy": 650,
+    "buy": 2100,
     "sell": 1470,
     "shortdesc": "Activate to heal allies and damage enemies in an area"
 }, {
     "id": "fiendishcodex",
     "name": "Fiendish Codex",
-    "buy": 465,
+    "buy": 900,
     "sell": 630,
     "shortdesc": "Increases Ability Power and Cooldown Reduction"
 }, {
     "id": "knightsvow",
     "name": "Knight's Vow",
-    "buy": 600,
+    "buy": 2200,
     "sell": 1540,
     "shortdesc": "Partner with an ally to protect each other"
 }, {
     "id": "frozenheart",
     "name": "Frozen Heart",
-    "buy": 800,
+    "buy": 2700,
     "sell": 1890,
     "shortdesc": "Massively increases Armor and slows enemy basic attacks"
 }, {
     "id": "mercurystreads",
     "name": "Mercury's Treads",
-    "buy": 350,
+    "buy": 1100,
     "sell": 770,
     "shortdesc": "Increases Movement Speed and reduces duration of disabling effects"
 }, {
@@ -697,217 +733,259 @@
 }, {
     "id": "aetherwisp",
     "name": "Aether Wisp",
-    "buy": 415,
+    "buy": 850,
     "sell": 595,
     "shortdesc": "Increases Ability Power and Movement Speed"
 }, {
     "id": "forbiddenidol",
     "name": "Forbidden Idol",
-    "buy": 550,
+    "buy": 800,
     "sell": 560,
     "shortdesc": "Increases Mana Regeneration and Cooldown Reduction"
 }, {
     "id": "nashorstooth",
     "name": "Nashor's Tooth",
-    "buy": 1000,
+    "buy": 3000,
     "sell": 2100,
     "shortdesc": "Increases Attack Speed, Ability Power, and Cooldown Reduction"
 }, {
     "id": "rylaiscrystalscepter",
     "name": "Rylai's Crystal Scepter",
-    "buy": 915,
+    "buy": 2600,
     "sell": 1820,
     "shortdesc": "Abilities slow enemies"
 }, {
     "id": "bootsofmobility",
     "name": "Boots of Mobility",
-    "buy": 600,
+    "buy": 900,
     "sell": 630,
     "shortdesc": "Greatly enhances Movement Speed when out of combat"
 }, {
+    "id": "spaceknightsvow",
+    "name": "Space Knight's Vow",
+    "buy": 2200,
+    "sell": 1540,
+    "shortdesc": "Partner with an ally to protect each other"
+}, {
     "id": "wickedhatchet",
     "name": "Wicked Hatchet",
-    "buy": 450,
+    "buy": 1200,
     "sell": 840,
     "shortdesc": "Critical Strikes cause your target to bleed"
 }, {
     "id": "executionerscalling",
     "name": "Executioner's Calling",
-    "buy": 450,
+    "buy": 800,
     "sell": 560,
     "shortdesc": "Overcomes enemies with high health gain"
 }, {
     "id": "guinsoosrageblade",
     "name": "Guinsoo's Rageblade",
-    "buy": 990,
+    "buy": 3300,
     "sell": 2310,
     "shortdesc": "Increases Attack Speed, Attack Damage, and Ability Power"
 }, {
     "id": "deathfiregrasp",
     "name": "Deathfire Grasp",
-    "buy": 850,
+    "buy": 3000,
     "sell": 2100,
     "shortdesc": "Activate to increase all magic damage dealt to an enemy champion"
 }, {
+    "id": "swordofthedivine",
+    "name": "Sword of the Divine",
+    "buy": 2500,
+    "sell": 1750,
+    "shortdesc": "Activate to gain 100% Critical Strike Chance for a short duration"
+}, {
     "id": "caulfieldswarhammer",
     "name": "Caulfield's Warhammer",
-    "buy": 400,
+    "buy": 1100,
     "sell": 770,
     "shortdesc": "Attack Damage and Cooldown Reduction"
 }, {
     "id": "serrateddirk",
     "name": "Serrated Dirk",
-    "buy": 400,
+    "buy": 1100,
     "sell": 770,
     "shortdesc": "Increases Attack Damage and Lethality"
 }, {
     "id": "voidstaff",
     "name": "Void Staff",
-    "buy": 1365,
+    "buy": 2650,
     "sell": 1855,
     "shortdesc": "Increases magic damage"
 }, {
     "id": "hauntingguise",
     "name": "Haunting Guise",
-    "buy": 665,
+    "buy": 1500,
     "sell": 1050,
     "shortdesc": "Increases magic damage"
 }, {
     "id": "dervishblade",
     "name": "Dervish Blade",
-    "buy": 300,
+    "buy": 2700,
     "sell": 1890,
     "shortdesc": "Activate to remove all debuffs and grant massive Movement Speed"
 }, {
     "id": "mercurialscimitar",
     "name": "Mercurial Scimitar",
-    "buy": 325,
+    "buy": 3400,
     "sell": 2380,
     "shortdesc": "Activate to remove all crowd control debuffs and grant massive Movement Speed"
 }, {
     "id": "quicksilversash",
     "name": "Quicksilver Sash",
-    "buy": 850,
+    "buy": 1300,
     "sell": 910,
     "shortdesc": "Activate to remove all crowd control debuffs"
 }, {
     "id": "youmuusghostblade",
     "name": "Youmuu's Ghostblade",
-    "buy": 700,
+    "buy": 2900,
     "sell": 2030,
     "shortdesc": "Activate to greatly increase Movement Speed"
 }, {
     "id": "randuinsomen",
     "name": "Randuin's Omen",
-    "buy": 900,
+    "buy": 2900,
     "sell": 2030,
     "shortdesc": "Greatly increases defenses, activate to slow nearby enemies"
 }, {
     "id": "bilgewatercutlass",
     "name": "Bilgewater Cutlass",
-    "buy": 250,
+    "buy": 1500,
     "sell": 1050,
     "shortdesc": "Activate to deal magic damage and slow target champion"
 }, {
     "id": "hextechrevolver",
     "name": "Hextech Revolver",
-    "buy": 180,
+    "buy": 1050,
     "sell": 735,
     "shortdesc": "Increases Ability Power. Deal bonus magic damage on attack periodically."
 }, {
     "id": "hextechgunblade",
     "name": "Hextech Gunblade",
-    "buy": 850,
+    "buy": 3400,
     "sell": 2380,
     "shortdesc": "Increases Attack Damage and Ability Power, activate to slow a target"
 }, {
     "id": "duskbladeofdraktharr",
     "name": "Duskblade of Draktharr",
-    "buy": 700,
+    "buy": 2900,
     "sell": 2030,
     "shortdesc": "Deals additional physical damage when ambushing enemies and provides trap and ward detection periodically"
 }, {
+    "id": "spacehextechgunblade",
+    "name": "Space Hextech Gunblade",
+    "buy": 3400,
+    "sell": 2380,
+    "shortdesc": "Increases Attack Damage and Ability Power, activate to slow a target"
+}, {
+    "id": "spacebladeoftheruinedking",
+    "name": "Space Blade of the Ruined King",
+    "buy": 3200,
+    "sell": 2240,
+    "shortdesc": "Deals damage based on target's Health, can steal Movement Speed"
+}, {
     "id": "liandrystorment",
     "name": "Liandry's Torment",
-    "buy": 750,
+    "buy": 3100,
     "sell": 2170,
     "shortdesc": "Spell damage burns enemies for a portion of their Health"
 }, {
     "id": "hextechprotobelt01",
     "name": "Hextech Protobelt-01",
-    "buy": 650,
+    "buy": 2500,
     "sell": 1750,
     "shortdesc": "Activate to dash forward and unleash a fiery explosion"
 }, {
     "id": "bladeoftheruinedking",
     "name": "Blade of the Ruined King",
-    "buy": 700,
+    "buy": 3200,
     "sell": 2240,
     "shortdesc": "Deals damage based on target's Health, can steal Movement Speed"
 }, {
     "id": "wriggleslantern",
     "name": "Wriggle's Lantern",
-    "buy": 100,
+    "buy": 1650,
     "sell": 1155,
     "shortdesc": "Life Steal and Spell Vamp, activate to place a ward"
 }, {
     "id": "hexdrinker",
     "name": "Hexdrinker",
-    "buy": 500,
+    "buy": 1300,
     "sell": 910,
     "shortdesc": "Increases Attack Damage and Magic Resist"
 }, {
     "id": "mawofmalmortius",
     "name": "Maw of Malmortius",
-    "buy": 850,
+    "buy": 3250,
     "sell": 2275,
     "shortdesc": "Grants bonus Attack Damage when Health is low"
 }, {
     "id": "zhonyashourglass",
     "name": "Zhonya's Hourglass",
-    "buy": 300,
+    "buy": 2900,
     "sell": 2030,
     "shortdesc": "Activate to become invincible but unable to take actions"
 }, {
     "id": "ionianbootsoflucidity",
     "name": "Ionian Boots of Lucidity",
-    "buy": 600,
+    "buy": 900,
     "sell": 630,
     "shortdesc": "Increases Movement Speed and Cooldown Reduction"
 }, {
     "id": "spearofshojin",
     "name": "Spear of Shojin",
-    "buy": 800,
+    "buy": 2900,
     "sell": 2030,
     "shortdesc": "Reduce damage taken from champions by a flat amount. Attack while near multiple enemy champions to increase this amount for a short time."
 }, {
+    "id": "spacebilgewatercutlass",
+    "name": "Space Bilgewater Cutlass",
+    "buy": 1500,
+    "sell": 1050,
+    "shortdesc": "Activate to deal magic damage and slow target champion"
+}, {
+    "id": "spacemawofmalmortius",
+    "name": "Space Maw of Malmortius",
+    "buy": 3250,
+    "sell": 2275,
+    "shortdesc": "Grants bonus Attack Damage when Health is low"
+}, {
     "id": "morellonomicon",
     "name": "Morellonomicon",
-    "buy": 650,
+    "buy": 3000,
     "sell": 2100,
     "shortdesc": "Increases magic damage"
 }, {
     "id": "moonflairspellblade",
     "name": "Moonflair Spellblade",
-    "buy": 580,
+    "buy": 2400,
     "sell": 1680,
     "shortdesc": "Improves defense and reduces duration of disabling effects"
 }, {
     "id": "zephyr",
     "name": "Zephyr",
-    "buy": 900,
+    "buy": 2800,
     "sell": 1960,
     "shortdesc": "Mobility and Tenacity"
 }, {
+    "id": "spacebootsoflucidity",
+    "name": "Space Boots of Lucidity",
+    "buy": 900,
+    "sell": 630,
+    "shortdesc": "Increases Movement Speed and Cooldown Reduction"
+}, {
     "id": "athenesunholygrail",
     "name": "Athene's Unholy Grail",
-    "buy": 400,
+    "buy": 2100,
     "sell": 1470,
     "shortdesc": "Deal damage to empower your heals and shields"
 }, {
     "id": "sanguineblade",
     "name": "Sanguine Blade",
-    "buy": 625,
+    "buy": 2400,
     "sell": 1680,
     "shortdesc": "Greatly increases Attack Damage and Life Steal"
 }, {
@@ -919,73 +997,85 @@
 }, {
     "id": "arcanesweeper",
     "name": "Arcane Sweeper",
-    "buy": 350,
+    "buy": 2050,
     "sell": 1435,
     "shortdesc": "Activate to reveal a nearby area of the map"
 }, {
     "id": "locketoftheironsolari",
     "name": "Locket of the Iron Solari",
-    "buy": 650,
+    "buy": 2200,
     "sell": 1540,
     "shortdesc": "Activate to shield nearby allies from damage"
 }, {
     "id": "seekersarmguard",
     "name": "Seeker's Armguard",
-    "buy": 65,
+    "buy": 1100,
     "sell": 770,
     "shortdesc": "Increases Armor and Ability Power"
 }, {
     "id": "gargoylestoneplate",
     "name": "Gargoyle Stoneplate",
-    "buy": 380,
+    "buy": 2500,
     "sell": 1750,
     "shortdesc": "Greatly increases defense near multiple enemies."
 }, {
     "id": "adaptivehelm",
     "name": "Adaptive Helm",
-    "buy": 1000,
+    "buy": 2800,
     "sell": 1960,
     "shortdesc": "Reduces damage from repeated spells and effects."
 }, {
     "id": "thehexcoremk1",
     "name": "The Hex Core mk-1",
-    "buy": 1250,
-    "sell": 875,
+    "buy": 1150,
+    "sell": 805,
     "shortdesc": "Allows Viktor to improve an ability of his choice"
 }, {
     "id": "thehexcoremk2",
     "name": "The Hex Core mk-2",
-    "buy": 1000,
-    "sell": 1575,
+    "buy": 2150,
+    "sell": 1505,
     "shortdesc": "Allows Viktor to improve an ability of his choice"
 }, {
     "id": "perfecthexcore",
     "name": "Perfect Hex Core",
-    "buy": 750,
+    "buy": 3000,
     "sell": 2100,
     "shortdesc": "Allows Viktor to improve an ability of his choice"
 }, {
     "id": "spectrescowl",
     "name": "Spectre's Cowl",
-    "buy": 350,
+    "buy": 1200,
     "sell": 840,
     "shortdesc": "Improves defense and grants regeneration upon being damaged"
 }, {
     "id": "mikaelscrucible",
     "name": "Mikael's Crucible",
-    "buy": 500,
+    "buy": 2100,
     "sell": 1470,
     "shortdesc": "Activate to remove all disabling effects from an allied champion"
 }, {
+    "id": "spaceravenoushydra",
+    "name": "Space Ravenous Hydra",
+    "buy": 3500,
+    "sell": 2450,
+    "shortdesc": "Melee attacks hit nearby enemies, dealing damage and restoring Health"
+}, {
+    "id": "spacemercurialscimitar",
+    "name": "Space Mercurial Scimitar",
+    "buy": 3400,
+    "sell": 2380,
+    "shortdesc": "Activate to remove all crowd control debuffs and grant massive Movement Speed"
+}, {
     "id": "poachersdirk",
     "name": "Poacher's Dirk",
-    "buy": 150,
+    "buy": 500,
     "sell": 350,
     "shortdesc": "Transforms into a Serrated Dirk after poaching in the enemy jungle."
 }, {
     "id": "ludensecho",
     "name": "Luden's Echo",
-    "buy": 1050,
+    "buy": 3200,
     "sell": 2240,
     "shortdesc": "Increases Ability Power, Mana, and Cooldown Reduction"
 }, {
@@ -1015,13 +1105,13 @@
 }, {
     "id": "timewornnomadsmedallion",
     "name": "Timeworn Nomad's Medallion",
-    "buy": 300,
+    "buy": 850,
     "sell": 340,
     "shortdesc": "Grants gold and mana when nearby minions die that you didn't kill"
 }, {
     "id": "timeworntalismanofascension",
     "name": "Timeworn Talisman of Ascension",
-    "buy": 450,
+    "buy": 2200,
     "sell": 880,
     "shortdesc": "Increases Health / Mana Regeneration and Cooldown Reduction. Activate to speed up nearby allies."
 }, {
@@ -1033,13 +1123,13 @@
 }, {
     "id": "timeworntargonsbrace",
     "name": "Timeworn Targon's Brace",
-    "buy": 300,
+    "buy": 850,
     "sell": 340,
     "shortdesc": "Periodically kill enemy minions to heal and grant gold to a nearby ally"
 }, {
     "id": "timewornfaceofthemountain",
     "name": "Timeworn Face of the Mountain",
-    "buy": 450,
+    "buy": 2100,
     "sell": 840,
     "shortdesc": "Shield an ally from damage based on your Health"
 }, {
@@ -1051,13 +1141,13 @@
 }, {
     "id": "timewornfrostfang",
     "name": "Timeworn Frostfang",
-    "buy": 325,
+    "buy": 850,
     "sell": 340,
     "shortdesc": "Grants gold when you damage an enemy"
 }, {
     "id": "timewornfrostqueensclaim",
     "name": "Timeworn Frost Queen's Claim",
-    "buy": 500,
+    "buy": 2200,
     "sell": 880,
     "shortdesc": "Sends out seeking wraiths that track hidden enemies and slow them"
 }, {
@@ -1081,85 +1171,85 @@
 }, {
     "id": "moltenedge",
     "name": "Molten Edge",
-    "buy": 1000,
+    "buy": 4400,
     "sell": 3080,
     "shortdesc": "Massively enhances critical strikes"
 }, {
     "id": "forgefirecape",
     "name": "Forgefire Cape",
-    "buy": 1000,
+    "buy": 3900,
     "sell": 2730,
     "shortdesc": "Constantly deals damage to nearby enemies"
 }, {
     "id": "rabadonsdeathcrown",
     "name": "Rabadon's Deathcrown",
-    "buy": 1000,
+    "buy": 4600,
     "sell": 3220,
     "shortdesc": "Massively increases Ability Power"
 }, {
     "id": "infernalmask",
     "name": "Infernal Mask",
-    "buy": 1000,
+    "buy": 4000,
     "sell": 2800,
     "shortdesc": "Nearby enemies take more magic damage"
 }, {
     "id": "theobsidiancleaver",
     "name": "The Obsidian Cleaver",
-    "buy": 1000,
+    "buy": 4000,
     "sell": 2800,
     "shortdesc": "Dealing physical damage to enemy champions reduces their Armor"
 }, {
     "id": "salvation",
     "name": "Salvation",
-    "buy": 500,
+    "buy": 2600,
     "sell": 1820,
     "shortdesc": "Activate to heal allies and damage enemies in an area"
 }, {
     "id": "circletoftheironsolari",
     "name": "Circlet of the Iron Solari",
-    "buy": 500,
+    "buy": 2700,
     "sell": 1890,
     "shortdesc": "Activate to shield nearby allies from damage"
 }, {
     "id": "trinityfusion",
     "name": "Trinity Fusion",
-    "buy": 1000,
+    "buy": 4733,
     "sell": 3313,
     "shortdesc": "Tons of Damage"
 }, {
     "id": "woogletswitchcrown",
     "name": "Wooglet's Witchcrown",
-    "buy": 1050,
+    "buy": 4450,
     "sell": 3115,
     "shortdesc": "Massively increases Ability Power and can be activated to enter stasis"
 }, {
     "id": "zhonyasparadox",
     "name": "Zhonya's Paradox",
-    "buy": 1000,
+    "buy": 3900,
     "sell": 2730,
     "shortdesc": "Activate to become invincible but unable to take actions"
 }, {
     "id": "remnantoftheaspect",
     "name": "Remnant of the Aspect",
-    "buy": 550,
+    "buy": 1800,
     "sell": 720,
     "shortdesc": "Provides Health and Stealth Wards over time"
 }, {
     "id": "ardentcenser",
     "name": "Ardent Censer",
-    "buy": 650,
+    "buy": 2300,
     "sell": 1610,
     "shortdesc": "Shield and heal effects on other units grant both of you Attack Speed and their attacks deal additional on-hit magic damage."
 }, {
     "id": "essencereaver",
     "name": "Essence Reaver",
-    "buy": 450,
-    "sell": 2240,
+    "buy": 3000,
+    "sell": 2100,
     "shortdesc": "Attack and cast spells faster after your ultimate"
 }, {
     "id": "zzrotportal",
     "name": "Zz'Rot Portal",
-    "buy": 1080,
+    "buy": 2700,
     "sell": 1890,
     "shortdesc": "Makes a Voidspawn generating Void Gate to push a lane with."
 }, {
@@ -1223,6 +1313,30 @@
     "sell": 0,
     "shortdesc": "Grants bonus health to nearby Siege Weapons"
 }, {
+    "id": "enchantmentwarrior",
+    "name": "Enchantment: Warrior",
+    "buy": 1625,
+    "sell": 1138,
+    "shortdesc": ""
+}, {
+    "id": "enchantmentcinderhulk",
+    "name": "Enchantment: Cinderhulk",
+    "buy": 1425,
+    "sell": 998,
+    "shortdesc": ""
+}, {
+    "id": "enchantmentrunicechoes",
+    "name": "Enchantment: Runic Echoes",
+    "buy": 1625,
+    "sell": 1138,
+    "shortdesc": ""
+}, {
+    "id": "enchantmentbloodrazor",
+    "name": "Enchantment: Bloodrazor",
+    "buy": 1625,
+    "sell": 1138,
+    "shortdesc": ""
+}, {
     "id": "frostedsnax",
     "name": "Frosted Snax",
     "buy": 0,
@@ -1285,62 +1399,68 @@
 }, {
     "id": "stalkersblade",
     "name": "Stalker's Blade",
-    "buy": 300,
+    "buy": 1000,
     "sell": 700,
     "shortdesc": "Lets your Smite slow Champions"
 }, {
     "id": "skirmisherssabre",
     "name": "Skirmisher's Sabre",
-    "buy": 300,
+    "buy": 1000,
     "sell": 700,
     "shortdesc": "Lets your Smite mark Champions, giving you combat power against them."
 }, {
     "id": "deadmansplate",
     "name": "Dead Man's Plate",
-    "buy": 1100,
+    "buy": 2900,
     "sell": 2030,
     "shortdesc": "Build momentum as you move around then smash into enemies."
 }, {
     "id": "titanichydra",
     "name": "Titanic Hydra",
-    "buy": 700,
+    "buy": 3500,
     "sell": 2450,
     "shortdesc": "Deals area of effect damage based on owner's health"
 }, {
     "id": "bamiscinder",
     "name": "Bami's Cinder",
-    "buy": 500,
+    "buy": 900,
     "sell": 630,
     "shortdesc": "Grants Health and Immolate Aura"
 }, {
     "id": "righteousglory",
     "name": "Righteous Glory",
-    "buy": 1100,
+    "buy": 2650,
     "sell": 1855,
     "shortdesc": "Grants Health, Mana, and Armor. Activate to speed towards enemies and slow them."
 }, {
     "id": "crystallinebracer",
     "name": "Crystalline Bracer",
-    "buy": 100,
+    "buy": 650,
     "sell": 455,
     "shortdesc": "Grants Health and Health Regen"
 }, {
     "id": "lostchapter",
     "name": "Lost Chapter",
-    "buy": 80,
+    "buy": 1300,
     "sell": 910,
     "shortdesc": "Restores Mana upon levelling up."
 }, {
     "id": "deathsdance",
     "name": "Death's Dance",
-    "buy": 625,
+    "buy": 3500,
+    "sell": 2450,
+    "shortdesc": "Trades incoming damage now for incoming damage later"
+}, {
+    "id": "spacedeathsdance",
+    "name": "Space Death's Dance",
+    "buy": 3500,
     "sell": 2450,
     "shortdesc": "Trades incoming damage now for incoming damage later"
 }, {
     "id": "edgeofnight",
     "name": "Edge of Night",
-    "buy": 725,
-    "sell": 2170,
+    "buy": 3000,
+    "sell": 2100,
     "shortdesc": "Blocks an incoming enemy spell."
 }, {
     "id": "fireatwill",
@@ -1363,51 +1483,69 @@
 }, {
     "id": "twinshadows",
     "name": "Twin Shadows",
-    "buy": 650,
+    "buy": 2400,
     "sell": 1680,
     "shortdesc": "Increases Ability Power and Movement Speed"
 }, {
     "id": "spellbinder",
     "name": "Spellbinder",
-    "buy": 800,
+    "buy": 2900,
     "sell": 2030,
     "shortdesc": "Stores nearby spellcasts and can consume them to grant Movement Speed and Ability Power."
 }, {
     "id": "oblivionorb",
     "name": "Oblivion Orb",
-    "buy": 665,
+    "buy": 1500,
     "sell": 1050,
     "shortdesc": "Increases magic damage"
 }, {
     "id": "ghostwalkersmeleeonly",
     "name": "Ghostwalkers (Melee Only)",
-    "buy": 700,
+    "buy": 1000,
     "sell": 700,
     "shortdesc": "Enhances Movement Speed and grants temporary wall walking."
 }, {
     "id": "lifeline",
     "name": "Lifeline",
-    "buy": 550,
+    "buy": 1500,
     "sell": 1050,
     "shortdesc": "Marks the ground, and returns you there after a few moments"
 }, {
     "id": "spectralcutlasstesting",
     "name": "Spectral Cutlass - TESTING",
-    "buy": 400,
+    "buy": 3000,
     "sell": 2100,
     "shortdesc": "Marks the ground, and returns you there after a few moments"
-}, {
-    "id": "bloodlettersveil",
-    "name": "Bloodletter's Veil",
-    "buy": 650,
-    "sell": 2100,
-    "shortdesc": "Grant Spell Shield after damaging an enemy with an ability"
 }, {
     "id": "pridestalkersblade",
     "name": "Pridestalker's Blade",
     "buy": 450,
     "sell": 315,
     "shortdesc": "Kill monsters faster"
+}, {
+    "id": "enchantmentwarrior",
+    "name": "Enchantment: Warrior",
+    "buy": 2625,
+    "sell": 1838,
+    "shortdesc": "Tons of Damage"
+}, {
+    "id": "enchantmentcinderhulk",
+    "name": "Enchantment: Cinderhulk",
+    "buy": 2625,
+    "sell": 1838,
+    "shortdesc": "Increases bonus Health and burns nearby enemies"
+}, {
+    "id": "enchantmentrunicechoes",
+    "name": "Enchantment: Runic Echoes",
+    "buy": 2625,
+    "sell": 1838,
+    "shortdesc": "Spells explode for bonus damage"
+}, {
+    "id": "enchantmentbloodrazor",
+    "name": "Enchantment: Bloodrazor",
+    "buy": 2625,
+    "sell": 1838,
+    "shortdesc": "Attacks deal bonus damage based on the target's maximum Health"
 }, {
     "id": "doranslostshield",
     "name": "Doran's Lost Shield",
@@ -1447,7 +1585,19 @@
 }, {
     "id": "forceofnature",
     "name": "Force of Nature",
-    "buy": 1160,
+    "buy": 2900,
     "sell": 2030,
     "shortdesc": "Movement Speed, Magic Resist, and max Health Regeneration"
+}, {
+    "id": "innervatinglocket",
+    "name": "Innervating Locket",
+    "buy": 2800,
+    "sell": 1960,
+    "shortdesc": "Cast spells to heal"
+}, {
+    "id": "statstickofstoicism",
+    "name": "Stat-Stick of Stoicism",
+    "buy": 10000,
+    "sell": 7000,
+    "shortdesc": "Has ALL the stats"
 }]

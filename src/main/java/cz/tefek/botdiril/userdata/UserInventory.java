@@ -192,7 +192,7 @@ public class UserInventory
 
     public long getDust()
     {
-        return BotMain.sql.exec("SELECT us_dust FROM " + TABLE_USER + " WHERE us_userid=(?)", stat ->
+        return BotMain.sql.exec("SELECT us_dust FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
         {
             var rs = stat.executeQuery();
             rs.next();
@@ -212,6 +212,29 @@ public class UserInventory
 
     public long howManyOf(Item item)
     {
+        if (item instanceof ItemCurrency)
+        {
+            ItemCurrency curr = (ItemCurrency) item;
+
+            switch (curr.getCurrency())
+            {
+                case COINS:
+                    return this.getCoins();
+                case DUST:
+                    return this.getDust();
+                case KEKS:
+                    return this.getKeks();
+                case KEYS:
+                    return this.getKeys();
+                case MEGAKEKS:
+                    throw new RuntimeException("MegaKeks cannot be used for this.");
+                case TOKENS:
+                    return this.getKekTokens();
+                case XP:
+                    return this.getXP();
+            }
+        }
+
         return BotMain.sql.exec("SELECT it_amount FROM " + TABLE_INVENTORY + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
         {
             var rs = stat.executeQuery();

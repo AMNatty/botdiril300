@@ -1,6 +1,7 @@
 package cz.tefek.botdiril.userdata.items.crate;
 
 import cz.tefek.botdiril.framework.command.CallObj;
+import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.items.Icons;
 import cz.tefek.botdiril.userdata.items.ShopEntries;
 
@@ -18,6 +19,7 @@ public class ItemCrateInfernal extends ItemCrate
     @Override
     public void open(CallObj co, long amount)
     {
-
+        MR.send(co.textChannel, "This crate is coming soon...");
+        co.ui.addItem(this, amount);
     }
 }

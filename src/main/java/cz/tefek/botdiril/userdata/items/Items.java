@@ -101,15 +101,15 @@ public class Items
         gemdiril = new Item("gemdiril", Icons.GEM_GEMDIRIL, "Gemdiril").setDescription("A very rare gem of an unknown value.");
         trash = new Item("trash", Icons.ITEM_TRASH, "Trash").setDescription("It's just trash, or is it?");
 
-        pickaxeI = new Item("pickaxei", Icons.PICKAXE_I, "Pickaxe I").setDescription("Basic Pickaxe.\nUsed for mining.");
+        pickaxeI = new ItemPickaxe("pickaxei", Icons.PICKAXE_I, "Pickaxe I", 10).setDescription("Basic Pickaxe.\nUsed for mining.");
         ShopEntries.addCoinBuy(pickaxeI, 2_000);
         ShopEntries.addCoinSell(pickaxeI, 800);
 
-        pickaxeII = new Item("pickaxeii", Icons.PICKAXE_II, "Pickaxe II").setDescription("Good Pickaxe.\nExpect much better loot.");
+        pickaxeII = new ItemPickaxe("pickaxeii", Icons.PICKAXE_II, "Pickaxe II", 250).setDescription("Good Pickaxe.\nExpect much better loot.");
         ShopEntries.addCoinBuy(pickaxeII, 80_000);
         ShopEntries.addCoinSell(pickaxeII, 35_000);
 
-        pickaxeIII = new Item("pickaxeiii", Icons.PICKAXE_III, "Pickaxe III").setDescription("Hyper Pickaxe.\nNormally unobtainable, this pickaxe almost swings itself.");
+        pickaxeIII = new ItemPickaxe("pickaxeiii", Icons.PICKAXE_III, "Pickaxe III", 5000).setDescription("Hyper Pickaxe.\nNormally unobtainable, this pickaxe almost swings itself.");
         ShopEntries.addCoinSell(pickaxeIII, 250_000);
 
         toolBox = new Item("toolbox", Icons.ITEM_SUSPICIOUS_METAL_BOX, "Tool Box").setDescription("I wonder what it's for.");

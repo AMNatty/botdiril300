@@ -4,6 +4,8 @@ public enum ParType
 {
     /** Any parameter class type */
     BASIC,
+    /** IIdentifiable only */
+    ITEM_OR_CARD,
     /** Long.class/long.class only */
     AMOUNT_COINS,
     /** Long.class/long.class only */
@@ -16,16 +18,10 @@ public enum ParType
     AMOUNT_DUST,
     /** Long.class/long.class only */
     AMOUNT_KEYS,
+    /** Long.class/long.class only, the previous parameter must be ITEM or CARD */
+    AMOUNT_ITEM_OR_CARD,
     /** Long.class/long.class only, the previous parameter must be ITEM */
-    AMOUNT_ITEM,
+    AMOUNT_ITEM_OR_CARD_BUY_COINS,
     /** Long.class/long.class only, the previous parameter must be ITEM */
-    AMOUNT_ITEM_BUY_COINS,
-    /** Long.class/long.class only, the previous parameter must be ITEM */
-    AMOUNT_ITEM_BUY_TOKENS,
-    /** Long.class/long.class only, the previous parameter must be ITEM */
-    AMOUNT_CARD_BUY_COINS,
-    /** Long.class/long.class only, the previous parameter must be ITEM */
-    AMOUNT_CARD_BUY_TOKENS,
-    /** Long.class/long.class only, the previous parameter must be CARD */
-    AMOUNT_CARD
+    AMOUNT_ITEM_OR_CARD_BUY_TOKENS
 }

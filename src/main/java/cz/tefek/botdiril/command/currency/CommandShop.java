@@ -1,5 +1,7 @@
 package cz.tefek.botdiril.command.currency;
 
+import net.dv8tion.jda.core.EmbedBuilder;
+
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.command.Command;
 import cz.tefek.botdiril.framework.command.CommandCategory;
@@ -10,7 +12,6 @@ import cz.tefek.botdiril.userdata.card.Card;
 import cz.tefek.botdiril.userdata.items.Icons;
 import cz.tefek.botdiril.userdata.items.Item;
 import cz.tefek.botdiril.userdata.items.ShopEntries;
-import net.dv8tion.jda.core.EmbedBuilder;
 
 @Command(value = "shop", aliases = { "store",
         "market" }, category = CommandCategory.CURRENCY, description = "Opens the shops.")
@@ -22,7 +23,7 @@ public class CommandShop
         var prefix = co.sc.getPrefix();
         var eb = new EmbedBuilder();
         eb.setTitle("Botdiril's Shop");
-        eb.setDescription(String.format("*You have %d%s.*", co.ui.getCoins(), Icons.COIN));
+        eb.setDescription(String.format("You have **%d** %s.", co.ui.getCoins(), Icons.COIN));
         eb.setColor(0x008080);
 
         Item.items().forEach(item -> addItems(eb, item));
@@ -55,7 +56,8 @@ public class CommandShop
             sub.append("**Sells back for:** ");
             sub.append(ShopEntries.getSellValue(item));
             sub.append(Icons.COIN);
-        } else
+        }
+        else
         {
             sub.append("*Cannot be sold.*");
         }

@@ -43,8 +43,8 @@ public class CommandTokenShop
     {
         var prefix = co.sc.getPrefix();
         var eb = new EmbedBuilder();
-        eb.setTitle("Illegal kek market");
-        eb.setDescription(String.format("Use your %s to buy some items.\n*You have %d%s.*", Icons.TOKEN, co.ui.getKekTokens(), Icons.TOKEN));
+        eb.setTitle("Black Market");
+        eb.setDescription(String.format("Use your %s to buy some items.\nYou have **%d** %s.", Icons.TOKEN, co.ui.getKekTokens(), Icons.TOKEN));
         eb.setColor(0x008080);
 
         Item.items().forEach(item -> addItems(eb, item));

@@ -17,6 +17,7 @@ import cz.tefek.botdiril.framework.command.Command;
 import cz.tefek.botdiril.framework.command.CommandCategory;
 import cz.tefek.botdiril.framework.command.CommandStorage;
 import cz.tefek.botdiril.framework.command.invoke.CommandException;
+import cz.tefek.botdiril.userdata.IIdentifiable;
 import cz.tefek.botdiril.userdata.UserInventory;
 import cz.tefek.botdiril.userdata.card.Card;
 import cz.tefek.botdiril.userdata.items.Item;
@@ -413,6 +414,21 @@ public class CommandAssert
             throw new CommandException("Item not found: " + name);
 
         return it;
+    }
+
+    public static IIdentifiable parseItemOrCard(String name)
+    {
+        var it = Item.getItemByName(name);
+
+        if (it != null)
+            return it;
+
+        var ct = Card.getCardByName(name);
+
+        if (ct != null)
+            return ct;
+
+        throw new CommandException(name + " is neither a card or an item.");
     }
 
     /**

@@ -1,4 +1,4 @@
-package cz.tefek.botdiril.command.currency;
+package cz.tefek.botdiril.command.superuser;
 
 import net.dv8tion.jda.core.entities.Member;
 

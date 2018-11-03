@@ -52,6 +52,7 @@ public class CommandSteal
         if (stole <= 0)
         {
             MR.send(co.textChannel, "You didn't manage to steal anything, better luck next time... ;)");
+            BotMain.sql.unlock();
             return;
         }
 

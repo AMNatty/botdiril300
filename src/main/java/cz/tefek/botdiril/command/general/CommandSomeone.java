@@ -12,7 +12,7 @@ import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.util.MR;
 
 @Command(value = "someone", category = CommandCategory.GENERAL, aliases = {
-        "randomuser" }, description = "Gets a random user present in this channel.")
+        "randomuser" }, description = "Gets a random user present in this channel, excludes bots.")
 public class CommandSomeone
 {
     @CmdInvoke
