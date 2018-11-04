@@ -20,8 +20,9 @@ public class CommandPrefix
 
         co.sc.setPrefix(prefix);
 
-        co.guild.getController().setNickname(co.guild.getMember(co.bot), "[" + prefix + "] " + Botdiril.BRANDING).queue();
-
-        MR.send(co.textChannel, "Prefix set to: " + prefix);
+        co.guild.getController().setNickname(co.guild.getMember(co.bot), "[" + prefix + "] " + Botdiril.BRANDING).queue(success ->
+        {
+            MR.send(co.textChannel, "Prefix set to: " + prefix);
+        });
     }
 }

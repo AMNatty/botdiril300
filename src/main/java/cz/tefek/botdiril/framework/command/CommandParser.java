@@ -336,7 +336,7 @@ public class CommandParser
                     }
                     else if (clazz == Achievement.class)
                     {
-
+                        argArr[i] = CommandAssert.parseAchievement(arg);
                     }
                     else if (clazz == Command.class)
                     {
@@ -404,7 +404,7 @@ public class CommandParser
                     }
                 }
             }
-            catch (CommandException e)
+            catch (Exception e)
             {
                 MR.send(co.textChannel, e.getMessage());
             }

@@ -2,6 +2,9 @@ package cz.tefek.botdiril.command.inventory;
 
 import java.util.regex.Pattern;
 
+import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.MessageEmbed.Field;
+
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.command.Command;
 import cz.tefek.botdiril.framework.command.CommandCategory;
@@ -11,8 +14,6 @@ import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.EnumCurrency;
 import cz.tefek.botdiril.userdata.items.Item;
 import cz.tefek.botdiril.userdata.items.ShopEntries;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.MessageEmbed.Field;
 
 @Command(value = "iteminfo", aliases = {
         "ii" }, category = CommandCategory.ITEMS, description = "Shows important information about an item")
@@ -27,7 +28,7 @@ public class CommandItemInfo
         eb.setColor(0x008080);
         var emID = Pattern.compile("[0-9]+").matcher(item.getIcon());
         emID.find();
-        var imgUrl = co.guild.getEmoteById(Long.parseLong(emID.group())).getImageUrl();
+        var imgUrl = co.jda.getEmoteById(Long.parseLong(emID.group())).getImageUrl();
         eb.setThumbnail(imgUrl);
 
         eb.addField("ID:", item.getName(), true);

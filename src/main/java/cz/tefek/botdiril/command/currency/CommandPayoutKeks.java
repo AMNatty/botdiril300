@@ -9,18 +9,21 @@ import cz.tefek.botdiril.framework.command.invoke.ParType;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.items.Icons;
+import cz.tefek.botdiril.userdata.timers.Timers;
 import cz.tefek.botdiril.userdata.xp.XPAdder;
 
 @Command(value = "payoutkeks", aliases = {
         "payout" }, category = CommandCategory.CURRENCY, description = "Pay out your " + Icons.KEK + " for some " + Icons.TOKEN, levelLock = 7)
 public class CommandPayoutKeks
 {
-    private static final long conversionRate = 250;
+    private static final long conversionRate = 125;
 
     @CmdInvoke
     public static void payout(CallObj co, @CmdPar(value = "how many", type = ParType.AMOUNT_CLASSIC_KEKS) long keks)
     {
         CommandAssert.numberMoreThanZeroL(keks, "You can't pay out zero keks.");
+
+        CommandAssert.assertTimer(co.ui, Timers.payout, "You need to wait **$** before paying out again.");
 
         co.ui.addKeks(-keks);
         var tokens = keks / conversionRate;

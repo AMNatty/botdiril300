@@ -1,5 +1,9 @@
 package cz.tefek.botdiril.command.currency;
 
+import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.MessageEmbed.Field;
+import net.dv8tion.jda.core.entities.User;
+
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.command.Command;
 import cz.tefek.botdiril.framework.command.CommandCategory;
@@ -9,11 +13,9 @@ import cz.tefek.botdiril.framework.util.BigNumbers;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.EnumCurrency;
 import cz.tefek.botdiril.userdata.UserInventory;
+import cz.tefek.botdiril.userdata.achievement.Achievements;
 import cz.tefek.botdiril.userdata.items.Icons;
 import cz.tefek.botdiril.userdata.xp.XPRewards;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.MessageEmbed.Field;
-import net.dv8tion.jda.core.entities.User;
 
 @Command(value = "balance", aliases = { "money", "coins",
         "bal" }, category = CommandCategory.CURRENCY, description = "Shows your/someone's balance.")
@@ -38,10 +40,19 @@ public class CommandBalance
         eb.setTitle(u.getName() + "'s balance");
         eb.setThumbnail(u.getEffectiveAvatarUrl());
 
+        String desc;
+
         if (uo.level != XPRewards.getMaxLevel())
-            eb.setDescription(String.format("Level %d\n%d/%d xp (%.2f%%)", uo.level, uo.xp, XPRewards.getXPAtLevel(uo.level), (double) uo.xp / XPRewards.getXPAtLevel(uo.level) * 100));
+            desc = String.format("Level %d\n%d/%d xp (%.2f%%)", uo.level, uo.xp, XPRewards.getXPAtLevel(uo.level), (double) uo.xp / XPRewards.getXPAtLevel(uo.level) * 100);
         else
-            eb.setDescription(String.format("Level %d", uo.level));
+            desc = String.format("Level %d", uo.level);
+
+        if (ui.hasAchievement(Achievements.beta))
+        {
+            desc = Icons.ACHIEVEMENT_BETA + " **Beta Tester**\n" + desc;
+        }
+
+        eb.setDescription(desc);
 
         eb.setColor(0x008080);
 

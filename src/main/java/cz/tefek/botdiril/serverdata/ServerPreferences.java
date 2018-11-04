@@ -3,11 +3,12 @@ package cz.tefek.botdiril.serverdata;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.entities.TextChannel;
+
 import cz.tefek.botdiril.BotMain;
 import cz.tefek.botdiril.framework.sql.SqlFoundation;
 import cz.tefek.botdiril.internal.BotdirilConfig;
-import net.dv8tion.jda.core.entities.Guild;
-import net.dv8tion.jda.core.entities.TextChannel;
 
 public class ServerPreferences
 {
@@ -44,7 +45,7 @@ public class ServerPreferences
                 var config = new ServerConfig(gid);
 
                 config.loadLoggingChannel(rs.getLong("sc_logchannel"));
-                config.loadPrefix(rs.getNString("sc_prefix"));
+                config.loadPrefix(rs.getString("sc_prefix"));
 
                 cfgs.add(config);
             }
@@ -80,7 +81,8 @@ public class ServerPreferences
         if (!prem.isEmpty())
         {
             pc = prem.get(0);
-        } else
+        }
+        else
         {
             pc = (TextChannel) gc.createTextChannel("botdiril").complete();
         }

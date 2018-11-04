@@ -29,7 +29,16 @@ public class Icons
     public static final String SKIN_KEKHYPER = "<:skin_hyperkek:480780614300205056>";
     public static final String SKIN_KEKMYTHICAL = "<:skin_mythicalkek:480771016121909258>";
 
-    public static final List<String> SKINS = Arrays.asList(SKIN_KEKCOIN, SKIN_KEKGIF, SKIN_KEKHD, SKIN_KEKLMAO, SKIN_KEKOVERDRIVE, SKIN_KEKPRIDE, SKIN_KEKW, SKIN_KEKW2, SKIN_KEKOMEGA, SKIN_KEKHYPER, SKIN_KEKMYTHICAL);
+    public static final String SKIN_KEKORANGE = "<:skin_kekorange:508349682167185429>";
+    public static final String SKIN_KEKMAGENTA = "<:skin_magentashirtkek:508349839084486688>";
+    public static final String SKIN_KEKVIOLET = "<:skin_kekviolet:508349682464981001>";
+    public static final String SKIN_KEKTIP = "<:skin_kektip:508349684579041299>";
+    public static final String SKIN_KEKASCENDED = "<:skin_kekascended:508348674838102016>";
+    public static final String SKIN_KEKCLAUS = "<:skin_kekclaus:508349684398686238>";
+    public static final String SKIN_KEKGRAY = "<:skin_kekgray:508349684037713950>";
+    public static final String SKIN_KEKBAN = "<:skin_kekban:508349685203861524>";
+
+    public static final List<String> SKINS = Arrays.asList(SKIN_KEKCOIN, SKIN_KEKGIF, SKIN_KEKHD, SKIN_KEKLMAO, SKIN_KEKOVERDRIVE, SKIN_KEKPRIDE, SKIN_KEKW, SKIN_KEKW2, SKIN_KEKOMEGA, SKIN_KEKHYPER, SKIN_KEKMYTHICAL, SKIN_KEKORANGE, SKIN_KEKMAGENTA, SKIN_KEKVIOLET, SKIN_KEKTIP, SKIN_KEKASCENDED, SKIN_KEKCLAUS, SKIN_KEKGRAY, SKIN_KEKBAN);
 
     // CARDS
 
@@ -71,6 +80,7 @@ public class Icons
     public static final String PICKAXE_I = "<:pickaxe_i:477568899215523841>";
     public static final String PICKAXE_II = "<:pickaxe_ii:477568899081043969>";
     public static final String PICKAXE_III = "<:pickaxe_iii:477568899445948416>";
+    public static final String PICKAXE_IV = "<:pickaxe_iv:508683365445009448>";
 
     // GEMS
 

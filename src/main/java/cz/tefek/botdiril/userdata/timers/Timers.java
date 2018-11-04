@@ -9,16 +9,18 @@ public class Timers
     public static Timer draw;
     public static Timer farm;
     public static Timer steal;
+    public static Timer payout;
     public static Timer gambleXP;
     public static Timer nicknamechange;
 
     public static void load()
     {
         daily = new Timer("daily", TimeUnit.HOURS.toMillis(22));
-        mine = new Timer("mine", TimeUnit.MINUTES.toMillis(3));
+        mine = new Timer("mine", TimeUnit.MINUTES.toMillis(5));
         draw = new Timer("draw", TimeUnit.MINUTES.toMillis(6));
-        farm = new Timer("farm", TimeUnit.MINUTES.toMillis(20));
+        farm = new Timer("farm", TimeUnit.MINUTES.toMillis(9));
         steal = new Timer("steal", TimeUnit.HOURS.toMillis(1));
+        payout = new Timer("payout", TimeUnit.MINUTES.toMillis(2));
         gambleXP = new Timer("gamblexp", TimeUnit.SECONDS.toMillis(50));
         nicknamechange = new Timer("nicknamechange", TimeUnit.DAYS.toMillis(30));
     }

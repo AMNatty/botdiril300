@@ -3,6 +3,9 @@ package cz.tefek.botdiril.command.inventory;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.MessageEmbed.Field;
+
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.command.Command;
 import cz.tefek.botdiril.framework.command.CommandCategory;
@@ -13,8 +16,6 @@ import cz.tefek.botdiril.userdata.EnumCurrency;
 import cz.tefek.botdiril.userdata.card.Card;
 import cz.tefek.botdiril.userdata.items.CraftingEntries;
 import cz.tefek.botdiril.userdata.items.ShopEntries;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.MessageEmbed.Field;
 
 @Command(value = "cardinfo", aliases = {
         "ci" }, category = CommandCategory.ITEMS, description = "Shows important information about a card")
@@ -29,7 +30,7 @@ public class CommandCardInfo
         eb.setColor(0x008080);
         var emID = Pattern.compile("[0-9]+").matcher(card.getIcon());
         emID.find();
-        var imgUrl = co.guild.getEmoteById(Long.parseLong(emID.group())).getImageUrl();
+        var imgUrl = co.jda.getEmoteById(Long.parseLong(emID.group())).getImageUrl();
         eb.setThumbnail(imgUrl);
 
         eb.setDescription(card.getDescription());

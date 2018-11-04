@@ -13,6 +13,7 @@ import java.io.IOException;
 
 import cz.tefek.botdiril.BotMain;
 import cz.tefek.botdiril.userdata.EnumCurrency;
+import cz.tefek.botdiril.userdata.items.CraftingEntries.Recipe;
 import cz.tefek.botdiril.userdata.items.cardpack.ItemCardPackBasic;
 import cz.tefek.botdiril.userdata.items.cardpack.ItemCardPackGood;
 import cz.tefek.botdiril.userdata.items.cardpack.ItemCardPackNormal;
@@ -59,6 +60,7 @@ public class Items
     public static Item pickaxeI;
     public static Item pickaxeII;
     public static Item pickaxeIII;
+    public static Item pickaxeIV;
 
     public static Item redGem;
     public static Item greenGem;
@@ -101,16 +103,22 @@ public class Items
         gemdiril = new Item("gemdiril", Icons.GEM_GEMDIRIL, "Gemdiril").setDescription("A very rare gem of an unknown value.");
         trash = new Item("trash", Icons.ITEM_TRASH, "Trash").setDescription("It's just trash, or is it?");
 
+        ShopEntries.addDisenchant(trash, 1000);
+
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(redGem, 32), new ItemPair(greenGem, 32), new ItemPair(blueGem, 8), new ItemPair(purpleGem, 8), new ItemPair(rainbowGem, 1), new ItemPair(blackGem, 1)), 1, gemdiril));
+
         pickaxeI = new ItemPickaxe("pickaxei", Icons.PICKAXE_I, "Pickaxe I", 10).setDescription("Basic Pickaxe.\nUsed for mining.");
         ShopEntries.addCoinBuy(pickaxeI, 2_000);
         ShopEntries.addCoinSell(pickaxeI, 800);
 
-        pickaxeII = new ItemPickaxe("pickaxeii", Icons.PICKAXE_II, "Pickaxe II", 250).setDescription("Good Pickaxe.\nExpect much better loot.");
+        pickaxeII = new ItemPickaxe("pickaxeii", Icons.PICKAXE_II, "Pickaxe II", 500).setDescription("Good Pickaxe.\nExpect much better loot.");
         ShopEntries.addCoinBuy(pickaxeII, 80_000);
         ShopEntries.addCoinSell(pickaxeII, 35_000);
 
-        pickaxeIII = new ItemPickaxe("pickaxeiii", Icons.PICKAXE_III, "Pickaxe III", 5000).setDescription("Hyper Pickaxe.\nNormally unobtainable, this pickaxe almost swings itself.");
+        pickaxeIII = new ItemPickaxe("pickaxeiii", Icons.PICKAXE_III, "Pickaxe III", 50_000).setDescription("Hyper Pickaxe.\nNormally unobtainable, this pickaxe almost swings itself.");
         ShopEntries.addCoinSell(pickaxeIII, 250_000);
+
+        pickaxeIV = new ItemPickaxe("pickaxeiv", Icons.PICKAXE_IV, "Pickaxe IV", 1_000_000).setDescription("Ascended Pickaxe\nPlease don't touch anything you don't want to disintegrate with this.");
 
         toolBox = new Item("toolbox", Icons.ITEM_SUSPICIOUS_METAL_BOX, "Tool Box").setDescription("I wonder what it's for.");
         ShopEntries.addCoinSell(toolBox, 4_000);

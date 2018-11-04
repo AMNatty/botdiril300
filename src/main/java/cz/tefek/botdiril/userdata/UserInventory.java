@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.sql.Statement;
 
 import cz.tefek.botdiril.BotMain;
+import cz.tefek.botdiril.framework.command.invoke.CommandException;
 import cz.tefek.botdiril.framework.sql.SqlFoundation;
 import cz.tefek.botdiril.userdata.achievement.Achievement;
 import cz.tefek.botdiril.userdata.card.Card;
@@ -227,7 +228,7 @@ public class UserInventory
                 case KEYS:
                     return this.getKeys();
                 case MEGAKEKS:
-                    throw new RuntimeException("MegaKeks cannot be used for this.");
+                    throw new CommandException("MegaKeks cannot be used for this.");
                 case TOKENS:
                     return this.getKekTokens();
                 case XP:
@@ -533,20 +534,20 @@ public class UserInventory
         }, this.fkid, achievement.getID());
     }
 
-    public void fireAchievement(Achievement achievement)
+    public boolean fireAchievement(Achievement achievement)
     {
-        BotMain.sql.exec("SELECT * FROM " + TABLE_ACHIEVEMENTS + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
+        return BotMain.sql.exec("SELECT * FROM " + TABLE_ACHIEVEMENTS + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
         {
             var rs = stat.executeQuery();
             if (!rs.next())
             {
-                BotMain.sql.exec("INSERT INTO " + TABLE_ACHIEVEMENTS + " (fk_us_id, fk_il_id) VALUES (?, ?)", stmt ->
+                return BotMain.sql.exec("INSERT INTO " + TABLE_ACHIEVEMENTS + " (fk_us_id, fk_il_id) VALUES (?, ?)", stmt ->
                 {
                     stmt.executeUpdate();
-                    return null;
+                    return true;
                 }, this.fkid, achievement.getID());
             }
-            return null;
+            return false;
         }, this.fkid, achievement.getID());
     }
 

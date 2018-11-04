@@ -8,6 +8,7 @@ import cz.tefek.botdiril.framework.command.Command;
 import cz.tefek.botdiril.framework.command.CommandCategory;
 import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.command.invoke.CmdPar;
+import cz.tefek.botdiril.framework.command.invoke.CommandException;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.items.Item;
@@ -53,9 +54,17 @@ public class CommandMine
     {
         CommandAssert.assertTimer(co.ui, Timers.mine, "You still need to wait **$** to mine.");
 
-        CommandAssert.assertTrue(item instanceof ItemPickaxe, "That's not a valid pickaxe.");
+        if (!(item instanceof ItemPickaxe))
+        {
+            co.ui.resetTimer(Timers.mine);
+            throw new CommandException("That's not a valid pickaxe.");
+        }
 
-        CommandAssert.assertTrue(co.ui.howManyOf(item) > 0, "You don't have that pickaxe.");
+        if (co.ui.howManyOf(item) <= 0)
+        {
+            co.ui.resetTimer(Timers.mine);
+            throw new CommandException("You don't have that pickaxe.");
+        }
 
         co.ui.addItem(item, -1);
 
@@ -67,13 +76,31 @@ public class CommandMine
         loot.addItem(Items.keks, Math.round(roll * 5) * pick.getMultiplier());
         loot.addItem(Items.coins, Math.round(roll * 10) * pick.getMultiplier());
 
-        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.9, Math.log10(pick.getMultiplier())))
+        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.9, 0.5 + Math.log10(pick.getMultiplier())))
             loot.addItem(Items.keys, 1);
 
-        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.999, Math.log10(pick.getMultiplier())))
+        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.99, 0.5 + Math.log10(pick.getMultiplier())))
+            loot.addItem(Items.redGem, 1);
+
+        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.99, 0.5 + Math.log10(pick.getMultiplier())))
+            loot.addItem(Items.greenGem, 1);
+
+        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.999, 0.5 + Math.log10(pick.getMultiplier())))
+            loot.addItem(Items.blueGem, 1);
+
+        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.999, 0.5 + Math.log10(pick.getMultiplier())))
+            loot.addItem(Items.purpleGem, 1);
+
+        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.9998, 0.5 + Math.log10(pick.getMultiplier())))
+            loot.addItem(Items.rainbowGem, 1);
+
+        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.9998, 0.5 + Math.log10(pick.getMultiplier())))
+            loot.addItem(Items.blackGem, 1);
+
+        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.99995, 0.5 + Math.log10(pick.getMultiplier())))
             loot.addItem(Items.gemdiril, 1);
 
-        var xp = Math.round((roll + 1500) / (9 / Math.log(pick.getMultiplier())));
+        var xp = Math.round((roll / 1.5 + 300) * Math.pow(pick.getMultiplier(), 0.25));
 
         XPAdder.addXP(co, xp);
 

@@ -19,6 +19,7 @@ import cz.tefek.botdiril.framework.command.CommandStorage;
 import cz.tefek.botdiril.framework.command.invoke.CommandException;
 import cz.tefek.botdiril.userdata.IIdentifiable;
 import cz.tefek.botdiril.userdata.UserInventory;
+import cz.tefek.botdiril.userdata.achievement.Achievement;
 import cz.tefek.botdiril.userdata.card.Card;
 import cz.tefek.botdiril.userdata.items.Item;
 import cz.tefek.botdiril.userdata.timers.MiniTime;
@@ -412,6 +413,16 @@ public class CommandAssert
 
         if (it == null)
             throw new CommandException("Item not found: " + name);
+
+        return it;
+    }
+
+    public static Achievement parseAchievement(String name)
+    {
+        var it = Achievement.getByName(name);
+
+        if (it == null)
+            throw new CommandException("Achievement not found: " + name);
 
         return it;
     }

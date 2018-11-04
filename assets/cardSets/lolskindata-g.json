@@ -2877,7 +2877,7 @@
         "skins": [{
             "name": "Pyke",
             "id": "pyke",
-            "rarity": "LEGACY"
+            "rarity": "BASIC"
         }, {
             "name": "Sand Wraith Pyke",
             "id": "sandwraithpyke",
