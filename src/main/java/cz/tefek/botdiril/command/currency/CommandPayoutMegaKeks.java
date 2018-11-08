@@ -20,14 +20,16 @@ import cz.tefek.botdiril.userdata.xp.XPAdder;
         "bigpayout" }, category = CommandCategory.CURRENCY, description = "Pay out your " + Icons.MEGAKEK + " for some " + Icons.KEK, levelLock = 15)
 public class CommandPayoutMegaKeks
 {
-    private static final Function<Double, Long> conversion = (pow) -> Math.round(Math.pow((Math.pow(((pow + 125) / 1000), 3) * 1000), 3.45));
+    private static final Function<Double, Long> conversion = (pow) -> Math.round(Math.pow(Math.pow((pow + 80) / 1300, 3) * 1000, 3.5) - Math.pow(pow / 4 - 20, 2) + 100 * pow + 300);
+    private static final Function<Double, Long> xpConversion = (pow) -> Math.round(Math.pow(pow / 340 + 1, 15) + Math.pow(pow / 15 + 5, 3)) / 8;
 
     @CmdInvoke
     public static void payout(CallObj co)
     {
-        CommandAssert.assertTimer(co.ui, Timers.payout, "You need to wait **$** before paying out again.");
-
         var has = co.ui.getMegaKeks();
+        CommandAssert.assertNotEquals(has, BigInteger.ZERO, "You can't pay out zero keks.");
+
+        CommandAssert.assertTimer(co.ui, Timers.payout, "You need to wait **$** before paying out again.");
 
         var dma = new BigDecimal(has);
 
@@ -40,7 +42,7 @@ public class CommandPayoutMegaKeks
         co.ui.setMegaKeks(BigInteger.ZERO);
         co.ui.addKeks(gets);
 
-        var xp = 10 + pow * pow;
+        var xp = xpConversion.apply((double) pow);
 
         XPAdder.addXP(co, xp);
 

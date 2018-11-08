@@ -28,7 +28,7 @@ public class CommandRename
 
         try
         {
-            CommandAssert.assertTimer(co.ui, Timers.nicknamechange, "You need to wait $ to rename yourself again.");
+            CommandAssert.assertTimer(co.ui, Timers.nicknamechange, "You need to wait **$** to rename yourself again.");
 
             co.guild.getController().setNickname(co.callerMember, nick).queue(c ->
             {
@@ -44,7 +44,7 @@ public class CommandRename
                     eb.setDescription(co.callerMember.getAsMention() + " changed his nickname.");
                     if (oldNick != null)
                         eb.addField("Old Nickname", oldNick, false);
-                    eb.addField("New Nickname", co.callerMember.getAsMention(), false);
+                    eb.addField("New Nickname", co.callerMember.getNickname(), false);
                     eb.addField("Cooldown", "30 days", false);
                     eb.setFooter("Message ID: " + co.message.getIdLong(), null);
                     eb.setTimestamp(Instant.now());

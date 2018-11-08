@@ -200,7 +200,7 @@ public class CommandParser
 
                     if (clazz == int.class || clazz == Integer.class)
                     {
-                        var num = CommandAssert.parseInt(arg, "Error: " + arg + " is not a valid number.");
+                        var num = CommandAssert.parseInt(arg, "Error: " + arg.replace("@", "(@)") + " is not a valid number.");
 
                         argArr[i] = num;
                     }
@@ -280,7 +280,7 @@ public class CommandParser
                         }
                         else
                         {
-                            var num = CommandAssert.parseInt(arg, "Error: " + arg + " is not a valid number.");
+                            var num = CommandAssert.parseInt(arg, "Error: " + arg.replace("@", "[@]") + " is not a valid number.");
 
                             argArr[i] = num;
                         }
@@ -373,7 +373,7 @@ public class CommandParser
                         var val = Arrays.stream(ec).filter(c -> c.toString().equalsIgnoreCase(farg)).findFirst().orElse(null);
 
                         if (val == null)
-                            throw new CommandException(arg + " is not valid here. Try one of these: `" + Arrays.stream(ec).map(Object::toString).map(String::toLowerCase).collect(Collectors.joining(", ")) + "`");
+                            throw new CommandException(arg.replace("@", "[@]") + " is not valid here. Try one of these: `" + Arrays.stream(ec).map(Object::toString).map(String::toLowerCase).collect(Collectors.joining(", ")) + "`");
 
                         argArr[i] = val;
                     }
@@ -385,10 +385,12 @@ public class CommandParser
                 }
                 catch (IllegalAccessException e)
                 {
+                    MR.send(co.textChannel, "**An error has occured while processing the command.**\nPlease report this to the bot owner.");
                     BotMain.logger.fatal("An exception has occured while invoking a command.", e);
                 }
                 catch (IllegalArgumentException e)
                 {
+                    MR.send(co.textChannel, "**An error has occured while processing the command.**\nPlease report this to the bot owner.");
                     BotMain.logger.fatal("An exception has occured while invoking a command.", e);
                 }
                 catch (InvocationTargetException e)
@@ -399,7 +401,7 @@ public class CommandParser
                     }
                     else
                     {
-                        MR.send(co.textChannel, "**An error has occured:**\n" + e.getCause().toString());
+                        MR.send(co.textChannel, "**An error has occured while processing the command.**\nPlease report this to the bot owner.");
                         BotMain.logger.fatal("An exception has occured while invoking a command.", e.getCause());
                     }
                 }

@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import cz.tefek.botdiril.BotMain;
+import cz.tefek.botdiril.userdata.UserInventory;
 
 public class SqlFoundation
 {
@@ -30,9 +31,12 @@ public class SqlFoundation
                     }
 
                     BotMain.sql = new SqlCon();
+
+                    UserInventory.initTables();
                 }
             }
-        } catch (SQLException | ClassNotFoundException | PropertyVetoException e)
+        }
+        catch (SQLException | ClassNotFoundException | PropertyVetoException e)
         {
             BotMain.logger.error("An error has occured while preparing the database structure.", e);
         }

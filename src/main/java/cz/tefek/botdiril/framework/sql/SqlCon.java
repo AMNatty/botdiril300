@@ -21,23 +21,13 @@ public class SqlCon
     public SqlCon() throws PropertyVetoException
     {
         this.dataSource = new ComboPooledDataSource();
-        dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
-        dataSource.setJdbcUrl("jdbc:mysql:// " + BotMain.config.getSqlHost() + "/" + SqlFoundation.SCHEMA + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
-        dataSource.setUser(BotMain.config.getSqlKey());
-        dataSource.setPassword(BotMain.config.getSqlPass());
-        dataSource.setAutoCommitOnClose(true);
+        this.dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
+        this.dataSource.setJdbcUrl("jdbc:mysql:// " + BotMain.config.getSqlHost() + "/" + SqlFoundation.SCHEMA + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+        this.dataSource.setUser(BotMain.config.getSqlKey());
+        this.dataSource.setPassword(BotMain.config.getSqlPass());
+        this.dataSource.setAutoCommitOnClose(true);
 
-        lock = new ReentrantLock();
-    }
-
-    public void lock()
-    {
-        lock.lock();
-    }
-
-    public void unlock()
-    {
-        lock.unlock();
+        this.lock = new ReentrantLock();
     }
 
     public <R> R exec(SqlCall<R> statement)
@@ -46,8 +36,8 @@ public class SqlCon
 
         try
         {
-            c = dataSource.getConnection();
-            lock.lock();
+            c = this.dataSource.getConnection();
+            this.lock.lock();
             return statement.exec(c);
         }
         catch (SQLException e)
@@ -66,7 +56,7 @@ public class SqlCon
                 BotMain.logger.error("An error has occured while closing the SQL connection.", e);
             }
 
-            lock.unlock();
+            this.lock.unlock();
         }
     }
 
@@ -74,13 +64,13 @@ public class SqlCon
     {
         int i = 0;
 
-        lock.lock();
+        this.lock.lock();
 
         Connection c = null;
 
         try
         {
-            c = dataSource.getConnection();
+            c = this.dataSource.getConnection();
 
             try (var stat = c.prepareStatement(statement))
             {
@@ -110,6 +100,10 @@ public class SqlCon
                     else if (clazz == String.class)
                     {
                         stat.setString(i + 1, (String) param);
+                    }
+                    else if (clazz == byte[].class)
+                    {
+                        stat.setBytes(i + 1, (byte[]) param);
                     }
                     else
                     {
@@ -145,7 +139,7 @@ public class SqlCon
                 BotMain.logger.error("Error while closing the SQL connection.", e);
             }
 
-            lock.unlock();
+            this.lock.unlock();
         }
     }
 
@@ -154,13 +148,13 @@ public class SqlCon
     {
         int i = 0;
 
-        lock.lock();
+        this.lock.lock();
 
         Connection c = null;
 
         try
         {
-            c = dataSource.getConnection();
+            c = this.dataSource.getConnection();
 
             try (var stat = c.prepareStatement(statement))
             {
@@ -224,7 +218,17 @@ public class SqlCon
                 BotMain.logger.error("An error has occured while closing the SQL connection.", e);
             }
 
-            lock.unlock();
+            this.lock.unlock();
         }
+    }
+
+    public void lock()
+    {
+        this.lock.lock();
+    }
+
+    public void unlock()
+    {
+        this.lock.unlock();
     }
 }

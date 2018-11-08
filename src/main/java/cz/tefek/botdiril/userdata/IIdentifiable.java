@@ -19,6 +19,6 @@ public interface IIdentifiable
 
     public String inlineDescription();
 
-    /** Never ever ever call this method in stardard code. */
+    /** Never ever ever call this method in standard code. */
     public void setID(int id);
 }

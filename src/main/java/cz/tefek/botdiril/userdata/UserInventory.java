@@ -22,16 +22,13 @@ public class UserInventory
     public static final String TABLE_GIFTCODES = "giftcodes";
     public static final String TABLE_TIMERS = "timers";
 
-    private int fkid;
-    private long userid;
-
-    static
+    public static void initTables()
     {
         var tabExists = SqlFoundation.checkTableExists(BotMain.sql, TABLE_USER);
 
         if (!tabExists)
         {
-            BotMain.sql.exec("CREATE TABLE " + TABLE_USER + " ( us_id INT PRIMARY KEY AUTO_INCREMENT, us_userid BIGINT NOT NULL UNIQUE, us_coins BIGINT NOT NULL DEFAULT 0, us_keks BIGINT NOT NULL DEFAULT 0, us_tokens BIGINT NOT NULL DEFAULT 0, us_keys BIGINT NOT NULL DEFAULT 0, us_mega VARCHAR(1024) NOT NULL DEFAULT '0', us_dust BIGINT NOT NULL DEFAULT 0, us_level INT NOT NULL DEFAULT '1', us_xp BIGINT NOT NULL DEFAULT 0);", stat ->
+            BotMain.sql.exec("CREATE TABLE " + TABLE_USER + " ( us_id INT PRIMARY KEY AUTO_INCREMENT, us_userid BIGINT NOT NULL UNIQUE, us_coins BIGINT NOT NULL DEFAULT 0, us_keks BIGINT NOT NULL DEFAULT 0, us_tokens BIGINT NOT NULL DEFAULT 0, us_keys BIGINT NOT NULL DEFAULT 0, us_mega VARBINARY(768) NOT NULL DEFAULT b'0', us_dust BIGINT NOT NULL DEFAULT 0, us_level INT NOT NULL DEFAULT '1', us_xp BIGINT NOT NULL DEFAULT 0);", stat ->
             {
                 return stat.execute();
             });
@@ -88,6 +85,10 @@ public class UserInventory
         }
     }
 
+    private int fkid;
+
+    private long userid;
+
     public UserInventory(long userid)
     {
         this.userid = userid;
@@ -123,131 +124,49 @@ public class UserInventory
         BotMain.sql.unlock();
     }
 
-    public UIObj getUserDataObj()
+    public void addCard(Card item)
     {
-        return BotMain.sql.exec("SELECT * FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
-        {
-            var rs = stat.executeQuery();
-            rs.next();
-
-            var cardCount = BotMain.sql.exec("SELECT SUM(cr_amount) as cardcount FROM " + TABLE_CARDS + " WHERE fk_us_id=(?)", stmt ->
-            {
-                var ress = stmt.executeQuery();
-                ress.next();
-                return ress.getLong("cardcount");
-            }, this.fkid);
-
-            return new UIObj(rs.getInt("us_level"), rs.getLong("us_xp"), rs.getLong("us_coins"), rs.getLong("us_keks"), rs.getLong("us_dust"), new BigInteger(rs.getString("us_mega"), 36), rs.getLong("us_keys"), rs.getLong("us_tokens"), cardCount);
-        }, this.fkid);
+        this.addCard(item, 1);
     }
 
-    public long getCoins()
+    public void addCard(Card item, long amount)
     {
-        return BotMain.sql.exec("SELECT us_coins FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
+        BotMain.sql.exec("SELECT cr_amount FROM " + TABLE_CARDS + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
         {
-            var rs = stat.executeQuery();
-            rs.next();
-            return rs.getLong("us_coins");
-        }, this.fkid);
-    }
+            var res = stat.executeQuery();
 
-    public long getKeks()
-    {
-        return BotMain.sql.exec("SELECT us_keks FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
-        {
-            var rs = stat.executeQuery();
-            rs.next();
-            return rs.getLong("us_keks");
-        }, this.fkid);
-    }
-
-    public BigInteger getMegaKeks()
-    {
-        return BotMain.sql.exec("SELECT us_mega FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
-        {
-            var rs = stat.executeQuery();
-            rs.next();
-            return new BigInteger(rs.getString("us_mega"), 36);
-        }, this.fkid);
-    }
-
-    public long getKekTokens()
-    {
-        return BotMain.sql.exec("SELECT us_tokens FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
-        {
-            var rs = stat.executeQuery();
-            rs.next();
-            return rs.getLong("us_tokens");
-        }, this.fkid);
-    }
-
-    public long getKeys()
-    {
-        return BotMain.sql.exec("SELECT us_keys FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
-        {
-            var rs = stat.executeQuery();
-            rs.next();
-            return rs.getLong("us_keys");
-        }, this.fkid);
-    }
-
-    public long getDust()
-    {
-        return BotMain.sql.exec("SELECT us_dust FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
-        {
-            var rs = stat.executeQuery();
-            rs.next();
-            return rs.getLong("us_dust");
-        }, this.fkid);
-    }
-
-    public long getCards()
-    {
-        return BotMain.sql.exec("SELECT SUM(cr_amount) as cardcount FROM " + TABLE_CARDS + " WHERE fk_us_id=(?)", stmt ->
-        {
-            var ress = stmt.executeQuery();
-            ress.next();
-            return ress.getLong("cardcount");
-        }, this.fkid);
-    }
-
-    public long howManyOf(Item item)
-    {
-        if (item instanceof ItemCurrency)
-        {
-            ItemCurrency curr = (ItemCurrency) item;
-
-            switch (curr.getCurrency())
-            {
-                case COINS:
-                    return this.getCoins();
-                case DUST:
-                    return this.getDust();
-                case KEKS:
-                    return this.getKeks();
-                case KEYS:
-                    return this.getKeys();
-                case MEGAKEKS:
-                    throw new CommandException("MegaKeks cannot be used for this.");
-                case TOKENS:
-                    return this.getKekTokens();
-                case XP:
-                    return this.getXP();
-            }
-        }
-
-        return BotMain.sql.exec("SELECT it_amount FROM " + TABLE_INVENTORY + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
-        {
-            var rs = stat.executeQuery();
-
-            if (rs.next())
-                return rs.getLong("it_amount");
+            if (res.next())
+                BotMain.sql.exec("UPDATE " + TABLE_CARDS + " SET cr_amount=cr_amount+? WHERE fk_us_id=(?) AND fk_il_id=(?)", stmt ->
+                {
+                    return stmt.executeUpdate();
+                }, amount, this.fkid, item.getID());
             else
-                return 0L;
+                BotMain.sql.exec("INSERT INTO " + TABLE_CARDS + " (fk_us_id, fk_il_id, cr_amount)  VALUES (?, ?, ?)", stmt ->
+                {
+                    return stmt.executeUpdate();
+                }, this.fkid, item.getID(), amount);
+
+            return null;
         }, this.fkid, item.getID());
     }
 
-    public void setItem(Item item, long amount)
+    public void addCoins(long coins)
+    {
+        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_coins=us_coins+? WHERE us_id=(?)", stat ->
+        {
+            return stat.executeUpdate();
+        }, coins, this.fkid);
+    }
+
+    public void addDust(long dust)
+    {
+        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_dust=us_dust+? WHERE us_id=(?)", stat ->
+        {
+            return stat.executeUpdate();
+        }, dust, this.fkid);
+    }
+
+    public void addItem(Item item)
     {
         if (item instanceof ItemCurrency)
         {
@@ -256,32 +175,32 @@ public class UserInventory
             switch (curr.getCurrency())
             {
                 case COINS:
-                    this.setCoins(amount);
-                    return;
+                    this.addCoins(1);
+                    break;
 
                 case DUST:
-                    this.setDust(amount);
-                    return;
+                    this.addDust(1);
+                    break;
 
                 case KEKS:
-                    this.setKeks(amount);
-                    return;
+                    this.addKeks(1);
+                    break;
 
                 case KEYS:
-                    this.setKeys(amount);
-                    return;
+                    this.addKeys(1);
+                    break;
 
                 case MEGAKEKS:
-                    this.setMegaKeks(BigInteger.valueOf(amount));
-                    return;
+                    this.addMegaKeks(BigInteger.ONE);
+                    break;
 
                 case TOKENS:
-                    this.setKekTokens(amount);
-                    return;
+                    this.addKekTokens(1);
+                    break;
 
                 case XP:
-                    this.setXP(amount);
-                    return;
+                    this.addXP(1);
+                    break;
             }
         }
 
@@ -290,15 +209,15 @@ public class UserInventory
             var res = stat.executeQuery();
 
             if (res.next())
-                BotMain.sql.exec("UPDATE " + TABLE_INVENTORY + " SET it_amount=(?) WHERE fk_us_id=(?) AND fk_il_id=(?)", stmt ->
+                BotMain.sql.exec("UPDATE " + TABLE_INVENTORY + " SET it_amount=it_amount+1 WHERE fk_us_id=(?) AND fk_il_id=(?)", stmt ->
                 {
                     return stmt.executeUpdate();
-                }, amount, this.fkid, item.getID());
+                }, this.fkid, item.getID());
             else
-                BotMain.sql.exec("INSERT INTO " + TABLE_INVENTORY + " (fk_us_id, fk_il_id, it_amount)  VALUES (?, ?, ?)", stmt ->
+                BotMain.sql.exec("INSERT INTO " + TABLE_INVENTORY + " (fk_us_id, fk_il_id, it_amount)  VALUES (?, ?, 1)", stmt ->
                 {
                     return stmt.executeUpdate();
-                }, this.fkid, item.getID(), amount);
+                }, this.fkid, item.getID());
 
             return null;
         }, this.fkid, item.getID());
@@ -361,61 +280,236 @@ public class UserInventory
         }, this.fkid, item.getID());
     }
 
-    public void addItem(Item item)
+    public void addKeks(long keks)
     {
-        if (item instanceof ItemCurrency)
+        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_keks=us_keks+? WHERE us_id=(?)", stat ->
         {
-            ItemCurrency curr = (ItemCurrency) item;
+            return stat.executeUpdate();
+        }, keks, this.fkid);
+    }
 
-            switch (curr.getCurrency())
+    public void addKekTokens(long tokens)
+    {
+        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_tokens=us_tokens+? WHERE us_id=(?)", stat ->
+        {
+            return stat.executeUpdate();
+        }, tokens, this.fkid);
+    }
+
+    public void addKeys(long keys)
+    {
+        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_keys=us_keys+? WHERE us_id=(?)", stat ->
+        {
+            return stat.executeUpdate();
+        }, keys, this.fkid);
+    }
+
+    public void addLevel(int level)
+    {
+        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_level=us_level+? WHERE us_id=(?)", stat ->
+        {
+            return stat.executeUpdate();
+        }, level, this.fkid);
+    }
+
+    public void addMegaKeks(BigInteger megas)
+    {
+        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_mega=(?) WHERE us_id=(?)", stat ->
+        {
+            return stat.executeUpdate();
+        }, this.getMegaKeks().add(megas).toByteArray(), this.fkid);
+    }
+
+    /**
+     * <b>DO NOT USE THIS DIRECTLY!</b> Use {@link XPAdder}, which checks for level
+     * advancements.
+     */
+    @Deprecated
+    public void addXP(long xp)
+    {
+        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_xp=us_xp+? WHERE us_id=(?)", stat ->
+        {
+            return stat.executeUpdate();
+        }, xp, this.fkid);
+    }
+
+    public boolean fireAchievement(Achievement achievement)
+    {
+        return BotMain.sql.exec("SELECT * FROM " + TABLE_ACHIEVEMENTS + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
+        {
+            var rs = stat.executeQuery();
+            if (!rs.next())
             {
-                case COINS:
-                    this.addCoins(1);
-                    break;
-
-                case DUST:
-                    this.addDust(1);
-                    break;
-
-                case KEKS:
-                    this.addKeks(1);
-                    break;
-
-                case KEYS:
-                    this.addKeys(1);
-                    break;
-
-                case MEGAKEKS:
-                    this.addMegaKeks(BigInteger.ONE);
-                    break;
-
-                case TOKENS:
-                    this.addKekTokens(1);
-                    break;
-
-                case XP:
-                    this.addXP(1);
-                    break;
+                return BotMain.sql.exec("INSERT INTO " + TABLE_ACHIEVEMENTS + " (fk_us_id, fk_il_id) VALUES (?, ?)", stmt ->
+                {
+                    stmt.executeUpdate();
+                    return true;
+                }, this.fkid, achievement.getID());
             }
-        }
+            return false;
+        }, this.fkid, achievement.getID());
+    }
 
-        BotMain.sql.exec("SELECT it_amount FROM " + TABLE_INVENTORY + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
+    public int getCardLevel(Card card)
+    {
+        return BotMain.sql.exec("SELECT cr_level FROM " + TABLE_CARDS + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
+        {
+            var rs = stat.executeQuery();
+
+            if (rs.next())
+                return rs.getInt("cr_level");
+            else
+                return 0;
+        }, this.fkid, card.getID());
+    }
+
+    public long getCards()
+    {
+        return BotMain.sql.exec("SELECT SUM(cr_amount) as cardcount FROM " + TABLE_CARDS + " WHERE fk_us_id=(?)", stmt ->
+        {
+            var ress = stmt.executeQuery();
+            ress.next();
+            return ress.getLong("cardcount");
+        }, this.fkid);
+    }
+
+    public long getCardXP(Card card)
+    {
+        return BotMain.sql.exec("SELECT cr_xp FROM " + TABLE_CARDS + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
+        {
+            var rs = stat.executeQuery();
+
+            if (rs.next())
+                return rs.getLong("cr_xp");
+            else
+                return 0L;
+        }, this.fkid, card.getID());
+    }
+
+    public long getCoins()
+    {
+        return BotMain.sql.exec("SELECT us_coins FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
+        {
+            var rs = stat.executeQuery();
+            rs.next();
+            return rs.getLong("us_coins");
+        }, this.fkid);
+    }
+
+    public long getDust()
+    {
+        return BotMain.sql.exec("SELECT us_dust FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
+        {
+            var rs = stat.executeQuery();
+            rs.next();
+            return rs.getLong("us_dust");
+        }, this.fkid);
+    }
+
+    public int getFID()
+    {
+        return this.fkid;
+    }
+
+    public long getKeks()
+    {
+        return BotMain.sql.exec("SELECT us_keks FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
+        {
+            var rs = stat.executeQuery();
+            rs.next();
+            return rs.getLong("us_keks");
+        }, this.fkid);
+    }
+
+    public long getKekTokens()
+    {
+        return BotMain.sql.exec("SELECT us_tokens FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
+        {
+            var rs = stat.executeQuery();
+            rs.next();
+            return rs.getLong("us_tokens");
+        }, this.fkid);
+    }
+
+    public long getKeys()
+    {
+        return BotMain.sql.exec("SELECT us_keys FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
+        {
+            var rs = stat.executeQuery();
+            rs.next();
+            return rs.getLong("us_keys");
+        }, this.fkid);
+    }
+
+    public int getLevel()
+    {
+        return BotMain.sql.exec("SELECT us_level FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
+        {
+            var rs = stat.executeQuery();
+            rs.next();
+            return rs.getInt("us_level");
+        }, this.fkid);
+    }
+
+    public BigInteger getMegaKeks()
+    {
+        return BotMain.sql.exec("SELECT us_mega FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
+        {
+            var rs = stat.executeQuery();
+            rs.next();
+            return new BigInteger(rs.getBytes("us_mega"));
+        }, this.fkid);
+    }
+
+    public long getTimer(Timer timer)
+    {
+        return BotMain.sql.exec("SELECT tm_time FROM " + TABLE_TIMERS + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
         {
             var res = stat.executeQuery();
 
             if (res.next())
-                BotMain.sql.exec("UPDATE " + TABLE_INVENTORY + " SET it_amount=it_amount+1 WHERE fk_us_id=(?) AND fk_il_id=(?)", stmt ->
-                {
-                    return stmt.executeUpdate();
-                }, this.fkid, item.getID());
+                return res.getLong("tm_time");
             else
-                BotMain.sql.exec("INSERT INTO " + TABLE_INVENTORY + " (fk_us_id, fk_il_id, it_amount)  VALUES (?, ?, 1)", stmt ->
-                {
-                    return stmt.executeUpdate();
-                }, this.fkid, item.getID());
+                return 0L;
+        }, this.fkid, timer.getID());
+    }
 
-            return null;
-        }, this.fkid, item.getID());
+    public UIObj getUserDataObj()
+    {
+        return BotMain.sql.exec("SELECT * FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
+        {
+            var rs = stat.executeQuery();
+            rs.next();
+
+            var cardCount = BotMain.sql.exec("SELECT SUM(cr_amount) as cardcount FROM " + TABLE_CARDS + " WHERE fk_us_id=(?)", stmt ->
+            {
+                var ress = stmt.executeQuery();
+                ress.next();
+                return ress.getLong("cardcount");
+            }, this.fkid);
+
+            return new UIObj(rs.getInt("us_level"), rs.getLong("us_xp"), rs.getLong("us_coins"), rs.getLong("us_keks"), rs.getLong("us_dust"), new BigInteger(rs.getBytes("us_mega")), rs.getLong("us_keys"), rs.getLong("us_tokens"), cardCount);
+        }, this.fkid);
+    }
+
+    public long getXP()
+    {
+        return BotMain.sql.exec("SELECT us_xp FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
+        {
+            var rs = stat.executeQuery();
+            rs.next();
+            return rs.getLong("us_xp");
+        }, this.fkid);
+    }
+
+    public boolean hasAchievement(Achievement achievement)
+    {
+        return BotMain.sql.exec("SELECT * FROM " + TABLE_ACHIEVEMENTS + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
+        {
+            var rs = stat.executeQuery();
+
+            return rs.next();
+        }, this.fkid, achievement.getID());
     }
 
     public long howManyOf(Card card)
@@ -429,6 +523,57 @@ public class UserInventory
             else
                 return 0L;
         }, this.fkid, card.getID());
+    }
+
+    public long howManyOf(Item item)
+    {
+        if (item instanceof ItemCurrency)
+        {
+            ItemCurrency curr = (ItemCurrency) item;
+
+            switch (curr.getCurrency())
+            {
+                case COINS:
+                    return this.getCoins();
+                case DUST:
+                    return this.getDust();
+                case KEKS:
+                    return this.getKeks();
+                case KEYS:
+                    return this.getKeys();
+                case MEGAKEKS:
+                    throw new CommandException("MegaKeks cannot be used for this.");
+                case TOKENS:
+                    return this.getKekTokens();
+                case XP:
+                    return this.getXP();
+            }
+        }
+
+        return BotMain.sql.exec("SELECT it_amount FROM " + TABLE_INVENTORY + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
+        {
+            var rs = stat.executeQuery();
+
+            if (rs.next())
+                return rs.getLong("it_amount");
+            else
+                return 0L;
+        }, this.fkid, item.getID());
+    }
+
+    public long checkTimer(Timer timer)
+    {
+        var tt = this.getTimer(timer);
+        if (System.currentTimeMillis() > tt)
+        {
+            return -1;
+        }
+        return tt - System.currentTimeMillis();
+    }
+
+    public void resetTimer(Timer timer)
+    {
+        this.setTimer(timer, 0);
     }
 
     public void setCard(Card item, long amount)
@@ -452,105 +597,6 @@ public class UserInventory
         }, this.fkid, item.getID());
     }
 
-    public void addCard(Card item, long amount)
-    {
-        BotMain.sql.exec("SELECT cr_amount FROM " + TABLE_CARDS + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
-        {
-            var res = stat.executeQuery();
-
-            if (res.next())
-                BotMain.sql.exec("UPDATE " + TABLE_CARDS + " SET cr_amount=cr_amount+? WHERE fk_us_id=(?) AND fk_il_id=(?)", stmt ->
-                {
-                    return stmt.executeUpdate();
-                }, amount, this.fkid, item.getID());
-            else
-                BotMain.sql.exec("INSERT INTO " + TABLE_CARDS + " (fk_us_id, fk_il_id, cr_amount)  VALUES (?, ?, ?)", stmt ->
-                {
-                    return stmt.executeUpdate();
-                }, this.fkid, item.getID(), amount);
-
-            return null;
-        }, this.fkid, item.getID());
-    }
-
-    public void addCard(Card item)
-    {
-        this.addCard(item, 1);
-    }
-
-    public long getXP()
-    {
-        return BotMain.sql.exec("SELECT us_xp FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
-        {
-            var rs = stat.executeQuery();
-            rs.next();
-            return rs.getLong("us_xp");
-        }, this.fkid);
-    }
-
-    public int getLevel()
-    {
-        return BotMain.sql.exec("SELECT us_level FROM " + TABLE_USER + " WHERE us_id=(?)", stat ->
-        {
-            var rs = stat.executeQuery();
-            rs.next();
-            return rs.getInt("us_level");
-        }, this.fkid);
-    }
-
-    public long getCardXP(Card card)
-    {
-        return BotMain.sql.exec("SELECT cr_xp FROM " + TABLE_CARDS + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
-        {
-            var rs = stat.executeQuery();
-
-            if (rs.next())
-                return rs.getLong("cr_xp");
-            else
-                return 0L;
-        }, this.fkid, card.getID());
-    }
-
-    public int getCardLevel(Card card)
-    {
-        return BotMain.sql.exec("SELECT cr_level FROM " + TABLE_CARDS + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
-        {
-            var rs = stat.executeQuery();
-
-            if (rs.next())
-                return rs.getInt("cr_level");
-            else
-                return 0;
-        }, this.fkid, card.getID());
-    }
-
-    public boolean hasAchievement(Achievement achievement)
-    {
-        return BotMain.sql.exec("SELECT * FROM " + TABLE_ACHIEVEMENTS + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
-        {
-            var rs = stat.executeQuery();
-
-            return rs.next();
-        }, this.fkid, achievement.getID());
-    }
-
-    public boolean fireAchievement(Achievement achievement)
-    {
-        return BotMain.sql.exec("SELECT * FROM " + TABLE_ACHIEVEMENTS + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
-        {
-            var rs = stat.executeQuery();
-            if (!rs.next())
-            {
-                return BotMain.sql.exec("INSERT INTO " + TABLE_ACHIEVEMENTS + " (fk_us_id, fk_il_id) VALUES (?, ?)", stmt ->
-                {
-                    stmt.executeUpdate();
-                    return true;
-                }, this.fkid, achievement.getID());
-            }
-            return false;
-        }, this.fkid, achievement.getID());
-    }
-
     public void setCoins(long coins)
     {
         BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_coins=(?) WHERE us_id=(?)", stat ->
@@ -559,20 +605,77 @@ public class UserInventory
         }, coins, this.fkid);
     }
 
+    public void setDust(long dust)
+    {
+        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_dust=(?) WHERE us_id=(?)", stat ->
+        {
+            return stat.executeUpdate();
+        }, dust, this.fkid);
+    }
+
+    public void setItem(Item item, long amount)
+    {
+        if (item instanceof ItemCurrency)
+        {
+            ItemCurrency curr = (ItemCurrency) item;
+
+            switch (curr.getCurrency())
+            {
+                case COINS:
+                    this.setCoins(amount);
+                    return;
+
+                case DUST:
+                    this.setDust(amount);
+                    return;
+
+                case KEKS:
+                    this.setKeks(amount);
+                    return;
+
+                case KEYS:
+                    this.setKeys(amount);
+                    return;
+
+                case MEGAKEKS:
+                    this.setMegaKeks(BigInteger.valueOf(amount));
+                    return;
+
+                case TOKENS:
+                    this.setKekTokens(amount);
+                    return;
+
+                case XP:
+                    this.setXP(amount);
+                    return;
+            }
+        }
+
+        BotMain.sql.exec("SELECT it_amount FROM " + TABLE_INVENTORY + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
+        {
+            var res = stat.executeQuery();
+
+            if (res.next())
+                BotMain.sql.exec("UPDATE " + TABLE_INVENTORY + " SET it_amount=(?) WHERE fk_us_id=(?) AND fk_il_id=(?)", stmt ->
+                {
+                    return stmt.executeUpdate();
+                }, amount, this.fkid, item.getID());
+            else
+                BotMain.sql.exec("INSERT INTO " + TABLE_INVENTORY + " (fk_us_id, fk_il_id, it_amount)  VALUES (?, ?, ?)", stmt ->
+                {
+                    return stmt.executeUpdate();
+                }, this.fkid, item.getID(), amount);
+
+            return null;
+        }, this.fkid, item.getID());
+    }
+
     public void setKeks(long keks)
     {
         BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_keks=(?) WHERE us_id=(?)", stat ->
         {
             return stat.executeUpdate();
         }, keks, this.fkid);
-    }
-
-    public void setMegaKeks(BigInteger megas)
-    {
-        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_mega=(?) WHERE us_id=(?)", stat ->
-        {
-            return stat.executeUpdate();
-        }, megas.toString(36), this.fkid);
     }
 
     public void setKekTokens(long tokens)
@@ -591,22 +694,6 @@ public class UserInventory
         }, keys, this.fkid);
     }
 
-    public void setDust(long dust)
-    {
-        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_dust=(?) WHERE us_id=(?)", stat ->
-        {
-            return stat.executeUpdate();
-        }, dust, this.fkid);
-    }
-
-    public void setXP(long xp)
-    {
-        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_xp=(?) WHERE us_id=(?)", stat ->
-        {
-            return stat.executeUpdate();
-        }, xp, this.fkid);
-    }
-
     public void setLevel(int level)
     {
         BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_level=(?) WHERE us_id=(?)", stat ->
@@ -615,86 +702,12 @@ public class UserInventory
         }, level, this.fkid);
     }
 
-    public void addCoins(long coins)
-    {
-        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_coins=us_coins+? WHERE us_id=(?)", stat ->
-        {
-            return stat.executeUpdate();
-        }, coins, this.fkid);
-    }
-
-    public void addKeks(long keks)
-    {
-        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_keks=us_keks+? WHERE us_id=(?)", stat ->
-        {
-            return stat.executeUpdate();
-        }, keks, this.fkid);
-    }
-
-    public void addMegaKeks(BigInteger megas)
+    public void setMegaKeks(BigInteger megas)
     {
         BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_mega=(?) WHERE us_id=(?)", stat ->
         {
             return stat.executeUpdate();
-        }, getMegaKeks().add(megas).toString(36), this.fkid);
-    }
-
-    public void addKekTokens(long tokens)
-    {
-        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_tokens=us_tokens+? WHERE us_id=(?)", stat ->
-        {
-            return stat.executeUpdate();
-        }, tokens, this.fkid);
-    }
-
-    public void addKeys(long keys)
-    {
-        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_keys=us_keys+? WHERE us_id=(?)", stat ->
-        {
-            return stat.executeUpdate();
-        }, keys, this.fkid);
-    }
-
-    public void addDust(long dust)
-    {
-        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_dust=us_dust+? WHERE us_id=(?)", stat ->
-        {
-            return stat.executeUpdate();
-        }, dust, this.fkid);
-    }
-
-    /**
-     * <b>DO NOT USE THIS DIRECTLY!</b> Use {@link XPAdder}, which checks for level
-     * advancements.
-     */
-    @Deprecated
-    public void addXP(long xp)
-    {
-        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_xp=us_xp+? WHERE us_id=(?)", stat ->
-        {
-            return stat.executeUpdate();
-        }, xp, this.fkid);
-    }
-
-    public void addLevel(int level)
-    {
-        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_level=us_level+? WHERE us_id=(?)", stat ->
-        {
-            return stat.executeUpdate();
-        }, level, this.fkid);
-    }
-
-    public long getTimer(Timer timer)
-    {
-        return BotMain.sql.exec("SELECT tm_time FROM " + TABLE_TIMERS + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
-        {
-            var res = stat.executeQuery();
-
-            if (res.next())
-                return res.getLong("tm_time");
-            else
-                return 0L;
-        }, this.fkid, timer.getID());
+        }, megas.toByteArray(), this.fkid);
     }
 
     public void setTimer(Timer timer, long timestamp)
@@ -718,22 +731,20 @@ public class UserInventory
         }, this.fkid, timer.getID());
     }
 
-    public long useTimer(Timer timer)
+    public void setXP(long xp)
     {
-        var tt = getTimer(timer);
-        if (System.currentTimeMillis() > tt)
+        BotMain.sql.exec("UPDATE " + TABLE_USER + " SET us_xp=(?) WHERE us_id=(?)", stat ->
         {
-            setTimer(timer, System.currentTimeMillis() + timer.getTimeOffset());
-            return -1;
-        }
-        return tt - System.currentTimeMillis();
+            return stat.executeUpdate();
+        }, xp, this.fkid);
     }
 
-    public long checkTimer(Timer timer)
+    public long useTimer(Timer timer)
     {
-        var tt = getTimer(timer);
+        var tt = this.getTimer(timer);
         if (System.currentTimeMillis() > tt)
         {
+            this.setTimer(timer, System.currentTimeMillis() + timer.getTimeOffset());
             return -1;
         }
         return tt - System.currentTimeMillis();
@@ -743,23 +754,13 @@ public class UserInventory
     // waiting
     public long useTimerOverride(Timer timer)
     {
-        var tt = getTimer(timer);
+        var tt = this.getTimer(timer);
         if (System.currentTimeMillis() > tt)
         {
-            setTimer(timer, System.currentTimeMillis() + timer.getTimeOffset());
+            this.setTimer(timer, System.currentTimeMillis() + timer.getTimeOffset());
             return -1;
         }
-        setTimer(timer, System.currentTimeMillis() + timer.getTimeOffset());
+        this.setTimer(timer, System.currentTimeMillis() + timer.getTimeOffset());
         return tt - System.currentTimeMillis();
-    }
-
-    public void resetTimer(Timer timer)
-    {
-        setTimer(timer, 0);
-    }
-
-    public int getFID()
-    {
-        return this.fkid;
     }
 }
