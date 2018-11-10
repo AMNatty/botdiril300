@@ -1,5 +1,6 @@
 package cz.tefek.botdiril.command.inventory;
 
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
 
 import cz.tefek.botdiril.framework.command.CallObj;
@@ -15,25 +16,10 @@ import cz.tefek.botdiril.userdata.UserInventory;
 import cz.tefek.botdiril.userdata.card.Card;
 import cz.tefek.botdiril.userdata.items.Item;
 
-@Command(value = "give", aliases = { "giveitem",
-        "givecard" }, category = CommandCategory.ITEMS, description = "Give someone an item or a card.", levelLock = 5)
+@Command(value = "give", aliases = { "giveitem", "givecard",
+        "gift" }, category = CommandCategory.ITEMS, description = "Give someone an item or a card.", levelLock = 5)
 public class CommandGiveItem
 {
-    @CmdInvoke
-    public static void giveOne(CallObj co, @CmdPar("user") Member recipient, @CmdPar(value = "item or card", type = ParType.ITEM_OR_CARD) IIdentifiable item)
-    {
-        if (item instanceof Item)
-        {
-            CommandAssert.numberMoreThanZeroL(co.ui.howManyOf((Item) item), "You don't have that item to give it to someone.");
-        }
-        else if (item instanceof Card)
-        {
-            CommandAssert.numberMoreThanZeroL(co.ui.howManyOf((Card) item), "You don't have that item to give it to someone.");
-        }
-
-        give(co, recipient, item, 1);
-    }
-
     @CmdInvoke
     public static void give(CallObj co, @CmdPar("user") Member recipient, @CmdPar(value = "item or card", type = ParType.ITEM_OR_CARD) IIdentifiable item, @CmdPar(value = "amount", type = ParType.AMOUNT_ITEM_OR_CARD) long amount)
     {
@@ -51,8 +37,34 @@ public class CommandGiveItem
         }
 
         if (recipient.getUser().getIdLong() == co.caller.getIdLong())
+        {
             MR.send(co.textChannel, String.format("You gave yourself **%d** %s(s)? ~~If there was a point in giving yourself your own stuff or something...~~", amount, item.inlineDescription()));
+        }
         else
-            MR.send(co.textChannel, String.format("You gave **%s** **%d** %s(s).", recipient.getEffectiveName(), amount, item.inlineDescription()));
+        {
+            var eb = new EmbedBuilder();
+            eb.setAuthor(co.caller.getName() + "#" + co.caller.getDiscriminator(), null, co.caller.getEffectiveAvatarUrl());
+            eb.setTitle("Gift");
+            eb.setDescription(String.format("You gave **%s** **%d** **%s**.", recipient.getAsMention(), amount, item.inlineDescription()));
+            eb.setThumbnail(recipient.getUser().getEffectiveAvatarUrl());
+            eb.setColor(0x008080);
+
+            MR.send(co.textChannel, eb.build());
+        }
+    }
+
+    @CmdInvoke
+    public static void giveOne(CallObj co, @CmdPar("user") Member recipient, @CmdPar(value = "item or card", type = ParType.ITEM_OR_CARD) IIdentifiable item)
+    {
+        if (item instanceof Item)
+        {
+            CommandAssert.numberMoreThanZeroL(co.ui.howManyOf((Item) item), "You don't have that item to give it to someone.");
+        }
+        else if (item instanceof Card)
+        {
+            CommandAssert.numberMoreThanZeroL(co.ui.howManyOf((Card) item), "You don't have that item to give it to someone.");
+        }
+
+        give(co, recipient, item, 1);
     }
 }

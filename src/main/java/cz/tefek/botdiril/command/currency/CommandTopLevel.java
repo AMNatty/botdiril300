@@ -5,6 +5,7 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import java.text.MessageFormat;
 
 import cz.tefek.botdiril.BotMain;
+import cz.tefek.botdiril.Botdiril;
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.command.Command;
 import cz.tefek.botdiril.framework.command.CommandCategory;
@@ -27,7 +28,7 @@ public class CommandTopLevel
         eb.setColor(0x008080);
         eb.setThumbnail(co.jda.getSelfUser().getEffectiveAvatarUrl());
 
-        BotMain.sql.exec("SELECT us_userid, us_level, us_xp FROM " + UserInventory.TABLE_USER + " ORDER BY us_level DESC, us_xp DESC LIMIT " + LIMIT, stat ->
+        BotMain.sql.exec("SELECT us_userid, us_level, us_xp FROM " + UserInventory.TABLE_USER + " WHERE us_userid<>? ORDER BY us_level DESC, us_xp DESC LIMIT " + LIMIT, stat ->
         {
             var rs = stat.executeQuery();
 
@@ -47,7 +48,7 @@ public class CommandTopLevel
             }
 
             return 0;
-        });
+        }, Botdiril.AUTHOR_ID);
 
         MR.send(co.textChannel, eb.build());
     }

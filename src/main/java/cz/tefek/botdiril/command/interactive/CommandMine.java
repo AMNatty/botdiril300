@@ -68,7 +68,7 @@ public class CommandMine
 
         co.ui.addItem(item, -1);
 
-        var roll = Botdiril.RDG.nextExponential(Math.pow((co.ui.getLevel() + 600) / 150.0, 2));
+        var roll = Botdiril.RDG.nextExponential(Math.pow((co.ui.getLevel() + 600) / 150.0, 2)) + 1;
 
         var pick = (ItemPickaxe) item;
 
@@ -99,6 +99,9 @@ public class CommandMine
 
         if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.99995, 0.5 + Math.log10(pick.getMultiplier())))
             loot.addItem(Items.gemdiril, 1);
+
+        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.99993, 0.5 + Math.log10(pick.getMultiplier())))
+            loot.addItem(Items.scrollOfIntelligenceII, 1);
 
         var xp = Math.round((roll / 1.5 + 300) * Math.pow(pick.getMultiplier(), 0.25));
 

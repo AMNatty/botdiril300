@@ -35,8 +35,8 @@ public class CommandFarm
         co.ui.addCoins(coins);
         XPAdder.addXP(co, xp);
 
-        final var cannonString = "You farmed and didn't actually miss the cannon minion so you got more loot: %d %s, %d xp and %s.";
-        final var basicString = "You farmed and got %d %s, %d xp and %s.";
+        final var cannonString = "You farmed and didn't actually miss the cannon minion so you got more loot: **%d %s**, **%d xp** and **%s**.";
+        final var basicString = "You farmed and got **%d %s**, **%d xp** and **%s**.";
 
         var op = String.format(cannon ? cannonString
                 : basicString, coins, EnumCurrency.COINS.getIcon(), xp, drops.inlineDescription());

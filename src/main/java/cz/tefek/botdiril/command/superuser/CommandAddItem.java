@@ -41,6 +41,6 @@ public class CommandAddItem
 
         new UserInventory(user.getUser().getIdLong()).addItem(item, howmany);
 
-        MR.send(co.textChannel, String.format("Added %d %s to %s's inventory!", howmany, item.inlineDescription(), user.getEffectiveName()));
+        MR.send(co.textChannel, String.format("Added %d %s to %s's inventory!", howmany, item.inlineDescription(), user.getAsMention()));
     }
 }

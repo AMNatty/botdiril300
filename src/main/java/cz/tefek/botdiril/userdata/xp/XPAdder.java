@@ -22,7 +22,7 @@ public class XPAdder
 
         var rewards = new ArrayList<ItemPair>();
 
-        while (xpSum < caxp)
+        while (xpSum <= caxp)
         {
             RewardParser.parse(XPRewards.getRewardsForLvl(i)).forEach(ip ->
             {
@@ -51,7 +51,8 @@ public class XPAdder
         if (i == XPRewards.getMaxLevel())
         {
             co.ui.setXP(0);
-        } else
+        }
+        else
         {
             co.ui.setXP(caxp - (xpSum - XPRewards.getXPAtLevel(i)));
         }
@@ -67,7 +68,8 @@ public class XPAdder
             if (cmds.size() > 0)
             {
                 MR.send(co.textChannel, String.format("***You advanced to level %d!***\n**Rewards:**\n%s\n**You unlocked the following commands:**\n%s", i, rw, cmds.stream().map(cmd -> '`' + cmd.value() + '`').collect(Collectors.joining("\n"))));
-            } else
+            }
+            else
             {
                 MR.send(co.textChannel, String.format("***You advanced to level %d!***\n**Rewards:**\n%s", i, rw));
             }

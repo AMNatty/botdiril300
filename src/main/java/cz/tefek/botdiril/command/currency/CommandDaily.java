@@ -22,7 +22,7 @@ public class CommandDaily
     @CmdInvoke
     public static void daily(CallObj co)
     {
-        CommandAssert.assertTimer(co.ui, Timers.daily, "You need to wait $ to use daily again.");
+        CommandAssert.assertTimer(co.ui, Timers.daily, "You need to wait **$** to use **daily** again.");
 
         var lvl = co.ui.getLevel();
 

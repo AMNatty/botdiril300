@@ -12,10 +12,12 @@ public class CratePools
     public static final LootPool<Item> goodRewards = new LootPool<>();
     public static final LootPool<Item> greatRewards = new LootPool<>();
     public static final LootPool<Item> amazingRewards = new LootPool<>();
+    public static final LootPool<Item> hyperRewards = new LootPool<>();
+    public static final LootPool<Item> ultraRewards = new LootPool<>();
 
     public static final PoolDrawer basicCrate = new PoolDrawer().add(10, terribleRewards).add(50, badRewards).add(60, leagueRewards).add(8, normalRewards).add(1, goodRewards);
 
-    public static final PoolDrawer uncommonCrate = new PoolDrawer().add(5, terribleRewards).add(20, badRewards).add(30, leagueRewards).add(36, normalRewards).add(2, goodRewards).add(1, greatRewards);
+    public static final PoolDrawer uncommonCrate = new PoolDrawer().add(5, terribleRewards).add(60, badRewards).add(30, leagueRewards).add(36, normalRewards).add(4, goodRewards).add(1, greatRewards);
 
     static
     {
@@ -32,15 +34,16 @@ public class CratePools
         goodRewards.add(Items.greenGem);
         goodRewards.add(Items.toolBox);
 
-        greatRewards.add(Items.pickaxeIII);
         greatRewards.add(Items.cardPackGood);
         greatRewards.add(Items.purpleGem);
         greatRewards.add(Items.blueGem);
 
+        amazingRewards.add(Items.pickaxeIII);
         amazingRewards.add(Items.rainbowGem);
         amazingRewards.add(Items.blackGem);
-        amazingRewards.add(Items.gemdiril);
         amazingRewards.add(Items.cardPackVoid);
+
+        ultraRewards.add(Items.gemdiril);
 
         leagueRewards.addAll(Items.leagueItems);
     }

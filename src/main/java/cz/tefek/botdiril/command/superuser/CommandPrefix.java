@@ -6,6 +6,7 @@ import cz.tefek.botdiril.framework.command.Command;
 import cz.tefek.botdiril.framework.command.CommandCategory;
 import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.command.invoke.CmdPar;
+import cz.tefek.botdiril.framework.command.invoke.CommandException;
 import cz.tefek.botdiril.framework.permission.EnumPowerLevel;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
@@ -17,6 +18,11 @@ public class CommandPrefix
     public static void setPrefix(CallObj co, @CmdPar("prefix") String prefix)
     {
         CommandAssert.stringNotTooLong(prefix, 8, "The prefix is too long.");
+
+        if (prefix.contains("@"))
+        {
+            throw new CommandException("The prefix can't contain @.");
+        }
 
         co.sc.setPrefix(prefix);
 

@@ -150,6 +150,16 @@ public class CommandAssert
 
     // STRINGS
 
+    public static Achievement parseAchievement(String name)
+    {
+        var it = Achievement.getByName(name);
+
+        if (it == null)
+            throw new CommandException("Achievement with that name was not found.");
+
+        return it;
+    }
+
     public static long parseAmount(String amountString, long base, String errorMessage) throws CommandException
     {
         long amount;
@@ -232,6 +242,9 @@ public class CommandAssert
             if (amount.signum() == -1)
                 throw new CommandException(errorMessage + "\nA negative number was entered, they are not supported here.");
 
+            if (amount.compareTo(base) == 1)
+                throw new CommandException("That's more than you have!");
+
             return amount;
         }
         catch (NumberFormatException | ArithmeticException e)
@@ -278,6 +291,8 @@ public class CommandAssert
         }
     }
 
+    // PARSERS
+
     public static BigInteger parseBigIntRadix10(String number, String errorMessage) throws CommandException
     {
         try
@@ -289,8 +304,6 @@ public class CommandAssert
             throw new CommandException(errorMessage);
         }
     }
-
-    // PARSERS
 
     public static long parseBuy(String amountString, long price, long money, String errorMessage) throws CommandException
     {
@@ -352,7 +365,7 @@ public class CommandAssert
         var card = Card.getCardByName(cname);
 
         if (card == null)
-            throw new CommandException("Card not found: " + cname);
+            throw new CommandException("Card with that name was not found.");
 
         return card;
     }
@@ -412,17 +425,7 @@ public class CommandAssert
         var it = Item.getItemByName(name);
 
         if (it == null)
-            throw new CommandException("Item not found: " + name);
-
-        return it;
-    }
-
-    public static Achievement parseAchievement(String name)
-    {
-        var it = Achievement.getByName(name);
-
-        if (it == null)
-            throw new CommandException("Achievement not found: " + name);
+            throw new CommandException("Item with that name was not found.");
 
         return it;
     }
@@ -439,7 +442,7 @@ public class CommandAssert
         if (ct != null)
             return ct;
 
-        throw new CommandException(name + " is neither a card or an item.");
+        throw new CommandException("Could not find card or an item with that ID.");
     }
 
     /**

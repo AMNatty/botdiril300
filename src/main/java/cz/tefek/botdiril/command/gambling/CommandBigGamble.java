@@ -27,13 +27,13 @@ public class CommandBigGamble
             throw new CommandException("You can't gamble negative or zero " + Icons.MEGAKEK + ".");
         }
 
-        double roll = Math.pow(10, Botdiril.RDG.nextUniform(-3, 5));
+        double roll = Math.pow(10, Botdiril.RDG.nextUniform(-1, 6));
 
         var dma = new BigDecimal(amount);
 
         var pow = dma.precision() - dma.scale() - 1;
 
-        var chanceToLoseEverything = Math.pow(pow, 2.7) / 800000000.0;
+        var chanceToLoseEverything = Math.pow(pow / 3500, 1.28) / 2.0 + 0.011;
 
         if (Botdiril.RDG.nextUniform(0, 1) < chanceToLoseEverything)
         {
