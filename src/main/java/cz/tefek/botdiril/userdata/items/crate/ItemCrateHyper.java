@@ -12,8 +12,8 @@ public class ItemCrateHyper extends ItemCrate
         super("hypercrate", Icons.CRATE_HYPER, "Hyper Crate");
         this.setDescription("This crate has been so overpowered that even when the universe reached heat death, this crate was overflowing with energy.");
 
-        ShopEntries.addCoinBuy(this, 600_000_000);
-        ShopEntries.addTokenBuy(this, 4_000_000);
+        ShopEntries.addCoinBuy(this, 1_200_000_000);
+        ShopEntries.addTokenBuy(this, 20_000_000);
     }
 
     @Override

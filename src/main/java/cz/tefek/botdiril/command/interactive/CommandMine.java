@@ -29,13 +29,13 @@ public class CommandMine
         var roll = Botdiril.RDG.nextExponential(Math.pow((co.ui.getLevel() + 600) / 150.0, 2));
 
         var loot = new ItemDrops();
-        loot.addItem(Items.keks, Math.round(roll * 5));
+        loot.addItem(Items.keks, Math.round(roll + 10));
         loot.addItem(Items.coins, Math.round(roll * 10));
 
         if (Botdiril.RDG.nextUniform(0, 1) > 0.9)
             loot.addItem(Items.keys, 1);
 
-        if (Botdiril.RDG.nextUniform(0, 1) > 0.999)
+        if (Botdiril.RDG.nextUniform(0, 1) > 0.99999)
             loot.addItem(Items.gemdiril, 1);
 
         var xp = Math.round((roll + 1000) / 8);
@@ -73,7 +73,7 @@ public class CommandMine
         var pick = (ItemPickaxe) item;
 
         var loot = new ItemDrops();
-        loot.addItem(Items.keks, Math.round(roll * 5) * pick.getMultiplier());
+        loot.addItem(Items.keks, Math.round(roll + Math.sqrt(pick.getMultiplier())) * pick.getMultiplier());
         loot.addItem(Items.coins, Math.round(roll * 10) * pick.getMultiplier());
 
         if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.9, 0.5 + Math.log10(pick.getMultiplier())))

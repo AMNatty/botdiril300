@@ -16,8 +16,8 @@ public class ItemCrateEpic extends ItemCrate
         this.setDescription("No. Just because it has epic in the name, it doesn't mean it contains Fortnite skins.");
 
         ShopEntries.addCoinBuy(this, 360_000);
-        ShopEntries.addCoinSell(this, 180_000);
-        ShopEntries.addTokenBuy(this, 2250);
+        ShopEntries.addCoinSell(this, 72_000);
+        ShopEntries.addTokenBuy(this, 4500);
     }
 
     @Override

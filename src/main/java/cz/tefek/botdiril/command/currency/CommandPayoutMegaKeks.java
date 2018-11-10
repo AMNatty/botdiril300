@@ -29,6 +29,8 @@ public class CommandPayoutMegaKeks
 
         var has = co.ui.getMegaKeks();
 
+        CommandAssert.assertNotEquals(has, BigInteger.ZERO, "You can't pay out zero " + Icons.MEGAKEK + ".");
+
         var dma = new BigDecimal(has);
 
         var numStr = BigNumbers.stringifyBoth(has);
@@ -40,7 +42,7 @@ public class CommandPayoutMegaKeks
         co.ui.setMegaKeks(BigInteger.ZERO);
         co.ui.addKeks(gets);
 
-        var xp = 10 + pow * pow;
+        var xp = 10 + pow * pow / 10;
 
         XPAdder.addXP(co, xp);
 

@@ -12,8 +12,8 @@ public class ItemCrateVoid extends ItemCrate
         super("voidcrate", Icons.CRATE_VOID, "Void Crate");
         this.setDescription("This crate in an quantum superposition of being empty or full at one time. The only way to check is to look inside.");
 
-        ShopEntries.addCoinBuy(this, 400_000_000);
-        ShopEntries.addTokenBuy(this, 2_500_000);
+        ShopEntries.addCoinBuy(this, 800_000_000);
+        ShopEntries.addTokenBuy(this, 12_000_000);
     }
 
     @Override

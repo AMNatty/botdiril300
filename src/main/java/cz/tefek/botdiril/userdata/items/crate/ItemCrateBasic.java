@@ -19,7 +19,7 @@ public class ItemCrateBasic extends ItemCrate
         this.setDescription("Just an ordinary crate, nothing to see here. Maybe a few keks.");
         ShopEntries.addCoinBuy(this, 15000);
         ShopEntries.addTokenBuy(this, 100);
-        ShopEntries.addCoinSell(this, 5000);
+        ShopEntries.addCoinSell(this, 3000);
     }
 
     @Override

@@ -13,8 +13,8 @@ public class ItemCrateLegendary extends ItemCrate
         this.setDescription("Contrary to popular beliefs, this crate is actually worth opening.");
 
         ShopEntries.addCoinBuy(this, 1_300_000);
-        ShopEntries.addCoinSell(this, 600_000);
-        ShopEntries.addTokenBuy(this, 9100);
+        ShopEntries.addCoinSell(this, 260_000);
+        ShopEntries.addTokenBuy(this, 50_000);
     }
 
     @Override

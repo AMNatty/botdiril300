@@ -13,8 +13,8 @@ public class ItemCrateUltimate extends ItemCrate
         this.setDescription("The ultimate evolution of the crate opening experience.");
 
         ShopEntries.addCoinBuy(this, 5_000_000);
-        ShopEntries.addCoinSell(this, 2_400_000);
-        ShopEntries.addTokenBuy(this, 35_000);
+        ShopEntries.addCoinSell(this, 1_000_000);
+        ShopEntries.addTokenBuy(this, 200_000);
     }
 
     @Override

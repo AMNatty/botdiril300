@@ -28,7 +28,7 @@ public class CommandPayoutKeks
         co.ui.addKeks(-keks);
         var tokens = keks / conversionRate;
         co.ui.addKekTokens(tokens);
-        var xp = Math.round(Math.pow(keks, 0.55));
+        var xp = Math.round(Math.pow(10, Math.sqrt(Math.log10(keks))));
         XPAdder.addXP(co, xp);
 
         MR.send(co.textChannel, String.format("Paid out **%d** %s for **%d** %s at a conversion rate of **%d:1**. **[+%d XP]**", keks, Icons.KEK, tokens, Icons.TOKEN, conversionRate, xp));

@@ -13,7 +13,7 @@ public class ItemCrateGolden extends ItemCrate
         this.setDescription("Ever wondered where all the keks you gamble away go? They are in these crates.");
 
         ShopEntries.addCoinBuy(this, 50000);
-        ShopEntries.addCoinSell(this, 20000);
+        ShopEntries.addCoinSell(this, 10000);
     }
 
     @Override

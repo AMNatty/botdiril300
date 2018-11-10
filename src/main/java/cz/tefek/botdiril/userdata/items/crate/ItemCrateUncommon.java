@@ -20,7 +20,7 @@ public class ItemCrateUncommon extends ItemCrate
 
         ShopEntries.addCoinBuy(this, 115200);
         ShopEntries.addCoinSell(this, 57600);
-        ShopEntries.addTokenBuy(this, 800);
+        ShopEntries.addTokenBuy(this, 1200);
     }
 
     @Override
