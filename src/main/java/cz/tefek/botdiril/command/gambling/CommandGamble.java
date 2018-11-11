@@ -29,7 +29,7 @@ public class CommandGamble
         if (co.ui.useTimer(Timers.gambleXP) == -1)
         {
             var lvl = co.ui.getLevel();
-            XPAdder.addXP(co, Math.round(XPRewards.getXPAtLevel(lvl) * XPRewards.getLevel(lvl).getGambleFalloff() * Botdiril.RDG.nextUniform(0.00001, 0.0001)));
+            XPAdder.addXP(co, Math.round(Math.min(Math.sqrt(keks + 100), XPRewards.getXPAtLevel(lvl) * 0.001) * XPRewards.getLevel(lvl).getGambleFalloff()));
         }
 
         var outcome = GambleEngine.roll(co.caller.getIdLong());

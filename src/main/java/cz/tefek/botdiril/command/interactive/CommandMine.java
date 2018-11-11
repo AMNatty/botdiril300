@@ -73,7 +73,7 @@ public class CommandMine
         var pick = (ItemPickaxe) item;
 
         var loot = new ItemDrops();
-        loot.addItem(Items.keks, Math.round(roll + Math.sqrt(pick.getMultiplier())) * pick.getMultiplier());
+        loot.addItem(Items.keks, Math.round(Math.pow(roll * 10, 0.9)) * pick.getMultiplier());
         loot.addItem(Items.coins, Math.round(roll * 10) * pick.getMultiplier());
 
         if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.9, 0.5 + Math.log10(pick.getMultiplier())))

@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>cz.tefek.botdiril</groupId>
   <artifactId>botdiril300</artifactId>
-  <version>300.9</version>
+  <version>300.10</version>
   <name>Botdiril300</name>
   <description>Botdiril rewritten.</description>
   <properties>
