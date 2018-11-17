@@ -29,9 +29,11 @@ public class CommandCraft
     }
 
     @CmdInvoke
-    public static void craft(CallObj co, @CmdPar(value = "item or card", type = ParType.ITEM_OR_CARD) IIdentifiable item, @CmdPar(value = "amount", type = ParType.AMOUNT_ITEM_OR_CARD) long amount)
+    public static void craft(CallObj co, @CmdPar(value = "item or card", type = ParType.ITEM_OR_CARD) IIdentifiable item, @CmdPar(value = "amount") long amount)
     {
         CommandAssert.numberMoreThanZeroL(amount, "You can't craft zero items / cards.");
+
+        CommandAssert.numberNotAboveL(amount, Integer.MAX_VALUE, "That's way too many.");
 
         var recipe = CraftingEntries.search(item);
 
@@ -48,10 +50,10 @@ public class CommandCraft
             for (var itemPair : components)
             {
                 var it = itemPair.getItem();
-                var itAmt = itemPair.getAmount();
+                var itAmt = itemPair.getAmount() * amount;
                 var has = co.ui.howManyOf(it);
 
-                if (has < itAmt * amount)
+                if (has < itAmt)
                 {
                     missing.add(new ItemPair(it, itAmt - has));
                 }

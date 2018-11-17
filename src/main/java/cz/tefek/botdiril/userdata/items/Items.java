@@ -65,6 +65,7 @@ public class Items
     public static Item pickaxeII;
     public static Item pickaxeIII;
     public static Item pickaxeIV;
+    public static Item pickaxeV;
 
     public static Item redGem;
     public static Item greenGem;
@@ -84,6 +85,7 @@ public class Items
     public static Item scrollOfRefreshing;
     public static Item scrollOfIntelligenceII;
     public static Item scrollOfAbundance;
+    public static Item scrollOfCombining;
 
     public static void load()
     {
@@ -114,27 +116,23 @@ public class Items
 
         ShopEntries.addDisenchant(trash, 1000);
 
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(redGem, 32), new ItemPair(greenGem, 32), new ItemPair(blueGem, 8), new ItemPair(purpleGem, 8), new ItemPair(rainbowGem, 1), new ItemPair(blackGem, 1)), 1, gemdiril));
-
         pickaxeI = new ItemPickaxe("pickaxei", Icons.PICKAXE_I, "Pickaxe I", 10).setDescription("Basic Pickaxe.\nUsed for mining.");
         ShopEntries.addCoinBuy(pickaxeI, 2_000);
         ShopEntries.addCoinSell(pickaxeI, 800);
 
-        pickaxeII = new ItemPickaxe("pickaxeii", Icons.PICKAXE_II, "Pickaxe II", 500).setDescription("Good Pickaxe.\nExpect much better loot.");
+        pickaxeII = new ItemPickaxe("pickaxeii", Icons.PICKAXE_II, "Pickaxe II", 450).setDescription("Good Pickaxe.\nExpect much better loot.");
         ShopEntries.addCoinBuy(pickaxeII, 80_000);
         ShopEntries.addCoinSell(pickaxeII, 35_000);
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(pickaxeI, 128)), 64, pickaxeII));
 
-        pickaxeIII = new ItemPickaxe("pickaxeiii", Icons.PICKAXE_III, "Pickaxe III", 50_000).setDescription("Hyper Pickaxe.\nNormally unobtainable, this pickaxe almost swings itself.");
+        pickaxeIII = new ItemPickaxe("pickaxeiii", Icons.PICKAXE_III, "Pickaxe III", 35_000).setDescription("Hyper Pickaxe.\nNormally unobtainable, this pickaxe almost swings itself.");
         ShopEntries.addCoinSell(pickaxeIII, 250_000);
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(pickaxeII, 128)), 1, pickaxeIII));
 
-        pickaxeIV = new ItemPickaxe("pickaxeiv", Icons.PICKAXE_IV, "Pickaxe IV", 1_000_000).setDescription("Ascended Pickaxe\nPlease don't touch anything you don't want to disintegrate with this.");
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(pickaxeIII, 32)), 1, pickaxeIV));
+        pickaxeIV = new ItemPickaxe("pickaxeiv", Icons.PICKAXE_IV, "Pickaxe IV", 800_000).setDescription("Ascended Pickaxe\nPlease don't touch anything you don't want to disintegrate with this.");
+
+        pickaxeV = new ItemPickaxe("pickaxev", Icons.PICKAXE_V, "Pickaxe V", 9_600_000).setDescription("Omega Pickaxe\nWho said bedrock was unbreakable?");
 
         toolBox = new Item("toolbox", Icons.ITEM_SUSPICIOUS_METAL_BOX, "Tool Box").setDescription("I wonder what it's for.");
         ShopEntries.addCoinSell(toolBox, 4_000);
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(trash, 10), new ItemPair(redGem, 1)), 1, toolBox));
 
         crateGolden = new ItemCrateGolden();
 
@@ -153,6 +151,16 @@ public class Items
         scrollOfRefreshing = new ItemScrollOfRefreshing();
         scrollOfAbundance = new ItemScrollOfAbundance();
         scrollOfIntelligenceII = new ItemScrollOfIntelligence2();
+        scrollOfCombining = new Item("scrollofcombining", Icons.SCROLL, "Scroll of Combining").setDescription("Crafting ingredient for some magical recipes.");
+
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(blueGem, 1)), 15, scrollOfCombining));
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(redGem, 32), new ItemPair(greenGem, 32), new ItemPair(blueGem, 8), new ItemPair(purpleGem, 8), new ItemPair(rainbowGem, 1), new ItemPair(blackGem, 1)), 1, gemdiril));
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(dust, 30_000)), 1, pickaxeI));
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(pickaxeI, 64), new ItemPair(dust, 100_000)), 1, pickaxeII));
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(pickaxeII, 120), new ItemPair(scrollOfCombining, 1), new ItemPair(dust, 500_000)), 1, pickaxeIII));
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(trash, 10), new ItemPair(redGem, 1)), 1, toolBox));
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(pickaxeIII, 24), new ItemPair(toolBox, 1), new ItemPair(scrollOfCombining, 16), new ItemPair(dust, 40_000_000)), 1, pickaxeIV));
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(blueGem, 2), new ItemPair(purpleGem, 4), new ItemPair(rainbowGem, 2), new ItemPair(blackGem, 2), new ItemPair(dust, 800_000_000)), 1, pickaxeV));
 
         try (var br = new FileReader("assets/itemdata-g.json"))
         {

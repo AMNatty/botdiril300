@@ -81,6 +81,7 @@ public class Icons
     public static final String PICKAXE_II = "<:pickaxe_ii:477568899081043969>";
     public static final String PICKAXE_III = "<:pickaxe_iii:477568899445948416>";
     public static final String PICKAXE_IV = "<:pickaxe_iv:508683365445009448>";
+    public static final String PICKAXE_V = "<a:pickaxe_v:512016504053694464>";
 
     // GEMS
 

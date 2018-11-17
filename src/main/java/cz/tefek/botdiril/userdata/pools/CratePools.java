@@ -19,6 +19,10 @@ public class CratePools
 
     public static final PoolDrawer uncommonCrate = new PoolDrawer().add(5, terribleRewards).add(60, badRewards).add(30, leagueRewards).add(36, normalRewards).add(4, goodRewards).add(1, greatRewards);
 
+    public static final PoolDrawer epicCrate = new PoolDrawer().add(5, terribleRewards).add(30, badRewards).add(36, normalRewards).add(4, goodRewards).add(1, greatRewards);
+
+    public static final PoolDrawer legendaryCrate = new PoolDrawer().add(120, terribleRewards).add(360, normalRewards).add(80, goodRewards).add(30, greatRewards).add(1, amazingRewards);
+
     static
     {
         terribleRewards.add(Items.trash);
@@ -33,6 +37,7 @@ public class CratePools
         goodRewards.add(Items.redGem);
         goodRewards.add(Items.greenGem);
         goodRewards.add(Items.toolBox);
+        goodRewards.add(Items.scrollOfCombining);
 
         greatRewards.add(Items.cardPackGood);
         greatRewards.add(Items.purpleGem);
@@ -42,8 +47,14 @@ public class CratePools
         amazingRewards.add(Items.rainbowGem);
         amazingRewards.add(Items.blackGem);
         amazingRewards.add(Items.cardPackVoid);
+        amazingRewards.add(Items.scrollOfIntelligence);
 
+        hyperRewards.add(Items.pickaxeIV);
+
+        ultraRewards.add(Items.pickaxeV);
         ultraRewards.add(Items.gemdiril);
+        ultraRewards.add(Items.scrollOfIntelligenceII);
+        ultraRewards.add(Items.scrollOfAbundance);
 
         leagueRewards.addAll(Items.leagueItems);
     }

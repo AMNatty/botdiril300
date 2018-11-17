@@ -1,7 +1,6 @@
 package cz.tefek.botdiril.command.gambling;
 
 import cz.tefek.botdiril.BotMain;
-import cz.tefek.botdiril.Botdiril;
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.command.Command;
 import cz.tefek.botdiril.framework.command.CommandCategory;
@@ -29,7 +28,7 @@ public class CommandGamble
         if (co.ui.useTimer(Timers.gambleXP) == -1)
         {
             var lvl = co.ui.getLevel();
-            XPAdder.addXP(co, Math.round(Math.min(Math.sqrt(keks + 100), XPRewards.getXPAtLevel(lvl) * 0.001) * XPRewards.getLevel(lvl).getGambleFalloff()));
+            XPAdder.addXP(co, Math.round(Math.sqrt(keks) * XPRewards.getLevel(lvl).getGambleFalloff()));
         }
 
         var outcome = GambleEngine.roll(co.caller.getIdLong());
