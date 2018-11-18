@@ -32,6 +32,7 @@ import cz.tefek.botdiril.userdata.items.scrolls.ItemScrollOfAbundance;
 import cz.tefek.botdiril.userdata.items.scrolls.ItemScrollOfIntelligence;
 import cz.tefek.botdiril.userdata.items.scrolls.ItemScrollOfIntelligence2;
 import cz.tefek.botdiril.userdata.items.scrolls.ItemScrollOfRefreshing;
+import cz.tefek.botdiril.userdata.items.scrolls.ItemScrollOfSwapping;
 
 public class Items
 {
@@ -86,6 +87,7 @@ public class Items
     public static Item scrollOfIntelligenceII;
     public static Item scrollOfAbundance;
     public static Item scrollOfCombining;
+    public static Item scrollOfSwapping;
 
     public static void load()
     {
@@ -152,7 +154,8 @@ public class Items
         scrollOfAbundance = new ItemScrollOfAbundance();
         scrollOfIntelligenceII = new ItemScrollOfIntelligence2();
         scrollOfCombining = new Item("scrollofcombining", Icons.SCROLL, "Scroll of Combining").setDescription("Crafting ingredient for some magical recipes.");
-
+        scrollOfSwapping = new ItemScrollOfSwapping();
+        
         CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(blueGem, 1)), 15, scrollOfCombining));
         CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(redGem, 32), new ItemPair(greenGem, 32), new ItemPair(blueGem, 8), new ItemPair(purpleGem, 8), new ItemPair(rainbowGem, 1), new ItemPair(blackGem, 1)), 1, gemdiril));
         CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(dust, 30_000)), 1, pickaxeI));

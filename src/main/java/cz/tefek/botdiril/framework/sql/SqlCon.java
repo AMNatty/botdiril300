@@ -22,7 +22,7 @@ public class SqlCon
     {
         this.dataSource = new ComboPooledDataSource();
         this.dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
-        this.dataSource.setJdbcUrl("jdbc:mysql:// " + BotMain.config.getSqlHost() + "/" + SqlFoundation.SCHEMA + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+        this.dataSource.setJdbcUrl("jdbc:mysql:// " + BotMain.config.getSqlHost() + "/" + SqlFoundation.SCHEMA + "?useUnicode=true&autoReconnect=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
         this.dataSource.setUser(BotMain.config.getSqlKey());
         this.dataSource.setPassword(BotMain.config.getSqlPass());
         this.dataSource.setAutoCommitOnClose(true);
