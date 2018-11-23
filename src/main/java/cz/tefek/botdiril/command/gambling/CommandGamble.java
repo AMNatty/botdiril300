@@ -31,7 +31,8 @@ public class CommandGamble
             XPAdder.addXP(co, Math.round(Math.sqrt(keks) * XPRewards.getLevel(lvl).getGambleFalloff()));
         }
 
-        var outcome = GambleEngine.roll(co.caller.getIdLong());
+        var percentage = keks / (double) co.ui.getKeks();
+        var outcome = GambleEngine.roll(co.caller.getIdLong(), percentage);
         var lvl = co.ui.getLevel();
         var result = outcome.getApplier().apply(lvl, keks);
 

@@ -21,7 +21,7 @@ public class CratePools
 
     public static final PoolDrawer epicCrate = new PoolDrawer().add(5, terribleRewards).add(30, badRewards).add(36, normalRewards).add(4, goodRewards).add(1, greatRewards);
 
-    public static final PoolDrawer legendaryCrate = new PoolDrawer().add(120, terribleRewards).add(360, normalRewards).add(80, goodRewards).add(30, greatRewards).add(1, amazingRewards);
+    public static final PoolDrawer legendaryCrate = new PoolDrawer().add(120, terribleRewards).add(300, normalRewards).add(80, goodRewards).add(15, greatRewards).add(1, amazingRewards);
 
     static
     {

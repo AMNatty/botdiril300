@@ -25,7 +25,7 @@ public class GambleEngine
         WIN_DOUBLE("Win double", "You doubled your bet! +%d " + Icons.KEK, 20, (level, bet) -> bet),
         WIN_TRIPLE("Win triple", "POGKEK. You win %d " + Icons.KEK + ". (+200%%)", 10, (level, bet) -> bet * 2),
         WIN_QUADRUPLE("Win quadruple!", Icons.OTHER_KEKOVERDRIVE + " You win four times your original bet! " + Icons.OTHER_THEFAST + " +%d " + Icons.KEK + " (+300%%).", 5, (level, bet) -> bet * 3),
-        JACKPOT("JACKPOT!!!", Icons.OTHER_KEKOVERDRIVE + " POGGERS! YOU WIN THE JACKPOT! +%d " + Icons.KEK + ".", 0.2, (level, bet) ->
+        JACKPOT("JACKPOT!!!", Icons.OTHER_KEKOVERDRIVE + " POGGERS! YOU WIN THE JACKPOT! +%d " + Icons.KEK + ".", 0.05, (level, bet) ->
         {
             var maxJp = XPRewards.maxJackpot(level, bet);
             var currentJp = GlobalProperties.get(GlobalProperties.JACKPOT);
@@ -114,24 +114,49 @@ public class GambleEngine
             val.setThreshold(threshold);
         }
     }
+    
+    public static class GambleVarMap extends ConcurrentHashMap<Long, Double>
+    {   
+        /**
+         * 
+         */
+        private static final long serialVersionUID = 9102070166284491540L;
+
+        @Override
+        public Double get(Object key)
+        {
+            var val = super.get(key);
+            return val == null ? 0.0 : val;
+        };
+
+        public void addRescaled(long key, Double value, double percentage)
+        {
+            this.put(key, value * percentage);
+        }
+        
+        public void setRescaled(long key, Double value, double percentage)
+        {
+            this.addRescaled(key, value - get(key), percentage);
+        }
+    }
 
     private static final GambleOutcome[] outcomesSorted = { GambleOutcome.LOSE_EVERYTHING,
             GambleOutcome.LOSE_THREE_QUARTERS, GambleOutcome.LOSE_HALF, GambleOutcome.KEEP_BET,
             GambleOutcome.WIN_QUARTER, GambleOutcome.WIN_HALF, GambleOutcome.WIN_DOUBLE, GambleOutcome.WIN_TRIPLE,
             GambleOutcome.WIN_QUADRUPLE, GambleOutcome.JACKPOT };
 
-    private static final ConcurrentHashMap<Long, Double> generosity = new ConcurrentHashMap<>();
-    private static final ConcurrentHashMap<Long, Double> greediness = new ConcurrentHashMap<>();
-    private static final ConcurrentHashMap<Long, Double> badLuckProtection = new ConcurrentHashMap<>();
+    private static final GambleVarMap generosity = new GambleVarMap();
+    private static final GambleVarMap greediness = new GambleVarMap();
+    private static final GambleVarMap badLuckProtection = new GambleVarMap();
 
     private static double genLBound(long id)
     {
-        return badLuckProtection.getOrDefault(id, 0.0) / 50.0;
+        return badLuckProtection.get(id) / 50.0;
     }
 
     private static double genRBound(long id)
     {
-        return 100.0 / (1 + greediness.getOrDefault(id, 0.0) / 1500.0) + generosity.getOrDefault(id, 0.0) / 200.0;
+        return 100.0 / (1 + greediness.get(id) / 1500.0) + generosity.get(id) / 200.0;
     }
 
     public static void printChances(CallObj co)
@@ -172,7 +197,7 @@ public class GambleEngine
         MR.send(co.textChannel, eb.build());
     }
 
-    public static GambleOutcome roll(long id)
+    public static GambleOutcome roll(long id, double percentage)
     {
         var result = GambleOutcome.KEEP_BET;
 
@@ -194,52 +219,51 @@ public class GambleEngine
         switch (result)
         {
             case JACKPOT:
-                generosity.put(id, 0.0);
-                badLuckProtection.put(id, 0.0);
-                greediness.put(id, greediness.getOrDefault(id, 0.0) + 1000);
+                generosity.setRescaled(id, 0.0, percentage);
+                badLuckProtection.setRescaled(id, 0.0, percentage);
+                greediness.addRescaled(id, 1000.0, percentage);
                 break;
             case KEEP_BET:
-                greediness.put(id, greediness.getOrDefault(id, 0.0) + 1);
                 break;
             case LOSE_EVERYTHING:
-                greediness.put(id, 0.0);
-                generosity.put(id, generosity.getOrDefault(id, 0.0) + 100);
-                badLuckProtection.put(id, badLuckProtection.getOrDefault(id, 0.0) + 100);
+                greediness.setRescaled(id, 0.0, percentage);
+                generosity.addRescaled(id, 100.0, percentage);
+                badLuckProtection.addRescaled(id, 100.0, percentage);
                 break;
             case LOSE_HALF:
-                generosity.put(id, generosity.getOrDefault(id, 0.0) + 20);
-                greediness.put(id, greediness.getOrDefault(id, 0.0) / 4 * 3);
-                badLuckProtection.put(id, badLuckProtection.getOrDefault(id, 0.0) + 20);
+                generosity.addRescaled(id, 20.0, percentage);
+                greediness.setRescaled(id, greediness.get(id) * 0.75, percentage);
+                badLuckProtection.addRescaled(id, 20.0, percentage);
                 break;
             case LOSE_THREE_QUARTERS:
-                generosity.put(id, generosity.getOrDefault(id, 0.0) + 50);
-                greediness.put(id, greediness.getOrDefault(id, 0.0) / 2);
-                badLuckProtection.put(id, badLuckProtection.getOrDefault(id, 0.0) + 50);
+                generosity.addRescaled(id, 50.0, percentage);
+                greediness.setRescaled(id, greediness.get(id) * 0.4, percentage);
+                badLuckProtection.addRescaled(id, 50.0, percentage);
                 break;
             case WIN_DOUBLE:
-                generosity.put(id, generosity.getOrDefault(id, 0.0) / 2);
-                badLuckProtection.put(id, badLuckProtection.getOrDefault(id, 0.0) / 8);
-                greediness.put(id, greediness.getOrDefault(id, 0.0) + 50);
+                generosity.setRescaled(id, generosity.get(id) * 0.5, percentage);
+                badLuckProtection.setRescaled(id, badLuckProtection.get(id) * 0.125, percentage);
+                greediness.addRescaled(id, 50.0, percentage);
                 break;
             case WIN_TRIPLE:
-                generosity.put(id, generosity.getOrDefault(id, 0.0) / 4);
-                badLuckProtection.put(id, badLuckProtection.getOrDefault(id, 0.0) / 16);
-                greediness.put(id, greediness.getOrDefault(id, 0.0) + 150);
+                generosity.setRescaled(id, generosity.get(id) * 0.25, percentage);
+                badLuckProtection.setRescaled(id, badLuckProtection.get(id) * 0.0625, percentage);
+                greediness.addRescaled(id, 150.0, percentage);
                 break;
             case WIN_QUADRUPLE:
-                generosity.put(id, generosity.getOrDefault(id, 0.0) / 8);
-                badLuckProtection.put(id, badLuckProtection.getOrDefault(id, 0.0) / 32);
-                greediness.put(id, greediness.getOrDefault(id, 0.0) + 300);
+                generosity.setRescaled(id, generosity.get(id) * 0.125, percentage);
+                badLuckProtection.setRescaled(id, badLuckProtection.get(id) * 0.03125, percentage);
+                greediness.addRescaled(id, 300.0, percentage);
                 break;
             case WIN_HALF:
-                generosity.put(id, generosity.getOrDefault(id, 0.0) / 4 * 3);
-                badLuckProtection.put(id, badLuckProtection.getOrDefault(id, 0.0) / 4);
-                greediness.put(id, greediness.getOrDefault(id, 0.0) + 5);
+                generosity.setRescaled(id, generosity.get(id) * 0.75, percentage);
+                badLuckProtection.setRescaled(id, badLuckProtection.get(id) * 0.25, percentage);
+                greediness.addRescaled(id, 5.0, percentage);
                 break;
             case WIN_QUARTER:
-                generosity.put(id, generosity.getOrDefault(id, 0.0) / 5 * 4);
-                badLuckProtection.put(id, badLuckProtection.getOrDefault(id, 0.0) / 2);
-                greediness.put(id, greediness.getOrDefault(id, 0.0) + 2);
+                generosity.setRescaled(id, generosity.get(id) * 0.8, percentage);
+                badLuckProtection.setRescaled(id, badLuckProtection.get(id) * 0.5, percentage);
+                greediness.addRescaled(id, 2.0, percentage);
                 break;
         }
 

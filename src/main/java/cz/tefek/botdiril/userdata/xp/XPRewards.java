@@ -107,6 +107,6 @@ public class XPRewards
 
     public static long maxJackpot(int level, long userHas)
     {
-        return Math.max(Math.min(5000L + level * (5000L + 1000L * level), userHas * 100L), 5000);
+        return Math.max(Math.min(10_000L + (level + 200) * (5000L + 1000L * (level + 200)), userHas * 10_000L), 5000);
     }
 }
