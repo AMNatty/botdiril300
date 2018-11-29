@@ -1,7 +1,5 @@
 package cz.tefek.botdiril.framework.command;
 
-import cz.tefek.botdiril.serverdata.ServerConfig;
-import cz.tefek.botdiril.userdata.UserInventory;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
@@ -9,6 +7,10 @@ import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.SelfUser;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
+
+import cz.tefek.botdiril.serverdata.ServerConfig;
+import cz.tefek.botdiril.userdata.UserInventory;
+import cz.tefek.botdiril.userdata.properties.PropertyObject;
 
 public class CallObj
 {
@@ -19,6 +21,7 @@ public class CallObj
     public JDA jda;
     public Message message;
     public SelfUser bot;
+    public PropertyObject po;
 
     public ServerConfig sc;
 

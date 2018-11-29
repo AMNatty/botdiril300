@@ -14,6 +14,7 @@ public class CratePools
     public static final LootPool<Item> amazingRewards = new LootPool<>();
     public static final LootPool<Item> hyperRewards = new LootPool<>();
     public static final LootPool<Item> ultraRewards = new LootPool<>();
+    public static final LootPool<Item> godlyRewards = new LootPool<>();
 
     public static final PoolDrawer basicCrate = new PoolDrawer().add(10, terribleRewards).add(50, badRewards).add(60, leagueRewards).add(8, normalRewards).add(1, goodRewards);
 
@@ -23,14 +24,28 @@ public class CratePools
 
     public static final PoolDrawer legendaryCrate = new PoolDrawer().add(120, terribleRewards).add(300, normalRewards).add(80, goodRewards).add(15, greatRewards).add(1, amazingRewards);
 
+    public static final PoolDrawer ultimateCrate = new PoolDrawer().add(120, terribleRewards).add(80, goodRewards).add(20, greatRewards).add(3, amazingRewards).add(1, hyperRewards);
+
+    public static final PoolDrawer hyperCrate = new PoolDrawer().add(800, greatRewards).add(400, amazingRewards).add(50, hyperRewards).add(2, godlyRewards);
+
+    public static final PoolDrawer infernalCrate = new PoolDrawer().add(300, greatRewards).add(400, amazingRewards).add(80, hyperRewards).add(5, godlyRewards);
+
+    public static final LootPool<Item> goldenCratePool = new LootPool<>();
+
     static
     {
+        goldenCratePool.add(Items.keys);
+        goldenCratePool.add(Items.crateGolden);
+        goldenCratePool.add(Items.trash);
+
         terribleRewards.add(Items.trash);
 
         badRewards.add(Items.pickaxeI);
         badRewards.add(Items.cardPackBasic);
+        badRewards.add(Items.uranium);
 
         normalRewards.add(Items.cardPackNormal);
+        normalRewards.add(Items.platinum);
 
         goodRewards.add(Items.pickaxeII);
         goodRewards.add(Items.cardPackNormal);
@@ -42,19 +57,21 @@ public class CratePools
         greatRewards.add(Items.cardPackGood);
         greatRewards.add(Items.purpleGem);
         greatRewards.add(Items.blueGem);
+        greatRewards.add(Items.pickaxeIII);
 
-        amazingRewards.add(Items.pickaxeIII);
         amazingRewards.add(Items.rainbowGem);
         amazingRewards.add(Items.blackGem);
         amazingRewards.add(Items.cardPackVoid);
         amazingRewards.add(Items.scrollOfIntelligence);
+        amazingRewards.add(Items.diamond);
 
         hyperRewards.add(Items.pickaxeIV);
 
         ultraRewards.add(Items.pickaxeV);
         ultraRewards.add(Items.gemdiril);
-        ultraRewards.add(Items.scrollOfIntelligenceII);
-        ultraRewards.add(Items.scrollOfAbundance);
+
+        godlyRewards.add(Items.scrollOfIntelligenceII);
+        godlyRewards.add(Items.scrollOfAbundance);
 
         leagueRewards.addAll(Items.leagueItems);
     }

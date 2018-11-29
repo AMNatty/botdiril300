@@ -14,6 +14,10 @@ import cz.tefek.botdiril.framework.command.invoke.ParType;
 import cz.tefek.botdiril.framework.util.BigNumbers;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.items.Icons;
+import cz.tefek.botdiril.userdata.stat.EnumStat;
+import cz.tefek.botdiril.userdata.tempstat.Curser;
+import cz.tefek.botdiril.userdata.tempstat.EnumBlessing;
+import cz.tefek.botdiril.userdata.tempstat.EnumCurse;
 
 @Command(value = "biggamble", aliases = { "gamblemega",
         "mega" }, category = CommandCategory.GAMBLING, description = "Gamble in " + Icons.MEGAKEK + " style. There is a dark secret though.", levelLock = 12)
@@ -35,9 +39,20 @@ public class CommandBigGamble
 
         var chanceToLoseEverything = Math.pow(pow / 3500, 1.28) / 2.0 + 0.011;
 
+        if (Curser.isBlessed(co, EnumBlessing.MEGAKEK_LOSS_IMMUNITY))
+        {
+            chanceToLoseEverything *= 0.6;
+        }
+
+        if (Curser.isCursed(co, EnumCurse.DOUBLE_CHANCE_TO_LOSE_MEGA))
+        {
+            chanceToLoseEverything *= 2;
+        }
+
         if (Botdiril.RDG.nextUniform(0, 1) < chanceToLoseEverything)
         {
             MR.send(co.textChannel, String.format("**You lost every single %s.**", Icons.MEGAKEK));
+            co.po.incrementLong(EnumStat.TIMES_LOST_ALL_MEGAKEKS.getName());
             co.ui.setMegaKeks(BigInteger.ZERO);
             return;
         }

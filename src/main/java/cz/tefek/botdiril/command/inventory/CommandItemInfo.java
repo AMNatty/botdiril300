@@ -1,6 +1,7 @@
 package cz.tefek.botdiril.command.inventory;
 
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.MessageEmbed.Field;
@@ -12,6 +13,7 @@ import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.command.invoke.CmdPar;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.EnumCurrency;
+import cz.tefek.botdiril.userdata.items.CraftingEntries;
 import cz.tefek.botdiril.userdata.items.Item;
 import cz.tefek.botdiril.userdata.items.ShopEntries;
 
@@ -28,8 +30,13 @@ public class CommandItemInfo
         eb.setColor(0x008080);
         var emID = Pattern.compile("[0-9]+").matcher(item.getIcon());
         emID.find();
-        var imgUrl = co.jda.getEmoteById(Long.parseLong(emID.group())).getImageUrl();
-        eb.setThumbnail(imgUrl);
+
+        var emote = co.jda.getEmoteById(Long.parseLong(emID.group()));
+        if (emote != null)
+        {
+            var imgUrl = emote.getImageUrl();
+            eb.setThumbnail(imgUrl);
+        }
 
         eb.addField("ID:", item.getName(), true);
 
@@ -41,6 +48,15 @@ public class CommandItemInfo
 
         if (ShopEntries.canBeBoughtForTokens(item))
             eb.addField(new Field("Exchanges for:", ShopEntries.getTokenPrice(item) + " " + EnumCurrency.TOKENS.getIcon(), true));
+
+        var recipe = CraftingEntries.search(item);
+
+        if (recipe != null)
+        {
+            var components = recipe.getComponents();
+            var recipeParts = components.stream().map(comp -> String.format("**%d %s**", comp.getAmount(), comp.getItem().inlineDescription())).collect(Collectors.joining(" + "));
+            eb.addField("Crafts from", recipeParts, false);
+        }
 
         if (ShopEntries.canBeDisenchanted(item))
             eb.addField(new Field("Disenchants for:", ShopEntries.getDustForDisenchanting(item) + " " + EnumCurrency.DUST.getIcon(), false));

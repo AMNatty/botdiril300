@@ -10,6 +10,8 @@ import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.internal.GlobalProperties;
 import cz.tefek.botdiril.userdata.items.Icons;
+import cz.tefek.botdiril.userdata.tempstat.Curser;
+import cz.tefek.botdiril.userdata.tempstat.EnumCurse;
 import cz.tefek.botdiril.userdata.xp.XPRewards;
 
 public class GambleEngine
@@ -22,10 +24,10 @@ public class GambleEngine
         KEEP_BET("Win nothing, lose nothing", "You keep your bet this time.", 20, (level, bet) -> 0L),
         WIN_QUARTER("Win 125%", "You win %d " + Icons.KEK + ". (+25%%)", 100, (level, bet) -> Math.round(bet * 0.25)),
         WIN_HALF("Win 150%", "You win %d " + Icons.KEK + ". (+50%%)", 40, (level, bet) -> Math.round(bet * 0.5)),
-        WIN_DOUBLE("Win double", "You doubled your bet! +%d " + Icons.KEK, 20, (level, bet) -> bet),
+        WIN_DOUBLE("Win double", "You doubled your bet! +%d " + Icons.KEK, 25, (level, bet) -> bet),
         WIN_TRIPLE("Win triple", "POGKEK. You win %d " + Icons.KEK + ". (+200%%)", 10, (level, bet) -> bet * 2),
         WIN_QUADRUPLE("Win quadruple!", Icons.OTHER_KEKOVERDRIVE + " You win four times your original bet! " + Icons.OTHER_THEFAST + " +%d " + Icons.KEK + " (+300%%).", 5, (level, bet) -> bet * 3),
-        JACKPOT("JACKPOT!!!", Icons.OTHER_KEKOVERDRIVE + " POGGERS! YOU WIN THE JACKPOT! +%d " + Icons.KEK + ".", 0.05, (level, bet) ->
+        JACKPOT("JACKPOT!!!", Icons.OTHER_KEKOVERDRIVE + " POGGERS! YOU WIN THE JACKPOT! +%d " + Icons.KEK + ".", 0.1, (level, bet) ->
         {
             var maxJp = XPRewards.maxJackpot(level, bet);
             var currentJp = GlobalProperties.get(GlobalProperties.JACKPOT);
@@ -91,6 +93,31 @@ public class GambleEngine
         }
     }
 
+    public static class GambleVarMap extends ConcurrentHashMap<Long, Double>
+    {
+        /**
+         * 
+         */
+        private static final long serialVersionUID = 9102070166284491540L;
+
+        public void addRescaled(long key, Double value, double percentage)
+        {
+            this.put(key, value * percentage);
+        };
+
+        @Override
+        public Double get(Object key)
+        {
+            var val = super.get(key);
+            return val == null ? 0.0 : val;
+        }
+
+        public void setRescaled(long key, Double value, double percentage)
+        {
+            this.addRescaled(key, value - this.get(key), percentage);
+        }
+    }
+
     static
     {
         var scale = 0.0;
@@ -112,31 +139,6 @@ public class GambleEngine
             val.setChance(chance);
             threshold += chance;
             val.setThreshold(threshold);
-        }
-    }
-    
-    public static class GambleVarMap extends ConcurrentHashMap<Long, Double>
-    {   
-        /**
-         * 
-         */
-        private static final long serialVersionUID = 9102070166284491540L;
-
-        @Override
-        public Double get(Object key)
-        {
-            var val = super.get(key);
-            return val == null ? 0.0 : val;
-        };
-
-        public void addRescaled(long key, Double value, double percentage)
-        {
-            this.put(key, value * percentage);
-        }
-        
-        public void setRescaled(long key, Double value, double percentage)
-        {
-            this.addRescaled(key, value - get(key), percentage);
         }
     }
 
@@ -197,24 +199,30 @@ public class GambleEngine
         MR.send(co.textChannel, eb.build());
     }
 
-    public static GambleOutcome roll(long id, double percentage)
+    public static GambleOutcome roll(CallObj co, double percentage)
     {
         var result = GambleOutcome.KEEP_BET;
+
+        var id = co.caller.getIdLong();
 
         var lbound = genLBound(id);
         var rbound = genRBound(id);
 
         var rnd = Botdiril.RDG.nextUniform(lbound, rbound);
 
-        for (GambleOutcome element : outcomesSorted)
+        do
         {
-            result = element;
-
-            if (element.getThreshold() > rnd)
+            for (GambleOutcome element : outcomesSorted)
             {
-                break;
+                result = element;
+
+                if (element.getThreshold() > rnd)
+                {
+                    break;
+                }
             }
         }
+        while (Curser.isCursed(co, EnumCurse.CANT_WIN_JACKPOT) && result == GambleOutcome.JACKPOT);
 
         switch (result)
         {

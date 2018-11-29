@@ -2,8 +2,11 @@ package cz.tefek.botdiril;
 
 import java.util.Locale;
 
+import org.apache.commons.lang3.SystemUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+
+import java.io.File;
 
 import cz.tefek.botdiril.framework.command.CommandIntitializer;
 import cz.tefek.botdiril.framework.sql.SqlCon;
@@ -44,6 +47,28 @@ public class BotMain
         {
             logger.fatal("Error while loading config. Aborting.");
             System.exit(1);
+        }
+
+        try
+        {
+            if (SystemUtils.IS_OS_WINDOWS)
+            {
+                System.load(new File("assets/native/libbotdiril-uss.dll").getAbsolutePath());
+            }
+            else if (SystemUtils.IS_OS_LINUX)
+            {
+                System.load(new File("assets/native/libbotdiril-uss.so").getAbsolutePath());
+            }
+            else
+            {
+                BotMain.logger.fatal("This OS does not seem to be supported.");
+                System.exit(101);
+            }
+        }
+        catch (Exception e)
+        {
+            BotMain.logger.fatal("An error has occured while loading native libraries for property managager.", e);
+            System.exit(100);
         }
 
         try

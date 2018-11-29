@@ -9,6 +9,7 @@ import cz.tefek.botdiril.framework.command.invoke.ParType;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.items.Icons;
+import cz.tefek.botdiril.userdata.stat.EnumStat;
 import cz.tefek.botdiril.userdata.timers.Timers;
 import cz.tefek.botdiril.userdata.xp.XPAdder;
 
@@ -25,11 +26,14 @@ public class CommandPayoutKeks
 
         CommandAssert.assertTimer(co.ui, Timers.payout, "You need to wait **$** before paying out again.");
 
-        co.ui.addKeks(-keks);
         var tokens = keks / conversionRate;
+        co.ui.addKeks(-keks);
         co.ui.addKekTokens(tokens);
         var xp = Math.round(Math.pow(10, Math.sqrt(Math.log10(keks))));
         XPAdder.addXP(co, xp);
+
+        if (co.po.getLongOrDefault(EnumStat.BIGGEST_PAYOUT.getName(), 0) < keks)
+            co.po.setLong(EnumStat.BIGGEST_PAYOUT.getName(), keks);
 
         MR.send(co.textChannel, String.format("Paid out **%d** %s for **%d** %s at a conversion rate of **%d:1**. **[+%d XP]**", keks, Icons.KEK, tokens, Icons.TOKEN, conversionRate, xp));
     }

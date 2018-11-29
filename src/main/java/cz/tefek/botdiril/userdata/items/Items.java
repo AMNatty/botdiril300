@@ -24,11 +24,13 @@ import cz.tefek.botdiril.userdata.items.crate.ItemCrateGlitchy;
 import cz.tefek.botdiril.userdata.items.crate.ItemCrateGolden;
 import cz.tefek.botdiril.userdata.items.crate.ItemCrateHyper;
 import cz.tefek.botdiril.userdata.items.crate.ItemCrateInfernal;
+import cz.tefek.botdiril.userdata.items.crate.ItemCrateIron;
 import cz.tefek.botdiril.userdata.items.crate.ItemCrateLegendary;
 import cz.tefek.botdiril.userdata.items.crate.ItemCrateUltimate;
 import cz.tefek.botdiril.userdata.items.crate.ItemCrateUncommon;
 import cz.tefek.botdiril.userdata.items.crate.ItemCrateVoid;
 import cz.tefek.botdiril.userdata.items.scrolls.ItemScrollOfAbundance;
+import cz.tefek.botdiril.userdata.items.scrolls.ItemScrollOfBlessing;
 import cz.tefek.botdiril.userdata.items.scrolls.ItemScrollOfIntelligence;
 import cz.tefek.botdiril.userdata.items.scrolls.ItemScrollOfIntelligence2;
 import cz.tefek.botdiril.userdata.items.scrolls.ItemScrollOfRefreshing;
@@ -53,6 +55,7 @@ public class Items
 
     public static Item crateBasic;
     public static Item crateUncommon;
+    public static Item crateIron;
     public static Item crateGolden;
     public static Item crateEpic;
     public static Item crateLegendary;
@@ -88,6 +91,17 @@ public class Items
     public static Item scrollOfAbundance;
     public static Item scrollOfCombining;
     public static Item scrollOfSwapping;
+    public static Item scrollOfBlessing;
+
+    public static Item coal;
+    public static Item iron;
+    public static Item copper;
+    public static Item gold;
+    public static Item platinum;
+    public static Item uranium;
+    public static Item kekium;
+    public static Item emerald;
+    public static Item diamond;
 
     public static void load()
     {
@@ -118,30 +132,67 @@ public class Items
 
         ShopEntries.addDisenchant(trash, 1000);
 
-        pickaxeI = new ItemPickaxe("pickaxei", Icons.PICKAXE_I, "Pickaxe I", 10).setDescription("Basic Pickaxe.\nUsed for mining.");
+        pickaxeI = new ItemPickaxe("pickaxei", Icons.PICKAXE_I, "Pickaxe I", 1, 400, 0.15).setDescription("Basic Pickaxe.\nUsed for mining.");
         ShopEntries.addCoinBuy(pickaxeI, 2_000);
         ShopEntries.addCoinSell(pickaxeI, 800);
 
-        pickaxeII = new ItemPickaxe("pickaxeii", Icons.PICKAXE_II, "Pickaxe II", 450).setDescription("Good Pickaxe.\nExpect much better loot.");
+        pickaxeII = new ItemPickaxe("pickaxeii", Icons.PICKAXE_II, "Pickaxe II", 2, 16_000, 0.2).setDescription("Good Pickaxe.\nExpect much better loot.");
         ShopEntries.addCoinBuy(pickaxeII, 80_000);
         ShopEntries.addCoinSell(pickaxeII, 35_000);
 
-        pickaxeIII = new ItemPickaxe("pickaxeiii", Icons.PICKAXE_III, "Pickaxe III", 35_000).setDescription("Hyper Pickaxe.\nNormally unobtainable, this pickaxe almost swings itself.");
+        pickaxeIII = new ItemPickaxe("pickaxeiii", Icons.PICKAXE_III, "Pickaxe III", 3, 200_000, 0.2).setDescription("Hyper Pickaxe.\nNormally unobtainable, this pickaxe almost swings itself.");
         ShopEntries.addCoinSell(pickaxeIII, 250_000);
 
-        pickaxeIV = new ItemPickaxe("pickaxeiv", Icons.PICKAXE_IV, "Pickaxe IV", 800_000).setDescription("Ascended Pickaxe\nPlease don't touch anything you don't want to disintegrate with this.");
+        pickaxeIV = new ItemPickaxe("pickaxeiv", Icons.PICKAXE_IV, "Pickaxe IV", 4, 3_200_000, 0.2).setDescription("Ascended Pickaxe\nPlease don't touch anything you don't want to disintegrate with this.");
 
-        pickaxeV = new ItemPickaxe("pickaxev", Icons.PICKAXE_V, "Pickaxe V", 9_600_000).setDescription("Omega Pickaxe\nWho said bedrock was unbreakable?");
+        pickaxeV = new ItemPickaxe("pickaxev", Icons.PICKAXE_V, "Pickaxe V", 5, 64_000_000, 0.2).setDescription("Omega Pickaxe\nWho said bedrock was unbreakable?");
 
         toolBox = new Item("toolbox", Icons.ITEM_SUSPICIOUS_METAL_BOX, "Tool Box").setDescription("I wonder what it's for.");
         ShopEntries.addCoinSell(toolBox, 4_000);
 
-        crateGolden = new ItemCrateGolden();
+        coal = new Item("coal", Icons.MINE_COAL, "Coal");
+        coal.setDescription("A very common resource, used as a fuel.");
+        ShopEntries.addCoinSell(coal, 5);
+
+        iron = new Item("iron", Icons.MINE_IRON, "Iron");
+        iron.setDescription("One of the most common minerals, used pretty much everywhere.");
+        ShopEntries.addCoinSell(iron, 10);
+
+        copper = new Item("copper", Icons.MINE_COPPER, "Copper");
+        copper.setDescription("A soft metal, usually used in electric devices and alloys (such as bronze, brass, etc.).");
+        ShopEntries.addCoinSell(copper, 60);
+
+        gold = new Item("gold", Icons.MINE_GOLD, "Gold");
+        gold.setDescription("A rare metal with good properties, very popular in jewelry.");
+        ShopEntries.addCoinSell(gold, 1_000);
+
+        platinum = new Item("platinum", Icons.MINE_PLATINUM, "Platinum");
+        platinum.setDescription("A very rare metal with very good properties.");
+        ShopEntries.addCoinSell(platinum, 4_000);
+
+        uranium = new Item("uranium", Icons.MINE_URANIUM, "Uranium");
+        uranium.setDescription("An extremely dense metal used in nuclear physics.");
+        ShopEntries.addCoinSell(uranium, 500);
+
+        kekium = new Item("kekium", Icons.MINE_KEKIUM, "Kekium");
+        kekium.setDescription("An exceptionally rare metal found in the deepest of mines.");
+        ShopEntries.addCoinSell(kekium, 100_000);
+        ShopEntries.addTokenBuy(kekium, 1_000_000);
+
+        emerald = new Item("emerald", Icons.MINE_EMERALD, "Emerald");
+        emerald.setDescription("An extremely rare gemstone. Emerald is a variant of beryl.");
+        ShopEntries.addCoinSell(emerald, 1_000_000);
+
+        diamond = new Item("diamond", Icons.MINE_DIAMOND, "Diamond");
+        diamond.setDescription("A crystallic form of carbon, diamonds are the hardest known mineral known to humans.");
+        ShopEntries.addCoinSell(diamond, 10_000_000);
 
         crateBasic = new ItemCrateBasic();
+        crateIron = new ItemCrateIron();
         crateUncommon = new ItemCrateUncommon();
         crateEpic = new ItemCrateEpic();
         crateLegendary = new ItemCrateLegendary();
+        crateGolden = new ItemCrateGolden();
         crateUltimate = new ItemCrateUltimate();
 
         crateGlitchy = new ItemCrateGlitchy();
@@ -155,15 +206,18 @@ public class Items
         scrollOfIntelligenceII = new ItemScrollOfIntelligence2();
         scrollOfCombining = new Item("scrollofcombining", Icons.SCROLL, "Scroll of Combining").setDescription("Crafting ingredient for some magical recipes.");
         scrollOfSwapping = new ItemScrollOfSwapping();
-        
+        scrollOfBlessing = new ItemScrollOfBlessing();
+
         CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(blueGem, 1)), 15, scrollOfCombining));
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(redGem, 32), new ItemPair(greenGem, 32), new ItemPair(blueGem, 8), new ItemPair(purpleGem, 8), new ItemPair(rainbowGem, 1), new ItemPair(blackGem, 1)), 1, gemdiril));
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(dust, 30_000)), 1, pickaxeI));
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(pickaxeI, 64), new ItemPair(dust, 100_000)), 1, pickaxeII));
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(pickaxeII, 120), new ItemPair(scrollOfCombining, 1), new ItemPair(dust, 500_000)), 1, pickaxeIII));
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(trash, 10), new ItemPair(redGem, 1)), 1, toolBox));
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(pickaxeIII, 24), new ItemPair(toolBox, 1), new ItemPair(scrollOfCombining, 16), new ItemPair(dust, 40_000_000)), 1, pickaxeIV));
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(blueGem, 2), new ItemPair(purpleGem, 4), new ItemPair(rainbowGem, 2), new ItemPair(blackGem, 2), new ItemPair(dust, 800_000_000)), 1, pickaxeV));
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(redGem, 32), new ItemPair(greenGem, 32), new ItemPair(blueGem, 8), new ItemPair(purpleGem, 8), new ItemPair(rainbowGem, 1), new ItemPair(blackGem, 1), new ItemPair(kekium, 100)), 1, gemdiril));
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(trash, 10), new ItemPair(redGem, 1), new ItemPair(copper, 30)), 1, toolBox));
+
+        // Pickaxe recipes
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(iron, 80), new ItemPair(coal, 220)), 1, pickaxeI));
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(pickaxeI, 40), new ItemPair(iron, 100), new ItemPair(coal, 300)), 1, pickaxeII));
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(pickaxeII, 12), new ItemPair(scrollOfCombining, 1), new ItemPair(dust, 500_000)), 1, pickaxeIII));
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(pickaxeIII, 16), new ItemPair(toolBox, 1), new ItemPair(scrollOfCombining, 16), new ItemPair(platinum, 50)), 1, pickaxeIV));
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(pickaxeIV, 20), new ItemPair(purpleGem, 4), new ItemPair(rainbowGem, 2), new ItemPair(blackGem, 2), new ItemPair(diamond, 2), new ItemPair(kekium, 10)), 1, pickaxeV));
 
         try (var br = new FileReader("assets/itemdata-g.json"))
         {

@@ -32,7 +32,7 @@ public class CommandGamble
         }
 
         var percentage = keks / (double) co.ui.getKeks();
-        var outcome = GambleEngine.roll(co.caller.getIdLong(), percentage);
+        var outcome = GambleEngine.roll(co, percentage);
         var lvl = co.ui.getLevel();
         var result = outcome.getApplier().apply(lvl, keks);
 
@@ -42,7 +42,7 @@ public class CommandGamble
         {
             result = -result;
 
-            GlobalProperties.add(GlobalProperties.JACKPOT, Math.round(result * 0.6));
+            GlobalProperties.add(GlobalProperties.JACKPOT, Math.round(result * 0.55));
             GlobalProperties.add(GlobalProperties.JACKPOT_RESET, Math.round(result * 0.1));
         }
 

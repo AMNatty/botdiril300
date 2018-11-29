@@ -31,6 +31,7 @@ import cz.tefek.botdiril.userdata.achievement.Achievement;
 import cz.tefek.botdiril.userdata.card.Card;
 import cz.tefek.botdiril.userdata.items.Item;
 import cz.tefek.botdiril.userdata.items.ShopEntries;
+import cz.tefek.botdiril.userdata.stat.EnumStat;
 
 public class CommandParser
 {
@@ -52,15 +53,20 @@ public class CommandParser
         var params = co.contents.split("\\s+");
         var cmdStr = params[0];
 
-        if (ChannelPreferences.checkBit(co.textChannel.getIdLong(), ChannelPreferences.BIT_DISABLED) && !EnumPowerLevel.ELEVATED.check(co.callerMember, co.textChannel))
-        {
-            return;
-        }
-
         var command = CommandStorage.search(cmdStr);
 
         if (command == null)
             return;
+
+        var special = Arrays.asList(command.special());
+
+        if (!special.contains(EnumSpecialCommandProperty.ALLOW_LOCK_BYPASS))
+        {
+            if (ChannelPreferences.checkBit(co.textChannel.getIdLong(), ChannelPreferences.BIT_DISABLED) && !EnumPowerLevel.ELEVATED.check(co.callerMember, co.textChannel))
+            {
+                return;
+            }
+        }
 
         if (!command.powerLevel().check(co.callerMember, co.textChannel))
         {
@@ -381,6 +387,7 @@ public class CommandParser
 
                 try
                 {
+                    co.po.incrementLong(EnumStat.COMMANDS_USED.getName());
                     meth.invoke(null, argArr);
                 }
                 catch (IllegalAccessException e)

@@ -7,6 +7,7 @@ import cz.tefek.botdiril.userdata.items.Item;
 import cz.tefek.botdiril.userdata.items.ItemDrops;
 import cz.tefek.botdiril.userdata.items.ShopEntries;
 import cz.tefek.botdiril.userdata.pools.CratePools;
+import cz.tefek.botdiril.userdata.stat.EnumStat;
 
 public class ItemCrateBasic extends ItemCrate
 {
@@ -25,7 +26,7 @@ public class ItemCrateBasic extends ItemCrate
     @Override
     public void open(CallObj co, long amount)
     {
-        var fm = String.format("You open %d %s and get the following items:", amount, this.getIcon());
+        var fm = String.format("**You open %d %s and get the following items:**", amount, this.getIcon());
         var sb = new StringBuilder(fm);
 
         var ip = new ItemDrops();
@@ -53,7 +54,9 @@ public class ItemCrateBasic extends ItemCrate
         if (dc > DISPLAY_LIMIT)
             sb.append(String.format("\nand %d more different items...", dc - DISPLAY_LIMIT));
 
-        sb.append(String.format("\nTotal %d items.", ip.totalCount()));
+        sb.append(String.format("\n**Total %d items.**", ip.totalCount()));
+
+        co.po.addLong(EnumStat.CRATES_OPENED.getName(), amount);
 
         MR.send(co.textChannel, sb.toString());
     }

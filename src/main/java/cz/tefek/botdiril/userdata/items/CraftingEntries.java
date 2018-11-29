@@ -1,6 +1,7 @@
 package cz.tefek.botdiril.userdata.items;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import cz.tefek.botdiril.userdata.IIdentifiable;
@@ -20,19 +21,19 @@ public class CraftingEntries
             this.result = result;
         }
 
-        public List<ItemPair> getComponents()
-        {
-            return components;
-        }
-
         public long getAmount()
         {
-            return yields;
+            return this.yields;
+        }
+
+        public List<ItemPair> getComponents()
+        {
+            return this.components;
         }
 
         public IIdentifiable getResult()
         {
-            return result;
+            return this.result;
         }
     }
 
@@ -41,6 +42,11 @@ public class CraftingEntries
     public static void add(Recipe recipe)
     {
         recipes.add(recipe);
+    }
+
+    public static List<Recipe> getRecipes()
+    {
+        return Collections.unmodifiableList(recipes);
     }
 
     public static Recipe search(IIdentifiable result)

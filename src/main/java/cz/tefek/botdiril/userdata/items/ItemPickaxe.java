@@ -2,16 +2,30 @@ package cz.tefek.botdiril.userdata.items;
 
 public class ItemPickaxe extends Item
 {
-    private int multiplier = 1;
+    private double multiplier = 1;
+    private long pickaxeWorth;
+    private double chanceToBreak;
 
-    public ItemPickaxe(String name, String icon, String localizedName, int multiplier)
+    public ItemPickaxe(String name, String icon, String localizedName, double multiplier, long pickaxeWorth, double chanceToBreak)
     {
         super(name, icon, localizedName);
         this.multiplier = multiplier;
+        this.pickaxeWorth = pickaxeWorth;
+        this.chanceToBreak = chanceToBreak;
     }
 
-    public int getMultiplier()
+    public double getChanceToBreak()
     {
-        return multiplier;
+        return this.chanceToBreak;
+    }
+
+    public double getMultiplier()
+    {
+        return this.multiplier;
+    }
+
+    public long getPickaxeValue()
+    {
+        return this.pickaxeWorth;
     }
 }

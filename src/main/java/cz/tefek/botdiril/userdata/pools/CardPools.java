@@ -21,5 +21,5 @@ public class CardPools
 
     public static final PoolDrawer rareOrBetter = new PoolDrawer().add(1024, rare).add(512, legacy).add(256, legendary).add(128, legacylegendary).add(64, ultimate).add(16, limited).add(4, mythical).add(1, unique);
 
-    public static final PoolDrawer rareOrBetterV = new PoolDrawer().add(150, rare).add(120, legacy).add(90, legendary).add(48, legacylegendary).add(24, ultimate).add(12, limited).add(6, mythical).add(2, unique);
+    public static final PoolDrawer rareOrBetterV = new PoolDrawer().add(75, rare).add(60, legacy).add(90, legendary).add(48, legacylegendary).add(24, ultimate).add(12, limited).add(6, mythical).add(3, unique);
 }

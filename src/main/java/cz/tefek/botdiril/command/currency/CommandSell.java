@@ -14,6 +14,9 @@ import cz.tefek.botdiril.userdata.card.Card;
 import cz.tefek.botdiril.userdata.items.Icons;
 import cz.tefek.botdiril.userdata.items.Item;
 import cz.tefek.botdiril.userdata.items.ShopEntries;
+import cz.tefek.botdiril.userdata.tempstat.Curser;
+import cz.tefek.botdiril.userdata.tempstat.EnumBlessing;
+import cz.tefek.botdiril.userdata.tempstat.EnumCurse;
 
 @Command(value = "sell", aliases = {}, category = CommandCategory.CURRENCY, description = "Sell items for " + Icons.COIN + ".", levelLock = 2)
 public class CommandSell
@@ -44,6 +47,17 @@ public class CommandSell
         }
 
         var value = amount * ShopEntries.getSellValue(item);
+
+        if (Curser.isCursed(co, EnumCurse.HALVED_SELL_VALUE))
+        {
+            value /= 2;
+        }
+
+        if (Curser.isBlessed(co, EnumBlessing.BETTER_SELL_PRICES))
+        {
+            value = value * 17 / 10;
+        }
+
         co.ui.addCoins(value);
 
         MR.send(co.textChannel, String.format("You sold **%d** %s for **%d** %s.", amount, item.inlineDescription(), value, Icons.COIN));

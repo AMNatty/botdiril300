@@ -1,6 +1,7 @@
 package cz.tefek.botdiril.command.inventory;
 
 import cz.tefek.botdiril.BotMain;
+import cz.tefek.botdiril.Botdiril;
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.command.Command;
 import cz.tefek.botdiril.framework.command.CommandCategory;
@@ -12,6 +13,8 @@ import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.items.IOpenable;
 import cz.tefek.botdiril.userdata.items.Icons;
 import cz.tefek.botdiril.userdata.items.Item;
+import cz.tefek.botdiril.userdata.tempstat.Curser;
+import cz.tefek.botdiril.userdata.tempstat.EnumBlessing;
 
 @Command(value = "open", aliases = {}, category = CommandCategory.ITEMS, description = "Open a card pack/crate/something else.")
 public class CommandOpen
@@ -31,6 +34,8 @@ public class CommandOpen
 
         CommandAssert.numberInBoundsInclusiveL(amount, 1, 32, "You can open 32 crates at most and one at least (obviously).");
 
+        co.po.setAutocloseDisabled(true);
+
         var t = new Thread(() ->
         {
             try
@@ -49,7 +54,15 @@ public class CommandOpen
                 co.ui.addItem(item, -amount);
 
                 if (openable.requiresKey())
-                    co.ui.addKeys(-amount);
+                {
+                    for (int i = 0; i < amount; i++)
+                    {
+                        if (!(Curser.isBlessed(co, EnumBlessing.CHANCE_NOT_TO_CONSUME_KEY) && Botdiril.RDG.nextUniform(0, 1) > 0.5))
+                        {
+                            co.ui.addKeys(-1);
+                        }
+                    }
+                }
             }
             catch (CommandException e)
             {
@@ -58,6 +71,7 @@ public class CommandOpen
             finally
             {
                 BotMain.sql.unlock();
+                co.po.close();
             }
         });
         t.setName("CrateThread" + co.caller.getIdLong() + "_" + System.currentTimeMillis());

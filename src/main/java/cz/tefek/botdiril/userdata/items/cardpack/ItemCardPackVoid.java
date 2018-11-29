@@ -8,6 +8,9 @@ import cz.tefek.botdiril.userdata.card.CardDrops;
 import cz.tefek.botdiril.userdata.items.Icons;
 import cz.tefek.botdiril.userdata.items.ShopEntries;
 import cz.tefek.botdiril.userdata.pools.CardPools;
+import cz.tefek.botdiril.userdata.stat.EnumStat;
+import cz.tefek.botdiril.userdata.tempstat.Curser;
+import cz.tefek.botdiril.userdata.tempstat.EnumCurse;
 
 public class ItemCardPackVoid extends ItemCardPack
 {
@@ -31,22 +34,26 @@ public class ItemCardPackVoid extends ItemCardPack
         var fm = String.format("You open %d %s and get the following cards:", amount, this.getIcon());
         var sb = new StringBuilder();
 
-        if (Botdiril.RDG.nextUniform(0, 1) < (1 - Math.pow(1 - CURSE_CHANCE, amount)))
-        {
-            sb.append("***You were supposed to receive a curse but there is none implemented.***\n");
-        }
-
         sb.append(fm);
 
         var cp = new CardDrops();
 
         for (int i = 0; i < CONTENTS * amount; i++)
+        {
+            if (Curser.isCursed(co, EnumCurse.CURSE_OF_YASUO))
+            {
+                cp.addItem(Card.getCardByName("yasuo"));
+                continue;
+            }
+
             cp.addItem((Card) CardPools.rareOrBetterV.draw().draw(), 1);
+        }
 
         var i = 0;
 
         for (var cardPair : cp)
         {
+
             var card = cardPair.getCard();
             var amt = cardPair.getAmount();
 
@@ -58,6 +65,14 @@ public class ItemCardPackVoid extends ItemCardPack
             i++;
         }
 
+        for (int j = 0; j < amount; j++)
+        {
+            if (Botdiril.RDG.nextUniform(0, 1) < CURSE_CHANCE)
+            {
+                Curser.curse(co);
+            }
+        }
+
         var dc = cp.distintCount();
 
         if (dc > DISPLAY_LIMIT)
@@ -66,6 +81,8 @@ public class ItemCardPackVoid extends ItemCardPack
         var dustVal = cp.stream().mapToLong(cardPair -> ShopEntries.getDustForDisenchanting(cardPair.getCard()) * cardPair.getAmount()).sum();
 
         sb.append(String.format("\nTotal %d cards. Approximate value: %d%s", cp.totalCount(), dustVal, Icons.DUST));
+
+        co.po.addLong(EnumStat.CARD_PACKS_OPENED.getName(), amount);
 
         MR.send(co.textChannel, sb.toString());
     }

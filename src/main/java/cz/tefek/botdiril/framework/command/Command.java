@@ -11,15 +11,17 @@ import cz.tefek.botdiril.framework.permission.EnumPowerLevel;
 @Retention(RUNTIME)
 @Target(TYPE)
 public @interface Command {
-    public String value();
-
-    public String[] aliases();
-
-    public EnumPowerLevel powerLevel() default EnumPowerLevel.EVERYONE;
-
-    public String description();
+    public String[] aliases() default {};
 
     public CommandCategory category();
 
+    public String description();
+
     public int levelLock() default 0;
+
+    public EnumPowerLevel powerLevel() default EnumPowerLevel.EVERYONE;
+
+    public EnumSpecialCommandProperty[] special() default {};
+
+    public String value();
 }

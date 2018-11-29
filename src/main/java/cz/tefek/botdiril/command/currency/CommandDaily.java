@@ -12,6 +12,9 @@ import cz.tefek.botdiril.framework.util.BigNumbers;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.items.Icons;
+import cz.tefek.botdiril.userdata.stat.EnumStat;
+import cz.tefek.botdiril.userdata.tempstat.Curser;
+import cz.tefek.botdiril.userdata.tempstat.EnumCurse;
 import cz.tefek.botdiril.userdata.timers.Timers;
 import cz.tefek.botdiril.userdata.xp.XPAdder;
 import cz.tefek.botdiril.userdata.xp.XPRewards;
@@ -43,7 +46,16 @@ public class CommandDaily
         var keys = lvl > 100 ? 5 : 3;
         co.ui.addKeys(keys);
 
+        if (Curser.isCursed(co, EnumCurse.CANT_TAKE_DAILY))
+        {
+            MR.send(co.textChannel, "***You prepare to check out your daily loot but some magical spell is preventing you from doing so.***");
+            co.ui.resetTimer(Timers.daily);
+            return;
+        }
+
         var str = String.format("**Here are your daily items:**\n%d xp\n%d %s\n%d %s\n%s %s\n%d %s", xp, coins, Icons.COIN, keks, Icons.KEK, BigNumbers.stringifyBoth(megakeks), Icons.MEGAKEK, keys, Icons.KEY);
+
+        co.po.incrementLong(EnumStat.TIMES_DAILY.getName());
 
         MR.send(co.textChannel, str);
     }

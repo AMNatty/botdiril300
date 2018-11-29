@@ -15,12 +15,50 @@ import cz.tefek.botdiril.userdata.items.Item;
 import cz.tefek.botdiril.userdata.items.ItemDrops;
 import cz.tefek.botdiril.userdata.items.ItemPickaxe;
 import cz.tefek.botdiril.userdata.items.Items;
+import cz.tefek.botdiril.userdata.items.ShopEntries;
+import cz.tefek.botdiril.userdata.stat.EnumStat;
+import cz.tefek.botdiril.userdata.tempstat.Curser;
+import cz.tefek.botdiril.userdata.tempstat.EnumBlessing;
+import cz.tefek.botdiril.userdata.tempstat.EnumCurse;
 import cz.tefek.botdiril.userdata.timers.Timers;
 import cz.tefek.botdiril.userdata.xp.XPAdder;
 
 @Command(value = "mine", aliases = {}, category = CommandCategory.INTERACTIVE, description = "Mine to get some sweet stuff.")
 public class CommandMine
 {
+    private static final Item[] minerals = { Items.coal, Items.iron, Items.copper, Items.gold, Items.platinum,
+            Items.uranium, Items.kekium, Items.emerald, Items.diamond };
+
+    private static void generateMinerals(ItemDrops drops, double budget, int iteration)
+    {
+        if (budget <= 0 || iteration > 20)
+            return;
+
+        var sum = 0L;
+
+        for (var mineral : minerals)
+        {
+            double sellVal = ShopEntries.getSellValue(mineral);
+            var roll = Botdiril.RDG.nextExponential(budget / sellVal / minerals.length);
+            var count = Math.round(roll);
+
+            if (count == 0)
+                continue;
+
+            sum += count * sellVal;
+            drops.addItem(mineral, count);
+        }
+
+        generateMinerals(drops, budget - sum, iteration + 1);
+    }
+
+    private static void generateMinerals(ItemDrops drops, ItemPickaxe pickaxe)
+    {
+        double budget = pickaxe.getPickaxeValue() * Botdiril.RDG.nextUniform(0.8, 1.25);
+
+        generateMinerals(drops, budget, 0);
+    }
+
     @CmdInvoke
     public static void mine(CallObj co)
     {
@@ -32,11 +70,8 @@ public class CommandMine
         loot.addItem(Items.keks, Math.round(roll + 10));
         loot.addItem(Items.coins, Math.round(roll * 10));
 
-        if (Botdiril.RDG.nextUniform(0, 1) > 0.9)
+        if (tryChance(0.9, 0))
             loot.addItem(Items.keys, 1);
-
-        if (Botdiril.RDG.nextUniform(0, 1) > 0.99999)
-            loot.addItem(Items.gemdiril, 1);
 
         var xp = Math.round((roll + 1000) / 8);
 
@@ -45,6 +80,8 @@ public class CommandMine
         loot.stream().forEach(ip -> co.ui.addItem(ip.getItem(), ip.getAmount()));
 
         var lootStr = loot.stream().map(ip -> "**" + ip.getAmount() + "** **" + ip.getItem().inlineDescription() + "**").collect(Collectors.joining(", ")) + " and **" + xp + " XP**";
+
+        co.po.incrementLong(EnumStat.TIMES_MINED.getName());
 
         MR.send(co.textChannel, "You are mining without a pickaxe.\nYou found " + lootStr);
     }
@@ -66,44 +103,60 @@ public class CommandMine
             throw new CommandException("You don't have that pickaxe.");
         }
 
-        co.ui.addItem(item, -1);
-
-        var roll = Botdiril.RDG.nextExponential(Math.pow((co.ui.getLevel() + 600) / 150.0, 2)) + 1;
+        var formatStr = "You are mining with a **%s**.\nYou found %s.";
 
         var pick = (ItemPickaxe) item;
 
-        var loot = new ItemDrops();
-        loot.addItem(Items.keks, Math.round(Math.pow(roll * 10, 0.9)) * pick.getMultiplier());
-        loot.addItem(Items.coins, Math.round(roll * 10) * pick.getMultiplier());
+        var chanceToBreak = Curser.isCursed(co, EnumCurse.DOUBLE_PICKAXE_BREAK_CHANCE) ? pick.getChanceToBreak() * 2
+                : pick.getChanceToBreak();
 
-        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.9, 0.5 + Math.log10(pick.getMultiplier())))
+        if (tryChance(chanceToBreak) && !Curser.isBlessed(co, EnumBlessing.UNBREAKABLE_PICKAXE))
+        {
+            formatStr += "\n**You broke the " + pick.inlineDescription() + " while mining.**";
+            co.ui.addItem(item, -1);
+            co.po.incrementLong(EnumStat.PICKAXES_BROKEN.getName());
+        }
+
+        if (Curser.isBlessed(co, EnumBlessing.MINE_SURGE) && tryChance(0.4))
+        {
+            formatStr += "\n*You mine with such precision that you feel like mining again instantly.*";
+            co.ui.resetTimer(Timers.mine);
+        }
+
+        var mult = pick.getMultiplier();
+
+        var loot = new ItemDrops();
+
+        generateMinerals(loot, pick);
+
+        if (tryChance(0.05, mult))
             loot.addItem(Items.keys, 1);
 
-        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.99, 0.5 + Math.log10(pick.getMultiplier())))
+        if (tryChance(0.01, mult))
             loot.addItem(Items.redGem, 1);
 
-        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.99, 0.5 + Math.log10(pick.getMultiplier())))
+        if (tryChance(0.01, mult))
             loot.addItem(Items.greenGem, 1);
 
-        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.999, 0.5 + Math.log10(pick.getMultiplier())))
+        if (tryChance(0.001, mult))
             loot.addItem(Items.blueGem, 1);
 
-        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.999, 0.5 + Math.log10(pick.getMultiplier())))
+        if (tryChance(0.001, mult))
             loot.addItem(Items.purpleGem, 1);
 
-        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.9998, 0.5 + Math.log10(pick.getMultiplier())))
+        if (tryChance(0.0002, mult))
             loot.addItem(Items.rainbowGem, 1);
 
-        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.9998, 0.5 + Math.log10(pick.getMultiplier())))
+        if (tryChance(0.0002, mult))
             loot.addItem(Items.blackGem, 1);
 
-        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.99995, 0.5 + Math.log10(pick.getMultiplier())))
+        if (tryChance(0.00003, mult))
             loot.addItem(Items.gemdiril, 1);
 
-        if (Botdiril.RDG.nextUniform(0, 1) > Math.pow(0.99993, 0.5 + Math.log10(pick.getMultiplier())))
+        if (tryChance(0.00001, mult))
             loot.addItem(Items.scrollOfIntelligenceII, 1);
 
-        var xp = Math.round((roll / 1.5 + 300) * Math.pow(pick.getMultiplier(), 0.25));
+        var xp = Math.round(Math.pow(14, 1.8 + mult / 2.25));
 
         XPAdder.addXP(co, xp);
 
@@ -111,6 +164,20 @@ public class CommandMine
 
         var lootStr = loot.stream().map(ip -> "**" + ip.getAmount() + "** **" + ip.getItem().inlineDescription() + "**").collect(Collectors.joining(", ")) + " and **" + xp + " XP**";
 
-        MR.send(co.textChannel, String.format("You are mining with a **%s**.\nYou found %s.", item.inlineDescription(), lootStr));
+        co.po.incrementLong(EnumStat.TIMES_MINED.getName());
+
+        MR.send(co.textChannel, String.format(formatStr, item.inlineDescription(), Curser.isCursed(co, EnumCurse.CANT_SEE_MINED_STUFF)
+                ? "*<something?>*"
+                : lootStr));
+    }
+
+    private static boolean tryChance(double chance)
+    {
+        return Botdiril.RDG.nextUniform(0, 1) > 1 - chance;
+    }
+
+    private static boolean tryChance(double chance, double pickaxe)
+    {
+        return tryChance(1 - Math.pow(1 - chance, 1 + pickaxe));
     }
 }

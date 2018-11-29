@@ -17,6 +17,7 @@ import cz.tefek.botdiril.userdata.UserInventory;
 import cz.tefek.botdiril.userdata.items.Item;
 import cz.tefek.botdiril.userdata.items.ItemCurrency;
 import cz.tefek.botdiril.userdata.items.ItemPair;
+import cz.tefek.botdiril.userdata.items.Items;
 import cz.tefek.botdiril.userdata.items.ShopEntries;
 
 @Command(value = "inventory", aliases = { "inv",
@@ -83,14 +84,23 @@ public class CommandInventory
         // Sort by value
         isc.sorted((i1, i2) ->
         {
-            if (!ShopEntries.canBeBought(i2.getItem()) && !ShopEntries.canBeBought(i1.getItem()))
+            if (Items.leagueItems.contains(i1.getItem()) && Items.leagueItems.contains(i2.getItem()))
                 return Integer.MIN_VALUE;
+
+            if (Items.leagueItems.contains(i1.getItem()))
+                return Integer.MAX_VALUE;
+
+            if (Items.leagueItems.contains(i2.getItem()))
+                return Integer.MIN_VALUE;
+
+            if (!ShopEntries.canBeBought(i2.getItem()) && !ShopEntries.canBeBought(i1.getItem()))
+                return Integer.MIN_VALUE + 1;
 
             if (!ShopEntries.canBeBought(i2.getItem()))
-                return Integer.MIN_VALUE;
+                return Integer.MIN_VALUE + 1;
 
             if (!ShopEntries.canBeBought(i1.getItem()))
-                return Integer.MAX_VALUE;
+                return Integer.MAX_VALUE - 1;
 
             return Long.compare(ShopEntries.getCoinPrice(i2.getItem()), ShopEntries.getCoinPrice(i1.getItem()));
         }).limit(ITEMS_PER_PAGE).forEach(ip ->
@@ -160,14 +170,23 @@ public class CommandInventory
 
         isc.sorted((i1, i2) ->
         {
-            if (!ShopEntries.canBeBought(i2.getItem()) && !ShopEntries.canBeBought(i1.getItem()))
+            if (Items.leagueItems.contains(i1.getItem()) && Items.leagueItems.contains(i2.getItem()))
                 return Integer.MIN_VALUE;
+
+            if (Items.leagueItems.contains(i1.getItem()))
+                return Integer.MAX_VALUE;
+
+            if (Items.leagueItems.contains(i2.getItem()))
+                return Integer.MIN_VALUE;
+
+            if (!ShopEntries.canBeBought(i2.getItem()) && !ShopEntries.canBeBought(i1.getItem()))
+                return Integer.MIN_VALUE + 1;
 
             if (!ShopEntries.canBeBought(i2.getItem()))
-                return Integer.MIN_VALUE;
+                return Integer.MIN_VALUE + 1;
 
             if (!ShopEntries.canBeBought(i1.getItem()))
-                return Integer.MAX_VALUE;
+                return Integer.MAX_VALUE - 1;
 
             return Long.compare(ShopEntries.getCoinPrice(i2.getItem()), ShopEntries.getCoinPrice(i1.getItem()));
         }).skip((page - 1) * ITEMS_PER_PAGE).limit(ITEMS_PER_PAGE).forEach(ip ->

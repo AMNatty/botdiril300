@@ -3,19 +3,44 @@ package cz.tefek.botdiril;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import cz.tefek.botdiril.framework.command.CallObj;
-import cz.tefek.botdiril.framework.command.CommandParser;
-import cz.tefek.botdiril.framework.util.BH;
-import cz.tefek.botdiril.serverdata.ServerPreferences;
-import cz.tefek.botdiril.userdata.UserInventory;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.events.ReadyEvent;
 import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
+import cz.tefek.botdiril.command.general.CommandAlias;
+import cz.tefek.botdiril.framework.command.CallObj;
+import cz.tefek.botdiril.framework.command.CommandParser;
+import cz.tefek.botdiril.framework.util.BH;
+import cz.tefek.botdiril.serverdata.ServerPreferences;
+import cz.tefek.botdiril.userdata.UserInventory;
+import cz.tefek.botdiril.userdata.properties.PropertyObject;
+
 public class EventBus extends ListenerAdapter
 {
+    private static final String PLAYING = "www.tefek.cz";
+
+    @Override
+    public void onGuildJoin(GuildJoinEvent event)
+    {
+        var g = event.getGuild();
+
+        BotMain.logger.info("Joining guild " + g);
+
+        var sc = ServerPreferences.getConfigByGuild(g.getIdLong());
+        if (sc == null)
+        {
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run()
+                {
+                    ServerPreferences.addGuild(g);
+                }
+            }, 5000);
+        }
+    }
+
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent event)
     {
@@ -39,6 +64,12 @@ public class EventBus extends ListenerAdapter
             co.jda = jda;
             co.sc = ServerPreferences.getConfigByGuild(co.guild.getIdLong());
             co.bot = botUser;
+            co.po = new PropertyObject(co.caller.getIdLong());
+
+            CommandAlias.allAliases(co.po).forEach((src, repl) ->
+            {
+                co.contents = co.contents.replace(src, repl);
+            });
 
             if (BH.findPrefix(guild, co))
             {
@@ -46,10 +77,11 @@ public class EventBus extends ListenerAdapter
 
                 CommandParser.parse(co);
             }
+
+            if (!co.po.isAutocloseDisabled())
+                co.po.close();
         }
     }
-
-    private static final String PLAYING = "www.tefek.cz";
 
     @Override
     public void onReady(ReadyEvent event)
@@ -64,25 +96,5 @@ public class EventBus extends ListenerAdapter
                 ServerPreferences.addGuild(g);
             }
         });
-    }
-
-    @Override
-    public void onGuildJoin(GuildJoinEvent event)
-    {
-        var g = event.getGuild();
-
-        BotMain.logger.info("Joining guild " + g);
-
-        var sc = ServerPreferences.getConfigByGuild(g.getIdLong());
-        if (sc == null)
-        {
-            new Timer().schedule(new TimerTask() {
-                @Override
-                public void run()
-                {
-                    ServerPreferences.addGuild(g);
-                }
-            }, 5000);
-        }
     }
 }

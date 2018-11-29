@@ -1,5 +1,7 @@
 package cz.tefek.botdiril.userdata.timers;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Timers
@@ -13,15 +15,17 @@ public class Timers
     public static Timer gambleXP;
     public static Timer nicknamechange;
 
+    public static List<Timer> allTimers = new ArrayList<>();
+
     public static void load()
     {
-        daily = new Timer("daily", TimeUnit.HOURS.toMillis(22));
-        mine = new Timer("mine", TimeUnit.MINUTES.toMillis(5));
-        draw = new Timer("draw", TimeUnit.MINUTES.toMillis(6));
-        farm = new Timer("farm", TimeUnit.MINUTES.toMillis(9));
-        steal = new Timer("steal", TimeUnit.HOURS.toMillis(1));
-        payout = new Timer("payout", TimeUnit.MINUTES.toMillis(2));
-        gambleXP = new Timer("gamblexp", TimeUnit.SECONDS.toMillis(50));
-        nicknamechange = new Timer("nicknamechange", TimeUnit.DAYS.toMillis(30));
+        daily = new Timer("daily", "Daily", TimeUnit.HOURS.toMillis(22));
+        mine = new Timer("mine", "Mine", TimeUnit.MINUTES.toMillis(2));
+        draw = new Timer("draw", "Draw", TimeUnit.MINUTES.toMillis(6));
+        farm = new Timer("farm", "Farm", TimeUnit.MINUTES.toMillis(9));
+        steal = new Timer("steal", "Steal / Nuke", TimeUnit.HOURS.toMillis(1));
+        payout = new Timer("payout", "Payout", TimeUnit.MINUTES.toMillis(1));
+        gambleXP = new Timer("gamblexp", "Gambling XP", TimeUnit.SECONDS.toMillis(50));
+        nicknamechange = new Timer("nicknamechange", "Nickname Change", TimeUnit.DAYS.toMillis(30));
     }
 }

@@ -12,6 +12,8 @@ import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.IIdentifiable;
 import cz.tefek.botdiril.userdata.card.Card;
 import cz.tefek.botdiril.userdata.pools.CardPools;
+import cz.tefek.botdiril.userdata.tempstat.Curser;
+import cz.tefek.botdiril.userdata.tempstat.EnumCurse;
 import cz.tefek.botdiril.userdata.timers.Timers;
 import cz.tefek.botdiril.userdata.xp.XPRewards;
 
@@ -31,6 +33,12 @@ public class CommandDraw
 
         for (int i = 0; i < XPRewards.getLevel(co.ui.getLevel()).getDrawPotency() - 1; i++)
         {
+            if (Curser.isCursed(co, EnumCurse.CURSE_OF_YASUO))
+            {
+                lc.add(Card.getCardByName("yasuo"));
+                continue;
+            }
+
             lc.add((Card) CardPools.basicToLimited.draw().draw());
         }
 

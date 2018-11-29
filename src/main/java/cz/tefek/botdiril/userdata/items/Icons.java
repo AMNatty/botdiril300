@@ -58,9 +58,10 @@ public class Icons
     // CRATES
 
     public static final String CRATE_BASIC = "<:basiccrate:446996800524779542>";
+    public static final String CRATE_IRON = "<:ironcrate:517166675527991337>";
     public static final String CRATE_UNCOMMON = "<:uncommoncrate:446996800554139669>";
-    public static final String CRATE_GOLDEN = "<:goldencrate:446996800348487692>";
     public static final String CRATE_EPIC = "<:epiccrate:446996800746946560>";
+    public static final String CRATE_GOLDEN = "<:goldencrate:446996800348487692>";
     public static final String CRATE_LEGENDARY = "<:legendarycrate:446996800331841538>";
     public static final String CRATE_ULTIMATE = "<:ultimatecrate:480085821588897802>";
     public static final String CRATE_HYPER = "<:hypercrate:480088276573749258>";
@@ -116,4 +117,15 @@ public class Icons
     // OTHER ICONS
     public static final String OTHER_KEKOVERDRIVE = "<a:kekoverdrive:506028888388796427>";
     public static final String OTHER_THEFAST = "<:thefast:506032106154098698>";
+
+    // MINING ITEMS
+    public static final String MINE_COAL = "<:coal:516740098289565696>";
+    public static final String MINE_COPPER = "<:copper:516727755761516584>";
+    public static final String MINE_IRON = "<:iron:516727755476303884>";
+    public static final String MINE_GOLD = "<:gold:516727755174313999>";
+    public static final String MINE_PLATINUM = "<:platinum:516727755207868438>";
+    public static final String MINE_URANIUM = "<:uranium:516727755702796338>";
+    public static final String MINE_KEKIUM = "<:kekium:516727755623366656>";
+    public static final String MINE_EMERALD = "<:emerald:516720456213200897>";
+    public static final String MINE_DIAMOND = "<:diamond:516714837624094741>";
 }

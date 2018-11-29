@@ -30,8 +30,13 @@ public class CommandCardInfo
         eb.setColor(0x008080);
         var emID = Pattern.compile("[0-9]+").matcher(card.getIcon());
         emID.find();
-        var imgUrl = co.jda.getEmoteById(Long.parseLong(emID.group())).getImageUrl();
-        eb.setThumbnail(imgUrl);
+
+        var emote = co.jda.getEmoteById(Long.parseLong(emID.group()));
+        if (emote != null)
+        {
+            var imgUrl = emote.getImageUrl();
+            eb.setThumbnail(imgUrl);
+        }
 
         eb.setDescription(card.getDescription());
 
@@ -53,17 +58,13 @@ public class CommandCardInfo
         if (ShopEntries.canBeBoughtForTokens(card))
             eb.addField(new Field("Exchanges for:", ShopEntries.getTokenPrice(card) + " " + EnumCurrency.TOKENS.getIcon(), true));
 
-        var ce = CraftingEntries.search(card);
+        var recipe = CraftingEntries.search(card);
 
-        if (ce != null)
+        if (recipe != null)
         {
-            var craft = ce.getComponents().stream().map(ip ->
-            {
-                return ip.getAmount() + " " + ip.getItem().inlineDescription();
-            }).collect(Collectors.joining(", "));
-
-            if (ShopEntries.canBeDisenchanted(card))
-                eb.addField(new Field("Crafts from:", craft, true));
+            var components = recipe.getComponents();
+            var recipeParts = components.stream().map(comp -> String.format("**%d %s**", comp.getAmount(), comp.getItem().inlineDescription())).collect(Collectors.joining(" + "));
+            eb.addField("Crafts from", recipeParts, false);
         }
 
         if (ShopEntries.canBeDisenchanted(card))
