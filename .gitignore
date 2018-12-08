@@ -1,6 +1,8 @@
-.settings
-logs
-target
-settings.json
-.project
-.classpath
+/.settings
+/logs
+/target
+/settings.json
+/.project
+/.classpath
+/*.log
+/uss_data
