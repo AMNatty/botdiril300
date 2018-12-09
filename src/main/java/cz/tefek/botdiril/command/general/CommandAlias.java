@@ -52,9 +52,9 @@ public class CommandAlias
 
         CommandAssert.stringNotTooLong(source, 48, "Alias source shouldn't be longer than 48 characters!");
 
-        if (source.length() < 8)
+        if (source.length() < 5)
         {
-            throw new CommandException("Alias source shouldn't be shorter than 8 characters!");
+            throw new CommandException("Alias source shouldn't be shorter than 5 characters!");
         }
 
         CommandAssert.stringNotTooLong(replacement, 64, "Alias replacement shouldn't be longer than 64 characters!");

@@ -25,29 +25,30 @@ public class ItemScrollOfSwapping extends Item implements IOpenable
     public void open(CallObj co, long amount)
     {
         co.ui.addItem(this, amount - 1);
-         
+
         // red -> green
         // green -> red
         var red = co.ui.howManyOf(Items.redGem);
         var green = co.ui.howManyOf(Items.greenGem);
         co.ui.setItem(Items.redGem, green);
         co.ui.setItem(Items.greenGem, red);
-        
+
         // blue -> purple
         // purple -> blue
         var blue = co.ui.howManyOf(Items.blueGem);
         var purple = co.ui.howManyOf(Items.purpleGem);
         co.ui.setItem(Items.purpleGem, blue);
         co.ui.setItem(Items.blueGem, purple);
-        
+
         // black -> rainbow
         // rainbow -> black        
         var black = co.ui.howManyOf(Items.blackGem);
         var rainbow = co.ui.howManyOf(Items.rainbowGem);
         co.ui.setItem(Items.rainbowGem, black);
         co.ui.setItem(Items.blackGem, rainbow);
-     
-        
+
         MR.send(co.textChannel, "**You reversed your gems!**");
+
+        co.po.close();
     }
 }

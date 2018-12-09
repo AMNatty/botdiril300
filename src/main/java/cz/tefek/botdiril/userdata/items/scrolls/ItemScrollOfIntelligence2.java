@@ -21,6 +21,8 @@ public class ItemScrollOfIntelligence2 extends Item implements IOpenable
         var xpNeeded = XPRewards.getXPNeededForLvlUp(co.ui.getLevel(), co.ui.getXP());
 
         XPAdder.addXP(co, xpNeeded);
+
+        co.po.close();
     }
 
 }

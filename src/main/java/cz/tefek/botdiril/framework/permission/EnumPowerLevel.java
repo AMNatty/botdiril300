@@ -20,7 +20,8 @@ public enum EnumPowerLevel
     SUPERUSER("SuperUser", "Grants access to some administrator commands. All administrators have this execution level by default. Assignable by a role.", ELEVATED, (member, channel) -> member.hasPermission(Permission.ADMINISTRATOR), true, 2),
     SUPERUSER_OVERRIDE("Executive SuperUser", "Grants (almost) full control of the bot. Executive SuperUsers can be only defined by the bot developer.", SUPERUSER, (member, channel) -> BotMain.config.getSuperuserOverrideIDs().contains(member.getUser().getIdLong()), false, 3),
     SUPERUSER_OWNER("Executive Bot Owner", "Full control of the bot.", SUPERUSER_OVERRIDE, (member, channel) -> member.getUser().getIdLong() == Botdiril.AUTHOR_ID, false, 4),
-    VIP("VIP", "Grants special perks. Assignable by a role.", EVERYONE, (member, channel) -> false, true, 6);
+    VIP("VIP", "Grants special perks. Assignable by a role.", EVERYONE, (member, channel) -> false, true, 6),
+    VIP_PLUS("VIP+", "Grants more special perks. Assignable by a role.", VIP, (member, channel) -> false, true, 7);
 
     public static EnumPowerLevel getByID(int id)
     {

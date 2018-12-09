@@ -31,6 +31,8 @@ public class ItemScrollOfIntelligence extends Item implements IOpenable
     {
         MR.send(co.textChannel, MessageFormat.format("You read the **{0}**... **[+{1} XP]**", this.inlineDescription(), amount * XP));
         XPAdder.addXP(co, XP * amount);
+
+        co.po.close();
     }
 
 }

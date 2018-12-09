@@ -13,7 +13,7 @@ import cz.tefek.botdiril.framework.permission.EnumPowerLevel;
 public @interface Command {
     public String[] aliases() default {};
 
-    public CommandCategory category();
+    public CommandCategory category() default CommandCategory.GENERAL;
 
     public String description();
 

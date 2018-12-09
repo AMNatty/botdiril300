@@ -22,6 +22,7 @@ import cz.tefek.botdiril.userdata.items.ItemPair;
 import cz.tefek.botdiril.userdata.stat.EnumStat;
 import cz.tefek.botdiril.userdata.tempstat.Curser;
 import cz.tefek.botdiril.userdata.tempstat.EnumBlessing;
+import cz.tefek.botdiril.userdata.tempstat.EnumCurse;
 
 @Command(value = "craft", aliases = {}, category = CommandCategory.ITEMS, description = "Craft stuff.", levelLock = 2)
 public class CommandCraft
@@ -69,7 +70,7 @@ public class CommandCraft
                 throw new CommandException(String.format("You are missing %s for this crafting.", missingStr));
             }
 
-            if (Curser.isBlessed(co, EnumBlessing.MINE_SURGE))
+            if (Curser.isBlessed(co, EnumBlessing.CRAFTING_SURGE))
             {
                 for (int i = 0; i < amount; i++)
                 {
@@ -86,7 +87,7 @@ public class CommandCraft
 
             var ingr = components.stream().map(ip -> String.format("**%d** **%s**", ip.getAmount() * amount, ip.getItem().inlineDescription())).collect(Collectors.joining(", "));
 
-            if (Curser.isBlessed(co, EnumBlessing.MINE_SURGE) && Botdiril.RDG.nextUniform(0, 1) < 0.2)
+            if (Curser.isCursed(co, EnumCurse.CRAFTING_MAY_FAIL) && Botdiril.RDG.nextUniform(0, 1) < 0.2)
             {
                 MR.send(co.textChannel, String.format("*You failed horribly while crafting and lost %s.*", ingr));
                 return;
