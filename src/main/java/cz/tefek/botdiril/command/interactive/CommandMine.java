@@ -32,7 +32,9 @@ public class CommandMine
     private static void generateMinerals(ItemDrops drops, double budget, int iteration)
     {
         if (budget <= 0 || iteration > 20)
+        {
             return;
+        }
 
         var sum = 0L;
 
@@ -43,7 +45,9 @@ public class CommandMine
             var count = Math.round(roll);
 
             if (count == 0)
+            {
                 continue;
+            }
 
             sum += count * sellVal;
             drops.addItem(mineral, count);
@@ -52,11 +56,9 @@ public class CommandMine
         generateMinerals(drops, budget - sum, iteration + 1);
     }
 
-    private static void generateMinerals(ItemDrops drops, ItemPickaxe pickaxe)
+    private static void generateMinerals(ItemDrops drops, long pickaxeBudget)
     {
-        double budget = pickaxe.getPickaxeValue() * Botdiril.RDG.nextUniform(0.8, 1.25);
-
-        generateMinerals(drops, budget, 0);
+        generateMinerals(drops, pickaxeBudget * Botdiril.RDG.nextUniform(0.8, 1.25), 0);
     }
 
     @CmdInvoke
@@ -70,8 +72,24 @@ public class CommandMine
         loot.addItem(Items.keks, Math.round(roll + 10));
         loot.addItem(Items.coins, Math.round(roll * 10));
 
-        if (tryChance(0.9, 0))
-            loot.addItem(Items.keys, 1);
+        if (tryChance(0.30, 0))
+        {
+            if (tryChance(0.9, 0))
+            {
+                loot.addItem(Items.keys, 1);
+            }
+            else
+            {
+                if (tryChance(0.95, 0))
+                {
+                    loot.addItem(Items.oil, 1);
+                }
+                else
+                {
+                    loot.addItem(Items.goldenOil, 1);
+                }
+            }
+        }
 
         var xp = Math.round((roll + 1000) / 8);
 
@@ -103,18 +121,43 @@ public class CommandMine
             throw new CommandException("You don't have that pickaxe.");
         }
 
-        var formatStr = "You are mining with a **%s**.\nYou found %s.";
-
         var pick = (ItemPickaxe) item;
+
+        var mult = pick.getMultiplier();
+        var pickaxeBudget = pick.getPickaxeValue();
+
+        String formatStr;
+        var repairKitCount = co.ui.howManyOf(Items.repairKit);
+
+        if (repairKitCount > 0 || mult < 2.5)
+        {
+            formatStr = "You are mining with a **%s**.\nYou found %s.";
+        }
+        else
+        {
+            formatStr = "You are mining with a **%s** and *without a repair kit* for additional rewards.\nYou found %s.";
+            mult += 1;
+            pickaxeBudget *= 3;
+        }
 
         var chanceToBreak = Curser.isCursed(co, EnumCurse.DOUBLE_PICKAXE_BREAK_CHANCE) ? pick.getChanceToBreak() * 2
                 : pick.getChanceToBreak();
 
         if (tryChance(chanceToBreak) && !Curser.isBlessed(co, EnumBlessing.UNBREAKABLE_PICKAXE))
         {
-            formatStr += "\n**You broke the " + pick.inlineDescription() + " while mining.**";
-            co.ui.addItem(item, -1);
-            co.po.incrementLong(EnumStat.PICKAXES_BROKEN.getName());
+            if (repairKitCount > 0)
+            {
+                co.po.incrementLong(EnumStat.REPAIR_KITS_USED.getName());
+                co.ui.addItem(Items.repairKit, -1);
+                formatStr += "\n**A " + Items.repairKit.inlineDescription() + " saved you from breaking your " + pick.inlineDescription() + " while mining.**";
+            }
+            else
+            {
+
+                formatStr += "\n**You broke the " + pick.inlineDescription() + " while mining.**";
+                co.ui.addItem(item, -1);
+                co.po.incrementLong(EnumStat.PICKAXES_BROKEN.getName());
+            }
         }
 
         if (Curser.isBlessed(co, EnumBlessing.MINE_SURGE) && tryChance(0.4))
@@ -123,38 +166,71 @@ public class CommandMine
             co.ui.resetTimer(Timers.mine);
         }
 
-        var mult = pick.getMultiplier();
-
         var loot = new ItemDrops();
 
-        generateMinerals(loot, pick);
+        generateMinerals(loot, pickaxeBudget);
 
-        if (tryChance(0.05, mult))
+        if (tryChance(0.02, 0))
+        {
+            loot.addItem(Items.timewarpCrystal, 1);
+        }
+
+        if (tryChance(0.03, mult / 2))
+        {
             loot.addItem(Items.keys, 1);
+        }
 
         if (tryChance(0.01, mult))
+        {
             loot.addItem(Items.redGem, 1);
+        }
+
+        if (tryChance(0.015, 0))
+        {
+            if (tryChance(0.9, 0))
+            {
+                loot.addItem(Items.oil, 1);
+            }
+            else
+            {
+                loot.addItem(Items.goldenOil, 1);
+            }
+        }
 
         if (tryChance(0.01, mult))
+        {
             loot.addItem(Items.greenGem, 1);
+        }
 
         if (tryChance(0.001, mult))
+        {
             loot.addItem(Items.blueGem, 1);
+        }
 
         if (tryChance(0.001, mult))
+        {
             loot.addItem(Items.purpleGem, 1);
+        }
 
         if (tryChance(0.0002, mult))
+        {
             loot.addItem(Items.rainbowGem, 1);
+        }
 
         if (tryChance(0.0002, mult))
+        {
             loot.addItem(Items.blackGem, 1);
+        }
 
         if (tryChance(0.00003, mult))
-            loot.addItem(Items.gemdiril, 1);
+        {
+            loot.addItem(Items.scrollOfIntelligenceII, 1);
+        }
 
         if (tryChance(0.00001, mult))
-            loot.addItem(Items.scrollOfIntelligenceII, 1);
+        {
+            loot.addItem(Items.gemdiril, 1);
+        }
 
         var xp = Math.round(Math.pow(14, 1.8 + mult / 2.25));
 

@@ -3,7 +3,7 @@ package cz.tefek.botdiril.userdata.random;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
 
-import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.api.EmbedBuilder;
 
 import cz.tefek.botdiril.Botdiril;
 import cz.tefek.botdiril.framework.command.CallObj;

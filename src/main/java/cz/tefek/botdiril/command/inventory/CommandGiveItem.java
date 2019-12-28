@@ -1,7 +1,7 @@
 package cz.tefek.botdiril.command.inventory;
 
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.User;
 
 import cz.tefek.botdiril.Botdiril;
 import cz.tefek.botdiril.framework.command.CallObj;

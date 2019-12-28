@@ -16,7 +16,8 @@ public enum EnumStat
     BIGGEST_PAYOUT("stat_maxpayout", "Most keks paid out"),
     BIGGEST_STEAL("stat_maxsteal", "Most coins stolen"),
     BIGGEST_NUKE("stat_maxnuke", "Most keks nuked away"),
-    PICKAXES_BROKEN("stat_pickaxesbroken", "Pickaxes broken");
+    PICKAXES_BROKEN("stat_pickaxesbroken", "Pickaxes broken"),
+    REPAIR_KITS_USED("stat_repairkitsused", "Pickaxe repair kits used");
 
     private String name;
     private String localizedName;

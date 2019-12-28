@@ -3,12 +3,12 @@ package cz.tefek.botdiril.framework.util;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
-import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.entities.Guild;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.Role;
-import net.dv8tion.jda.core.entities.TextChannel;
-import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Role;
+import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.User;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -32,25 +32,33 @@ public class CommandAssert
     public static void assertEquals(Object o1, Object o2, String errorMessage) throws CommandException
     {
         if (!o1.equals(o2))
+        {
             throw new CommandException(errorMessage);
+        }
     }
 
     public static void assertIdentity(Object o1, Object o2, String errorMessage) throws CommandException
     {
         if (o1 != o2)
+        {
             throw new CommandException(errorMessage);
+        }
     }
 
     public static void assertNotEquals(Object o1, Object o2, String errorMessage) throws CommandException
     {
         if (o1.equals(o2))
+        {
             throw new CommandException(errorMessage);
+        }
     }
 
     public static void assertNotIdentity(Object o1, Object o2, String errorMessage) throws CommandException
     {
         if (o1 == o2)
+        {
             throw new CommandException(errorMessage);
+        }
     }
 
     // INTS
@@ -77,37 +85,49 @@ public class CommandAssert
     public static void assertTrue(boolean b, String errorMessage) throws CommandException
     {
         if (!b)
+        {
             throw new CommandException(errorMessage);
+        }
     }
 
     public static void matchesRegex(String s, String regex, String errorMessage) throws CommandException
     {
         if (s.matches(regex))
+        {
             throw new CommandException(errorMessage);
+        }
     }
 
     public static void numberInBoundsExclusiveD(double number, double levelMin, double levelMax, String errorMessage) throws CommandException
     {
         if (number <= levelMin || number >= levelMax)
+        {
             throw new CommandException(errorMessage);
+        }
     }
 
     public static void numberInBoundsExclusiveL(long number, long levelMin, long levelMax, String errorMessage) throws CommandException
     {
         if (number <= levelMin || number >= levelMax)
+        {
             throw new CommandException(errorMessage);
+        }
     }
 
     public static void numberInBoundsInclusiveD(double number, double levelMin, double levelMax, String errorMessage) throws CommandException
     {
         if (number < levelMin || number > levelMax)
+        {
             throw new CommandException(errorMessage);
+        }
     }
 
     public static void numberInBoundsInclusiveL(long number, long levelMin, long levelMax, String errorMessage) throws CommandException
     {
         if (number < levelMin || number > levelMax)
+        {
             throw new CommandException(errorMessage);
+        }
     }
 
     // DOUBLES
@@ -115,37 +135,49 @@ public class CommandAssert
     public static void numberMoreThanZeroD(double number, String errorMessage) throws CommandException
     {
         if (!(number > 0))
+        {
             throw new CommandException(errorMessage);
+        }
     }
 
     public static void numberMoreThanZeroL(long number, String errorMessage) throws CommandException
     {
         if (!(number > 0))
+        {
             throw new CommandException(errorMessage);
+        }
     }
 
     public static void numberNotAboveD(double number, double level, String errorMessage) throws CommandException
     {
         if (number > level)
+        {
             throw new CommandException(errorMessage);
+        }
     }
 
     public static void numberNotAboveL(long number, long level, String errorMessage) throws CommandException
     {
         if (number > level)
+        {
             throw new CommandException(errorMessage);
+        }
     }
 
     public static void numberNotBelowD(double number, double level, String errorMessage) throws CommandException
     {
         if (number < level)
+        {
             throw new CommandException(errorMessage);
+        }
     }
 
     public static void numberNotBelowL(long number, long level, String errorMessage) throws CommandException
     {
         if (number < level)
+        {
             throw new CommandException(errorMessage);
+        }
     }
 
     // STRINGS
@@ -155,7 +187,9 @@ public class CommandAssert
         var it = Achievement.getByName(name);
 
         if (it == null)
+        {
             throw new CommandException("Achievement with that name was not found.");
+        }
 
         return it;
     }
@@ -230,7 +264,9 @@ public class CommandAssert
             var exp = BigNumbers.getExpForName(ds[1].toLowerCase());
 
             if (exp == null)
+            {
                 throw new CommandException(errorMessage + "\nInvalid large number name.");
+            }
 
             amountString = ds[0] + "e" + exp;
         }
@@ -240,10 +276,14 @@ public class CommandAssert
             amount = new BigDecimal(amountString).toBigIntegerExact();
 
             if (amount.signum() == -1)
+            {
                 throw new CommandException(errorMessage + "\nA negative number was entered, they are not supported here.");
+            }
 
             if (amount.compareTo(base) == 1)
+            {
                 throw new CommandException("That's more than you have!");
+            }
 
             return amount;
         }
@@ -365,7 +405,9 @@ public class CommandAssert
         var card = Card.getCardByName(cname);
 
         if (card == null)
+        {
             throw new CommandException("Card with that name was not found.");
+        }
 
         return card;
     }
@@ -375,9 +417,13 @@ public class CommandAssert
         var cmd = CommandStorage.search(arg);
 
         if (cmd == null)
+        {
             throw new CommandException("No such command.");
+        }
         else
+        {
             return cmd;
+        }
     }
 
     public static CommandCategory parseCommandGroup(String name)
@@ -385,7 +431,9 @@ public class CommandAssert
         var cg = Arrays.stream(CommandCategory.values()).filter(cc -> cc.toString().equalsIgnoreCase(name.trim())).findFirst();
 
         if (!cg.isPresent())
+        {
             throw new CommandException("No such command group.");
+        }
 
         return cg.get();
     }
@@ -425,7 +473,9 @@ public class CommandAssert
         var it = Item.getItemByName(name);
 
         if (it == null)
+        {
             throw new CommandException("Item with that name was not found.");
+        }
 
         return it;
     }
@@ -435,12 +485,16 @@ public class CommandAssert
         var it = Item.getItemByName(name);
 
         if (it != null)
+        {
             return it;
+        }
 
         var ct = Card.getCardByName(name);
 
         if (ct != null)
+        {
             return ct;
+        }
 
         throw new CommandException("Could not find card or an item with that ID.");
     }
@@ -507,9 +561,13 @@ public class CommandAssert
             var rbn = g.getRolesByName(msg.trim(), true);
 
             if (rbn.size() == 1)
+            {
                 return rbn.get(0);
+            }
             else if (rbn.size() > 1)
+            {
                 throw new CommandException("There is too many roles with that name, try mentioning the role or using its id.");
+            }
 
             var m = Pattern.compile("[0-9]+").matcher(msg);
 
@@ -610,10 +668,14 @@ public class CommandAssert
     public static void stringNotEmptyOrNull(String s, String errorMessage) throws CommandException
     {
         if (s == null)
+        {
             throw new CommandException(errorMessage);
+        }
 
         if (s.isEmpty())
+        {
             throw new CommandException(errorMessage);
+        }
 
     }
 
@@ -622,6 +684,8 @@ public class CommandAssert
     public static void stringNotTooLong(String s, int length, String errorMessage) throws CommandException
     {
         if (s.length() > length)
+        {
             throw new CommandException(errorMessage);
+        }
     }
 }

@@ -3,6 +3,8 @@ package cz.tefek.botdiril.command.inventory;
 import java.util.Comparator;
 import java.util.Locale;
 
+import net.dv8tion.jda.api.EmbedBuilder;
+
 import org.apache.commons.text.similarity.FuzzyScore;
 
 import cz.tefek.botdiril.framework.command.CallObj;
@@ -13,7 +15,6 @@ import cz.tefek.botdiril.framework.command.invoke.CmdPar;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.items.Item;
-import net.dv8tion.jda.core.EmbedBuilder;
 
 @Command(value = "itemlist", aliases = {}, category = CommandCategory.ITEMS, description = "Shows a browsable list of items")
 public class CommandItemList

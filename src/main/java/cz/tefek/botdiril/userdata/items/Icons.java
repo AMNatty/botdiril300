@@ -7,13 +7,13 @@ public class Icons
 {
     // CURRENCIES
 
-    public static final String COIN = "<:coindiril:446988933763563520>";
-    public static final String KEK = "<:kek:479354574319255553>";
-    public static final String TOKEN = "<:kektoken:456549331470778369>";
-    public static final String MEGAKEK = "<a:megakek:477555252099416066>";
-    public static final String DUST = "<:dust:470276538009649179>";
-    public static final String KEY = "<:bkey:477552662368485376>";
-    public static final String CARDS = "<:cards:480301561181110322>";
+    public static final String COIN = "<:coindiril:659057189180276755>";
+    public static final String KEK = "<:kek:659060470740680737>";
+    public static final String TOKEN = "<:kektoken:659057189020762134>";
+    public static final String MEGAKEK = "<a:megakek:659060770910502956>";
+    public static final String DUST = "<:dust:659060768343326751>";
+    public static final String KEY = "<:key:659057189432066058>";
+    public static final String CARDS = "<:cards:659059381891104768>";
 
     // KEK SKINS
 
@@ -42,81 +42,89 @@ public class Icons
 
     // CARDS
 
-    public static final String CARD_BASIC = "<:basic:458265423968993280>";
+    public static final String CARD_BASIC = "<:basic:659059381387788319>";
 
-    public static final String CARD_COMMON = "<:common:458267281890476032>";
-    public static final String CARD_RARE = "<:rare:458267282003722253>";
-    public static final String CARD_LEGENDARY = "<:legendary:458267281923899393>";
-    public static final String CARD_ULTIMATE = "<:ultimate:458266825172713474>";
-    public static final String CARD_MYTHIC = "<a:mythic:474489617270439946>";
+    public static final String CARD_COMMON = "<:common:659059381417017344>";
+    public static final String CARD_RARE = "<:rare:659059381794635786>";
+    public static final String CARD_LEGENDARY = "<:legendary:659059381698297856>";
+    public static final String CARD_ULTIMATE = "<:ultimate:659059381706555394>";
+    public static final String CARD_MYTHIC = "<a:mythic:659059381933047808>";
 
-    public static final String CARD_LEGACY = "<:legacy:474505067379163136>";
-    public static final String CARD_LEGACYLEGENDARY = "<:legacylegendary:474505066959732746>";
-    public static final String CARD_LIMITED = "<a:limited:474505067630821376>";
-    public static final String CARD_UNIQUE = "<a:unique:475030825218605058>";
+    public static final String CARD_LEGACY = "<:legacy:659059381295382539>";
+    public static final String CARD_LEGACYLEGENDARY = "<:legacylegendary:659059381454897182>";
+    public static final String CARD_LIMITED = "<a:limited:659059381727395840>";
+    public static final String CARD_UNIQUE = "<a:unique:659059384046977034>";
 
     // CRATES
 
-    public static final String CRATE_BASIC = "<:basiccrate:446996800524779542>";
+    public static final String CRATE_BASIC = "<:basiccrate:659057189100453920>";
     public static final String CRATE_IRON = "<:ironcrate:517166675527991337>";
-    public static final String CRATE_UNCOMMON = "<:uncommoncrate:446996800554139669>";
-    public static final String CRATE_EPIC = "<:epiccrate:446996800746946560>";
-    public static final String CRATE_GOLDEN = "<:goldencrate:446996800348487692>";
-    public static final String CRATE_LEGENDARY = "<:legendarycrate:446996800331841538>";
-    public static final String CRATE_ULTIMATE = "<:ultimatecrate:480085821588897802>";
-    public static final String CRATE_HYPER = "<:hypercrate:480088276573749258>";
-    public static final String CRATE_GLITCHY = "<:glitchycrate:480116788449771533>";
-    public static final String CRATE_INFERNAL = "<:infernalcrate:480116788361953303>";
-    public static final String CRATE_VOID = "<:voidcrate:480117838107901952>";
+    public static final String CRATE_UNCOMMON = "<:uncommoncrate:659057189679398952>";
+    public static final String CRATE_EPIC = "<:epiccrate:659057189150916688>";
+    public static final String CRATE_GOLDEN = "<:goldencrate:659057189356568577>";
+    public static final String CRATE_LEGENDARY = "<:legendarycrate:659059083692867614>";
+    public static final String CRATE_ULTIMATE = "<:ultimatecrate:659057189398249484>";
+    public static final String CRATE_HYPER = "<:hypercrate:659057189356306432>";
+    public static final String CRATE_GLITCHY = "<:glitchycrate:659057189230739486>";
+    public static final String CRATE_INFERNAL = "<:infernalcrate:659057189335597066>";
+    public static final String CRATE_VOID = "<:voidcrate:659057189733924874>";
+    public static final String CRATE_LEAGUE = "<:leagueCrate:659581295801794590>";
 
     // CARD PACKS
 
-    public static final String CARDPACK_BASIC = "<:basiccardpack:478670636839993394>";
-    public static final String CARDPACK_GOOD = "<:goodcardpack:479709487557640192>";
-    public static final String CARDPACK_VOID = "<:voidcardpack:479709488451158016>";
-    public static final String CARDPACK_NORMAL = "<:normalcardpack:479709487553445909>";
+    public static final String CARDPACK_BASIC = "<:cardpack:659062977961394177>";
+    public static final String CARDPACK_GOOD = "<:goodcardpack:659062977923645442>";
+    public static final String CARDPACK_VOID = "<:voidcardpack:659062978448195594>";
+    public static final String CARDPACK_NORMAL = "<:normalcardpack:659062978473361408>";
 
     // PICKAXES
 
-    public static final String PICKAXE_I = "<:pickaxe_i:477568899215523841>";
-    public static final String PICKAXE_II = "<:pickaxe_ii:477568899081043969>";
-    public static final String PICKAXE_III = "<:pickaxe_iii:477568899445948416>";
-    public static final String PICKAXE_IV = "<:pickaxe_iv:508683365445009448>";
-    public static final String PICKAXE_V = "<a:pickaxe_v:512016504053694464>";
+    public static final String PICKAXE_I = "<:pickaxe_i:659056642414870550>";
+    public static final String PICKAXE_II = "<:pickaxe_ii:659056642511601679>";
+    public static final String PICKAXE_III = "<:pickaxe_iii:659056642729574410>";
+    public static final String PICKAXE_IV = "<:pickaxe_iv:659056643014656040>";
+    public static final String PICKAXE_V = "<a:pickaxe_v:659056645183242250>";
 
     // GEMS
 
-    public static final String GEM_GREEN = "<a:greengem:470675656628240384>";
-    public static final String GEM_RED = "<a:redgem:470692296359280650>";
-    public static final String GEM_PURPLE = "<a:purplegem:470686075661320193>";
-    public static final String GEM_BLUE = "<a:bluegem:470672476880502784>";
-    public static final String GEM_BLACK = "<a:blackgem:470668159704236033>";
-    public static final String GEM_RAINBOW = "<a:rainbowgem:471071618429354006>";
+    public static final String GEM_GREEN = "<a:greengem:659057204472840213>";
+    public static final String GEM_RED = "<a:redgem:659057206716792846>";
+    public static final String GEM_PURPLE = "<a:purplegem:659057206259482676>";
+    public static final String GEM_BLUE = "<a:bluegem:659057206234316820>";
+    public static final String GEM_BLACK = "<a:blackgem:659057206200893441>";
+    public static final String GEM_RAINBOW = "<a:rainbowgem:659057204812316672>";
 
-    public static final String GEM_GEMDIRIL = "<:gemdiril:480059616626212864>";
+    public static final String GEM_GEMDIRIL = "<:gemdiril:659065082701021194>";
+
+    public static final String GEM_TIMEWARP = "<a:timewarpCrystal:659840906421207081>";
 
     // SCROLLS
 
-    public static final String SCROLL = " <:scroll:480050875021393923>";
-    public static final String SCROLL_RARE = "<:scrollrare:480050874777862147>";
-    public static final String SCROLL_UNIQUE = "<:scrollunique:480050875088371713>";
+    public static final String SCROLL = "<:scroll:659057189389860865>";
+    public static final String SCROLL_RARE = "<:scrollrare:659057189314363417>";
+    public static final String SCROLL_UNIQUE = "<:scrollunique:659057189477941279>";
 
     // OTHER ITEMS
 
-    public static final String ITEM_SUSPICIOUS_METAL_BOX = "<:suspiciousmetalbox:479717351542095896>";
+    public static final String ITEM_SUSPICIOUS_METAL_BOX = "<:suspiciousmetalbox:659064782959280147>";
 
-    public static final String ITEM_LOL = "<:lol_item:481152039016202240>";
+    public static final String ITEM_REPAIR_KIT = "<:repairKit:659587163834286103>";
+
+    public static final String ITEM_LOL = "<:lol_item:659064642789965829>";
 
     public static final String ITEM_TRASH = "<:trash:498464414278615052>";
 
     // ACHIEVEMENT ICONS, FORMERLY KNOWN AS BADGES
 
-    public static final String ACHIEVEMENT_BOT = "<:bot:477569305999835140>";
-    public static final String ACHIEVEMENT_BETA = "<:beta:471338452865253386>";
+    public static final String ACHIEVEMENT_BOT = "<:bot:659064057428574208>";
+    public static final String ACHIEVEMENT_BETA = "<:beta:659064057139298312>";
 
     // OTHER ICONS
-    public static final String OTHER_KEKOVERDRIVE = "<a:kekoverdrive:506028888388796427>";
+    public static final String OTHER_KEKOVERDRIVE = "<a:kekoverdrive:659063710144266270>";
     public static final String OTHER_THEFAST = "<:thefast:506032106154098698>";
+    public static final String OTHER_MAX = "<:max:659071845592727552>";
+    public static final String OTHER_OIL = "<:oil:660136196390912017>";
+    public static final String OTHER_GOLDENOIL = "<:goldenOil:660171462229098507>";
 
     // MINING ITEMS
     public static final String MINE_COAL = "<:coal:516740098289565696>";
@@ -127,5 +135,5 @@ public class Icons
     public static final String MINE_URANIUM = "<:uranium:516727755702796338>";
     public static final String MINE_KEKIUM = "<:kekium:516727755623366656>";
     public static final String MINE_EMERALD = "<:emerald:516720456213200897>";
-    public static final String MINE_DIAMOND = "<:diamond:516714837624094741>";
+    public static final String MINE_DIAMOND = "<:diamond:660532487621050378>";
 }

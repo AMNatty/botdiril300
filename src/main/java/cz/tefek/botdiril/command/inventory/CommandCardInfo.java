@@ -3,8 +3,8 @@ package cz.tefek.botdiril.command.inventory;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.MessageEmbed.Field;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.MessageEmbed.Field;
 
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.command.Command;
@@ -47,16 +47,24 @@ public class CommandCardInfo
         eb.addField("Rarity:", card.getCardRarity().getCardIcon() + " " + card.getCardRarity().getRarityName(), true);
 
         if (card.hasCollection())
+        {
             eb.addField("Collection:", card.getCollectionName(), true);
+        }
 
         if (ShopEntries.canBeBought(card))
+        {
             eb.addField(new Field("Buys for:", ShopEntries.getCoinPrice(card) + " " + EnumCurrency.COINS.getIcon(), true));
+        }
 
         if (ShopEntries.canBeSold(card))
+        {
             eb.addField(new Field("Sells for:", ShopEntries.getSellValue(card) + " " + EnumCurrency.COINS.getIcon(), true));
+        }
 
         if (ShopEntries.canBeBoughtForTokens(card))
+        {
             eb.addField(new Field("Exchanges for:", ShopEntries.getTokenPrice(card) + " " + EnumCurrency.TOKENS.getIcon(), true));
+        }
 
         var recipe = CraftingEntries.search(card);
 
@@ -68,12 +76,16 @@ public class CommandCardInfo
         }
 
         if (ShopEntries.canBeDisenchanted(card))
+        {
             eb.addField(new Field("Disenchants for:", ShopEntries.getDustForDisenchanting(card) + " " + EnumCurrency.DUST.getIcon(), true));
+        }
 
         eb.setFooter(card.getFootnote(co), null);
 
         if (card.hasCustomImage())
+        {
             eb.setImage(card.getCustomImage());
+        }
 
         MR.send(co.textChannel, eb.build());
     }

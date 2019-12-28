@@ -2,8 +2,8 @@ package cz.tefek.botdiril.command.inventory;
 
 import java.util.ArrayList;
 
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Member;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Member;
 
 import cz.tefek.botdiril.BotMain;
 import cz.tefek.botdiril.framework.command.CallObj;
@@ -143,7 +143,9 @@ public class CommandMyCards
         var pageCount = 1 + (cps.size() - 1) / CARDS_PER_PAGE;
 
         if (page > pageCount)
+        {
             page = pageCount;
+        }
 
         eb.appendDescription(String.format("\nPage %d/%d", page, pageCount));
 

@@ -9,7 +9,7 @@ public enum EnumBlessing
     CHANCE_NOT_TO_CONSUME_KEY("blessing_skeletonkey", "Skeleton Key", "Chance not to consume a key on use.", 60 * 12), //
     STEAL_IMMUNE("blessing_stealimmunity", "Arcane Safe", "You cannot be robbed, under any circumstances.", 60 * 30), //
     MINE_SURGE("blessing_minesurge", "Mining Surge", "Mining has a chance not to go on cooldown.", 60 * 12), //
-    STEAL_AlWAYS_SUCCEEDS("blessing_pickpocket100", "Pickpocket 100", "You can't fail while trying to steal (except when the user is immune).", 60 * 30), //
+    PICKPOCKET("blessing_pickpocket100", "Pickpocket 100", "You have a chance to steal much more than you normally could.", 60 * 30), //
     CRAFTING_SURGE("blessing_craftingsurge", "Crafting Surge", "Chance to not consume ingredients while crafting.", 60 * 4), //
     NUKE_IMMUNE("blessing_nukeimmunity", "Tactical anti-ballistic missile system", "You cannot be nuked.", 60 * 60); //
 

@@ -6,10 +6,10 @@ import java.util.Comparator;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.Role;
-import net.dv8tion.jda.core.entities.TextChannel;
-import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Role;
+import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.User;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -43,7 +43,9 @@ public class CommandParser
     private static String cutOffTillNextWhitespace(String input)
     {
         if (!Pattern.compile("\\s+").matcher(input).find())
+        {
             return "";
+        }
 
         return input.replaceFirst("^.+?\\s+", "");
     }
@@ -56,7 +58,9 @@ public class CommandParser
         var command = CommandStorage.search(cmdStr);
 
         if (command == null)
+        {
             return;
+        }
 
         var special = Arrays.asList(command.special());
 
@@ -90,24 +94,32 @@ public class CommandParser
             var hasInvoke = meth.getDeclaredAnnotation(CmdInvoke.class) != null;
 
             if (!hasInvoke)
+            {
                 return false;
+            }
 
             if (meth.getParameterCount() < 1)
+            {
                 return false;
+            }
 
             var pars = meth.getParameters();
 
             var first = pars[0].getType();
 
             if (first != CallObj.class)
+            {
                 return false;
+            }
 
             int i = 0;
 
             for (var parameter : pars)
             {
                 if (i > 0 && parameter.getDeclaredAnnotation(CmdPar.class) == null)
+                {
                     return false;
+                }
                 i++;
             }
 
@@ -150,7 +162,9 @@ public class CommandParser
                         for (pos = secondQuote; pos < input.length(); pos++)
                         {
                             if (Character.isWhitespace(input.charAt(pos)))
+                            {
                                 break;
+                            }
                         }
                     }
                 }
@@ -159,14 +173,18 @@ public class CommandParser
                     for (pos = 0; pos < input.length(); pos++)
                     {
                         if (Character.isWhitespace(input.charAt(pos)))
+                        {
                             break;
+                        }
                     }
                 }
 
                 var arg = input.substring(0, pos);
 
                 if (hasQuotes && !lonelyQuote)
+                {
                     arg = arg.replaceAll("^\"", "").replaceAll("\"$", "").trim();
+                }
 
                 args.add(arg);
 
@@ -180,16 +198,22 @@ public class CommandParser
                 var inp = input.trim();
 
                 if (inp.startsWith("\"") && inp.endsWith("\""))
+                {
                     inp = inp.substring(1, input.length() - 1);
+                }
 
                 args.add(inp);
             }
 
             if (failed)
+            {
                 continue;
+            }
 
             if (args.size() != parameters.size())
+            {
                 continue;
+            }
 
             try
             {
@@ -223,7 +247,9 @@ public class CommandParser
                         else if (type == ParType.AMOUNT_ITEM_OR_CARD)
                         {
                             if (i == 0)
+                            {
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM**");
+                            }
 
                             if (argArr[i - 1] instanceof Card)
                             {
@@ -241,10 +267,14 @@ public class CommandParser
                         else if (type == ParType.AMOUNT_ITEM_OR_CARD_BUY_COINS)
                         {
                             if (i == 0)
+                            {
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM**");
+                            }
 
                             if (!(argArr[i - 1] instanceof IIdentifiable))
+                            {
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM_NOT_ITEM**");
+                            }
 
                             var item = (IIdentifiable) argArr[i - 1];
 
@@ -258,10 +288,14 @@ public class CommandParser
                         else if (type == ParType.AMOUNT_ITEM_OR_CARD_BUY_TOKENS)
                         {
                             if (i == 0)
+                            {
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM**");
+                            }
 
                             if (!(argArr[i - 1] instanceof IIdentifiable))
+                            {
                                 throw new CommandException("Internal error. Please contact an administrator. Code: **NO_PREV_PARAM_NOT_ITEM**");
+                            }
 
                             var item = (IIdentifiable) argArr[i - 1];
 
@@ -308,7 +342,9 @@ public class CommandParser
                                 var exp = BigNumbers.getExpForName(ds[1].toLowerCase());
 
                                 if (exp == null)
+                                {
                                     throw new CommandException("Number could not be parsed, invalid large number name.");
+                                }
 
                                 arg = ds[0] + "e" + exp;
                             }
@@ -318,7 +354,9 @@ public class CommandParser
                                 amount = new BigDecimal(arg).toBigIntegerExact();
 
                                 if (amount.signum() == -1)
+                                {
                                     throw new CommandException(arg + "\nA negative number was entered, they are not supported here.");
+                                }
 
                                 argArr[i] = amount;
                             }
@@ -379,7 +417,9 @@ public class CommandParser
                         var val = Arrays.stream(ec).filter(c -> c.toString().equalsIgnoreCase(farg)).findFirst().orElse(null);
 
                         if (val == null)
+                        {
                             throw new CommandException(arg.replace("@", "[@]") + " is not valid here. Try one of these: `" + Arrays.stream(ec).map(Object::toString).map(String::toLowerCase).collect(Collectors.joining(", ")) + "`");
+                        }
 
                         argArr[i] = val;
                     }

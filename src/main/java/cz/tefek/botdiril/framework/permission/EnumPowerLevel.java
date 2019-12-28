@@ -4,9 +4,9 @@ import java.util.EnumSet;
 import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
-import net.dv8tion.jda.core.Permission;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.TextChannel;
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.TextChannel;
 
 import cz.tefek.botdiril.BotMain;
 import cz.tefek.botdiril.Botdiril;
@@ -28,7 +28,9 @@ public enum EnumPowerLevel
         for (var pl : values())
         {
             if (pl.id == id)
+            {
                 return pl;
+            }
         }
 
         return null;
@@ -54,7 +56,7 @@ public enum EnumPowerLevel
 
     public String getDescription()
     {
-        return description;
+        return this.description;
     }
 
     public int getID()
@@ -153,10 +155,14 @@ public enum EnumPowerLevel
     public boolean satisfies(EnumPowerLevel permLevel)
     {
         if (permLevel == this)
+        {
             return true;
+        }
 
         if (this.basis != null)
+        {
             return this.basis.satisfies(permLevel);
+        }
 
         return false;
     }

@@ -1,31 +1,26 @@
 package cz.tefek.botdiril.userdata.items.crate;
 
-import java.util.Arrays;
-
-import cz.tefek.botdiril.Botdiril;
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.util.MR;
-import cz.tefek.botdiril.userdata.items.CraftingEntries;
-import cz.tefek.botdiril.userdata.items.CraftingEntries.Recipe;
 import cz.tefek.botdiril.userdata.items.Icons;
-import cz.tefek.botdiril.userdata.items.Item;
 import cz.tefek.botdiril.userdata.items.ItemDrops;
-import cz.tefek.botdiril.userdata.items.ItemPair;
-import cz.tefek.botdiril.userdata.items.Items;
+import cz.tefek.botdiril.userdata.items.ShopEntries;
 import cz.tefek.botdiril.userdata.pools.CratePools;
 import cz.tefek.botdiril.userdata.stat.EnumStat;
 
-public class ItemCrateGolden extends ItemCrate
+public class ItemCrateLeague extends ItemCrate
 {
-    public static int CONTENTS = 10;
+    public static int CONTENTS = 12;
     public static int DISPLAY_LIMIT = 12;
 
-    public ItemCrateGolden()
+    public ItemCrateLeague()
     {
-        super("goldencrate", Icons.CRATE_GOLDEN, "Golden Crate");
-        this.setDescription("Ever wondered where all the keks you gamble away go? They are in these crates.");
+        super("leaguecrate", Icons.CRATE_LEAGUE, "League Item Crate");
+        this.setDescription("Drops exclusively League of Legends items.");
 
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(Items.gold, 1_000), new ItemPair(Items.crateLegendary)), 1, this));
+        ShopEntries.addCoinBuy(this, 10_000);
+        ShopEntries.addCoinSell(this, 2_000);
+        ShopEntries.addTokenBuy(this, 80);
     }
 
     @Override
@@ -38,14 +33,8 @@ public class ItemCrateGolden extends ItemCrate
 
         for (int i = 0; i < CONTENTS * amount; i++)
         {
-            ip.addItem((Item) CratePools.legendaryCrate.draw().draw(), 1);
+            ip.addItem(CratePools.leagueRewards.draw(), 1);
         }
-
-        var keks = Botdiril.RDG.nextLong(2_000_000 * amount, 5_000_000 * amount);
-
-        sb.append(String.format("\n%d %s", keks, Icons.KEK));
-
-        co.ui.addKeks(keks);
 
         var i = 0;
 

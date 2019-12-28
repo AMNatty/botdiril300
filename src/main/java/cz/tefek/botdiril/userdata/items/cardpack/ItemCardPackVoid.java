@@ -15,7 +15,7 @@ import cz.tefek.botdiril.userdata.tempstat.EnumCurse;
 public class ItemCardPackVoid extends ItemCardPack
 {
 
-    private static final int CONTENTS = 8;
+    private static final int CONTENTS = 12;
 
     private static final int DISPLAY_LIMIT = 15;
 
@@ -60,7 +60,9 @@ public class ItemCardPackVoid extends ItemCardPack
             co.ui.addCard(card, amt);
 
             if (i <= DISPLAY_LIMIT)
+            {
                 sb.append(String.format("\n%dx %s", amt, card.inlineDescription()));
+            }
 
             i++;
         }
@@ -76,7 +78,9 @@ public class ItemCardPackVoid extends ItemCardPack
         var dc = cp.distintCount();
 
         if (dc > DISPLAY_LIMIT)
+        {
             sb.append(String.format("\nand %d more different cards...", dc - DISPLAY_LIMIT));
+        }
 
         var dustVal = cp.stream().mapToLong(cardPair -> ShopEntries.getDustForDisenchanting(cardPair.getCard()) * cardPair.getAmount()).sum();
 

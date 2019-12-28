@@ -1,11 +1,12 @@
 package cz.tefek.botdiril.command.debug;
 
+import net.dv8tion.jda.api.EmbedBuilder;
+
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.command.Command;
 import cz.tefek.botdiril.framework.command.CommandCategory;
 import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.util.MR;
-import net.dv8tion.jda.core.EmbedBuilder;
 
 @Command(aliases = { "heap",
         "ram" }, category = CommandCategory.SUPERUSER, description = "Shows some memory information.", value = "memory")

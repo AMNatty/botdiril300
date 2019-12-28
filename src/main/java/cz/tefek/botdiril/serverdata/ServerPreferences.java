@@ -3,8 +3,8 @@ package cz.tefek.botdiril.serverdata;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.dv8tion.jda.core.entities.Guild;
-import net.dv8tion.jda.core.entities.TextChannel;
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.TextChannel;
 
 import cz.tefek.botdiril.BotMain;
 import cz.tefek.botdiril.framework.sql.SqlFoundation;
@@ -65,7 +65,9 @@ public class ServerPreferences
         for (ServerConfig serverConfig : cfgs)
         {
             if (serverConfig.getGuild() == id)
+            {
                 return serverConfig;
+            }
         }
 
         return null;
@@ -73,7 +75,6 @@ public class ServerPreferences
 
     public static void addGuild(Guild g)
     {
-        var gc = g.getController();
         var prem = g.getTextChannelsByName("botdiril", true);
 
         TextChannel pc;
@@ -84,7 +85,7 @@ public class ServerPreferences
         }
         else
         {
-            pc = (TextChannel) gc.createTextChannel("botdiril").complete();
+            pc = g.createTextChannel("botdiril").complete();
         }
 
         var sc = new ServerConfig(g.getIdLong());

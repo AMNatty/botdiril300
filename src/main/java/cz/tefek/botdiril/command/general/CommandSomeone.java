@@ -2,7 +2,7 @@ package cz.tefek.botdiril.command.general;
 
 import java.util.stream.Collectors;
 
-import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.api.EmbedBuilder;
 
 import cz.tefek.botdiril.Botdiril;
 import cz.tefek.botdiril.framework.command.CallObj;

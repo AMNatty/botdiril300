@@ -1,8 +1,8 @@
 package cz.tefek.botdiril.command.currency;
 
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.MessageEmbed.Field;
-import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.MessageEmbed.Field;
+import net.dv8tion.jda.api.entities.User;
 
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.command.Command;
@@ -43,9 +43,13 @@ public class CommandBalance
         String desc;
 
         if (uo.level != XPRewards.getMaxLevel())
+        {
             desc = String.format("Level %d\n%d/%d xp (%.2f%%)", uo.level, uo.xp, XPRewards.getXPAtLevel(uo.level), (double) uo.xp / XPRewards.getXPAtLevel(uo.level) * 100);
+        }
         else
+        {
             desc = String.format("Level %d", uo.level);
+        }
 
         if (ui.hasAchievement(Achievements.beta))
         {

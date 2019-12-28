@@ -19,7 +19,7 @@ public class ItemScrollOfRefreshing extends Item implements IOpenable
     {
         super("scrollofrefreshing", Icons.SCROLL, "Scroll of Refreshing");
         this.setDescription("Instantly resfresh the cooldown of your **daily** loot.");
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(Items.greenGem, 4), new ItemPair(Items.gold, 1000), new ItemPair(Items.trash, 24), new ItemPair(Items.emerald, 2), new ItemPair(Items.cardPackVoid)), 1, this));
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(Items.timewarpCrystal, 1), new ItemPair(Items.gold, 1000), new ItemPair(Items.trash, 24)), 1, this));
     }
 
     @Override

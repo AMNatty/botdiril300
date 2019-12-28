@@ -11,7 +11,7 @@ import cz.tefek.botdiril.userdata.stat.EnumStat;
 
 public class ItemCrateEpic extends ItemCrate
 {
-    public static int CONTENTS = 7;
+    public static int CONTENTS = 8;
     public static int DISPLAY_LIMIT = 12;
 
     public ItemCrateEpic()
@@ -33,7 +33,9 @@ public class ItemCrateEpic extends ItemCrate
         var ip = new ItemDrops();
 
         for (int i = 0; i < CONTENTS * amount; i++)
+        {
             ip.addItem((Item) CratePools.epicCrate.draw().draw(), 1);
+        }
 
         var i = 0;
 
@@ -45,7 +47,9 @@ public class ItemCrateEpic extends ItemCrate
             co.ui.addItem(item, amt);
 
             if (i <= DISPLAY_LIMIT)
+            {
                 sb.append(String.format("\n%dx %s", amt, item.inlineDescription()));
+            }
 
             i++;
         }
@@ -53,7 +57,9 @@ public class ItemCrateEpic extends ItemCrate
         var dc = ip.distintCount();
 
         if (dc > DISPLAY_LIMIT)
+        {
             sb.append(String.format("\nand %d more different items...", dc - DISPLAY_LIMIT));
+        }
 
         sb.append(String.format("\n**Total %d items.**", ip.totalCount()));
 

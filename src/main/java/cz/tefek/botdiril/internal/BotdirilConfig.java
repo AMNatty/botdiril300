@@ -1,12 +1,13 @@
 package cz.tefek.botdiril.internal;
 
-import java.io.File;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.json.JSONObject;
+
+import java.io.File;
+import java.nio.file.Files;
 
 import cz.tefek.botdiril.BotMain;
 

@@ -3,8 +3,8 @@ package cz.tefek.botdiril.command.general;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.MessageEmbed.Field;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.MessageEmbed.Field;
 
 import java.awt.Color;
 
@@ -53,7 +53,9 @@ public class CommandHelp
             var command = CommandAssert.parseCommand(tbp);
             var sb = new StringBuilder("**Command `" + command.value() + "`**:");
             if (command.aliases().length != 0)
+            {
                 sb.append("\n**Aliases:** " + Arrays.stream(command.aliases()).map(a -> "`" + a + "`").collect(Collectors.joining(", ")));
+            }
             sb.append("\n**Description:** " + command.description());
             sb.append("\n**Power level required:** " + command.powerLevel());
             sb.append("\n**Available from level:** " + (command.levelLock() == 0 ? "Always available"

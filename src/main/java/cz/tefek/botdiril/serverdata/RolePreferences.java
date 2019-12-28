@@ -4,7 +4,7 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import net.dv8tion.jda.core.entities.Role;
+import net.dv8tion.jda.api.entities.Role;
 
 import cz.tefek.botdiril.BotMain;
 import cz.tefek.botdiril.framework.permission.EnumPowerLevel;

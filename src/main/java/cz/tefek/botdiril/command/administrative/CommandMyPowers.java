@@ -1,7 +1,7 @@
 package cz.tefek.botdiril.command.administrative;
 
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Member;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Member;
 
 import java.time.Instant;
 

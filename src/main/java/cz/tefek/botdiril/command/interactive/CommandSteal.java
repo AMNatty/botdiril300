@@ -1,7 +1,7 @@
 package cz.tefek.botdiril.command.interactive;
 
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.User;
 
 import java.text.MessageFormat;
 
@@ -31,7 +31,7 @@ import cz.tefek.botdiril.userdata.xp.XPAdder;
 public class CommandSteal
 {
     @CmdInvoke
-    public static void print(CallObj co, @CmdPar("who to rob") User user)
+    public static void steal(CallObj co, @CmdPar("who to rob") User user)
     {
         CommandAssert.assertTimer(co.ui, Timers.steal, "You need to wait **$** before trying to **steal** again.");
 
@@ -63,7 +63,7 @@ public class CommandSteal
 
         var lvlMod = Math.pow(10, (lvlOther - lvl) / 100);
 
-        var maxSteal = Math.round(Math.pow(lvl, 1.35) * 100);
+        var maxSteal = Math.round(Math.pow(lvl, 1.8) * 100);
 
         var mod = Botdiril.RANDOM.nextDouble() * 0.8 - 0.4;
 
@@ -94,18 +94,16 @@ public class CommandSteal
         eb.setThumbnail(co.bot.getEffectiveAvatarUrl());
         eb.setColor(0x008080);
 
-        if (Curser.isBlessed(co, EnumBlessing.STEAL_AlWAYS_SUCCEEDS))
+        if (co.ui.howManyOf(Items.toolBox) > 0)
         {
+            eb.appendDescription(MessageFormat.format("You used a **{0}**...\n", Items.toolBox.inlineDescription()));
+            co.ui.addItem(Items.toolBox, -1);
             mod = Math.abs(mod);
         }
-        else
+
+        if (Curser.isBlessed(co, EnumBlessing.PICKPOCKET) && Botdiril.RDG.nextUniform(0, 1) > 0.75)
         {
-            if (co.ui.howManyOf(Items.toolBox) > 0)
-            {
-                eb.appendDescription(MessageFormat.format("You used a **{0}**...\n", Items.toolBox.inlineDescription()));
-                co.ui.addItem(Items.toolBox, -1);
-                mod = Math.abs(mod);
-            }
+            maxSteal *= 100;
         }
 
         var stole = Math.min(Math.round(other.getCoins() * mod), Math.round(maxSteal * lvlMod));
@@ -117,7 +115,9 @@ public class CommandSteal
         else
         {
             if (co.po.getLongOrDefault(EnumStat.BIGGEST_STEAL.getName(), 0) < stole)
+            {
                 co.po.setLong(EnumStat.BIGGEST_STEAL.getName(), stole);
+            }
 
             co.ui.addCoins(stole);
             other.addCoins(-stole);

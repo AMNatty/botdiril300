@@ -1,12 +1,13 @@
 package cz.tefek.botdiril.framework.command;
 
-import java.io.File;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.jar.JarFile;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+
+import java.io.File;
+import java.net.URL;
+import java.net.URLClassLoader;
 
 public class CommandIntitializer
 {

@@ -26,7 +26,7 @@ public class CommandPrefix
 
         co.sc.setPrefix(prefix);
 
-        co.guild.getController().setNickname(co.guild.getMember(co.bot), "[" + prefix + "] " + Botdiril.BRANDING).queue(success ->
+        co.guild.getMember(co.bot).modifyNickname("[" + prefix + "] " + Botdiril.BRANDING).queue(success ->
         {
             MR.send(co.textChannel, "Prefix set to: " + prefix);
         });

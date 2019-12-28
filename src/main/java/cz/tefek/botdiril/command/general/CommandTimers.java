@@ -1,7 +1,7 @@
 package cz.tefek.botdiril.command.general;
 
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.User;
 
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.command.Command;
@@ -31,7 +31,9 @@ public class CommandTimers
             var remaining = ui.checkTimer(t);
 
             if (remaining < 0)
+            {
                 return;
+            }
 
             eb.addField(t.getLocalizedName(), MiniTime.formatDiff(remaining), false);
         });

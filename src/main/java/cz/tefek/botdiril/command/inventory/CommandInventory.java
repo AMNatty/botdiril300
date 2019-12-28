@@ -2,8 +2,8 @@ package cz.tefek.botdiril.command.inventory;
 
 import java.util.ArrayList;
 
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Member;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Member;
 
 import cz.tefek.botdiril.BotMain;
 import cz.tefek.botdiril.framework.command.CallObj;
@@ -55,7 +55,9 @@ public class CommandInventory
                 }
 
                 if (item instanceof ItemCurrency)
+                {
                     continue;
+                }
 
                 ips.add(new ItemPair(item, eq.getLong("it_amount")));
             }
@@ -85,22 +87,34 @@ public class CommandInventory
         isc.sorted((i1, i2) ->
         {
             if (Items.leagueItems.contains(i1.getItem()) && Items.leagueItems.contains(i2.getItem()))
+            {
                 return Integer.MIN_VALUE;
+            }
 
             if (Items.leagueItems.contains(i1.getItem()))
+            {
                 return Integer.MAX_VALUE;
+            }
 
             if (Items.leagueItems.contains(i2.getItem()))
+            {
                 return Integer.MIN_VALUE;
+            }
 
             if (!ShopEntries.canBeBought(i2.getItem()) && !ShopEntries.canBeBought(i1.getItem()))
+            {
                 return Integer.MIN_VALUE + 1;
+            }
 
             if (!ShopEntries.canBeBought(i2.getItem()))
+            {
                 return Integer.MIN_VALUE + 1;
+            }
 
             if (!ShopEntries.canBeBought(i1.getItem()))
+            {
                 return Integer.MAX_VALUE - 1;
+            }
 
             return Long.compare(ShopEntries.getCoinPrice(i2.getItem()), ShopEntries.getCoinPrice(i1.getItem()));
         }).limit(ITEMS_PER_PAGE).forEach(ip ->
@@ -138,7 +152,9 @@ public class CommandInventory
                 }
 
                 if (item instanceof ItemCurrency)
+                {
                     continue;
+                }
 
                 ips.add(new ItemPair(item, eq.getLong("it_amount")));
             }
@@ -164,29 +180,43 @@ public class CommandInventory
         var pageCount = 1 + (ips.size() - 1) / ITEMS_PER_PAGE;
 
         if (page > pageCount)
+        {
             page = pageCount;
+        }
 
         eb.appendDescription(String.format("\nPage %d/%d", page, pageCount));
 
         isc.sorted((i1, i2) ->
         {
             if (Items.leagueItems.contains(i1.getItem()) && Items.leagueItems.contains(i2.getItem()))
+            {
                 return Integer.MIN_VALUE;
+            }
 
             if (Items.leagueItems.contains(i1.getItem()))
+            {
                 return Integer.MAX_VALUE;
+            }
 
             if (Items.leagueItems.contains(i2.getItem()))
+            {
                 return Integer.MIN_VALUE;
+            }
 
             if (!ShopEntries.canBeBought(i2.getItem()) && !ShopEntries.canBeBought(i1.getItem()))
+            {
                 return Integer.MIN_VALUE + 1;
+            }
 
             if (!ShopEntries.canBeBought(i2.getItem()))
+            {
                 return Integer.MIN_VALUE + 1;
+            }
 
             if (!ShopEntries.canBeBought(i1.getItem()))
+            {
                 return Integer.MAX_VALUE - 1;
+            }
 
             return Long.compare(ShopEntries.getCoinPrice(i2.getItem()), ShopEntries.getCoinPrice(i1.getItem()));
         }).skip((page - 1) * ITEMS_PER_PAGE).limit(ITEMS_PER_PAGE).forEach(ip ->

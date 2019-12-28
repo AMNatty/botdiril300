@@ -1,6 +1,6 @@
 package cz.tefek.botdiril.userdata.items.scrolls;
 
-import java.util.Arrays;
+import java.util.List;
 
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.util.MR;
@@ -18,7 +18,7 @@ public class ItemScrollOfSwapping extends Item implements IOpenable
     {
         super("scrollofswapping", Icons.SCROLL, "Scroll of Swapping");
         this.setDescription("Reverse your gems!");
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(Items.toolBox, 3), new ItemPair(Items.blackGem, 1)), 1, this));
+        CraftingEntries.add(new Recipe(List.of(new ItemPair(Items.timewarpCrystal)), 1, this));
     }
 
     @Override

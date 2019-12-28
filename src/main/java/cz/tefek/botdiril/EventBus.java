@@ -3,11 +3,11 @@ package cz.tefek.botdiril;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import net.dv8tion.jda.core.entities.Game;
-import net.dv8tion.jda.core.events.ReadyEvent;
-import net.dv8tion.jda.core.events.guild.GuildJoinEvent;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.events.ReadyEvent;
+import net.dv8tion.jda.api.events.guild.GuildJoinEvent;
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import cz.tefek.botdiril.command.general.CommandAlias;
 import cz.tefek.botdiril.framework.command.CallObj;
@@ -63,6 +63,13 @@ public class EventBus extends ListenerAdapter
             co.textChannel = textChannel;
             co.jda = jda;
             co.sc = ServerPreferences.getConfigByGuild(co.guild.getIdLong());
+
+            if (co.sc == null)
+            {
+                ServerPreferences.addGuild(co.guild);
+                co.sc = ServerPreferences.getConfigByGuild(co.guild.getIdLong());
+            }
+
             co.bot = botUser;
             co.po = new PropertyObject(co.caller.getIdLong());
 
@@ -79,14 +86,16 @@ public class EventBus extends ListenerAdapter
             }
 
             if (!co.po.isAutocloseDisabled())
+            {
                 co.po.close();
+            }
         }
     }
 
     @Override
     public void onReady(ReadyEvent event)
     {
-        event.getJDA().getPresence().setGame(Game.listening(PLAYING));
+        event.getJDA().getPresence().setActivity(Activity.listening(PLAYING));
 
         event.getJDA().getGuilds().forEach(g ->
         {

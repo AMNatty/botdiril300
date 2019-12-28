@@ -1,7 +1,7 @@
 package cz.tefek.botdiril.command.interactive;
 
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Member;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Member;
 
 import java.text.MessageFormat;
 
@@ -50,7 +50,7 @@ public class CommandNuke
 
             if (uranium < uraniumNeeded || toolboxes < toolboxesNeeded || redGems < redGemsNeeded)
             {
-                var resp = String.format("You need **%d %s**, **%d %s** and **%d %s** to this.", uraniumNeeded, Items.uranium.inlineDescription(), toolboxesNeeded, Items.toolBox.inlineDescription(), redGemsNeeded, Items.redGem.inlineDescription());
+                var resp = String.format("You need **%d %s**, **%d %s** and **%d %s** to do this.", uraniumNeeded, Items.uranium.inlineDescription(), toolboxesNeeded, Items.toolBox.inlineDescription(), redGemsNeeded, Items.redGem.inlineDescription());
                 MR.send(co.textChannel, resp);
                 return;
             }
@@ -97,7 +97,9 @@ public class CommandNuke
             }
 
             if (co.po.getLongOrDefault(EnumStat.BIGGEST_NUKE.getName(), 0) < lost + stolen)
+            {
                 co.po.setLong(EnumStat.BIGGEST_NUKE.getName(), lost + stolen);
+            }
 
             var eb = new EmbedBuilder();
             eb.setTitle("BOOM!");

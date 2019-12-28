@@ -1,6 +1,6 @@
 package cz.tefek.botdiril.command.superuser;
 
-import net.dv8tion.jda.core.entities.Member;
+import net.dv8tion.jda.api.entities.Member;
 
 import cz.tefek.botdiril.BotMain;
 import cz.tefek.botdiril.framework.command.CallObj;

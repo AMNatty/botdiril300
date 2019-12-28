@@ -1,6 +1,6 @@
 package cz.tefek.botdiril.command.superuser;
 
-import net.dv8tion.jda.core.entities.Role;
+import net.dv8tion.jda.api.entities.Role;
 
 import java.text.MessageFormat;
 

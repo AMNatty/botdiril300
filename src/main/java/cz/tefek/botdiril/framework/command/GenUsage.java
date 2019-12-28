@@ -1,9 +1,10 @@
 package cz.tefek.botdiril.framework.command;
 
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.stream.Collectors;
+
+import java.lang.reflect.Method;
 
 import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.command.invoke.CmdPar;
