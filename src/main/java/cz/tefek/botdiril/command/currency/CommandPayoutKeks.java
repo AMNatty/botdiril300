@@ -8,10 +8,11 @@ import cz.tefek.botdiril.framework.command.invoke.CmdPar;
 import cz.tefek.botdiril.framework.command.invoke.ParType;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
-import cz.tefek.botdiril.userdata.items.Icons;
+import cz.tefek.botdiril.userdata.item.Icons;
 import cz.tefek.botdiril.userdata.stat.EnumStat;
 import cz.tefek.botdiril.userdata.timers.Timers;
 import cz.tefek.botdiril.userdata.xp.XPAdder;
+import cz.tefek.botdiril.util.BotdirilFmt;
 
 @Command(value = "payoutkeks", aliases = {
         "payout" }, category = CommandCategory.CURRENCY, description = "Pay out your " + Icons.KEK + " for some " + Icons.TOKEN, levelLock = 7)
@@ -33,8 +34,10 @@ public class CommandPayoutKeks
         XPAdder.addXP(co, xp);
 
         if (co.po.getLongOrDefault(EnumStat.BIGGEST_PAYOUT.getName(), 0) < keks)
+        {
             co.po.setLong(EnumStat.BIGGEST_PAYOUT.getName(), keks);
+        }
 
-        MR.send(co.textChannel, String.format("Paid out **%d** %s for **%d** %s at a conversion rate of **%d:1**. **[+%d XP]**", keks, Icons.KEK, tokens, Icons.TOKEN, conversionRate, xp));
+        MR.send(co.textChannel, String.format("Paid out **%s** %s for **%s** %s at a conversion rate of **%d:1**. **[+%s XP]**", BotdirilFmt.format(keks), Icons.KEK, BotdirilFmt.format(tokens), Icons.TOKEN, conversionRate, BotdirilFmt.format(xp)));
     }
 }

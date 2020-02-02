@@ -1,6 +1,6 @@
 package cz.tefek.botdiril.userdata;
 
-import cz.tefek.botdiril.userdata.items.Icons;
+import cz.tefek.botdiril.userdata.item.Icons;
 
 public enum EnumCurrency
 {

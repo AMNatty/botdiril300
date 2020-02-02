@@ -15,7 +15,7 @@ import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.IIdentifiable;
 import cz.tefek.botdiril.userdata.UserInventory;
 import cz.tefek.botdiril.userdata.card.Card;
-import cz.tefek.botdiril.userdata.items.Item;
+import cz.tefek.botdiril.userdata.item.Item;
 import cz.tefek.botdiril.userdata.stat.EnumStat;
 import cz.tefek.botdiril.userdata.tempstat.Curser;
 import cz.tefek.botdiril.userdata.tempstat.EnumCurse;

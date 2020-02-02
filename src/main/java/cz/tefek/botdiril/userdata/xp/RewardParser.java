@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cz.tefek.botdiril.BotMain;
-import cz.tefek.botdiril.userdata.items.Item;
-import cz.tefek.botdiril.userdata.items.ItemPair;
+import cz.tefek.botdiril.userdata.item.Item;
+import cz.tefek.botdiril.userdata.item.ItemPair;
 
 public class RewardParser
 {
@@ -32,7 +32,8 @@ public class RewardParser
                     }
 
                     list.add(new ItemPair(item, 1));
-                } else if (ps.length == 2)
+                }
+                else if (ps.length == 2)
                 {
                     var amount = Integer.parseInt(ps[0]);
 
@@ -47,7 +48,8 @@ public class RewardParser
                     list.add(new ItemPair(item, amount));
                 }
             }
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             BotMain.logger.error("Broker reward string: " + data, e);
         }

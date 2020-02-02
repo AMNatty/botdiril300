@@ -13,10 +13,11 @@ import cz.tefek.botdiril.framework.command.invoke.CmdPar;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.card.Card;
-import cz.tefek.botdiril.userdata.items.CraftingEntries;
-import cz.tefek.botdiril.userdata.items.CraftingEntries.Recipe;
-import cz.tefek.botdiril.userdata.items.Items;
-import cz.tefek.botdiril.userdata.items.ShopEntries;
+import cz.tefek.botdiril.userdata.item.CraftingEntries;
+import cz.tefek.botdiril.userdata.item.CraftingEntries.Recipe;
+import cz.tefek.botdiril.userdata.item.Items;
+import cz.tefek.botdiril.userdata.item.ShopEntries;
+import cz.tefek.botdiril.util.BotdirilFmt;
 
 @Command(value = "recipes", aliases = { "recipelist",
         "rl" }, category = CommandCategory.ITEMS, description = "Shows all craftable items including their recipes.")
@@ -26,25 +27,39 @@ public class CommandRecipes
     private static final Comparator<Recipe> recipeSorter = (i1, i2) ->
     {
         if (i1.getResult() instanceof Card)
+        {
             return Integer.MAX_VALUE;
+        }
 
         if (i2.getResult() instanceof Card)
+        {
             return Integer.MIN_VALUE;
+        }
 
         if (Items.leagueItems.contains(i1.getResult()))
+        {
             return Integer.MAX_VALUE;
+        }
 
         if (Items.leagueItems.contains(i2.getResult()))
+        {
             return Integer.MIN_VALUE;
+        }
 
         if (!ShopEntries.canBeBought(i2.getResult()) && !ShopEntries.canBeBought(i1.getResult()))
+        {
             return Integer.MIN_VALUE + 1;
+        }
 
         if (!ShopEntries.canBeBought(i2.getResult()))
+        {
             return Integer.MIN_VALUE + 1;
+        }
 
         if (!ShopEntries.canBeBought(i1.getResult()))
+        {
             return Integer.MAX_VALUE - 1;
+        }
 
         return Long.compare(ShopEntries.getCoinPrice(i2.getResult()), ShopEntries.getCoinPrice(i1.getResult()));
     };
@@ -56,7 +71,7 @@ public class CommandRecipes
 
         var eb = new EmbedBuilder();
 
-        eb.setTitle("Total " + recipes.size() + " recipes.");
+        eb.setTitle("Total " + BotdirilFmt.format(recipes.size()) + " recipes.");
         eb.setDescription("Showing " + ITEMS_PER_PAGE + " recipes per page.");
         eb.setColor(0x008080);
 
@@ -70,7 +85,7 @@ public class CommandRecipes
         isc.sorted(recipeSorter).limit(ITEMS_PER_PAGE).forEach(recipe ->
         {
             var components = recipe.getComponents();
-            var recipeParts = components.stream().map(comp -> String.format("**%d %s**", comp.getAmount(), comp.getItem().inlineDescription())).collect(Collectors.joining(" + "));
+            var recipeParts = components.stream().map(comp -> String.format("**%s %s**", BotdirilFmt.format(comp.getAmount()), comp.getItem().inlineDescription())).collect(Collectors.joining(" + "));
             eb.addField(recipe.getResult().inlineDescription(), recipeParts, false);
         });
 
@@ -88,7 +103,7 @@ public class CommandRecipes
 
         var eb = new EmbedBuilder();
 
-        eb.setTitle("Total " + recipes.size() + " recipes.");
+        eb.setTitle("Total " + BotdirilFmt.format(recipes.size()) + " recipes.");
         eb.setDescription("Showing " + ITEMS_PER_PAGE + " recipes per page.");
         eb.setColor(0x008080);
 
@@ -97,14 +112,16 @@ public class CommandRecipes
         var pageCount = 1 + (recipes.size() - 1) / ITEMS_PER_PAGE;
 
         if (page > pageCount)
+        {
             page = pageCount;
+        }
 
         eb.appendDescription(String.format("\nPage %d/%d", page, pageCount));
 
         isc.sorted(recipeSorter).skip((page - 1) * ITEMS_PER_PAGE).limit(ITEMS_PER_PAGE).forEach(recipe ->
         {
             var components = recipe.getComponents();
-            var recipeParts = components.stream().map(comp -> String.format("**%d %s**", comp.getAmount(), comp.getItem().inlineDescription())).collect(Collectors.joining(" + "));
+            var recipeParts = components.stream().map(comp -> String.format("**%s %s**", BotdirilFmt.format(comp.getAmount()), comp.getItem().inlineDescription())).collect(Collectors.joining(" + "));
             eb.addField(recipe.getResult().inlineDescription(), recipeParts, false);
         });
 

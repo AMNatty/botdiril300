@@ -7,11 +7,10 @@ import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.command.Command;
 import cz.tefek.botdiril.framework.command.CommandCategory;
 import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
-import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.UserInventory;
 import cz.tefek.botdiril.userdata.card.Card;
-import cz.tefek.botdiril.userdata.items.Icons;
-import cz.tefek.botdiril.userdata.items.ShopEntries;
+import cz.tefek.botdiril.userdata.item.Icons;
+import cz.tefek.botdiril.userdata.item.ShopEntries;
 
 @Command(value = "sellextras", aliases = { "sellduplicates", "selldupes",
         "sd" }, category = CommandCategory.ITEMS, description = "Sells your duplicate cards.")
@@ -20,6 +19,8 @@ public class CommandSellExtras
     @CmdInvoke
     public static void dust(CallObj co)
     {
+        BotMain.sql.lock();
+
         var cards = new AtomicLong();
         var coins = new AtomicLong();
 
@@ -51,8 +52,8 @@ public class CommandSellExtras
             return stat.executeUpdate();
         }, co.ui.getFID());
 
-        co.ui.addCoins(coins.get());
+        CommandSell.sellRoutine(co, Icons.CARDS + " Cards", cards.get(), coins.get());
 
-        MR.send(co.textChannel, String.format("*Disenchanted **%d %s cards** for **%d %s coins**.*", cards.get(), Icons.CARDS, coins.get(), Icons.COIN));
+        BotMain.sql.unlock();
     }
 }

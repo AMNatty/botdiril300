@@ -7,7 +7,7 @@ import cz.tefek.botdiril.framework.command.CommandCategory;
 import cz.tefek.botdiril.framework.command.EnumSpecialCommandProperty;
 import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.util.MR;
-import cz.tefek.botdiril.userdata.items.Icons;
+import cz.tefek.botdiril.userdata.item.Icons;
 
 @Command(category = CommandCategory.GENERAL, description = Icons.KEK, value = "kek", special = {
         EnumSpecialCommandProperty.ALLOW_LOCK_BYPASS })

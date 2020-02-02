@@ -25,12 +25,6 @@ public class CommandGamble
 
         BotMain.sql.lock();
 
-        if (co.ui.useTimer(Timers.gambleXP) == -1)
-        {
-            var lvl = co.ui.getLevel();
-            XPAdder.addXP(co, Math.round(Math.sqrt(keks) * XPRewards.getLevel(lvl).getGambleFalloff()));
-        }
-
         var percentage = keks / (double) co.ui.getKeks();
         var outcome = GambleEngine.roll(co, percentage);
         var lvl = co.ui.getLevel();
@@ -46,7 +40,16 @@ public class CommandGamble
             GlobalProperties.add(GlobalProperties.JACKPOT_RESET, Math.round(result * 0.1));
         }
 
-        MR.send(co.textChannel, String.format(outcome.getText(), result));
+        if (co.ui.useTimer(Timers.gambleXP) == -1)
+        {
+            var gambleXP = Math.round(Math.pow(keks, 0.55) * XPRewards.getLevel(lvl).getGambleFalloff());
+            XPAdder.addXP(co, gambleXP);
+            MR.send(co.textChannel, String.format(outcome.getText() + String.format(" **[+ %dXP]**", gambleXP), result));
+        }
+        else
+        {
+            MR.send(co.textChannel, String.format(outcome.getText(), result));
+        }
 
         BotMain.sql.unlock();
     }

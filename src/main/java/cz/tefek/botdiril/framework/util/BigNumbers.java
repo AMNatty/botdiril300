@@ -39,15 +39,24 @@ public class BigNumbers
         return bigIntMap.inverse().get(name);
     }
 
+    public static String getNameOfExp(Integer exp)
+    {
+        return bigIntMap.get(exp);
+    }
+
     private static void procLine(String line)
     {
         if (line.trim().isEmpty())
+        {
             return;
+        }
 
         var lp = line.trim().split(",");
 
         if (lp.length != 2)
+        {
             return;
+        }
 
         var ni = Integer.parseInt(lp[0]);
         var sn = lp[1].trim();
@@ -58,10 +67,14 @@ public class BigNumbers
     public static String stringifyScientific(BigInteger bigInteger)
     {
         if (bigInteger.equals(BigInteger.ZERO))
+        {
             return "0";
+        }
 
         if (bigInteger.compareTo(BigInteger.valueOf(9999)) == -1)
+        {
             return String.format("%d", bigInteger.intValueExact());
+        }
 
         NumberFormat formatter = new DecimalFormat("0.##E0", DecimalFormatSymbols.getInstance(Locale.ROOT));
         formatter.setMaximumIntegerDigits(3);
@@ -74,10 +87,14 @@ public class BigNumbers
     public static String stringify(BigInteger bigInteger)
     {
         if (bigInteger.equals(BigInteger.ZERO))
+        {
             return "0";
+        }
 
         if (bigInteger.compareTo(BigInteger.valueOf(9999)) == -1)
+        {
             return String.format("%d", bigInteger.intValueExact());
+        }
 
         NumberFormat formatter = new DecimalFormat("0.##E0", DecimalFormatSymbols.getInstance(Locale.ROOT));
         formatter.setMaximumIntegerDigits(3);
@@ -88,8 +105,6 @@ public class BigNumbers
 
         var nrp = strb[0];
         var scf = Integer.parseInt(strb[1]);
-
-        scf = scf - scf % 3;
 
         return nrp + " " + bigIntMap.get(scf);
     }
@@ -97,10 +112,14 @@ public class BigNumbers
     public static String stringifyBoth(BigInteger bigInteger)
     {
         if (bigInteger.equals(BigInteger.ZERO))
+        {
             return "0";
+        }
 
         if (bigInteger.compareTo(BigInteger.valueOf(9999)) == -1 && bigInteger.compareTo(BigInteger.valueOf(-9999)) == 1)
+        {
             return String.format("%d", bigInteger.intValueExact());
+        }
 
         NumberFormat formatter = new DecimalFormat("0.##E0", DecimalFormatSymbols.getInstance(Locale.ROOT));
         formatter.setMaximumIntegerDigits(3);
@@ -111,8 +130,6 @@ public class BigNumbers
 
         var nrp = strb[0];
         var scf = Integer.parseInt(strb[1]);
-
-        scf = scf - scf % 3;
 
         return nrp + " " + bigIntMap.get(scf) + " (" + orig + ")";
     }

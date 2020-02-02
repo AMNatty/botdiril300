@@ -11,13 +11,14 @@ import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.util.BigNumbers;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
-import cz.tefek.botdiril.userdata.items.Icons;
+import cz.tefek.botdiril.userdata.item.Icons;
 import cz.tefek.botdiril.userdata.stat.EnumStat;
 import cz.tefek.botdiril.userdata.tempstat.Curser;
 import cz.tefek.botdiril.userdata.tempstat.EnumCurse;
 import cz.tefek.botdiril.userdata.timers.Timers;
 import cz.tefek.botdiril.userdata.xp.XPAdder;
 import cz.tefek.botdiril.userdata.xp.XPRewards;
+import cz.tefek.botdiril.util.BotdirilFmt;
 
 @Command(value = "daily", category = CommandCategory.CURRENCY, aliases = {}, description = "Get yourself some free daily stuff.")
 public class CommandDaily
@@ -53,7 +54,7 @@ public class CommandDaily
             return;
         }
 
-        var str = String.format("**Here are your daily items:**\n%d xp\n%d %s\n%d %s\n%s %s\n%d %s", xp, coins, Icons.COIN, keks, Icons.KEK, BigNumbers.stringifyBoth(megakeks), Icons.MEGAKEK, keys, Icons.KEY);
+        var str = String.format("**Here are your daily items:**\n%s xp\n%s %s\n%s %s\n%s %s\n%s %s", BotdirilFmt.format(xp), BotdirilFmt.format(coins), Icons.COIN, BotdirilFmt.format(keks), Icons.KEK, BigNumbers.stringifyBoth(megakeks), Icons.MEGAKEK, BotdirilFmt.format(keys), Icons.KEY);
 
         co.po.incrementLong(EnumStat.TIMES_DAILY.getName());
 

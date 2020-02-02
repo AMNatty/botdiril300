@@ -14,8 +14,9 @@ import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.EnumCurrency;
 import cz.tefek.botdiril.userdata.UserInventory;
 import cz.tefek.botdiril.userdata.achievement.Achievements;
-import cz.tefek.botdiril.userdata.items.Icons;
+import cz.tefek.botdiril.userdata.item.Icons;
 import cz.tefek.botdiril.userdata.xp.XPRewards;
+import cz.tefek.botdiril.util.BotdirilFmt;
 
 @Command(value = "balance", aliases = { "money", "coins",
         "bal" }, category = CommandCategory.CURRENCY, description = "Shows your/someone's balance.")
@@ -44,7 +45,7 @@ public class CommandBalance
 
         if (uo.level != XPRewards.getMaxLevel())
         {
-            desc = String.format("Level %d\n%d/%d xp (%.2f%%)", uo.level, uo.xp, XPRewards.getXPAtLevel(uo.level), (double) uo.xp / XPRewards.getXPAtLevel(uo.level) * 100);
+            desc = String.format("Level %s\n%s/%s xp (%.2f%%)", uo.level, BotdirilFmt.format(uo.xp), BotdirilFmt.format(XPRewards.getXPAtLevel(uo.level)), (double) uo.xp / XPRewards.getXPAtLevel(uo.level) * 100);
         }
         else
         {
@@ -60,12 +61,12 @@ public class CommandBalance
 
         eb.setColor(0x008080);
 
-        eb.addField(new Field(EnumCurrency.COINS.getLocalizedName(), String.format("%d %s\n", uo.coins, EnumCurrency.COINS.getIcon()), true));
-        eb.addField(new Field(EnumCurrency.KEKS.getLocalizedName(), String.format("%d %s\n", uo.keks, EnumCurrency.KEKS.getIcon()), true));
+        eb.addField(new Field(EnumCurrency.COINS.getLocalizedName(), String.format("%s %s\n", BotdirilFmt.format(uo.coins), EnumCurrency.COINS.getIcon()), true));
+        eb.addField(new Field(EnumCurrency.KEKS.getLocalizedName(), String.format("%s %s\n", BotdirilFmt.format(uo.keks), EnumCurrency.KEKS.getIcon()), true));
         eb.addField(new Field(EnumCurrency.MEGAKEKS.getLocalizedName(), String.format("%s %s\n", BigNumbers.stringifyBoth(uo.megakeks), EnumCurrency.MEGAKEKS.getIcon()), true));
-        eb.addField(new Field(EnumCurrency.TOKENS.getLocalizedName(), String.format("%d %s\n", uo.tokens, EnumCurrency.TOKENS.getIcon()), true));
-        eb.addField(new Field(EnumCurrency.KEYS.getLocalizedName(), String.format("%d %s\n", uo.keys, EnumCurrency.KEYS.getIcon()), true));
-        eb.addField(new Field(EnumCurrency.DUST.getLocalizedName(), String.format("%d %s\n", uo.dust, EnumCurrency.DUST.getIcon()), true));
+        eb.addField(new Field(EnumCurrency.TOKENS.getLocalizedName(), String.format("%s %s\n", BotdirilFmt.format(uo.tokens), EnumCurrency.TOKENS.getIcon()), true));
+        eb.addField(new Field(EnumCurrency.KEYS.getLocalizedName(), String.format("%s %s\n", BotdirilFmt.format(uo.keys), EnumCurrency.KEYS.getIcon()), true));
+        eb.addField(new Field(EnumCurrency.DUST.getLocalizedName(), String.format("%s %s\n", BotdirilFmt.format(uo.dust), EnumCurrency.DUST.getIcon()), true));
         eb.addField(new Field("Cards", String.format("%d %s\n", uo.cards, Icons.CARDS), true));
 
         MR.send(co.textChannel, eb.build());

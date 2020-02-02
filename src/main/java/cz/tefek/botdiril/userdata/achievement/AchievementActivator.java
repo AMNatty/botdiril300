@@ -7,7 +7,7 @@ public class AchievementActivator
 {
     public static void fire(CallObj co, Achievement achievement)
     {
-        if (co.ui.hasAchievement(achievement))
+        if (!co.ui.hasAchievement(achievement))
         {
             co.ui.fireAchievement(achievement);
 

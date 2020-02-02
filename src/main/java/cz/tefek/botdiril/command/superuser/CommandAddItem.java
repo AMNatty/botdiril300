@@ -11,7 +11,7 @@ import cz.tefek.botdiril.framework.permission.EnumPowerLevel;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.UserInventory;
-import cz.tefek.botdiril.userdata.items.Item;
+import cz.tefek.botdiril.userdata.item.Item;
 
 @Command(value = "additem", category = CommandCategory.SUPERUSER, aliases = {}, description = "Adds items to the target's inventory (for science of course).", powerLevel = EnumPowerLevel.SUPERUSER_OVERRIDE)
 public class CommandAddItem

@@ -14,8 +14,9 @@ import cz.tefek.botdiril.framework.command.invoke.CmdPar;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.EnumCurrency;
 import cz.tefek.botdiril.userdata.card.Card;
-import cz.tefek.botdiril.userdata.items.CraftingEntries;
-import cz.tefek.botdiril.userdata.items.ShopEntries;
+import cz.tefek.botdiril.userdata.item.CraftingEntries;
+import cz.tefek.botdiril.userdata.item.ShopEntries;
+import cz.tefek.botdiril.util.BotdirilFmt;
 
 @Command(value = "cardinfo", aliases = {
         "ci" }, category = CommandCategory.ITEMS, description = "Shows important information about a card")
@@ -53,17 +54,17 @@ public class CommandCardInfo
 
         if (ShopEntries.canBeBought(card))
         {
-            eb.addField(new Field("Buys for:", ShopEntries.getCoinPrice(card) + " " + EnumCurrency.COINS.getIcon(), true));
+            eb.addField(new Field("Buys for:", BotdirilFmt.format(ShopEntries.getCoinPrice(card)) + " " + EnumCurrency.COINS.getIcon(), true));
         }
 
         if (ShopEntries.canBeSold(card))
         {
-            eb.addField(new Field("Sells for:", ShopEntries.getSellValue(card) + " " + EnumCurrency.COINS.getIcon(), true));
+            eb.addField(new Field("Sells for:", BotdirilFmt.format(ShopEntries.getSellValue(card)) + " " + EnumCurrency.COINS.getIcon(), true));
         }
 
         if (ShopEntries.canBeBoughtForTokens(card))
         {
-            eb.addField(new Field("Exchanges for:", ShopEntries.getTokenPrice(card) + " " + EnumCurrency.TOKENS.getIcon(), true));
+            eb.addField(new Field("Exchanges for:", BotdirilFmt.format(ShopEntries.getTokenPrice(card)) + " " + EnumCurrency.TOKENS.getIcon(), true));
         }
 
         var recipe = CraftingEntries.search(card);
@@ -71,13 +72,13 @@ public class CommandCardInfo
         if (recipe != null)
         {
             var components = recipe.getComponents();
-            var recipeParts = components.stream().map(comp -> String.format("**%d %s**", comp.getAmount(), comp.getItem().inlineDescription())).collect(Collectors.joining(" + "));
-            eb.addField("Crafts from", recipeParts, false);
+            var recipeParts = components.stream().map(comp -> String.format("**%s %s**", BotdirilFmt.format(comp.getAmount()), comp.getItem().inlineDescription())).collect(Collectors.joining(" + "));
+            eb.addField("Crafts from", recipeParts + "\n*Recipe yields " + BotdirilFmt.format(recipe.getAmount()) + " item(s).*", false);
         }
 
         if (ShopEntries.canBeDisenchanted(card))
         {
-            eb.addField(new Field("Disenchants for:", ShopEntries.getDustForDisenchanting(card) + " " + EnumCurrency.DUST.getIcon(), true));
+            eb.addField(new Field("Disenchants for:", BotdirilFmt.format(ShopEntries.getDustForDisenchanting(card)) + " " + EnumCurrency.DUST.getIcon(), true));
         }
 
         eb.setFooter(card.getFootnote(co), null);

@@ -1,6 +1,6 @@
 package cz.tefek.botdiril.userdata.card;
 
-import cz.tefek.botdiril.userdata.items.Icons;
+import cz.tefek.botdiril.userdata.item.Icons;
 
 public enum EnumCardRarity
 {

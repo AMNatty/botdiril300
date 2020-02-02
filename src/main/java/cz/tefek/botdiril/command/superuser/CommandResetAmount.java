@@ -10,7 +10,7 @@ import cz.tefek.botdiril.framework.command.invoke.CmdPar;
 import cz.tefek.botdiril.framework.permission.EnumPowerLevel;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.UserInventory;
-import cz.tefek.botdiril.userdata.items.Item;
+import cz.tefek.botdiril.userdata.item.Item;
 
 @Command(value = "resetitem", category = CommandCategory.SUPERUSER, aliases = {}, description = "Resets the amount of an item to 0.", powerLevel = EnumPowerLevel.SUPERUSER_OVERRIDE)
 public class CommandResetAmount

@@ -11,9 +11,9 @@ import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.IIdentifiable;
 import cz.tefek.botdiril.userdata.card.Card;
-import cz.tefek.botdiril.userdata.items.Icons;
-import cz.tefek.botdiril.userdata.items.Item;
-import cz.tefek.botdiril.userdata.items.ShopEntries;
+import cz.tefek.botdiril.userdata.item.Icons;
+import cz.tefek.botdiril.userdata.item.Item;
+import cz.tefek.botdiril.userdata.item.ShopEntries;
 
 @Command(value = "disenchant", aliases = {
         "dust" }, category = CommandCategory.ITEMS, description = "Disenchant items or cards into " + Icons.DUST + ".", levelLock = 6)

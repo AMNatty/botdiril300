@@ -8,7 +8,8 @@ import java.lang.annotation.Target;
 
 @Retention(RUNTIME)
 @Target(PARAMETER)
-public @interface CmdPar {
+public @interface CmdPar
+{
     public String value();
 
     public ParType type() default ParType.BASIC;

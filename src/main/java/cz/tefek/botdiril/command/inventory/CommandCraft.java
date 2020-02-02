@@ -16,13 +16,15 @@ import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.IIdentifiable;
 import cz.tefek.botdiril.userdata.card.Card;
-import cz.tefek.botdiril.userdata.items.CraftingEntries;
-import cz.tefek.botdiril.userdata.items.Item;
-import cz.tefek.botdiril.userdata.items.ItemPair;
+import cz.tefek.botdiril.userdata.item.CraftingEntries;
+import cz.tefek.botdiril.userdata.item.Item;
+import cz.tefek.botdiril.userdata.item.ItemPair;
+import cz.tefek.botdiril.userdata.item.Items;
 import cz.tefek.botdiril.userdata.stat.EnumStat;
 import cz.tefek.botdiril.userdata.tempstat.Curser;
 import cz.tefek.botdiril.userdata.tempstat.EnumBlessing;
 import cz.tefek.botdiril.userdata.tempstat.EnumCurse;
+import cz.tefek.botdiril.util.BotdirilFmt;
 
 @Command(value = "craft", aliases = {}, category = CommandCategory.ITEMS, description = "Craft stuff.", levelLock = 2)
 public class CommandCraft
@@ -66,45 +68,58 @@ public class CommandCraft
 
             if (!missing.isEmpty())
             {
-                var missingStr = missing.stream().map(ip -> String.format("**%d %s**", ip.getAmount(), ip.getItem().inlineDescription())).collect(Collectors.joining(", "));
+                var missingStr = missing.stream().map(ip -> String.format("**%s %s**", BotdirilFmt.format(ip.getAmount()), ip.getItem().inlineDescription())).collect(Collectors.joining(", "));
                 throw new CommandException(String.format("You are missing %s for this crafting.", missingStr));
             }
 
-            if (Curser.isBlessed(co, EnumBlessing.CRAFTING_SURGE))
+            var craftingSurgeActivated = false;
+
+            if (Curser.isBlessed(co, EnumBlessing.CRAFTING_SURGE) && Botdiril.RDG.nextUniform(0, 1) < 0.2)
             {
-                for (int i = 0; i < amount; i++)
-                {
-                    if (Botdiril.RDG.nextUniform(0, 1) < 0.2)
-                    {
-                        components.forEach(c -> co.ui.addItem(c.getItem(), -c.getAmount()));
-                    }
-                }
+                craftingSurgeActivated = true;
             }
             else
             {
                 components.forEach(c -> co.ui.addItem(c.getItem(), -c.getAmount() * amount));
             }
 
-            var ingr = components.stream().map(ip -> String.format("**%d** **%s**", ip.getAmount() * amount, ip.getItem().inlineDescription())).collect(Collectors.joining(", "));
+            var ingr = components.stream().map(ip -> String.format("**%s %s**", BotdirilFmt.format(ip.getAmount() * amount), ip.getItem().inlineDescription())).collect(Collectors.joining(", "));
 
             if (Curser.isCursed(co, EnumCurse.CRAFTING_MAY_FAIL) && Botdiril.RDG.nextUniform(0, 1) < 0.2)
             {
-                MR.send(co.textChannel, String.format("*You failed horribly while crafting and lost %s.*", ingr));
+                if (craftingSurgeActivated)
+                {
+                    MR.send(co.textChannel, String.format("*You failed horribly while crafting and lost nothing, because the **%s%s** also activated.*", Items.scrollOfBlessing.getIcon(), EnumBlessing.CRAFTING_SURGE.getLocalizedName()));
+                }
+                else
+                {
+                    MR.send(co.textChannel, String.format("*You failed horribly while crafting and lost %s.*", ingr));
+                }
+
                 return;
             }
 
+            var product = amount * recipe.getAmount();
+
             if (item instanceof Item)
             {
-                co.ui.addItem((Item) item, amount * recipe.getAmount());
+                co.ui.addItem((Item) item, product);
             }
             else if (item instanceof Card)
             {
-                co.ui.addCard((Card) item, amount * recipe.getAmount());
+                co.ui.addCard((Card) item, product);
             }
 
-            co.po.addLong(EnumStat.ITEMS_CRAFTED.getName(), amount * recipe.getAmount());
+            co.po.addLong(EnumStat.ITEMS_CRAFTED.getName(), product);
 
-            MR.send(co.textChannel, String.format("You crafted **%d** **%s** from %s.", amount * recipe.getAmount(), item.inlineDescription(), ingr));
+            if (craftingSurgeActivated)
+            {
+                MR.send(co.textChannel, String.format("You crafted **%d** **%s** out of **%s thin air**.", product, item.inlineDescription(), Items.scrollOfBlessing.getIcon()));
+            }
+            else
+            {
+                MR.send(co.textChannel, String.format("You crafted **%d** **%s** from %s.", product, item.inlineDescription(), ingr));
+            }
         }
         finally
         {

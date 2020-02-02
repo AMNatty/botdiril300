@@ -16,8 +16,8 @@ import cz.tefek.botdiril.framework.command.invoke.CommandException;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.UserInventory;
-import cz.tefek.botdiril.userdata.items.Icons;
-import cz.tefek.botdiril.userdata.items.Items;
+import cz.tefek.botdiril.userdata.item.Icons;
+import cz.tefek.botdiril.userdata.item.Items;
 import cz.tefek.botdiril.userdata.properties.PropertyObject;
 import cz.tefek.botdiril.userdata.stat.EnumStat;
 import cz.tefek.botdiril.userdata.tempstat.Curser;
@@ -25,6 +25,7 @@ import cz.tefek.botdiril.userdata.tempstat.EnumBlessing;
 import cz.tefek.botdiril.userdata.tempstat.EnumCurse;
 import cz.tefek.botdiril.userdata.timers.Timers;
 import cz.tefek.botdiril.userdata.xp.XPAdder;
+import cz.tefek.botdiril.util.BotdirilFmt;
 
 @Command(aliases = {
         "rob" }, category = CommandCategory.INTERACTIVE, description = "Hehe. Time to rob someone.", value = "steal", levelLock = 10)
@@ -39,7 +40,7 @@ public class CommandSteal
         {
             CommandAssert.assertNotEquals(co.caller.getIdLong(), user.getIdLong(), "You can't rob yourself. Or can you? :thinking:");
 
-            CommandAssert.numberNotBelowL(co.ui.getCoins(), 1000, "You need at least **1000** " + Icons.COIN + " to rob someone.");
+            CommandAssert.numberNotBelowL(co.ui.getCoins(), 1000, "You need at least **1'000** " + Icons.COIN + " to rob someone.");
         }
         catch (CommandException e)
         {
@@ -122,7 +123,7 @@ public class CommandSteal
             co.ui.addCoins(stole);
             other.addCoins(-stole);
             eb.appendDescription("It worked out!");
-            eb.addField("Stolen coins", String.format("**%d %s**.", stole, Icons.COIN), false);
+            eb.addField("Stolen coins", String.format("**%s %s**.", BotdirilFmt.format(stole), Icons.COIN), false);
 
             try (var otherProps = new PropertyObject(user.getIdLong()))
             {

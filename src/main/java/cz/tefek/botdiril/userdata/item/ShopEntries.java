@@ -1,4 +1,4 @@
-package cz.tefek.botdiril.userdata.items;
+package cz.tefek.botdiril.userdata.item;
 
 import java.util.HashMap;
 import java.util.Map;

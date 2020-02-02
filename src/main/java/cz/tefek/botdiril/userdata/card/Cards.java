@@ -8,11 +8,11 @@ import org.json.JSONTokener;
 import java.io.FileReader;
 
 import cz.tefek.botdiril.BotMain;
-import cz.tefek.botdiril.userdata.items.CraftingEntries;
-import cz.tefek.botdiril.userdata.items.CraftingEntries.Recipe;
-import cz.tefek.botdiril.userdata.items.ItemPair;
-import cz.tefek.botdiril.userdata.items.Items;
-import cz.tefek.botdiril.userdata.items.ShopEntries;
+import cz.tefek.botdiril.userdata.item.CraftingEntries;
+import cz.tefek.botdiril.userdata.item.ItemPair;
+import cz.tefek.botdiril.userdata.item.Items;
+import cz.tefek.botdiril.userdata.item.ShopEntries;
+import cz.tefek.botdiril.userdata.item.CraftingEntries.Recipe;
 
 public class Cards
 {
@@ -78,6 +78,31 @@ public class Cards
             BotMain.logger.fatal("CS:GO skin data not found or malformed! Aborting.", e);
             System.exit(10);
         }
-    }
 
+        /*
+        try (var br = new FileReader("assets/cardSets/terraria-g.json"))
+        {
+            var jobj = new JSONObject(new JSONTokener(br));
+        
+            CardSet.terraria = new CardSet(jobj.getString("set"), jobj.getString("setName"), jobj.getString("idPrefix"));
+            CardSet.terraria.setDescription(jobj.getString("description"));
+        
+            jobj.getJSONArray("items").forEach(ch ->
+            {
+                var jch = (JSONObject) ch;
+        
+                var rarity = jch.getEnum(EnumCardRarity.class, "rarity");
+                var cc = new Card(CardSet.csgo, rarity, jch.getString("id"), jch.getString("name"));
+                ShopEntries.addCoinSell(cc, rarity.getBasePrice());
+                ShopEntries.addDisenchant(cc, rarity.getBasePrice() * 100);
+                CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(Items.dust, rarity.getBasePrice() * 3 * 100)), 1, cc));
+            });
+        }
+        catch (Exception e)
+        {
+            BotMain.logger.fatal("Terraria skin data not found or malformed! Aborting.", e);
+            System.exit(11);
+        }
+        */
+    }
 }

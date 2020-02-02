@@ -9,9 +9,10 @@ import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.IIdentifiable;
 import cz.tefek.botdiril.userdata.card.Card;
-import cz.tefek.botdiril.userdata.items.Icons;
-import cz.tefek.botdiril.userdata.items.Item;
-import cz.tefek.botdiril.userdata.items.ShopEntries;
+import cz.tefek.botdiril.userdata.item.Icons;
+import cz.tefek.botdiril.userdata.item.Item;
+import cz.tefek.botdiril.userdata.item.ShopEntries;
+import cz.tefek.botdiril.util.BotdirilFmt;
 
 @Command(value = "shop", aliases = { "store",
         "market" }, category = CommandCategory.CURRENCY, description = "Opens the shops.")
@@ -23,7 +24,7 @@ public class CommandShop
         var prefix = co.sc.getPrefix();
         var eb = new EmbedBuilder();
         eb.setTitle("Botdiril's Shop");
-        eb.setDescription(String.format("You have **%d** %s.", co.ui.getCoins(), Icons.COIN));
+        eb.setDescription(String.format("You have **%s** %s.", BotdirilFmt.format(co.ui.getCoins()), Icons.COIN));
         eb.setColor(0x008080);
 
         Item.items().forEach(item -> addItems(eb, item));
@@ -37,7 +38,9 @@ public class CommandShop
     private static void addItems(EmbedBuilder eb, IIdentifiable item)
     {
         if (!ShopEntries.canBeBought(item))
+        {
             return;
+        }
 
         StringBuilder title = new StringBuilder();
 
@@ -48,13 +51,13 @@ public class CommandShop
         sub.append("**ID:** ");
         sub.append(item.getName());
         sub.append("\n**Price:** ");
-        sub.append(ShopEntries.getCoinPrice(item));
+        sub.append(BotdirilFmt.format(ShopEntries.getCoinPrice(item)));
         sub.append(Icons.COIN);
         sub.append("\n");
         if (ShopEntries.canBeSold(item))
         {
             sub.append("**Sells back for:** ");
-            sub.append(ShopEntries.getSellValue(item));
+            sub.append(BotdirilFmt.format(ShopEntries.getSellValue(item)));
             sub.append(Icons.COIN);
         }
         else

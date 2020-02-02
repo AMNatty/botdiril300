@@ -5,11 +5,13 @@ import java.util.function.BiFunction;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 
+import org.apache.commons.math3.analysis.interpolation.LinearInterpolator;
+
 import cz.tefek.botdiril.Botdiril;
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.internal.GlobalProperties;
-import cz.tefek.botdiril.userdata.items.Icons;
+import cz.tefek.botdiril.userdata.item.Icons;
 import cz.tefek.botdiril.userdata.tempstat.Curser;
 import cz.tefek.botdiril.userdata.tempstat.EnumCurse;
 import cz.tefek.botdiril.userdata.xp.XPRewards;
@@ -18,9 +20,10 @@ public class GambleEngine
 {
     public enum GambleOutcome
     {
-        LOSE_EVERYTHING("Lose everything", "You lost everything - %d " + Icons.KEK + "... Better luck next time.", 20, (level, bet) -> -bet),
-        LOSE_THREE_QUARTERS("Lose 75%", "You lost 75%% of your bet. You lost %d " + Icons.KEK + ". Pretty unlucky.", 50, (level, bet) -> Math.round(-bet * 0.75)),
-        LOSE_HALF("Lose half", "You lost half of your bet. You lose %d " + Icons.KEK + ".", 120, (level, bet) -> Math.round(-bet * 0.5)),
+        LOSE_EVERYTHING("Lose everything", "You lost everything - %d " + Icons.KEK + "... Better luck next time.", 15, (level, bet) -> -bet),
+        LOSE_THREE_QUARTERS("Lose 75%", "You lost 75%% of your bet. You lost %d " + Icons.KEK + ". Pretty unlucky.", 40, (level, bet) -> Math.round(-bet * 0.75)),
+        LOSE_HALF("Lose half", "You lost half of your bet. You lose %d " + Icons.KEK + ".", 75, (level, bet) -> Math.round(-bet * 0.5)),
+        LOSE_QUARTER("Lose 25%", "You lost %d " + Icons.KEK + ". (-25%%)", 100, (level, bet) -> Math.round(-bet * 0.25)),
         KEEP_BET("Win nothing, lose nothing", "You keep your bet this time.", 20, (level, bet) -> 0L),
         WIN_QUARTER("Win 125%", "You win %d " + Icons.KEK + ". (+25%%)", 100, (level, bet) -> Math.round(bet * 0.25)),
         WIN_HALF("Win 150%", "You win %d " + Icons.KEK + ". (+50%%)", 40, (level, bet) -> Math.round(bet * 0.5)),
@@ -100,21 +103,46 @@ public class GambleEngine
          */
         private static final long serialVersionUID = 9102070166284491540L;
 
-        public void addRescaled(long key, Double value, double percentage)
+        public void addRescaled(long key, double value, double percentage)
         {
-            this.put(key, value * percentage);
-        };
+            this.compute(key, (mapKey, previousValue) ->
+            {
+                if (previousValue == null)
+                {
+                    return value * percentage;
+                }
 
-        @Override
-        public Double get(Object key)
-        {
-            var val = super.get(key);
-            return val == null ? 0.0 : val;
+                return previousValue + value * percentage;
+            });
         }
 
-        public void setRescaled(long key, Double value, double percentage)
+        public void setRescaled(long key, double value, double percentage)
         {
-            this.addRescaled(key, value - this.get(key), percentage);
+            this.compute(key, (mapKey, previousValue) ->
+            {
+                if (previousValue == null)
+                {
+                    return value * percentage;
+                }
+
+                return previousValue * (1 - percentage) + value * percentage;
+            });
+        }
+
+        public void multiplyRescaled(long key, double value, double percentage)
+        {
+            this.compute(key, (mapKey, previousValue) ->
+            {
+                if (previousValue == null)
+                {
+                    return 0.0;
+                }
+
+                var interpolator = new LinearInterpolator();
+                var function = interpolator.interpolate(new double[] { 0, 1 }, new double[] { 1, value });
+
+                return previousValue * function.value(percentage);
+            });
         }
     }
 
@@ -143,7 +171,7 @@ public class GambleEngine
     }
 
     private static final GambleOutcome[] outcomesSorted = { GambleOutcome.LOSE_EVERYTHING,
-            GambleOutcome.LOSE_THREE_QUARTERS, GambleOutcome.LOSE_HALF, GambleOutcome.KEEP_BET,
+            GambleOutcome.LOSE_THREE_QUARTERS, GambleOutcome.LOSE_HALF, GambleOutcome.LOSE_QUARTER,
             GambleOutcome.WIN_QUARTER, GambleOutcome.WIN_HALF, GambleOutcome.WIN_DOUBLE, GambleOutcome.WIN_TRIPLE,
             GambleOutcome.WIN_QUADRUPLE, GambleOutcome.JACKPOT };
 
@@ -153,12 +181,12 @@ public class GambleEngine
 
     private static double genLBound(long id)
     {
-        return badLuckProtection.get(id) / 50.0;
+        return badLuckProtection.getOrDefault(id, 0.0) / 50.0;
     }
 
     private static double genRBound(long id)
     {
-        return 100.0 / (1 + greediness.get(id) / 1500.0) + generosity.get(id) / 200.0;
+        return 100.0 / (1 + greediness.getOrDefault(id, 0.0) / 1500.0) + generosity.getOrDefault(id, 0.0) / 200.0;
     }
 
     public static void printChances(CallObj co)
@@ -226,52 +254,56 @@ public class GambleEngine
 
         switch (result)
         {
-            case JACKPOT:
-                generosity.setRescaled(id, 0.0, percentage);
-                badLuckProtection.setRescaled(id, 0.0, percentage);
-                greediness.addRescaled(id, 1000.0, percentage);
-                break;
-            case KEEP_BET:
-                break;
             case LOSE_EVERYTHING:
                 greediness.setRescaled(id, 0.0, percentage);
                 generosity.addRescaled(id, 100.0, percentage);
                 badLuckProtection.addRescaled(id, 100.0, percentage);
                 break;
-            case LOSE_HALF:
-                generosity.addRescaled(id, 20.0, percentage);
-                greediness.setRescaled(id, greediness.get(id) * 0.75, percentage);
-                badLuckProtection.addRescaled(id, 20.0, percentage);
-                break;
             case LOSE_THREE_QUARTERS:
                 generosity.addRescaled(id, 50.0, percentage);
-                greediness.setRescaled(id, greediness.get(id) * 0.4, percentage);
+                greediness.multiplyRescaled(id, 0.05, percentage);
                 badLuckProtection.addRescaled(id, 50.0, percentage);
                 break;
+            case LOSE_HALF:
+                generosity.addRescaled(id, 20.0, percentage);
+                greediness.multiplyRescaled(id, 0.1, percentage);
+                badLuckProtection.addRescaled(id, 20.0, percentage);
+                break;
+            case LOSE_QUARTER:
+                generosity.addRescaled(id, 5.0, percentage);
+                greediness.multiplyRescaled(id, 0.25, percentage);
+                badLuckProtection.addRescaled(id, 5.0, percentage);
+            case KEEP_BET:
+                break;
+            case WIN_QUARTER:
+                generosity.multiplyRescaled(id, 0.8, percentage);
+                badLuckProtection.multiplyRescaled(id, 0.5, percentage);
+                greediness.addRescaled(id, 2.0, percentage);
+                break;
+            case WIN_HALF:
+                generosity.multiplyRescaled(id, 0.75, percentage);
+                badLuckProtection.multiplyRescaled(id, 0.25, percentage);
+                greediness.addRescaled(id, 5.0, percentage);
+                break;
             case WIN_DOUBLE:
-                generosity.setRescaled(id, generosity.get(id) * 0.5, percentage);
-                badLuckProtection.setRescaled(id, badLuckProtection.get(id) * 0.125, percentage);
+                generosity.multiplyRescaled(id, 0.5, percentage);
+                badLuckProtection.multiplyRescaled(id, 0.125, percentage);
                 greediness.addRescaled(id, 50.0, percentage);
                 break;
             case WIN_TRIPLE:
-                generosity.setRescaled(id, generosity.get(id) * 0.25, percentage);
-                badLuckProtection.setRescaled(id, badLuckProtection.get(id) * 0.0625, percentage);
+                generosity.multiplyRescaled(id, 0.25, percentage);
+                badLuckProtection.multiplyRescaled(id, 0.0625, percentage);
                 greediness.addRescaled(id, 150.0, percentage);
                 break;
             case WIN_QUADRUPLE:
-                generosity.setRescaled(id, generosity.get(id) * 0.125, percentage);
-                badLuckProtection.setRescaled(id, badLuckProtection.get(id) * 0.03125, percentage);
+                generosity.multiplyRescaled(id, 0.125, percentage);
+                badLuckProtection.multiplyRescaled(id, 0.03125, percentage);
                 greediness.addRescaled(id, 300.0, percentage);
                 break;
-            case WIN_HALF:
-                generosity.setRescaled(id, generosity.get(id) * 0.75, percentage);
-                badLuckProtection.setRescaled(id, badLuckProtection.get(id) * 0.25, percentage);
-                greediness.addRescaled(id, 5.0, percentage);
-                break;
-            case WIN_QUARTER:
-                generosity.setRescaled(id, generosity.get(id) * 0.8, percentage);
-                badLuckProtection.setRescaled(id, badLuckProtection.get(id) * 0.5, percentage);
-                greediness.addRescaled(id, 2.0, percentage);
+            case JACKPOT:
+                generosity.setRescaled(id, 0.0, percentage);
+                badLuckProtection.setRescaled(id, 0.0, percentage);
+                greediness.addRescaled(id, 1000.0, percentage);
                 break;
         }
 

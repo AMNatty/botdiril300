@@ -12,9 +12,10 @@ import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.util.BigNumbers;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
-import cz.tefek.botdiril.userdata.items.Icons;
+import cz.tefek.botdiril.userdata.item.Icons;
 import cz.tefek.botdiril.userdata.timers.Timers;
 import cz.tefek.botdiril.userdata.xp.XPAdder;
+import cz.tefek.botdiril.util.BotdirilFmt;
 
 @Command(value = "payoutmegakeks", aliases = { "payoutmega",
         "bigpayout" }, category = CommandCategory.CURRENCY, description = "Pay out your " + Icons.MEGAKEK + " for some " + Icons.KEK, levelLock = 15)
@@ -47,6 +48,6 @@ public class CommandPayoutMegaKeks
 
         XPAdder.addXP(co, xp);
 
-        MR.send(co.textChannel, String.format("Paid out **%s** %s for **%d** %s. **[+%d XP]**", numStr, Icons.MEGAKEK, gets, Icons.KEK, xp));
+        MR.send(co.textChannel, String.format("Paid out **%s** %s for **%s** %s. **[+%s XP]**", numStr, Icons.MEGAKEK, BotdirilFmt.format(gets), Icons.KEK, BotdirilFmt.format(xp)));
     }
 }

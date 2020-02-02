@@ -35,7 +35,7 @@ public class Curser
 
         if (isBlessed(co, EnumBlessing.CANT_BE_CURSED))
         {
-            MR.send(co.textChannel, String.format("***Your %s protected your from the %s.***", EnumBlessing.CANT_BE_CURSED.getLocalizedName(), curse.getLocalizedName()));
+            MR.send(co.textChannel, String.format("***Your %s protected you from the %s.***", EnumBlessing.CANT_BE_CURSED.getLocalizedName(), curse.getLocalizedName()));
             return;
         }
 

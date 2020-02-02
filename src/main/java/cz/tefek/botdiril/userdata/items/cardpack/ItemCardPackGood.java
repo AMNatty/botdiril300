@@ -4,12 +4,13 @@ import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.card.Card;
 import cz.tefek.botdiril.userdata.card.CardDrops;
-import cz.tefek.botdiril.userdata.items.Icons;
-import cz.tefek.botdiril.userdata.items.ShopEntries;
+import cz.tefek.botdiril.userdata.item.Icons;
+import cz.tefek.botdiril.userdata.item.ShopEntries;
 import cz.tefek.botdiril.userdata.pools.CardPools;
 import cz.tefek.botdiril.userdata.stat.EnumStat;
 import cz.tefek.botdiril.userdata.tempstat.Curser;
 import cz.tefek.botdiril.userdata.tempstat.EnumCurse;
+import cz.tefek.botdiril.util.BotdirilFmt;
 
 public class ItemCardPackGood extends ItemCardPack
 {
@@ -53,7 +54,9 @@ public class ItemCardPackGood extends ItemCardPack
             co.ui.addCard(card, amt);
 
             if (i <= DISPLAY_LIMIT)
+            {
                 sb.append(String.format("\n%dx %s", amt, card.inlineDescription()));
+            }
 
             i++;
         }
@@ -61,11 +64,13 @@ public class ItemCardPackGood extends ItemCardPack
         var dc = cp.distintCount();
 
         if (dc > DISPLAY_LIMIT)
+        {
             sb.append(String.format("\nand %d more different cards...", dc - DISPLAY_LIMIT));
+        }
 
         var dustVal = cp.stream().mapToLong(cardPair -> ShopEntries.getDustForDisenchanting(cardPair.getCard()) * cardPair.getAmount()).sum();
 
-        sb.append(String.format("\nTotal %d cards. Approximate value: %d%s", cp.totalCount(), dustVal, Icons.DUST));
+        sb.append(String.format("\nTotal %s cards. Approximate value: %s%s", BotdirilFmt.format(cp.totalCount()), BotdirilFmt.format(dustVal), Icons.DUST));
 
         co.po.addLong(EnumStat.CARD_PACKS_OPENED.getName(), amount);
 

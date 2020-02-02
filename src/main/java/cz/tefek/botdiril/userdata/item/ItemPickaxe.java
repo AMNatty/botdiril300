@@ -1,4 +1,4 @@
-package cz.tefek.botdiril.userdata.items;
+package cz.tefek.botdiril.userdata.item;
 
 public class ItemPickaxe extends Item
 {
@@ -19,7 +19,7 @@ public class ItemPickaxe extends Item
         return this.chanceToBreak;
     }
 
-    public double getMultiplier()
+    public double getRareDropMultiplier()
     {
         return this.multiplier;
     }

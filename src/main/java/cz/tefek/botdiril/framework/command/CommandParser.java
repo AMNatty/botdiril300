@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import net.dv8tion.jda.api.entities.Emote;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -29,8 +30,8 @@ import cz.tefek.botdiril.serverdata.ChannelPreferences;
 import cz.tefek.botdiril.userdata.IIdentifiable;
 import cz.tefek.botdiril.userdata.achievement.Achievement;
 import cz.tefek.botdiril.userdata.card.Card;
-import cz.tefek.botdiril.userdata.items.Item;
-import cz.tefek.botdiril.userdata.items.ShopEntries;
+import cz.tefek.botdiril.userdata.item.Item;
+import cz.tefek.botdiril.userdata.item.ShopEntries;
 import cz.tefek.botdiril.userdata.stat.EnumStat;
 
 public class CommandParser
@@ -234,6 +235,12 @@ public class CommandParser
 
                         argArr[i] = num;
                     }
+                    if (clazz == boolean.class || clazz == Boolean.class)
+                    {
+                        var b = CommandAssert.parseBoolean(arg, "Error: " + arg.replace("@", "(@)") + " is not a valid on/off state.");
+
+                        argArr[i] = b;
+                    }
                     else if (clazz == long.class || clazz == Long.class)
                     {
                         if (type == ParType.AMOUNT_COINS)
@@ -401,6 +408,10 @@ public class CommandParser
                     else if (clazz == Member.class)
                     {
                         argArr[i] = CommandAssert.parseMember(co.guild, arg);
+                    }
+                    else if (clazz == Emote.class)
+                    {
+                        argArr[i] = CommandAssert.parseEmote(co.jda, arg);
                     }
                     else if (clazz == TextChannel.class)
                     {

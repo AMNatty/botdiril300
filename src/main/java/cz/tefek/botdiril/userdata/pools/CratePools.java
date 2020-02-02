@@ -2,8 +2,9 @@ package cz.tefek.botdiril.userdata.pools;
 
 import java.util.List;
 
-import cz.tefek.botdiril.userdata.items.Item;
-import cz.tefek.botdiril.userdata.items.Items;
+import cz.tefek.botdiril.userdata.item.Item;
+import cz.tefek.botdiril.userdata.item.Items;
+import cz.tefek.botdiril.userdata.items.pickaxe.Pickaxes;
 
 public class CratePools
 {
@@ -38,41 +39,43 @@ public class CratePools
     {
         terribleRewards.add(Items.trash);
 
-        badRewards.add(Items.pickaxeI);
+        badRewards.add(Pickaxes.pickaxeI);
         badRewards.add(Items.cardPackBasic);
         badRewards.add(Items.uranium);
 
         normalRewards.add(Items.cardPackNormal);
         normalRewards.add(Items.scrollOfLesserIntelligence);
+        normalRewards.add(Pickaxes.pickaxeII);
 
-        goodRewards.add(Items.pickaxeII);
         goodRewards.add(Items.redGem);
         goodRewards.add(Items.greenGem);
         goodRewards.add(Items.toolBox);
         goodRewards.add(Items.scrollOfCombining);
+        goodRewards.add(Pickaxes.pickaxeIV);
 
         greatRewards.add(Items.cardPackGood);
         greatRewards.add(Items.purpleGem);
         greatRewards.add(Items.blueGem);
-        greatRewards.add(Items.pickaxeIII);
         greatRewards.add(Items.emerald);
+        greatRewards.add(Pickaxes.pickaxeV);
 
         amazingRewards.add(Items.scrollOfAbundance);
         amazingRewards.add(Items.cardPackVoid);
         amazingRewards.add(Items.scrollOfIntelligence);
         amazingRewards.add(Items.diamond);
+        amazingRewards.add(Pickaxes.pickaxeX);
+        amazingRewards.add(Items.rainbowGem);
+        amazingRewards.add(Items.blackGem);
 
-        hyperRewards.add(Items.pickaxeIV);
-        hyperRewards.add(Items.rainbowGem);
-        hyperRewards.add(Items.blackGem);
+        hyperRewards.add(Pickaxes.pickaxeXV);
 
-        ultraRewards.add(Items.pickaxeV);
         ultraRewards.add(Items.scrollOfIntelligenceII);
 
+        godlyRewards.add(Pickaxes.pickaxeXX);
         godlyRewards.add(Items.gemdiril);
 
         leagueRewards.addAll(Items.leagueItems);
 
-        staticRewards.addAll(List.of(Items.keys, Items.keys, Items.repairKit, Items.repairKit, Items.repairKit, Items.goldenOil));
+        staticRewards.addAll(List.of(Items.keys, Items.keys, Items.goldenOil));
     }
 }

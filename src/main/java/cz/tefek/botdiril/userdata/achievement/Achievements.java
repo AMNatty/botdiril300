@@ -1,6 +1,6 @@
 package cz.tefek.botdiril.userdata.achievement;
 
-import cz.tefek.botdiril.userdata.items.Icons;
+import cz.tefek.botdiril.userdata.item.Icons;
 
 public class Achievements
 {
@@ -11,4 +11,9 @@ public class Achievements
     public static Achievement god = new Achievement("god", "Botdiril God", "Get level 2000.", Icons.ACHIEVEMENT_BOT);
 
     public static Achievement beta = new Achievement("betatester", "Botdiril Beta Tester", "Be a part of the original beta test.", Icons.ACHIEVEMENT_BETA);
+
+    public static void load()
+    {
+
+    }
 }

@@ -1,8 +1,8 @@
 package cz.tefek.botdiril.userdata.items.crate;
 
 import cz.tefek.botdiril.framework.command.CallObj;
-import cz.tefek.botdiril.userdata.items.IOpenable;
-import cz.tefek.botdiril.userdata.items.Item;
+import cz.tefek.botdiril.userdata.item.IOpenable;
+import cz.tefek.botdiril.userdata.item.Item;
 
 public abstract class ItemCrate extends Item implements IOpenable
 {

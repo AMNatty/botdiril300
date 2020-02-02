@@ -6,13 +6,13 @@ import java.text.MessageFormat;
 
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.util.MR;
-import cz.tefek.botdiril.userdata.items.CraftingEntries;
-import cz.tefek.botdiril.userdata.items.CraftingEntries.Recipe;
-import cz.tefek.botdiril.userdata.items.IOpenable;
-import cz.tefek.botdiril.userdata.items.Icons;
-import cz.tefek.botdiril.userdata.items.Item;
-import cz.tefek.botdiril.userdata.items.ItemPair;
-import cz.tefek.botdiril.userdata.items.Items;
+import cz.tefek.botdiril.userdata.item.CraftingEntries;
+import cz.tefek.botdiril.userdata.item.IOpenable;
+import cz.tefek.botdiril.userdata.item.Icons;
+import cz.tefek.botdiril.userdata.item.Item;
+import cz.tefek.botdiril.userdata.item.ItemPair;
+import cz.tefek.botdiril.userdata.item.Items;
+import cz.tefek.botdiril.userdata.item.CraftingEntries.Recipe;
 import cz.tefek.botdiril.userdata.xp.XPAdder;
 
 public class ItemScrollOfIntelligence extends Item implements IOpenable

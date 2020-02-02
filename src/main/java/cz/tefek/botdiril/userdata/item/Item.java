@@ -1,4 +1,4 @@
-package cz.tefek.botdiril.userdata.items;
+package cz.tefek.botdiril.userdata.item;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -78,7 +78,9 @@ public class Item implements IIdentifiable
     public String getIcon()
     {
         if (this.icon == null)
+        {
             BotMain.logger.error("Every Item MUST have an icon. " + this.localizedName);
+        }
 
         return this.icon;
     }
@@ -104,7 +106,7 @@ public class Item implements IIdentifiable
     @Override
     public int hashCode()
     {
-        return 31 + this.getID();
+        return this.getID();
     }
 
     @Override

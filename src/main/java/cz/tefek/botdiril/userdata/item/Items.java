@@ -1,4 +1,4 @@
-package cz.tefek.botdiril.userdata.items;
+package cz.tefek.botdiril.userdata.item;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +13,7 @@ import java.io.IOException;
 
 import cz.tefek.botdiril.BotMain;
 import cz.tefek.botdiril.userdata.EnumCurrency;
-import cz.tefek.botdiril.userdata.items.CraftingEntries.Recipe;
+import cz.tefek.botdiril.userdata.item.CraftingEntries.Recipe;
 import cz.tefek.botdiril.userdata.items.cardpack.ItemCardPackBasic;
 import cz.tefek.botdiril.userdata.items.cardpack.ItemCardPackGood;
 import cz.tefek.botdiril.userdata.items.cardpack.ItemCardPackNormal;
@@ -30,6 +30,7 @@ import cz.tefek.botdiril.userdata.items.crate.ItemCrateLegendary;
 import cz.tefek.botdiril.userdata.items.crate.ItemCrateUltimate;
 import cz.tefek.botdiril.userdata.items.crate.ItemCrateUncommon;
 import cz.tefek.botdiril.userdata.items.crate.ItemCrateVoid;
+import cz.tefek.botdiril.userdata.items.pickaxe.Pickaxes;
 import cz.tefek.botdiril.userdata.items.scrolls.ItemLesserScrollOfIntelligence;
 import cz.tefek.botdiril.userdata.items.scrolls.ItemScrollOfAbundance;
 import cz.tefek.botdiril.userdata.items.scrolls.ItemScrollOfBlessing;
@@ -67,12 +68,6 @@ public class Items
     public static Item crateInfernal;
     public static Item crateVoid;
     public static Item crateLeague;
-
-    public static Item pickaxeI;
-    public static Item pickaxeII;
-    public static Item pickaxeIII;
-    public static Item pickaxeIV;
-    public static Item pickaxeV;
 
     public static Item redGem;
     public static Item greenGem;
@@ -151,21 +146,6 @@ public class Items
 
         goldenOil = new Item("goldenoil", Icons.OTHER_GOLDENOIL, "Golden Oil").setDescription("Passively grants +1% bonus sell value, but also grants 0.5% chance for all golden oil barrels to explode, leaving you with no barrels and making you lose 15% from that trade.");
 
-        pickaxeI = new ItemPickaxe("pickaxei", Icons.PICKAXE_I, "Pickaxe I", 1, 400, 0.10).setDescription("Basic Pickaxe.\nUsed for mining.");
-        ShopEntries.addCoinBuy(pickaxeI, 2_000);
-        ShopEntries.addCoinSell(pickaxeI, 800);
-
-        pickaxeII = new ItemPickaxe("pickaxeii", Icons.PICKAXE_II, "Pickaxe II", 2, 16_000, 0.2).setDescription("Good Pickaxe.\nExpect much better loot.");
-        ShopEntries.addCoinBuy(pickaxeII, 80_000);
-        ShopEntries.addCoinSell(pickaxeII, 35_000);
-
-        pickaxeIII = new ItemPickaxe("pickaxeiii", Icons.PICKAXE_III, "Pickaxe III", 3, 200_000, 0.175).setDescription("Hyper Pickaxe.\nNormally unobtainable, this pickaxe almost swings itself.");
-        ShopEntries.addCoinSell(pickaxeIII, 250_000);
-
-        pickaxeIV = new ItemPickaxe("pickaxeiv", Icons.PICKAXE_IV, "Pickaxe IV", 4, 2_000_000, 0.15).setDescription("Ascended Pickaxe\nPlease don't touch anything you don't want to disintegrate with this.");
-
-        pickaxeV = new ItemPickaxe("pickaxev", Icons.PICKAXE_V, "Pickaxe V", 5, 40_000_000, 0.12).setDescription("Omega Pickaxe\nWho said bedrock was unbreakable?");
-
         toolBox = new Item("toolbox", Icons.ITEM_SUSPICIOUS_METAL_BOX, "Tool Box").setDescription("I wonder what it's for.");
         ShopEntries.addCoinSell(toolBox, 4_000);
 
@@ -196,7 +176,7 @@ public class Items
         kekium = new Item("kekium", Icons.MINE_KEKIUM, "Kekium");
         kekium.setDescription("An exceptionally rare metal found in the deepest of mines.");
         ShopEntries.addCoinSell(kekium, 100_000);
-        ShopEntries.addTokenBuy(kekium, 1_000_000);
+        ShopEntries.addTokenBuy(kekium, 80_000);
 
         emerald = new Item("emerald", Icons.MINE_EMERALD, "Emerald");
         emerald.setDescription("An extremely rare gemstone. Emerald is a variant of beryl.");
@@ -233,18 +213,13 @@ public class Items
         scrollOfSwapping = new ItemScrollOfSwapping();
         scrollOfBlessing = new ItemScrollOfBlessing();
 
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(blueGem, 1)), 15, scrollOfCombining));
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(redGem, 32), new ItemPair(greenGem, 32), new ItemPair(blueGem, 8), new ItemPair(purpleGem, 8), new ItemPair(rainbowGem, 1), new ItemPair(blackGem, 1), new ItemPair(kekium, 1234567)), 1, gemdiril));
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(trash, 10), new ItemPair(redGem, 1), new ItemPair(copper, 30)), 1, toolBox));
-
-        // Pickaxe recipes
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(iron, 20), new ItemPair(coal, 80), new ItemPair(copper, 3)), 1, pickaxeI));
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(pickaxeI, 20), new ItemPair(iron, 700), new ItemPair(coal, 2_000), new ItemPair(copper, 100)), 1, pickaxeII));
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(pickaxeII, 15), new ItemPair(scrollOfCombining, 1), new ItemPair(uranium, 100), new ItemPair(dust, 500_000)), 1, pickaxeIII));
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(pickaxeIII, 20), new ItemPair(emerald), new ItemPair(purpleGem), new ItemPair(scrollOfCombining, 16), new ItemPair(platinum, 250)), 1, pickaxeIV));
-        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(pickaxeIV, 24), new ItemPair(purpleGem, 5), new ItemPair(rainbowGem, 3), new ItemPair(blackGem, 3), new ItemPair(diamond, 3), new ItemPair(kekium, 1000)), 1, pickaxeV));
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(purpleGem, 1)), 3, scrollOfCombining));
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(redGem, 2048), new ItemPair(greenGem, 2048), new ItemPair(blueGem, 1024), new ItemPair(purpleGem, 1024), new ItemPair(rainbowGem, 512), new ItemPair(blackGem, 512), new ItemPair(kekium, 12345678)), 1, gemdiril));
+        CraftingEntries.add(new Recipe(Arrays.asList(new ItemPair(trash, 20), new ItemPair(redGem, 8), new ItemPair(copper, 30)), 1, toolBox));
 
         max = new Item("Max", Icons.OTHER_MAX, "Max the Doggo").setDescription("The goodest boy on Earth.");
+
+        Pickaxes.load();
 
         try (var br = new FileReader("assets/itemdata-g.json"))
         {

@@ -1,4 +1,4 @@
-package cz.tefek.botdiril.userdata.items;
+package cz.tefek.botdiril.userdata.item;
 
 import java.util.Arrays;
 import java.util.List;
@@ -87,12 +87,12 @@ public class Icons
 
     // GEMS
 
-    public static final String GEM_GREEN = "<a:greengem:659057204472840213>";
-    public static final String GEM_RED = "<a:redgem:659057206716792846>";
-    public static final String GEM_PURPLE = "<a:purplegem:659057206259482676>";
-    public static final String GEM_BLUE = "<a:bluegem:659057206234316820>";
-    public static final String GEM_BLACK = "<a:blackgem:659057206200893441>";
-    public static final String GEM_RAINBOW = "<a:rainbowgem:659057204812316672>";
+    public static final String GEM_GREEN = "<a:greenGem:661932656170369063>";
+    public static final String GEM_RED = "<a:redGem:661932658967838720>";
+    public static final String GEM_PURPLE = "<a:purpleGem:661932659550846977>";
+    public static final String GEM_BLUE = "<a:blueGem:661932658812518423>";
+    public static final String GEM_BLACK = "<a:blackGem:661937471269109780>";
+    public static final String GEM_RAINBOW = "<a:rainbowGem:659057204812316672>";
 
     public static final String GEM_GEMDIRIL = "<:gemdiril:659065082701021194>";
 
@@ -112,7 +112,7 @@ public class Icons
 
     public static final String ITEM_LOL = "<:lol_item:659064642789965829>";
 
-    public static final String ITEM_TRASH = "<:trash:498464414278615052>";
+    public static final String ITEM_TRASH = "<:trash:663733041495015444>";
 
     // ACHIEVEMENT ICONS, FORMERLY KNOWN AS BADGES
 

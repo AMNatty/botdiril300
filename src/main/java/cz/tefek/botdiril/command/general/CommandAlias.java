@@ -14,7 +14,7 @@ import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.properties.PropertyObject;
 
-@Command(value = "alias", aliases = {}, category = CommandCategory.GENERAL, description = "Set an alias for a text.")
+@Command(value = "alias", aliases = {}, category = CommandCategory.GENERAL, description = "Set an alias for some text.")
 public class CommandAlias
 {
     public static Map<String, String> allAliases(PropertyObject po)
@@ -79,7 +79,9 @@ public class CommandAlias
         for (int i = 0; i < Byte.SIZE; i++)
         {
             if ((1 << i & bound) == 0)
+            {
                 return i;
+            }
         }
 
         return -1;

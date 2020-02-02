@@ -4,9 +4,9 @@ import java.text.MessageFormat;
 
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.util.MR;
-import cz.tefek.botdiril.userdata.items.IOpenable;
-import cz.tefek.botdiril.userdata.items.Icons;
-import cz.tefek.botdiril.userdata.items.Item;
+import cz.tefek.botdiril.userdata.item.IOpenable;
+import cz.tefek.botdiril.userdata.item.Icons;
+import cz.tefek.botdiril.userdata.item.Item;
 
 public class ItemScrollOfAbundance extends Item implements IOpenable
 {
@@ -21,7 +21,7 @@ public class ItemScrollOfAbundance extends Item implements IOpenable
     @Override
     public void open(CallObj co, long amount)
     {
-        var diff = Math.min(co.ui.getCoins(), LIMIT) * Math.round(Math.pow(2, amount - 1));
+        var diff = Math.min(co.ui.getCoins() * Math.round(Math.pow(2, amount - 1)), LIMIT * amount);
         co.ui.addCoins(diff);
         MR.send(co.textChannel, MessageFormat.format("You now have **{0}** more {1}.", diff, Icons.COIN));
 

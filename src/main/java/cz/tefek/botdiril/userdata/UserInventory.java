@@ -8,8 +8,8 @@ import cz.tefek.botdiril.framework.command.invoke.CommandException;
 import cz.tefek.botdiril.framework.sql.SqlFoundation;
 import cz.tefek.botdiril.userdata.achievement.Achievement;
 import cz.tefek.botdiril.userdata.card.Card;
-import cz.tefek.botdiril.userdata.items.Item;
-import cz.tefek.botdiril.userdata.items.ItemCurrency;
+import cz.tefek.botdiril.userdata.item.Item;
+import cz.tefek.botdiril.userdata.item.ItemCurrency;
 import cz.tefek.botdiril.userdata.timers.Timer;
 import cz.tefek.botdiril.userdata.xp.XPAdder;
 
@@ -99,9 +99,13 @@ public class UserInventory
         {
             var res = stat.executeQuery();
             if (res.next())
+            {
                 return res.getInt("us_id");
+            }
             else
+            {
                 return null;
+            }
         }, this.userid);
 
         if (user == null)
@@ -136,15 +140,19 @@ public class UserInventory
             var res = stat.executeQuery();
 
             if (res.next())
+            {
                 BotMain.sql.exec("UPDATE " + TABLE_CARDS + " SET cr_amount=cr_amount+? WHERE fk_us_id=(?) AND fk_il_id=(?)", stmt ->
                 {
                     return stmt.executeUpdate();
                 }, amount, this.fkid, item.getID());
+            }
             else
+            {
                 BotMain.sql.exec("INSERT INTO " + TABLE_CARDS + " (fk_us_id, fk_il_id, cr_amount)  VALUES (?, ?, ?)", stmt ->
                 {
                     return stmt.executeUpdate();
                 }, this.fkid, item.getID(), amount);
+            }
 
             return null;
         }, this.fkid, item.getID());
@@ -168,59 +176,7 @@ public class UserInventory
 
     public void addItem(Item item)
     {
-        if (item instanceof ItemCurrency)
-        {
-            ItemCurrency curr = (ItemCurrency) item;
-
-            switch (curr.getCurrency())
-            {
-                case COINS:
-                    this.addCoins(1);
-                    break;
-
-                case DUST:
-                    this.addDust(1);
-                    break;
-
-                case KEKS:
-                    this.addKeks(1);
-                    break;
-
-                case KEYS:
-                    this.addKeys(1);
-                    break;
-
-                case MEGAKEKS:
-                    this.addMegaKeks(BigInteger.ONE);
-                    break;
-
-                case TOKENS:
-                    this.addKekTokens(1);
-                    break;
-
-                case XP:
-                    this.addXP(1);
-                    break;
-            }
-        }
-
-        BotMain.sql.exec("SELECT it_amount FROM " + TABLE_INVENTORY + " WHERE fk_us_id=(?) AND fk_il_id=(?)", stat ->
-        {
-            var res = stat.executeQuery();
-
-            if (res.next())
-                BotMain.sql.exec("UPDATE " + TABLE_INVENTORY + " SET it_amount=it_amount+1 WHERE fk_us_id=(?) AND fk_il_id=(?)", stmt ->
-                {
-                    return stmt.executeUpdate();
-                }, this.fkid, item.getID());
-            else
-                BotMain.sql.exec("INSERT INTO " + TABLE_INVENTORY + " (fk_us_id, fk_il_id, it_amount)  VALUES (?, ?, 1)", stmt ->
-                {
-                    return stmt.executeUpdate();
-                }, this.fkid, item.getID());
-
-            return null;
-        }, this.fkid, item.getID());
+        this.addItem(item, 1);
     }
 
     public void addItem(Item item, long amount)
@@ -266,15 +222,19 @@ public class UserInventory
             var res = stat.executeQuery();
 
             if (res.next())
+            {
                 BotMain.sql.exec("UPDATE " + TABLE_INVENTORY + " SET it_amount=it_amount+? WHERE fk_us_id=(?) AND fk_il_id=(?)", stmt ->
                 {
                     return stmt.executeUpdate();
                 }, amount, this.fkid, item.getID());
+            }
             else
+            {
                 BotMain.sql.exec("INSERT INTO " + TABLE_INVENTORY + " (fk_us_id, fk_il_id, it_amount)  VALUES (?, ?, ?)", stmt ->
                 {
                     return stmt.executeUpdate();
                 }, this.fkid, item.getID(), amount);
+            }
 
             return null;
         }, this.fkid, item.getID());
@@ -321,8 +281,8 @@ public class UserInventory
     }
 
     /**
-     * <b>DO NOT USE THIS DIRECTLY!</b> Use {@link XPAdder}, which checks for level
-     * advancements.
+     * <b>DO NOT USE THIS DIRECTLY!</b> Use {@link XPAdder}, which checks for
+     * level advancements.
      */
     @Deprecated
     public void addXP(long xp)
@@ -357,9 +317,13 @@ public class UserInventory
             var rs = stat.executeQuery();
 
             if (rs.next())
+            {
                 return rs.getInt("cr_level");
+            }
             else
+            {
                 return 0;
+            }
         }, this.fkid, card.getID());
     }
 
@@ -380,9 +344,13 @@ public class UserInventory
             var rs = stat.executeQuery();
 
             if (rs.next())
+            {
                 return rs.getLong("cr_xp");
+            }
             else
+            {
                 return 0L;
+            }
         }, this.fkid, card.getID());
     }
 
@@ -468,9 +436,13 @@ public class UserInventory
             var res = stat.executeQuery();
 
             if (res.next())
+            {
                 return res.getLong("tm_time");
+            }
             else
+            {
                 return 0L;
+            }
         }, this.fkid, timer.getID());
     }
 
@@ -519,9 +491,13 @@ public class UserInventory
             var rs = stat.executeQuery();
 
             if (rs.next())
+            {
                 return rs.getLong("cr_amount");
+            }
             else
+            {
                 return 0L;
+            }
         }, this.fkid, card.getID());
     }
 
@@ -555,9 +531,13 @@ public class UserInventory
             var rs = stat.executeQuery();
 
             if (rs.next())
+            {
                 return rs.getLong("it_amount");
+            }
             else
+            {
                 return 0L;
+            }
         }, this.fkid, item.getID());
     }
 
@@ -583,15 +563,19 @@ public class UserInventory
             var res = stat.executeQuery();
 
             if (res.next())
+            {
                 BotMain.sql.exec("UPDATE " + TABLE_CARDS + " SET cr_amount=(?) WHERE fk_us_id=(?) AND fk_il_id=(?)", stmt ->
                 {
                     return stmt.executeUpdate();
                 }, amount, this.fkid, item.getID());
+            }
             else
+            {
                 BotMain.sql.exec("INSERT INTO " + TABLE_CARDS + " (fk_us_id, fk_il_id, cr_amount)  VALUES (?, ?, ?)", stmt ->
                 {
                     return stmt.executeUpdate();
                 }, this.fkid, item.getID(), amount);
+            }
 
             return null;
         }, this.fkid, item.getID());
@@ -656,15 +640,19 @@ public class UserInventory
             var res = stat.executeQuery();
 
             if (res.next())
+            {
                 BotMain.sql.exec("UPDATE " + TABLE_INVENTORY + " SET it_amount=(?) WHERE fk_us_id=(?) AND fk_il_id=(?)", stmt ->
                 {
                     return stmt.executeUpdate();
                 }, amount, this.fkid, item.getID());
+            }
             else
+            {
                 BotMain.sql.exec("INSERT INTO " + TABLE_INVENTORY + " (fk_us_id, fk_il_id, it_amount)  VALUES (?, ?, ?)", stmt ->
                 {
                     return stmt.executeUpdate();
                 }, this.fkid, item.getID(), amount);
+            }
 
             return null;
         }, this.fkid, item.getID());
@@ -717,15 +705,19 @@ public class UserInventory
             var res = stat.executeQuery();
 
             if (res.next())
+            {
                 BotMain.sql.exec("UPDATE " + TABLE_TIMERS + " SET tm_time=(?) WHERE fk_us_id=(?) AND fk_il_id=(?)", stmt ->
                 {
                     return stmt.executeUpdate();
                 }, timestamp, this.fkid, timer.getID());
+            }
             else
+            {
                 BotMain.sql.exec("INSERT INTO " + TABLE_TIMERS + " (fk_us_id, fk_il_id, tm_time)  VALUES (?, ?, ?)", stmt ->
                 {
                     return stmt.executeUpdate();
                 }, this.fkid, timer.getID(), timestamp);
+            }
 
             return null;
         }, this.fkid, timer.getID());

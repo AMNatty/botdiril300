@@ -11,9 +11,10 @@ import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.IIdentifiable;
 import cz.tefek.botdiril.userdata.card.Card;
-import cz.tefek.botdiril.userdata.items.Icons;
-import cz.tefek.botdiril.userdata.items.Item;
-import cz.tefek.botdiril.userdata.items.ShopEntries;
+import cz.tefek.botdiril.userdata.item.Icons;
+import cz.tefek.botdiril.userdata.item.Item;
+import cz.tefek.botdiril.userdata.item.ShopEntries;
+import cz.tefek.botdiril.util.BotdirilFmt;
 
 @Command(value = "exchange", aliases = {
         "buyfortokens" }, category = CommandCategory.CURRENCY, description = "Exchange " + Icons.TOKEN + " for items or cards.", levelLock = 8)
@@ -23,10 +24,14 @@ public class CommandExchange
     public static void buy(CallObj co, @CmdPar(value = "item or card", type = ParType.ITEM_OR_CARD) IIdentifiable item)
     {
         if (!ShopEntries.canBeBoughtForTokens(item))
+        {
             throw new CommandException("That item / card cannot be bought, sorry.");
+        }
 
         if (ShopEntries.getTokenPrice(item) > co.ui.getKekTokens())
+        {
             throw new CommandException("You can't afford that item / card, sorry.");
+        }
 
         buy(co, item, 1);
     }
@@ -49,6 +54,6 @@ public class CommandExchange
 
         co.ui.addKekTokens(-price);
 
-        MR.send(co.textChannel, String.format("You bought **%d** %s for **%d** %s.", amount, item.getIcon(), price, Icons.TOKEN));
+        MR.send(co.textChannel, String.format("You bought **%s** %s for **%s** %s.", BotdirilFmt.format(amount), item.getIcon(), BotdirilFmt.format(price), Icons.TOKEN));
     }
 }

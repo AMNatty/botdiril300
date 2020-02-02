@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import cz.tefek.botdiril.userdata.items.CardPair;
+import cz.tefek.botdiril.userdata.item.CardPair;
 
 /**
  * Iterable storage for card loot.

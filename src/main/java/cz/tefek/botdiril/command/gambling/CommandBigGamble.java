@@ -13,7 +13,7 @@ import cz.tefek.botdiril.framework.command.invoke.CommandException;
 import cz.tefek.botdiril.framework.command.invoke.ParType;
 import cz.tefek.botdiril.framework.util.BigNumbers;
 import cz.tefek.botdiril.framework.util.MR;
-import cz.tefek.botdiril.userdata.items.Icons;
+import cz.tefek.botdiril.userdata.item.Icons;
 import cz.tefek.botdiril.userdata.stat.EnumStat;
 import cz.tefek.botdiril.userdata.tempstat.Curser;
 import cz.tefek.botdiril.userdata.tempstat.EnumBlessing;
@@ -26,7 +26,7 @@ public class CommandBigGamble
     @CmdInvoke
     public static void gamble(CallObj co, @CmdPar(value = "amount", type = ParType.AMOUNT_MEGA_KEKS) BigInteger amount)
     {
-        if (amount.doubleValue() < 0 || amount.doubleValue() == Double.NEGATIVE_INFINITY)
+        if (amount.doubleValue() < 0 || amount.compareTo(BigInteger.ZERO) == 0 || amount.doubleValue() == Double.NEGATIVE_INFINITY)
         {
             throw new CommandException("You can't gamble negative or zero " + Icons.MEGAKEK + ".");
         }

@@ -1,4 +1,4 @@
-package cz.tefek.botdiril.userdata.items;
+package cz.tefek.botdiril.userdata.item;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,12 +21,21 @@ public class ItemDrops implements Iterable<ItemPair>
 
     public void addItem(Item item, long amount)
     {
+        if (amount == 0)
+        {
+            return;
+        }
+
         var cVal = this.lootMap.get(item);
 
         if (cVal != null)
+        {
             this.lootMap.put(item, cVal + amount);
+        }
         else
+        {
             this.lootMap.put(item, amount);
+        }
     }
 
     public int distintCount()

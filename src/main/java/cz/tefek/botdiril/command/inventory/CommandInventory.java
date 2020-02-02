@@ -14,11 +14,12 @@ import cz.tefek.botdiril.framework.command.invoke.CmdPar;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.UserInventory;
-import cz.tefek.botdiril.userdata.items.Item;
-import cz.tefek.botdiril.userdata.items.ItemCurrency;
-import cz.tefek.botdiril.userdata.items.ItemPair;
-import cz.tefek.botdiril.userdata.items.Items;
-import cz.tefek.botdiril.userdata.items.ShopEntries;
+import cz.tefek.botdiril.userdata.item.Item;
+import cz.tefek.botdiril.userdata.item.ItemCurrency;
+import cz.tefek.botdiril.userdata.item.ItemPair;
+import cz.tefek.botdiril.userdata.item.Items;
+import cz.tefek.botdiril.userdata.item.ShopEntries;
+import cz.tefek.botdiril.util.BotdirilFmt;
 
 @Command(value = "inventory", aliases = { "inv",
         "i" }, category = CommandCategory.ITEMS, description = "Shows your/someone's inventory.")
@@ -73,7 +74,8 @@ public class CommandInventory
 
         var eb = new EmbedBuilder();
 
-        eb.setTitle("This user has " + ips.size() + " different types of items.");
+        eb.setAuthor(user.getUser().getAsTag(), null, user.getUser().getEffectiveAvatarUrl());
+        eb.setTitle("This user has " + BotdirilFmt.format(ips.size()) + " different types of items.");
         eb.setDescription(user.getAsMention() + "'s inventory.");
         eb.setColor(0x008080);
         eb.setThumbnail(user.getUser().getEffectiveAvatarUrl());
@@ -119,7 +121,7 @@ public class CommandInventory
             return Long.compare(ShopEntries.getCoinPrice(i2.getItem()), ShopEntries.getCoinPrice(i1.getItem()));
         }).limit(ITEMS_PER_PAGE).forEach(ip ->
         {
-            eb.addField(ip.getItem().inlineDescription(), String.format("You have: **%d**\nID: **%s**", ip.getAmount(), ip.getItem().getName()), true);
+            eb.addField(ip.getItem().inlineDescription(), String.format("Amount: **%s**\nID: **%s**", BotdirilFmt.format(ip.getAmount()), ip.getItem().getName()), true);
         });
 
         eb.setFooter("Use `" + co.sc.getPrefix() + "i " + user.getUser().getIdLong() + " <page>` to go to another page.", null);
@@ -170,7 +172,8 @@ public class CommandInventory
 
         var eb = new EmbedBuilder();
 
-        eb.setTitle("This user has " + ips.size() + " different types of items.");
+        eb.setAuthor(user.getUser().getAsTag(), null, user.getUser().getEffectiveAvatarUrl());
+        eb.setTitle("This user has " + BotdirilFmt.format(ips.size()) + " different types of items.");
         eb.setDescription(user.getAsMention() + "'s inventory.");
         eb.setColor(0x008080);
         eb.setThumbnail(user.getUser().getEffectiveAvatarUrl());
@@ -221,7 +224,7 @@ public class CommandInventory
             return Long.compare(ShopEntries.getCoinPrice(i2.getItem()), ShopEntries.getCoinPrice(i1.getItem()));
         }).skip((page - 1) * ITEMS_PER_PAGE).limit(ITEMS_PER_PAGE).forEach(ip ->
         {
-            eb.addField(ip.getItem().inlineDescription(), String.format("You have: **%d**\nID: **%s**", ip.getAmount(), ip.getItem().getName()), true);
+            eb.addField(ip.getItem().inlineDescription(), String.format("Amount: **%s**\nID: **%s**", BotdirilFmt.format(ip.getAmount()), ip.getItem().getName()), true);
         });
 
         eb.setFooter("Use `" + co.sc.getPrefix() + "i " + user.getUser().getIdLong() + " <page>` to go to another page.", null);

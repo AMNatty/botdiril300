@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.command.CommandStorage;
 import cz.tefek.botdiril.framework.util.MR;
-import cz.tefek.botdiril.userdata.items.ItemPair;
+import cz.tefek.botdiril.userdata.item.ItemPair;
 
 public class XPAdder
 {

@@ -12,7 +12,8 @@ import cz.tefek.botdiril.framework.command.CommandCategory;
 import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.UserInventory;
-import cz.tefek.botdiril.userdata.items.Icons;
+import cz.tefek.botdiril.userdata.item.Icons;
+import cz.tefek.botdiril.util.BotdirilFmt;
 
 @Command(value = "rich", aliases = {
         "topcoins" }, category = CommandCategory.CURRENCY, description = "Shows the top 10 richest users.")
@@ -40,7 +41,7 @@ public class CommandRich
                 var us = co.jda.getUserById(rs.getLong("us_userid"));
                 var userName = us == null ? "[Unknown user]" : us.getAsMention();
                 var usn = String.format("**%d.** %s", i, userName);
-                var row = String.format("%s with **%d** %s", usn, rs.getLong("us_coins"), Icons.COIN);
+                var row = String.format("%s with **%s** %s", usn, BotdirilFmt.format(rs.getLong("us_coins")), Icons.COIN);
 
                 eb.addField("", row, false);
 

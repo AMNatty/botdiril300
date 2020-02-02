@@ -9,10 +9,11 @@ import cz.tefek.botdiril.framework.command.invoke.ParType;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.IIdentifiable;
 import cz.tefek.botdiril.userdata.card.Card;
-import cz.tefek.botdiril.userdata.items.Item;
+import cz.tefek.botdiril.userdata.item.Item;
+import cz.tefek.botdiril.util.BotdirilFmt;
 
-@Command(value = "howmanyof", aliases = { "countcards", "countitems", "cc",
-        "cc" }, category = CommandCategory.ITEMS, description = "Tells the count of an item or card.")
+@Command(value = "howmanyof", aliases = { "countcards", "countitems", "cc", "ci",
+        "amount" }, category = CommandCategory.ITEMS, description = "Tells the count of an item or card.")
 public class CommandHowManyOf
 {
     @CmdInvoke
@@ -30,13 +31,17 @@ public class CommandHowManyOf
         }
         else
         {
-            MR.send(co.textChannel, "**An error has happened while processing this command:** Invalid instance of IIdentifiable\n**Please contact the developer.**");
+            MR.send(co.textChannel, "**An error has happened while processing this command:** Invalid instance of IIdentifiable.\n**Please contact the developer.**");
             return;
         }
 
         if (count <= 0)
+        {
             MR.send(co.textChannel, String.format("You have **no %s**.", thing.inlineDescription()));
+        }
         else
-            MR.send(co.textChannel, String.format("You have **%d %s**.", count, thing.inlineDescription()));
+        {
+            MR.send(co.textChannel, String.format("You have **%s %s**.", BotdirilFmt.format(count), thing.inlineDescription()));
+        }
     }
 }

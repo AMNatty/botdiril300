@@ -5,12 +5,13 @@ import java.util.ArrayList;
 import cz.tefek.botdiril.Botdiril;
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.util.MR;
-import cz.tefek.botdiril.userdata.items.Icons;
-import cz.tefek.botdiril.userdata.items.Item;
-import cz.tefek.botdiril.userdata.items.ItemDrops;
-import cz.tefek.botdiril.userdata.items.Items;
-import cz.tefek.botdiril.userdata.items.ShopEntries;
+import cz.tefek.botdiril.userdata.item.Icons;
+import cz.tefek.botdiril.userdata.item.Item;
+import cz.tefek.botdiril.userdata.item.ItemDrops;
+import cz.tefek.botdiril.userdata.item.Items;
+import cz.tefek.botdiril.userdata.item.ShopEntries;
 import cz.tefek.botdiril.userdata.stat.EnumStat;
+import cz.tefek.botdiril.util.BotdirilFmt;
 
 public class ItemCrateGlitchy extends ItemCrate
 {
@@ -52,7 +53,9 @@ public class ItemCrateGlitchy extends ItemCrate
             co.ui.addItem(item, amt);
 
             if (i <= DISPLAY_LIMIT)
-                sb.append(String.format("\n%dx %s", amt, item.inlineDescription()));
+            {
+                sb.append(String.format("\n%sx %s", BotdirilFmt.format(amt), item.inlineDescription()));
+            }
 
             i++;
         }
@@ -60,9 +63,11 @@ public class ItemCrateGlitchy extends ItemCrate
         var dc = ip.distintCount();
 
         if (dc > DISPLAY_LIMIT)
+        {
             sb.append(String.format("\nand %d more different items...", dc - DISPLAY_LIMIT));
+        }
 
-        sb.append(String.format("\n**Total %d items.**", ip.totalCount()));
+        sb.append(String.format("\n**Total %s items.**", BotdirilFmt.format(ip.totalCount())));
 
         co.po.addLong(EnumStat.CRATES_OPENED.getName(), amount);
 

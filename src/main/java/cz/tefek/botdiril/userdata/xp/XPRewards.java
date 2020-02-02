@@ -34,13 +34,15 @@ public class XPRewards
                 var lvl = jobj.getInt("level");
 
                 if (lvl > maxLevel)
+                {
                     maxLevel = lvl;
+                }
 
                 var xp = jobj.getLong("xp");
                 var cumulativeXP = jobj.getLong("cumulative_xp");
                 var dailyMin = jobj.getLong("daily_xp_min");
                 var dailyMax = jobj.getLong("daily_xp_max");
-                var gambleFalloff = jobj.getLong("gamble_falloff");
+                var gambleFalloff = jobj.getDouble("gamble_falloff");
                 var drawCount = jobj.getInt("draw_potency");
                 var loot = jobj.getJSONObject("loot");
 
@@ -67,7 +69,9 @@ public class XPRewards
     public static long getXPAtLevel(int level)
     {
         if (level == getMaxLevel())
+        {
             return Long.MAX_VALUE;
+        }
 
         return levels.get(level).getXP();
     }
@@ -100,7 +104,9 @@ public class XPRewards
     public static long getMaxCardBonusXPCoins(int level)
     {
         if (level >= 5000)
+        {
             return Long.MAX_VALUE;
+        }
 
         return Math.round(Math.pow(level, 1.2));
     }

@@ -1,4 +1,4 @@
-package cz.tefek.botdiril.command.inventory;
+package cz.tefek.botdiril.command.interactive;
 
 import cz.tefek.botdiril.BotMain;
 import cz.tefek.botdiril.Botdiril;
@@ -10,13 +10,14 @@ import cz.tefek.botdiril.framework.command.invoke.CmdPar;
 import cz.tefek.botdiril.framework.command.invoke.CommandException;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
-import cz.tefek.botdiril.userdata.items.IOpenable;
-import cz.tefek.botdiril.userdata.items.Icons;
-import cz.tefek.botdiril.userdata.items.Item;
+import cz.tefek.botdiril.userdata.item.IOpenable;
+import cz.tefek.botdiril.userdata.item.Icons;
+import cz.tefek.botdiril.userdata.item.Item;
 import cz.tefek.botdiril.userdata.tempstat.Curser;
 import cz.tefek.botdiril.userdata.tempstat.EnumBlessing;
 
-@Command(value = "open", aliases = {}, category = CommandCategory.ITEMS, description = "Open a card pack/crate/something else.")
+@Command(value = "open", aliases = {
+        "use" }, category = CommandCategory.INTERACTIVE, description = "Open a card pack/crate/something else.")
 public class CommandOpen
 {
     @CmdInvoke

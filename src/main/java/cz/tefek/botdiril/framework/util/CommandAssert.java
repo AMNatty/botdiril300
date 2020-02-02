@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.regex.Pattern;
 
 import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.entities.Emote;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
@@ -21,7 +22,7 @@ import cz.tefek.botdiril.userdata.IIdentifiable;
 import cz.tefek.botdiril.userdata.UserInventory;
 import cz.tefek.botdiril.userdata.achievement.Achievement;
 import cz.tefek.botdiril.userdata.card.Card;
-import cz.tefek.botdiril.userdata.items.Item;
+import cz.tefek.botdiril.userdata.item.Item;
 import cz.tefek.botdiril.userdata.timers.MiniTime;
 import cz.tefek.botdiril.userdata.timers.Timer;
 
@@ -61,7 +62,7 @@ public class CommandAssert
         }
     }
 
-    // INTS
+    // TIMER
 
     /**
      * Put a $ somewhere in the message to print the time there
@@ -468,6 +469,22 @@ public class CommandAssert
         }
     }
 
+    public static boolean parseBoolean(String bool, String errorMessage)
+    {
+        if ("true".equalsIgnoreCase(bool) || "yes".equalsIgnoreCase(bool) || "1".equalsIgnoreCase(bool) || "on".equalsIgnoreCase(bool) || "enable".equalsIgnoreCase(bool))
+        {
+            return true;
+        }
+        else if ("false".equalsIgnoreCase(bool) || "no".equalsIgnoreCase(bool) || "0".equalsIgnoreCase(bool) || "off".equalsIgnoreCase(bool) || "disable".equalsIgnoreCase(bool))
+        {
+            return false;
+        }
+        else
+        {
+            throw new CommandException(errorMessage);
+        }
+    }
+
     public static Item parseItem(String name)
     {
         var it = Item.getItemByName(name);
@@ -663,6 +680,41 @@ public class CommandAssert
         }
 
         throw new CommandException("User could not be parsed: Could not locate the snowflake ID / mention.");
+    }
+
+    public static Emote parseEmote(JDA jda, String arg)
+    {
+        if (arg.isEmpty())
+        {
+            throw new CommandException("Emoji could not be parsed: The input string cannot be empty.");
+        }
+
+        try
+        {
+            var m = Pattern.compile("[0-9]+").matcher(arg);
+
+            if (m.find())
+            {
+                var id = Long.parseLong(m.group());
+
+                var emote = jda.getEmoteById(id);
+
+                if (emote != null)
+                {
+                    return emote;
+                }
+                else
+                {
+                    throw new CommandException("Emoji could not be parsed: Could not find an emoji with that ID.");
+                }
+            }
+        }
+        catch (NumberFormatException e)
+        {
+            throw new CommandException("Emoji could not be parsed: Could not parse the snowflake ID.");
+        }
+
+        throw new CommandException("Emoji could not be parsed: Could not locate the snowflake ID.");
     }
 
     public static void stringNotEmptyOrNull(String s, String errorMessage) throws CommandException

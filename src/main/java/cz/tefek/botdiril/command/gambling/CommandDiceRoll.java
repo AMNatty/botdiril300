@@ -1,7 +1,5 @@
 package cz.tefek.botdiril.command.gambling;
 
-import java.util.Random;
-
 import cz.tefek.botdiril.Botdiril;
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.command.Command;
@@ -11,7 +9,7 @@ import cz.tefek.botdiril.framework.command.invoke.CmdPar;
 import cz.tefek.botdiril.framework.command.invoke.ParType;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
-import cz.tefek.botdiril.userdata.items.Icons;
+import cz.tefek.botdiril.userdata.item.Icons;
 import cz.tefek.botdiril.userdata.timers.Timers;
 import cz.tefek.botdiril.userdata.xp.XPAdder;
 import cz.tefek.botdiril.userdata.xp.XPRewards;
@@ -22,7 +20,7 @@ public class CommandDiceRoll
     @CmdInvoke
     public static void roll(CallObj co)
     {
-        MR.send(co.textChannel, ":game_die: You rolled a **" + new Random().nextInt(6) + 1 + "**!");
+        MR.send(co.textChannel, String.format(":game_die: You rolled a **%d**!", Botdiril.RDG.nextInt(1, 6)));
     }
 
     @CmdInvoke
@@ -37,7 +35,7 @@ public class CommandDiceRoll
             XPAdder.addXP(co, Math.round(XPRewards.getXPAtLevel(lvl) * XPRewards.getLevel(lvl).getGambleFalloff() * Botdiril.RDG.nextUniform(0.00001, 0.0001)));
         }
 
-        var rolled = new Random().nextInt(6) + 1;
+        var rolled = Botdiril.RDG.nextInt(1, 6);
 
         if (rolled == number)
         {

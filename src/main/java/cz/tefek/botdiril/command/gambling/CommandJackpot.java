@@ -8,7 +8,7 @@ import cz.tefek.botdiril.framework.command.CommandCategory;
 import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.internal.GlobalProperties;
-import cz.tefek.botdiril.userdata.items.Icons;
+import cz.tefek.botdiril.userdata.item.Icons;
 import cz.tefek.botdiril.userdata.xp.XPRewards;
 
 @Command(value = "jackpot", aliases = {}, category = CommandCategory.GAMBLING, description = "Shows the jackpot.")

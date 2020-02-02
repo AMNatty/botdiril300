@@ -15,7 +15,7 @@ import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.UserInventory;
 import cz.tefek.botdiril.userdata.card.Card;
-import cz.tefek.botdiril.userdata.items.CardPair;
+import cz.tefek.botdiril.userdata.item.CardPair;
 
 @Command(value = "collection", aliases = { "mycards",
         "cardcollection" }, category = CommandCategory.ITEMS, description = "Displays your card collection.")

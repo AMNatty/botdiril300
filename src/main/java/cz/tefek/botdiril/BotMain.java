@@ -18,8 +18,9 @@ import cz.tefek.botdiril.serverdata.ChannelPreferences;
 import cz.tefek.botdiril.serverdata.RolePreferences;
 import cz.tefek.botdiril.serverdata.ServerPreferences;
 import cz.tefek.botdiril.userdata.ItemLookup;
+import cz.tefek.botdiril.userdata.achievement.Achievements;
 import cz.tefek.botdiril.userdata.card.Cards;
-import cz.tefek.botdiril.userdata.items.Items;
+import cz.tefek.botdiril.userdata.item.Items;
 import cz.tefek.botdiril.userdata.timers.Timers;
 import cz.tefek.botdiril.userdata.xp.XPRewards;
 
@@ -81,17 +82,27 @@ public class BotMain
             System.exit(2);
         }
 
-        BigNumbers.load();
+        try
+        {
+            BigNumbers.load();
 
-        ItemLookup.prepare();
+            ItemLookup.prepare();
 
-        Items.load();
+            Items.load();
 
-        Cards.load();
+            Cards.load();
 
-        Timers.load();
+            Timers.load();
 
-        XPRewards.populate();
+            Achievements.load();
+
+            XPRewards.populate();
+        }
+        catch (Exception e)
+        {
+            BotMain.logger.fatal("An error has occured while loading user features.", e);
+            System.exit(12);
+        }
 
         try
         {

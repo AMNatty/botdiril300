@@ -11,9 +11,10 @@ import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
 import cz.tefek.botdiril.userdata.IIdentifiable;
 import cz.tefek.botdiril.userdata.card.Card;
-import cz.tefek.botdiril.userdata.items.Icons;
-import cz.tefek.botdiril.userdata.items.Item;
-import cz.tefek.botdiril.userdata.items.ShopEntries;
+import cz.tefek.botdiril.userdata.item.Icons;
+import cz.tefek.botdiril.userdata.item.Item;
+import cz.tefek.botdiril.userdata.item.ShopEntries;
+import cz.tefek.botdiril.util.BotdirilFmt;
 
 @Command(value = "buy", aliases = {}, category = CommandCategory.CURRENCY, description = "Buy items from the shop.", levelLock = 2)
 public class CommandBuy
@@ -22,10 +23,14 @@ public class CommandBuy
     public static void buy(CallObj co, @CmdPar(value = "item or card", type = ParType.ITEM_OR_CARD) IIdentifiable item)
     {
         if (!ShopEntries.canBeBought(item))
+        {
             throw new CommandException("That item cannot be bought, sorry.");
+        }
 
         if (ShopEntries.getCoinPrice(item) > co.ui.getCoins())
+        {
             throw new CommandException("You can't afford that item, sorry.");
+        }
 
         buy(co, item, 1);
     }
@@ -48,6 +53,6 @@ public class CommandBuy
 
         co.ui.addCoins(-price);
 
-        MR.send(co.textChannel, String.format("You bought **%d** %s for **%d** %s.", amount, item.inlineDescription(), price, Icons.COIN));
+        MR.send(co.textChannel, String.format("You bought **%s %s** for **%s** %s.", BotdirilFmt.format(amount), item.inlineDescription(), BotdirilFmt.format(price), Icons.COIN));
     }
 }

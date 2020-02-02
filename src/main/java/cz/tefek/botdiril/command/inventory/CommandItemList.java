@@ -14,7 +14,7 @@ import cz.tefek.botdiril.framework.command.invoke.CmdInvoke;
 import cz.tefek.botdiril.framework.command.invoke.CmdPar;
 import cz.tefek.botdiril.framework.util.CommandAssert;
 import cz.tefek.botdiril.framework.util.MR;
-import cz.tefek.botdiril.userdata.items.Item;
+import cz.tefek.botdiril.userdata.item.Item;
 
 @Command(value = "itemlist", aliases = {}, category = CommandCategory.ITEMS, description = "Shows a browsable list of items")
 public class CommandItemList

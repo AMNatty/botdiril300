@@ -4,9 +4,9 @@ import java.text.MessageFormat;
 
 import cz.tefek.botdiril.framework.command.CallObj;
 import cz.tefek.botdiril.framework.util.MR;
-import cz.tefek.botdiril.userdata.items.IOpenable;
-import cz.tefek.botdiril.userdata.items.Icons;
-import cz.tefek.botdiril.userdata.items.Item;
+import cz.tefek.botdiril.userdata.item.IOpenable;
+import cz.tefek.botdiril.userdata.item.Icons;
+import cz.tefek.botdiril.userdata.item.Item;
 import cz.tefek.botdiril.userdata.xp.XPAdder;
 
 public class ItemLesserScrollOfIntelligence extends Item implements IOpenable
